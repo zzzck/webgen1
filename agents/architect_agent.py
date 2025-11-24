@@ -5,6 +5,7 @@ from core.agent_base import AgentBase
 from core.schemas import Component, ComponentChild, PageSpec
 
 ARCH_PROMPT = """
+
 你是一名网页架构师，负责把 PRD 转化为清晰的页面骨架和组件树。
 
 任务：
@@ -21,6 +22,7 @@ ARCH_PROMPT = """
   - ...
   组件：
   - component_id (html=section)：h1:标题；p:描述
+
 """
 
 
