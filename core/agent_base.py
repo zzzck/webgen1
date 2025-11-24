@@ -18,16 +18,23 @@ class AgentBase:
             )
         self.client = OpenAI(api_key=self.api_key, base_url="http://98.81.169.220:3000")
 
-    def run(self, user_prompt, context=None):
-        """Invoke the LLM with optional conversational context."""
-        messages = [{"role": "system", "content": self.system_prompt}]
+    def run(self, user_prompt, context=None, json_mode: bool = False):
+        """Invoke the LLM with optional conversational context.
+
+        The agent's system prompt is always injected as the first message so
+        every call uses the agent-specific instructions.
+        """
+        messages = [
+            {"role": "system", "content": [{"type": "text", "text": self.system_prompt}]}
+        ]
         if context:
             messages.extend(context)
-        messages.append({"role": "user", "content": user_prompt})
+        messages.append({"role": "user", "content": [{"type": "text", "text": user_prompt}]})
 
         resp = self.client.responses.create(
             model=self.model,
             input=messages,
+            response_format={"type": "json_object"} if json_mode else None,
         )
 
         return self._extract_text(resp)
