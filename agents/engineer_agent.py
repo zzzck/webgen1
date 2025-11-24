@@ -3,9 +3,8 @@ from dataclasses import asdict
 from core.agent_base import AgentBase
 
 ENGINEER_PROMPT = """
-You are a Frontend Engineer.
-Generate COMPLETE HTML5 + CSS based on the page structure.
-Output ONLY raw HTML code, without backticks.
+你是一名前端工程师。
+根据页面结构生成完整的 HTML5 + CSS，并且只输出纯粹的 HTML 代码，不要包含反引号或额外说明。
 """
 
 

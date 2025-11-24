@@ -34,7 +34,7 @@ class AgentBase:
         resp = self.client.responses.create(
             model=self.model,
             input=messages,
-            # response_format={"type": "json_object"} if json_mode else None,
+            response_format={"type": "json_object"} if json_mode else None,
         )
 
         return self._extract_text(resp)
