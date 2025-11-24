@@ -1,3 +1,5 @@
+import json
+from dataclasses import asdict
 from core.agent_base import AgentBase
 
 ENGINEER_PROMPT = """
@@ -12,4 +14,4 @@ class EngineerAgent(AgentBase):
         super().__init__("Engineer", ENGINEER_PROMPT)
 
     def process(self, page_spec):
-        return self.run(str(page_spec))
+        return self.run(json.dumps(asdict(page_spec), ensure_ascii=False))

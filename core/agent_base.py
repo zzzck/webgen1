@@ -7,12 +7,15 @@ class AgentBase:
         self.system_prompt = system_prompt
         self.client = OpenAI()
 
-    def run(self, user_prompt):
+    def run(self, user_prompt, context=None):
+        """Invoke the LLM with optional conversational context."""
+        messages = [{"role": "system", "content": self.system_prompt}]
+        if context:
+            messages.extend(context)
+        messages.append({"role": "user", "content": user_prompt})
+
         resp = self.client.responses.create(
             model=self.model,
-            input=[
-                {"role": "system", "content": self.system_prompt},
-                {"role": "user", "content": user_prompt}
-            ]
+            input=messages,
         )
         return resp.output_text
