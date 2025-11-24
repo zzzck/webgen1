@@ -7,7 +7,7 @@ os.environ["HTTPS_PROXY"] = "http://211.81.248.212:3128"
 
 
 class AgentBase:
-    def __init__(self, name, system_prompt, model="gpt-5", api_key: str | None = None):
+    def __init__(self, name, system_prompt, model="gpt-5-chat-latest", api_key: str | None = None):
         self.name = name
         self.model = model
         self.system_prompt = system_prompt
@@ -34,7 +34,7 @@ class AgentBase:
         resp = self.client.responses.create(
             model=self.model,
             input=messages,
-            response_format={"type": "json_object"} if json_mode else None,
+            # response_format={"type": "json_object"} if json_mode else None,
         )
 
         return self._extract_text(resp)
