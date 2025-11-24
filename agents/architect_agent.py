@@ -4,8 +4,8 @@ from core.agent_base import AgentBase
 from core.schemas import Component, ComponentChild, PageSpec
 
 ARCH_PROMPT = """
-You are a Web Architect Agent designing the workflow for UI generation.
-Use the PRD to design a page structure. Return JSON only matching the schema:
+你是一名负责 UI 生成流程的网页架构师代理。
+请基于 PRD 设计页面结构，仅输出符合下方架构的 JSON，禁止输出 HTML、Markdown 或解释性文字：
 {
   "layout": "string",
   "colors": ["string"],

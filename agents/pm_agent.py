@@ -3,9 +3,8 @@ from core.agent_base import AgentBase
 from core.schemas import PRD, PageSection
 
 PM_PROMPT = """
-You are a Product Manager Agent responsible for workflow design.
-Convert the brief into a structured PRD and stick to the JSON schema.
-No prose, only JSON.
+你是一名负责产品需求分析的产品经理代理，需要将输入的需求简报转化为结构化的产品设计文档（PRD）。
+严格按照下方 JSON 模型输出，禁止输出 HTML、Markdown 或任何额外说明文字，必须是有效的 JSON 字符串。
 
 {
   "product": "string",
