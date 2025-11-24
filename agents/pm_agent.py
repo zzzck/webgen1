@@ -24,7 +24,12 @@ class PMAgent(AgentBase):
 
     def process(self, brief):
         output = self.run(brief)
-        data = json.loads(output)
+        if not output or not output.strip():
+            raise ValueError("PM agent returned empty output; cannot build PRD")
+        try:
+            data = json.loads(output)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"PM agent response is not valid JSON: {output}") from exc
         sections = [PageSection(**section) for section in data.get("page_sections", [])]
         return PRD(
             product=data.get("product", ""),

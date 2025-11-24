@@ -29,4 +29,48 @@ class AgentBase:
             model=self.model,
             input=messages,
         )
-        return resp
+
+        return self._extract_text(resp)
+
+    def _extract_text(self, resp):
+        """Normalize different SDK response shapes to a plain string."""
+        if resp is None:
+            return ""
+
+        # Preferred helper provided by the Responses API.
+        output_text = getattr(resp, "output_text", None)
+        if output_text:
+            return output_text
+
+        # Fallback to concatenating text blocks from the structured output.
+        output = getattr(resp, "output", None)
+        if output:
+            text_chunks = []
+            for block in output:
+                content = getattr(block, "content", None)
+                if not content:
+                    continue
+                for part in content:
+                    text_part = getattr(part, "text", None)
+                    if isinstance(text_part, str):
+                        text_chunks.append(text_part)
+                    else:
+                        value = getattr(text_part, "value", None)
+                        if value:
+                            text_chunks.append(str(value))
+            if text_chunks:
+                return "\n".join(text_chunks)
+
+        # ChatCompletion-style compatibility.
+        choices = getattr(resp, "choices", None)
+        if choices:
+            for choice in choices:
+                message = getattr(choice, "message", None)
+                if message:
+                    content = getattr(message, "content", None)
+                    if content:
+                        return content
+
+        # Fall back to the raw string representation so the caller gets something usable
+        # even if the SDK response shape changes.
+        return str(resp)
