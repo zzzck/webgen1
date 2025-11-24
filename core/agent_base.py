@@ -20,6 +20,7 @@ class AgentBase:
             messages.extend(context)
         messages.append({"role": "user", "content": user_prompt})
 
+
         resp = self.client.responses.create(
             model=self.model,
             input=messages,
