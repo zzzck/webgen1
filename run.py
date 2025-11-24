@@ -2,6 +2,8 @@ from core.manager import Manager
 import os
 import json
 
+# 在os中设置OPENAI_API_KEY
+os.environ["OPENAI_API_KEY"] = "sk-LoFT6aZDImUqWQjEIQxHtgd8yeClXRI0Srm3wZpnRiNijR4h"
 os.makedirs("output", exist_ok=True)
 
 brief = """

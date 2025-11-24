@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="On explicit save action" remoteFilesAllowedToDisappearOnAutoupload="false" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="zhangchaoke@211.81.248.216:22 password (9)" remoteFilesAllowedToDisappearOnAutoupload="false" autoUploadExternalChanges="true">
     <serverData>
       <paths name="chaoke@211.81.248.212:22 password">
         <serverdata>
@@ -128,7 +128,14 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="zhangchaoke@211.81.248.216:22 password (9)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data2/zhangchaoke/PythonProject/multi_agent_webgen" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
-    <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
