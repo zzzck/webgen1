@@ -1,0 +1,139 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n我想要设计一个宣传网页，使用html+css+js实现。以下是产品信息。其余内容包括风格、色彩等要求我均可接受，无须询问。\n\n产品：新疆葵花籽 500g，小包装；19.9 元。\n主题：春节 × 团圆 × 嗑瓜子 × 年味。\n"
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "好的，我会将你的简要信息转化为可执行的产品设计方案，包含功能规划、信息架构与页面布局方向。",
+        "goals": [],
+        "target_users": [],
+        "page_sections": []
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "看起来你给的 PRD 还没有明确的模块/页面信息（page_sections 为空），所以我会先基于一个通用的产品介绍类页面来做一个骨架示例，后续你可以补充具体板块信息再细化。",
+        "colors": [
+          "配色：",
+          "primary:",
+          "#2A7BE4（主视觉蓝）",
+          "secondary:",
+          "#F5A623（强调色橙）",
+          "background:",
+          "#FFFFFF（背景白）",
+          "text-primary:",
+          "#333333（正文深灰）"
+        ],
+        "components": [
+          {
+            "id": "组件",
+            "html": "div",
+            "children": []
+          },
+          {
+            "id": "-",
+            "html": "div",
+            "children": [
+              {
+                "tag": "hero-banner (html=section)",
+                "content_hint": "h1:产品名称"
+              },
+              {
+                "tag": "p",
+                "content_hint": "一句核心价值描述"
+              },
+              {
+                "tag": "button",
+                "content_hint": "主要行动按钮（如“立即体验”）"
+              }
+            ]
+          },
+          {
+            "id": "-",
+            "html": "div",
+            "children": [
+              {
+                "tag": "features-section (html=section)",
+                "content_hint": "h2:功能亮点标题"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "3-4个功能要点简述"
+              }
+            ]
+          },
+          {
+            "id": "-",
+            "html": "div",
+            "children": [
+              {
+                "tag": "how-it-works (html=section)",
+                "content_hint": "h2:工作原理介绍"
+              },
+              {
+                "tag": "steps",
+                "content_hint": "分步骤描述使用流程"
+              }
+            ]
+          },
+          {
+            "id": "-",
+            "html": "div",
+            "children": [
+              {
+                "tag": "testimonials (html=section)",
+                "content_hint": "h2:用户评价标题"
+              },
+              {
+                "tag": "cards",
+                "content_hint": "用户头像+评价文字"
+              }
+            ]
+          },
+          {
+            "id": "-",
+            "html": "div",
+            "children": [
+              {
+                "tag": "footer-site (html=footer)",
+                "content_hint": "nav:底部导航链接"
+              },
+              {
+                "tag": "p",
+                "content_hint": "版权与备案信息"
+              }
+            ]
+          },
+          {
+            "id": "如果你可以提供更完整的",
+            "html": "div",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "page_sections 列表，我可以按你具体的模块需求，生成更精准的布局类型与组件树。你要补充具体模块信息吗？"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>产品介绍页</title>\n  <style>\n    :root {\n      --primary-color: #2A7BE4;\n      --secondary-color: #F5A623;\n      --background-color: #FFFFFF;\n      --text-primary: #333333;\n    }\n    * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n    body {\n      font-family: Arial, sans-serif;\n      background-color: var(--background-color);\n      color: var(--text-primary);\n      line-height: 1.6;\n    }\n    header, section, footer {\n      padding: 40px 20px;\n      max-width: 1200px;\n      margin: auto;\n    }\n    .hero-banner {\n      text-align: center;\n      background-color: var(--primary-color);\n      color: #fff;\n      padding: 80px 20px;\n    }\n    .hero-banner h1 {\n      font-size: 2.5em;\n      margin-bottom: 20px;\n    }\n    .hero-banner p {\n      font-size: 1.2em;\n      margin-bottom: 30px;\n    }\n    .hero-banner button {\n      background-color: var(--secondary-color);\n      border: none;\n      padding: 15px 30px;\n      font-size: 1em;\n      color: #fff;\n      cursor: pointer;\n      border-radius: 4px;\n    }\n    .features-section h2,\n    .how-it-works h2,\n    .testimonials h2 {\n      font-size: 2em;\n      margin-bottom: 20px;\n      text-align: center;\n    }\n    .features-section ul {\n      list-style: none;\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n      gap: 20px;\n    }\n    .features-section li {\n      background-color: #f9f9f9;\n      padding: 20px;\n      border-radius: 8px;\n      flex: 1 1 calc(25% - 40px);\n      min-width: 200px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.05);\n      text-align: center;\n    }\n    .how-it-works .steps {\n      display: flex;\n      flex-direction: column;\n      gap: 20px;\n      max-width: 800px;\n      margin: auto;\n    }\n    .how-it-works .step {\n      background-color: #f9f9f9;\n      padding: 20px;\n      border-left: 4px solid var(--primary-color);\n      border-radius: 4px;\n    }\n    .testimonials .cards {\n      display: flex;\n      flex-wrap: wrap;\n      gap: 20px;\n      justify-content: center;\n    }\n    .testimonial-card {\n      background-color: #fff;\n      border: 1px solid #eee;\n      border-radius: 8px;\n      padding: 20px;\n      max-width: 300px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.05);\n      text-align: center;\n    }\n    .testimonial-card img {\n      width: 60px;\n      height: 60px;\n      border-radius: 50%;\n      object-fit: cover;\n      margin-bottom: 15px;\n    }\n    footer {\n      background-color: var(--primary-color);\n      color: #fff;\n      text-align: center;\n    }\n    footer nav a {\n      color: #fff;\n      margin: 0 10px;\n      text-decoration: none;\n    }\n    footer p {\n      margin-top: 10px;\n      font-size: 0.9em;\n    }\n  </style>\n</head>\n<body>\n\n  <section class=\"hero-banner\">\n    <h1>产品名称</h1>\n    <p>一句核心价值描述，突出产品的独特优势。</p>\n    <button>立即体验</button>\n  </section>\n\n  <section class=\"features-section\">\n    <h2>功能亮点</h2>\n    <ul>\n      <li>功能要点一简述</li>\n      <li>功能要点二简述</li>\n      <li>功能要点三简述</li>\n      <li>功能要点四简述</li>\n    </ul>\n  </section>\n\n  <section class=\"how-it-works\">\n    <h2>工作原理</h2>\n    <div class=\"steps\">\n      <div class=\"step\">步骤一：描述第一步的使用流程。</div>\n      <div class=\"step\">步骤二：描述第二步的使用流程。</div>\n      <div class=\"step\">步骤三：描述第三步的使用流程。</div>\n    </div>\n  </section>\n\n  <section class=\"testimonials\">\n    <h2>用户评价</h2>\n    <div class=\"cards\">\n      <div class=\"testimonial-card\">\n        <img src=\"avatar1.jpg\" alt=\"用户1\">\n        <p>这个产品真的改变了我的工作方式，非常高效。</p>\n      </div>\n      <div class=\"testimonial-card\">\n        <img src=\"avatar2.jpg\" alt=\"用户2\">\n        <p>易用且功能强大，非常推荐给同事们。</p>\n      </div>\n      <div class=\"testimonial-card\">\n        <img src=\"avatar3.jpg\" alt=\"用户3\">\n        <p>界面简洁，操作流畅，赞！</p>\n      </div>\n    </div>\n  </section>\n\n  <footer class=\"footer-site\">\n    <nav>\n      <a href=\"#\">关于我们</a>\n      <a href=\"#\">隐私政策</a>\n      <a href=\"#\">联系我们</a>\n    </nav>\n    <p>© 2024 公司名称 | ICP 备案号</p>\n  </footer>\n\n</body>\n</html>"
+    }
+  ]
+}

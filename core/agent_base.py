@@ -16,7 +16,7 @@ class AgentBase:
             raise ValueError(
                 "OPENAI_API_KEY is not set. Set it in the environment or pass api_key explicitly."
             )
-        self.client = OpenAI(api_key=self.api_key, base_url="http://98.81.169.220:3000")
+        self.client = OpenAI(api_key=self.api_key, base_url="http://98.81.169.220:3000/v1")
 
     def run(self, user_prompt, context=None, json_mode: bool = False):
         """Invoke the LLM with optional conversational context.
@@ -31,10 +31,10 @@ class AgentBase:
             messages.extend(context)
         messages.append({"role": "user", "content": [{"type": "text", "text": user_prompt}]})
 
-        resp = self.client.responses.create(
+        resp = self.client.chat.completions.create(
             model=self.model,
-            input=messages,
-            response_format={"type": "json_object"} if json_mode else None,
+            messages=messages,
+            # response_format={"type": "json_object"} if json_mode else None,
         )
 
         return self._extract_text(resp)
