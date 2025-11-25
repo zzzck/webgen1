@@ -28,8 +28,8 @@ class PMAgent(AgentBase):
     def __init__(self):
         super().__init__("PM", PM_PROMPT)
 
-    def process(self, brief):
-        output = self.run(brief, json_mode=False)
+    def process(self, brief, context=None):
+        output = self.run(brief, context=context, json_mode=False)
 
         if not output or not output.strip():
             raise ValueError("PM agent returned empty output; cannot build PRD")

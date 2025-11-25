@@ -36,8 +36,10 @@ class ArchitectAgent(AgentBase):
     def __init__(self):
         super().__init__("Architect", ARCH_PROMPT)
 
-    def process(self, prd):
-        output = self.run(json.dumps(asdict(prd), ensure_ascii=False), json_mode=False)
+    def process(self, prd, context=None):
+        output = self.run(
+            json.dumps(asdict(prd), ensure_ascii=False), context=context, json_mode=False
+        )
 
         if not output or not output.strip():
             raise ValueError("Architect agent returned empty output; cannot build page spec")

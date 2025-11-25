@@ -27,11 +27,13 @@ class MessageBus:
     def __init__(self):
         self._storage: Dict[str, List[Message]] = defaultdict(list)
         self._subscribers: Dict[str, List[Callable[[Message], None]]] = defaultdict(list)
+        self._timeline: List[Message] = []
 
     def publish(self, topic: str, sender: str, content: Any) -> Message:
         """Publish a structured message to a topic and notify subscribers."""
         message: Message = {"topic": topic, "sender": sender, "content": content}
         self._storage[topic].append(message)
+        self._timeline.append(message)
         for handler in self._subscribers.get(topic, []):
             handler(message)
         return message
@@ -53,6 +55,29 @@ class MessageBus:
             for topic, messages in self._storage.items()
         }
 
+    def history(self, topic: str | None = None) -> List[Message]:
+        """Return chronological messages, optionally filtered by topic."""
+        if topic is None:
+            return list(self._timeline)
+        return [msg for msg in self._timeline if msg.get("topic") == topic]
+
+    def chat_history(self) -> List[Dict[str, Any]]:
+        """Return timeline encoded as chat messages for agent context."""
+
+        chat_messages: List[Dict[str, Any]] = []
+        for msg in self._timeline:
+            sender = msg.get("sender", "Agent")
+            topic = msg.get("topic", "")
+            role = "user" if sender.lower() == "user" else "assistant"
+            content_text = (
+                f"Topic: {topic}\nSender: {sender}\nContent:\n"
+                f"{self._json_dump(msg.get('content'))}"
+            )
+            chat_messages.append(
+                {"role": role, "content": [{"type": "text", "text": content_text}]}
+            )
+        return chat_messages
+
     @staticmethod
     def _jsonable(value: Any) -> Any:
         if is_dataclass(value):
@@ -62,3 +87,12 @@ class MessageBus:
         if isinstance(value, list):
             return [MessageBus._jsonable(v) for v in value]
         return value
+
+    @staticmethod
+    def _json_dump(value: Any) -> str:
+        import json
+
+        try:
+            return json.dumps(MessageBus._jsonable(value), ensure_ascii=False, indent=2)
+        except TypeError:
+            return str(value)
