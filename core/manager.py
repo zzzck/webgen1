@@ -37,7 +37,8 @@ class Manager:
         for step in self.workflow:
             incoming = self.bus.latest(step["input_topic"])
             content = incoming["content"] if incoming else None
-            result = step["agent"].process(content)
+            context = self.bus.chat_history()
+            result = step["agent"].process(content, context=context)
             self.bus.publish(step["output_topic"], step["agent"].name, result)
 
         final = self.bus.latest("html")
