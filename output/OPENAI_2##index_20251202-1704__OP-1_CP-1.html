@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF新疆香瓜子葵花子春节促销</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background-color: #F4F4F5;
+        color: #333333;
+    }
+    header {
+        background-color: #E4393C;
+        color: #FFFFFF;
+        padding: 10px;
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 950px;
+        margin: 0 auto;
+    }
+    nav a {
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    .container {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+    #hero {
+        text-align: center;
+        background-color: #FFFFFF;
+        padding: 15px;
+    }
+    #hero img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    #hero h1 {
+        color: #E4393C;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    #price-box {
+        background-color: #FFFFFF;
+        padding: 10px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    .price-current {
+        color: #E4393C;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .price-original {
+        color: #999999;
+        font-size: 14px;
+        text-decoration: line-through;
+    }
+    .discount {
+        color: #FFD700;
+        font-size: 14px;
+        margin-left: 8px;
+    }
+    #promo-banner {
+        background-color: #FFD700;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+    #coupon-center {
+        background-color: #FFFFFF;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    .coupon {
+        background-color: #E4393C;
+        color: #FFFFFF;
+        padding: 8px;
+        margin-right: 5px;
+        border-radius: 4px;
+        font-size: 14px;
+        display: inline-block;
+    }
+    #product-spec {
+        background-color: #FFFFFF;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    #product-spec ul {
+        list-style: none;
+        padding: 0;
+    }
+    #product-spec ul li {
+        padding: 5px 0;
+        border-bottom: 1px solid #F4F4F5;
+    }
+    #buy-box {
+        background-color: #FFFFFF;
+        padding: 10px;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .quantity-control {
+        display: flex;
+        align-items: center;
+    }
+    .quantity-control button {
+        background-color: #FFD700;
+        border: none;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .quantity-control input {
+        width: 40px;
+        text-align: center;
+        margin: 0 5px;
+    }
+    .btn-cart, .btn-buy {
+        background-color: #E4393C;
+        color: #FFFFFF;
+        border: none;
+        padding: 8px 12px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    #cart-sidebar {
+        position: fixed;
+        right: -300px;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        background-color: #FFFFFF;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+        transition: right 0.3s ease;
+        padding: 15px;
+        overflow-y: auto;
+    }
+    #cart-sidebar.active {
+        right: 0;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        border-bottom: 1px solid #F4F4F5;
+    }
+    #reviews {
+        background-color: #FFFFFF;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    #reviews ul {
+        list-style: none;
+        padding: 0;
+    }
+    #reviews ul li {
+        padding: 5px 0;
+        border-bottom: 1px solid #F4F4F5;
+    }
+    #details-toggle {
+        background-color: #FFFFFF;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    #festive-animation {
+        background-color: #FFFFFF;
+        margin-top: 10px;
+        text-align: center;
+        padding: 10px;
+    }
+    footer {
+        background-color: #E4393C;
+        color: #FFFFFF;
+        text-align: center;
+        padding: 15px;
+        margin-top: 20px;
+    }
+    @media (max-width: 960px) {
+        .container, nav {
+            padding: 0 10px;
+        }
+    }
+</style>
+</head>
+<body>
+<header id="status-bar">
+    <nav>
+        <a href="#">← 返回</a>
+        <a href="#" id="cart-toggle">🛒购物车</a>
+    </nav>
+</header>
+<main class="container">
+    <section id="hero">
+        <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="LYF新疆香瓜子葵花子">
+        <h1>LYF 新疆香瓜子葵花子 春节特惠</h1>
+    </section>
+    <section id="price-box">
+        <span class="price-current">¥16.9</span>
+        <span class="price-original">¥29.9</span>
+        <span class="discount">限时4折</span>
+    </section>
+    <section id="promo-banner">
+        <div id="countdown">⏳ 00:00:00</div>
+        <span>🔥 热销</span>
+        <p id="stock">库存剩余：100</p>
+    </section>
+    <section id="coupon-center">
+        <h2>领券中心</h2>
+        <div>
+            <span class="coupon">满15减3元</span>
+            <span class="coupon">满30减8元</span>
+        </div>
+    </section>
+    <section id="product-spec">
+        <h2>产品规格</h2>
+        <ul>
+            <li>品牌：LYF</li>
+            <li>产地：新疆</li>
+            <li>规格：30g × 10 包</li>
+            <li>卖点：香脆可口，节日必备零食</li>
+        </ul>
+    </section>
+    <section id="buy-box">
+        <div class="quantity-control">
+            <button id="decrease">-</button>
+            <input type="text" id="quantity" value="1">
+            <button id="increase">+</button>
+        </div>
+        <button class="btn-cart">加入购物车</button>
+        <button class="btn-buy">立即购买</button>
+    </section>
+    <aside id="cart-sidebar">
+        <h2>购物车</h2>
+        <ul id="cart-list"></ul>
+        <p id="total">总价：¥0</p>
+        <button id="checkout">结算</button>
+    </aside>
+    <section id="reviews">
+        <h2>用户评价</h2>
+        <ul>
+            <li>⭐⭐⭐⭐⭐ 很香很脆，家人都喜欢！😊</li>
+            <li>⭐⭐⭐⭐ 美味实惠，春节必备！📷</li>
+        </ul>
+    </section>
+    <section id="details-toggle">
+        <button id="toggle-details">展开详情</button>
+        <div id="details" style="display:none;">
+            来自新疆的优质葵花子，经过精心挑选与加工，香脆爽口，包装方便，适合春节走亲访友、家庭聚会。
+        </div>
+    </section>
+    <section id="festive-animation">
+        <canvas id="canvas-animation" width="300" height="150"></canvas>
+    </section>
+</main>
+<footer>
+    <p>©2024 LYF 品牌所有权保留</p>
+</footer>
+<script>
+    const cartToggle = document.getElementById('cart-toggle');
+    const cartSidebar = document.getElementById('cart-sidebar');
+    cartToggle.addEventListener('click', () => {
+        cartSidebar.classList.toggle('active');
+    });
+    let qtyInput = document.getElementById('quantity');
+    document.getElementById('increase').addEventListener('click', () => {
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+    });
+    document.getElementById('decrease').addEventListener('click', () => {
+        let val = parseInt(qtyInput.value);
+        if(val > 1) qtyInput.value = val - 1;
+    });
+    const btnCart = document.querySelector('.btn-cart');
+    const cartList = document.getElementById('cart-list');
+    const totalDisplay = document.getElementById('total');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const renderCart = () => {
+        cartList.innerHTML = '';
+        let total = 0;
+        cart.forEach((item, index) => {
+            total += item.price * item.qty;
+            const li = document.createElement('li');
+            li.className = 'cart-item';
+            li.innerHTML = `${item.name} x${item.qty} <span>¥${item.price*item.qty}</span> <button data-index="${index}">删除</button>`;
+            cartList.appendChild(li);
+        });
+        totalDisplay.textContent = '总价：¥' + total.toFixed(2);
+        localStorage.setItem('cart', JSON.stringify(cart));
+    };
+    renderCart();
+    btnCart.addEventListener('click', () => {
+        cart.push({name:'LYF新疆香瓜子葵花子', qty: parseInt(qtyInput.value), price: 16.9});
+        renderCart();
+    });
+    cartList.addEventListener('click', e => {
+        if(e.target.tagName === 'BUTTON'){
+            cart.splice(e.target.dataset.index, 1);
+            renderCart();
+        }
+    });
+    const countdownElem = document.getElementById('countdown');
+    let countdown = 3600;
+    setInterval(() => {
+        if(countdown > 0) countdown--;
+        let h = String(Math.floor(countdown/3600)).padStart(2,'0');
+        let m = String(Math.floor((countdown%3600)/60)).padStart(2,'0');
+        let s = String(countdown%60).padStart(2,'0');
+        countdownElem.textContent = `⏳ ${h}:${m}:${s}`;
+    }, 1000);
+    const stockElem = document.getElementById('stock');
+    let stock = 100;
+    document.querySelector('.btn-buy').addEventListener('click', () => {
+        if(stock > 0){
+            stock -= parseInt(qtyInput.value);
+            if(stock < 0) stock = 0;
+            stockElem.textContent = '库存剩余：' + stock;
+            alert('购买成功！');
+        }
+    });
+    document.getElementById('toggle-details').addEventListener('click', () => {
+        const details = document.getElementById('details');
+        if(details.style.display === 'none'){
+            details.style.display = 'block';
+            document.getElementById('toggle-details').textContent = '收起详情';
+        } else {
+            details.style.display = 'none';
+            document.getElementById('toggle-details').textContent = '展开详情';
+        }
+    });
+    const canvas = document.getElementById('canvas-animation');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function createParticle(){
+        return {
+            x: Math.random()*canvas.width,
+            y: canvas.height,
+            r: Math.random()*4+2,
+            color: '#FFD700',
+            speed: Math.random()*2+1
+        };
+    }
+    function drawParticles(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+            p.y -= p.speed;
+            if(p.y < 0) {
+                p.x = Math.random()*canvas.width;
+                p.y = canvas.height;
+            }
+        });
+    }
+    for(let i=0;i<50;i++){particles.push(createParticle());}
+    setInterval(drawParticles, 30);
+</script>
+</body>
+</html>

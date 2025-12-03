@@ -1,0 +1,255 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n为以下产品生成一个完整的电商购物网页,使用html+css+js实现（模仿网址：https://item.jd.com/100168004567.html）：\n品牌为 LTF 的新疆葵花籽（30g 小包装），售价为 10 包 16.9 元，网页销售场景。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n输出功能需包括：\nF1：渲染购买功能模块（按钮、支付入口）：生成简洁、功能完整的购买模块，重点优化响应速度与兼容性，确保快速加载和流畅支付体验\nF2：设置互动功能（评分、评论）：实现简洁的评分和评论模块，优先考虑功能实现的速度与稳定性，确保用户互动流畅。\nF3：联系客服功能模块（按钮）：快速实现一个标准的联系客服按钮，具备良好的可用性，能快速与客服系统对接。\nF4：推荐或组合销售模块：生成简洁的推荐或组合销售模块，重点是快速展示相关产品，提高转化率。\n\n其他设计：\n用户登录/注册功能模块：实现基本的登录和注册功能，快速验证用户身份，提供常规的忘记密码等操作，确保页面流畅。\n用户推荐功能：生成简洁的用户推荐模块，基于简单的历史购买数据或浏览记录，快速展示推荐商品。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求，明确交付物：完整的电商购物网页（HTML+CSS+JS）",
+              "确保网页包含4P营销要素（产品、价格、渠道、促销）及F1-F4功能模块",
+              "列出其他设计要求（用户登录/注册、用户推荐功能）",
+              "划分并分配任务至各角色"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "将客户需求整理为结构化PRD",
+              "在PRD中明确功能模块（F1购买模块、F2评分评论、F3联系客服、F4推荐/组合销售模块）",
+              "在PRD中明确4P营销要素的字段与表现形式",
+              "在PRD中记录其他设计要求与性能、兼容性目标"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "根据PRD设计页面信息架构",
+              "规划页面布局与导航结构，确保4P要素明确呈现",
+              "为F1-F4及其他功能模块设计组件方案，包括数据流和交互接口",
+              "确认响应速度与兼容性优化点"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据架构方案实现完整网页的HTML/CSS/JS",
+              "实现并优化F1-F4功能模块",
+              "实现用户登录/注册功能模块",
+              "实现用户推荐功能模块",
+              "完成交互逻辑与样式优化，确保快速加载与兼容性"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LTF 新疆葵花籽 30g 小包装电商销售网页设计方案",
+        "goals": [
+          "提供完整且响应快速的购买流程，提升转化率",
+          "展示全面的产品信息，突出核心卖点提高用户认知",
+          "优化价格展示与促销信息，提高用户下单意愿",
+          "实现稳定的用户互动功能（评分与评论），提升用户参与度",
+          "提供高可用性的客服入口，降低用户流失",
+          "通过推荐与组合销售模块提升客单价",
+          "实现基础的用户账号体系，保障身份验证与购物体验"
+        ],
+        "target_users": [
+          "注重零食品质且喜欢便捷网购的年轻消费者，痛点：购买流程复杂、缺乏明确产品信息",
+          "价格敏感型用户，痛点：需要清晰的优惠信息与促销激励来促使下单"
+        ],
+        "page_sections": [
+          {
+            "id": "product-info",
+            "purpose": "展示LTF新疆葵花籽的产品外观图、规格参数、包装数量和核心卖点，帮助用户快速做出购买决策"
+          },
+          {
+            "id": "price-promo",
+            "purpose": "显示现价与对比价格，呈现优惠活动、促销标签，制造购买紧迫感"
+          },
+          {
+            "id": "buy-module",
+            "purpose": "实现快速下单购买功能，包括购买按钮、数量选择与支付入口，确保兼容性与响应速度"
+          },
+          {
+            "id": "interaction",
+            "purpose": "提供评分和评论功能，使用户可以查看和提交反馈，提升页面互动性和信任度"
+          },
+          {
+            "id": "customer-service",
+            "purpose": "提供明显的联系客服按钮，便于用户在购物过程中获得帮助"
+          },
+          {
+            "id": "recommendations",
+            "purpose": "推荐或组合销售模块，快速展示相关商品，提升附加销售"
+          },
+          {
+            "id": "user-login",
+            "purpose": "实现登录与注册功能，用于用户身份验证，并提供忘记密码操作"
+          },
+          {
+            "id": "user-recommend",
+            "purpose": "基于简单的历史购买或浏览数据为用户推荐商品，提高复购率"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#FFD700",
+          "#006400",
+          "#F4F4F5",
+          "#FF4500",
+          "#333333"
+        ],
+        "components": [
+          {
+            "id": "product-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "产品名称与核心卖点标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "规格参数、包装数量及简要介绍"
+              }
+            ]
+          },
+          {
+            "id": "price-promo",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "现价与原价显示"
+              },
+              {
+                "tag": "p",
+                "content_hint": "优惠活动说明及促销标签"
+              }
+            ]
+          },
+          {
+            "id": "buy-module",
+            "html": "section",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              },
+              {
+                "tag": "div",
+                "content_hint": "数量选择控件与支付入口"
+              }
+            ]
+          },
+          {
+            "id": "interaction",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "用户评分展示"
+              },
+              {
+                "tag": "div",
+                "content_hint": "评论列表与提交表单"
+              }
+            ]
+          },
+          {
+            "id": "customer-service",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "联系客服入口按钮"
+              },
+              {
+                "tag": "p",
+                "content_hint": "客服服务说明"
+              }
+            ]
+          },
+          {
+            "id": "recommendations",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "推荐商品标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "商品列表卡片布局"
+              }
+            ]
+          },
+          {
+            "id": "user-login",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "登录或注册标题"
+              },
+              {
+                "tag": "form",
+                "content_hint": "输入框与提交按钮，包含忘记密码功能"
+              }
+            ]
+          },
+          {
+            "id": "user-recommend",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "个性化推荐标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "基于历史数据的商品展示"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>产品页面</title>\n<style>\n    body {\n        font-family: Arial, sans-serif;\n        background-color: #F4F4F5;\n        color: #333333;\n        margin: 0;\n        padding: 0;\n    }\n    main {\n        width: 90%;\n        max-width: 800px;\n        margin: 0 auto;\n        padding: 20px;\n    }\n    section, aside {\n        background-color: #ffffff;\n        margin-bottom: 20px;\n        padding: 15px;\n        border-radius: 6px;\n        box-shadow: 0 2px 5px rgba(0,0,0,0.1);\n    }\n    h1, h2, h3 {\n        margin-top: 0;\n    }\n    #product-info h1 {\n        color: #006400;\n    }\n    #price-promo h2 {\n        color: #FF4500;\n    }\n    #buy-module button {\n        background-color: #FFD700;\n        color: #333333;\n        border: none;\n        padding: 10px 20px;\n        font-size: 16px;\n        cursor: pointer;\n        border-radius: 4px;\n    }\n    #buy-module button:hover {\n        background-color: #FF4500;\n        color: #fff;\n    }\n    #interaction h3 {\n        color: #006400;\n    }\n    #customer-service button {\n        background-color: #006400;\n        color: #fff;\n        border: none;\n        padding: 8px 16px;\n        font-size: 14px;\n        cursor: pointer;\n        border-radius: 4px;\n    }\n    #customer-service button:hover {\n        background-color: #FFD700;\n        color: #333333;\n    }\n    #recommendations h3, #user-login h3, #user-recommend h3 {\n        color: #333333;\n    }\n    form {\n        display: flex;\n        flex-direction: column;\n    }\n    input {\n        margin-bottom: 10px;\n        padding: 8px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    form button {\n        background-color: #FFD700;\n        color: #333333;\n        border: none;\n        padding: 10px;\n        cursor: pointer;\n        border-radius: 4px;\n    }\n    form button:hover {\n        background-color: #FF4500;\n        color: #fff;\n    }\n    .product-list {\n        display: flex;\n        flex-wrap: wrap;\n        gap: 10px;\n    }\n    .product-card {\n        background-color: #F4F4F5;\n        border: 1px solid #ddd;\n        border-radius: 5px;\n        padding: 10px;\n        width: calc(50% - 10px);\n    }\n</style>\n</head>\n<body>\n<main>\n    <section id=\"product-info\">\n        <h1>产品名称与核心卖点标题</h1>\n        <p>规格参数、包装数量及简要介绍</p>\n    </section>\n\n    <section id=\"price-promo\">\n        <h2>现价与原价显示</h2>\n        <p>优惠活动说明及促销标签</p>\n    </section>\n\n    <section id=\"buy-module\">\n        <button>立即购买</button>\n        <div>数量选择控件与支付入口</div>\n    </section>\n\n    <section id=\"interaction\">\n        <h3>用户评分展示</h3>\n        <div>评论列表与提交表单</div>\n    </section>\n\n    <aside id=\"customer-service\">\n        <button>联系客服</button>\n        <p>客服服务说明</p>\n    </aside>\n\n    <section id=\"recommendations\">\n        <h3>推荐商品标题</h3>\n        <div class=\"product-list\">\n            <div class=\"product-card\">商品 1</div>\n            <div class=\"product-card\">商品 2</div>\n            <div class=\"product-card\">商品 3</div>\n            <div class=\"product-card\">商品 4</div>\n        </div>\n    </section>\n\n    <section id=\"user-login\">\n        <h3>登录或注册标题</h3>\n        <form>\n            <input type=\"text\" placeholder=\"用户名\">\n            <input type=\"password\" placeholder=\"密码\">\n            <button type=\"submit\">登录</button>\n            <a href=\"#\">忘记密码？</a>\n        </form>\n    </section>\n\n    <section id=\"user-recommend\">\n        <h3>个性化推荐标题</h3>\n        <div>基于历史数据的商品展示</div>\n    </section>\n</main>\n</body>\n</html>"
+    }
+  ]
+}

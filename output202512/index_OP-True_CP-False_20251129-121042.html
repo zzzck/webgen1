@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>春节零食商城</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #F4F4F5;
+        color: #333333;
+    }
+    header {
+        background-color: #D0021B;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+    }
+    header input {
+        width: 80%;
+        padding: 8px;
+        border: none;
+        border-radius: 4px;
+    }
+    nav {
+        background-color: #FFD700;
+        padding: 10px;
+    }
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+    }
+    nav ul li {
+        cursor: pointer;
+    }
+    section {
+        padding: 20px;
+        background-color: #FFFFFF;
+        margin-bottom: 10px;
+    }
+    #product-gallery div {
+        height: 200px;
+        background-color: #F4F4F5;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #product-gallery p {
+        text-align: center;
+        font-weight: bold;
+        color: #D0021B;
+    }
+    #product-specs h2 {
+        margin-bottom: 10px;
+    }
+    #product-specs ul {
+        list-style: disc inside;
+        margin: 0;
+        padding: 0;
+    }
+    #pricing-promo p {
+        margin: 5px 0;
+    }
+    #pricing-promo div {
+        background-color: #FFD700;
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+    #pricing-promo button {
+        padding: 10px 20px;
+        background-color: #D0021B;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    #purchase-options h3 {
+        margin-bottom: 10px;
+    }
+    #purchase-options div {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    #purchase-options div button {
+        padding: 8px 12px;
+        border: 1px solid #D0021B;
+        background-color: #FFFFFF;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    #purchase-options p {
+        color: #333333;
+        font-size: 14px;
+    }
+    #comment-section h3 {
+        margin-bottom: 10px;
+    }
+    #comment-section div {
+        min-height: 100px;
+        background-color: #F4F4F5;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    #comment-section select {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #FFFFFF;
+        border-top: 1px solid #ccc;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    footer div {
+        flex: 1;
+    }
+    footer p {
+        flex: 0 0 auto;
+        margin: 0 10px;
+        font-weight: bold;
+        color: #D0021B;
+    }
+    footer button {
+        padding: 10px 20px;
+        background-color: #D0021B;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<header id="search-bar">
+    <input type="text" placeholder="站内搜索：输入关键字查找春节零食商品">
+</header>
+
+<nav id="nav-bar">
+    <ul>
+        <li>主页</li>
+        <li>分类</li>
+        <li>购物车</li>
+    </ul>
+</nav>
+
+<section id="product-gallery">
+    <div>轮播图片容器</div>
+    <p>春节主题零食，助你佳节团圆</p>
+</section>
+
+<section id="product-specs">
+    <h2>规格说明</h2>
+    <ul>
+        <li>精美礼盒包装</li>
+        <li>多口味组合</li>
+        <li>独立小包装</li>
+    </ul>
+</section>
+
+<section id="pricing-promo">
+    <p>原价：￥99</p>
+    <p>现价：￥79</p>
+    <div>促销剩余时间：00天 12:34:56</div>
+    <button>领取优惠券</button>
+</section>
+
+<section id="purchase-options">
+    <h3>选择购买规格</h3>
+    <div>
+        <button>10包</button>
+        <button>20包</button>
+        <button>30包</button>
+    </div>
+    <p>购买更多享受更大优惠</p>
+</section>
+
+<section id="comment-section">
+    <h3>用户评论</h3>
+    <div>评论列表容器</div>
+    <select>
+        <option>全部评论</option>
+        <option>好评</option>
+        <option>中评</option>
+        <option>差评</option>
+    </select>
+</section>
+
+<footer id="buy-now-modal">
+    <div>已选商品：20包礼盒装</div>
+    <p>最终价格：￥79</p>
+    <button>立即支付</button>
+</footer>
+
+</body>
+</html>

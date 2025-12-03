@@ -1,0 +1,65 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的单文件（Single HTML File）一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n主页图片链接： “https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n#Functional Requirements (功能需求)\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n页面支持商品分类展示与在线购买流程（渠道）。您还可以加入促销元素，如限时倒计时、库存提醒、热销标签和优惠卷（促销），进一步提升购物体验与趣味性。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "解析客户业务简报并提炼春节零食网页核心卖点与转化目标",
+              "将 4P 营销要素转化为具体网页内容与功能需求",
+              "制定项目目标与时间表并分配任务至 PM、Architect、Engineer"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "撰写 PRD 文档，明确产品信息、价格策略、渠道流程及促销元素",
+              "设计用户旅程与功能流程图，确保购物车、库存提醒、倒计时功能逻辑连贯",
+              "定义关键业务指标（如点击率、加购率、转化率）及验收标准"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "制定页面结构规范及组件布局方案，确保移动端适配与节日主题色彩应用",
+              "编写数据与功能模块接口规范，明确 localStorage 使用策略",
+              "规划页面性能优化方案，包括图片加载、脚本执行与样式渲染"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据结构规范实现单文件 HTML/CSS/JS 页面，呈现 4P 营销要素",
+              "开发购物车、库存提醒、倒计时、优惠券等交互功能并使用 localStorage 持久化数据",
+              "完成跨设备测试，优化加载速度与交互响应以提升移动端转化率",
+              "交付经过测试的最终销售页面文件，满足上线标准"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF 春节香瓜子葵花子大促</title>\n<style>\n    body {\n        margin: 0;\n        font-family: \"Helvetica Neue\", Arial, sans-serif;\n        background-color: #f9f9f9;\n        color: #333;\n    }\n    header {\n        background-color: #E4393C;\n        color: #fff;\n        padding: 1rem;\n        text-align: center;\n    }\n    header h1 {\n        margin: 0;\n        font-size: 1.5rem;\n    }\n    .container {\n        padding: 1rem;\n        max-width: 640px;\n        margin: 0 auto;\n    }\n    .product-card {\n        background: #fff;\n        border-radius: 8px;\n        overflow: hidden;\n        box-shadow: 0 2px 8px rgba(0,0,0,0.1);\n        margin-bottom: 1rem;\n    }\n    .product-image img {\n        width: 100%;\n        display: block;\n    }\n    .product-info {\n        padding: 1rem;\n    }\n    .product-title {\n        font-size: 1.2rem;\n        font-weight: bold;\n        color: #E4393C;\n        margin-bottom: 0.5rem;\n    }\n    .product-spec {\n        font-size: 0.9rem;\n        color: #666;\n        margin-bottom: 0.5rem;\n    }\n    .product-sellpoints {\n        background-color: #fff5f5;\n        padding: 0.5rem;\n        border-left: 4px solid #E4393C;\n        margin-bottom: 0.5rem;\n        font-size: 0.9rem;\n        color: #E4393C;\n    }\n    .price-section {\n        display: flex;\n        align-items: baseline;\n        margin-bottom: 0.5rem;\n    }\n    .current-price {\n        font-size: 1.4rem;\n        font-weight: bold;\n        color: #E4393C;\n        margin-right: 0.5rem;\n    }\n    .original-price {\n        font-size: 0.9rem;\n        color: #999;\n        text-decoration: line-through;\n        margin-right: 0.5rem;\n    }\n    .promotion-label {\n        background-color: #FFD700;\n        color: #E4393C;\n        padding: 0.2rem 0.5rem;\n        font-size: 0.8rem;\n        border-radius: 4px;\n    }\n    .stock-info {\n        font-size: 0.85rem;\n        color: #E4393C;\n        margin-bottom: 0.5rem;\n    }\n    .countdown {\n        font-size: 0.85rem;\n        font-weight: bold;\n        color: #E4393C;\n        margin-bottom: 0.5rem;\n    }\n    .purchase-section {\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        margin-top: 0.5rem;\n    }\n    .quantity-control {\n        display: flex;\n        align-items: center;\n    }\n    .quantity-control button {\n        border: none;\n        background-color: #E4393C;\n        color: #fff;\n        padding: 0.3rem 0.6rem;\n        font-size: 1rem;\n        border-radius: 4px;\n        cursor: pointer;\n    }\n    .quantity-control input {\n        width: 40px;\n        text-align: center;\n        margin: 0 0.5rem;\n        font-size: 1rem;\n    }\n    .add-to-cart {\n        background-color: #E4393C;\n        color: #fff;\n        padding: 0.5rem 1rem;\n        border: none;\n        border-radius: 4px;\n        font-size: 1rem;\n        cursor: pointer;\n    }\n    nav {\n        background-color: #fff;\n        box-shadow: 0 -1px 4px rgba(0,0,0,0.1);\n        position: fixed;\n        bottom: 0;\n        width: 100%;\n        display: flex;\n        justify-content: space-around;\n        padding: 0.5rem 0;\n    }\n    nav button {\n        background: none;\n        border: none;\n        font-size: 0.9rem;\n        color: #E4393C;\n        cursor: pointer;\n    }\n    .cart-panel {\n        position: fixed;\n        bottom: 3rem;\n        right: 0.5rem;\n        background-color: #fff;\n        border: 1px solid #ddd;\n        border-radius: 8px;\n        width: 90%;\n        max-width: 400px;\n        box-shadow: 0 2px 8px rgba(0,0,0,0.2);\n        padding: 1rem;\n        display: none;\n        flex-direction: column;\n        z-index: 999;\n    }\n    .cart-item {\n        display: flex;\n        justify-content: space-between;\n        margin-bottom: 0.5rem;\n    }\n    .cart-total {\n        font-weight: bold;\n        text-align: right;\n        margin-top: 0.5rem;\n    }\n    @media (max-width:480px) {\n        .product-title {\n            font-size: 1rem;\n        }\n        .current-price {\n            font-size: 1.2rem;\n        }\n    }\n</style>\n</head>\n<body>\n<header>\n    <h1>LYF 春节香瓜子大促</h1>\n</header>\n<main class=\"container\">\n    <section class=\"product-card\">\n        <div class=\"product-image\">\n            <img src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" alt=\"香瓜子葵花子\">\n        </div>\n        <div class=\"product-info\">\n            <div class=\"product-title\">香瓜子葵花子 30g 小包装/10包组合</div>\n            <div class=\"product-spec\">品牌：LYF | 净重：300g(30gx10) | 产地：精选葵花籽</div>\n            <div class=\"product-sellpoints\">粒粒饱满 · 咸香浓郁 · 年味十足</div>\n            <div class=\"price-section\">\n                <div class=\"current-price\">¥16.9</div>\n                <div class=\"original-price\">¥29.9</div>\n                <div class=\"promotion-label\">限时优惠</div>\n            </div>\n            <div class=\"stock-info\">库存仅剩 45 份，赶快抢购！</div>\n            <div class=\"countdown\">活动倒计时：<span id=\"countdown\">00:00:00</span></div>\n            <div class=\"purchase-section\">\n                <div class=\"quantity-control\">\n                    <button id=\"decrease\">-</button>\n                    <input type=\"number\" id=\"quantity\" value=\"1\" min=\"1\">\n                    <button id=\"increase\">+</button>\n                </div>\n                <button class=\"add-to-cart\" id=\"addToCart\">加入购物车</button>\n            </div>\n        </div>\n    </section>\n</main>\n<nav>\n    <button id=\"viewCartBtn\">购物车</button>\n    <button>分类</button>\n    <button>首页</button>\n</nav>\n<div class=\"cart-panel\" id=\"cartPanel\">\n    <h3>购物车</h3>\n    <div id=\"cartItems\"></div>\n    <div class=\"cart-total\" id=\"cartTotal\">总价: ¥0</div>\n</div>\n<script>\n    const countdownElement = document.getElementById('countdown');\n    const endTime = new Date();\n    endTime.setHours(endTime.getHours() + 2); \n    function updateCountdown() {\n        const now = new Date();\n        const diff = endTime - now;\n        if (diff <= 0) {\n            countdownElement.textContent = '活动已结束';\n            return;\n        }\n        const hours = String(Math.floor(diff / 1000 / 60 / 60)).padStart(2, '0');\n        const minutes = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');\n        const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');\n        countdownElement.textContent = `${hours}:${minutes}:${seconds}`;\n    }\n    setInterval(updateCountdown, 1000);\n    updateCountdown();\n\n    const decreaseBtn = document.getElementById('decrease');\n    const increaseBtn = document.getElementById('increase');\n    const quantityInput = document.getElementById('quantity');\n    decreaseBtn.addEventListener('click', () => {\n        let qty = parseInt(quantityInput.value);\n        if (qty > 1) {\n            quantityInput.value = qty - 1;\n        }\n    });\n    increaseBtn.addEventListener('click', () => {\n        let qty = parseInt(quantityInput.value);\n        quantityInput.value = qty + 1;\n    });\n\n    function loadCart() {\n        const cart = JSON.parse(localStorage.getItem('cart')) || [];\n        return cart;\n    }\n    function saveCart(cart) {\n        localStorage.setItem('cart', JSON.stringify(cart));\n    }\n    function renderCart() {\n        const cartItemsContainer = document.getElementById('cartItems');\n        const cartTotalElement = document.getElementById('cartTotal');\n        cartItemsContainer.innerHTML = '';\n        const cart = loadCart();\n        let total = 0;\n        cart.forEach((item, index) => {\n            const itemDiv = document.createElement('div');\n            itemDiv.className = 'cart-item';\n            const nameSpan = document.createElement('span');\n            nameSpan.textContent = `${item.name} x${item.qty}`;\n            const priceSpan = document.createElement('span');\n            priceSpan.textContent = `¥${(item.qty * item.price).toFixed(2)}`;\n            const removeBtn = document.createElement('button');\n            removeBtn.textContent = '删除';\n            removeBtn.style.background = 'none';\n            removeBtn.style.border = 'none';\n            removeBtn.style.color = '#E4393C';\n            removeBtn.style.cursor = 'pointer';\n            removeBtn.addEventListener('click', () => {\n                cart.splice(index, 1);\n                saveCart(cart);\n                renderCart();\n            });\n            itemDiv.appendChild(nameSpan);\n            itemDiv.appendChild(priceSpan);\n            itemDiv.appendChild(removeBtn);\n            cartItemsContainer.appendChild(itemDiv);\n            total += item.qty * item.price;\n        });\n        cartTotalElement.textContent = `总价: ¥${total.toFixed(2)}`;\n    }\n\n    document.getElementById('addToCart').addEventListener('click', () => {\n        const qty = parseInt(quantityInput.value);\n        const product = {\n            name: '香瓜子葵花子组合装',\n            price: 16.9,\n            qty: qty\n        };\n        const cart = loadCart();\n        const existingIndex = cart.findIndex(item => item.name === product.name);\n        if (existingIndex >= 0) {\n            cart[existingIndex].qty += qty;\n        } else {\n            cart.push(product);\n        }\n        saveCart(cart);\n        alert('已加入购物车');\n        renderCart();\n    });\n\n    const viewCartBtn = document.getElementById('viewCartBtn');\n    const cartPanel = document.getElementById('cartPanel');\n    viewCartBtn.addEventListener('click', () => {\n        const isVisible = cartPanel.style.display === 'flex';\n        if (isVisible) {\n            cartPanel.style.display = 'none';\n        } else {\n            renderCart();\n            cartPanel.style.display = 'flex';\n        }\n    });\n\n    renderCart();\n</script>\n</body>\n</html>"
+    }
+  ]
+}

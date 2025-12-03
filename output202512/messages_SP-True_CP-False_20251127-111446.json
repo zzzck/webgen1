@@ -1,0 +1,225 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n我想要设计一个宣传网页，使用html+css+js实现。以下是产品信息。其余内容包括风格、色彩等要求我均可接受，无须询问。\n\n产品：新疆葵花籽 500g，小包装；19.9 元。\n主题：春节 × 团圆 × 嗑瓜子 × 年味。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求：宣传网页，技术栈 HTML+CSS+JS，产品为新疆葵花籽 500g（小包装，19.9 元），主题春节 × 团圆 × 嗑瓜子 × 年味",
+              "划分交付物：结构化 PRD、信息架构与组件方案、最终 HTML/CSS/JS 页面"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "将客户需求整理为结构化 PRD，明确页面内容模块（产品介绍、价格、节日主题元素）、交互需求、视觉风格（春节年味、团圆氛围）、素材要求和功能清单"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "基于 PRD 设计页面信息架构（导航结构、模块布局）",
+              "确定页面组件方案（产品展示区、节日主题背景、互动元素等），并输出规格文档供工程实现"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据 Architect 提供的规格文档和设计，编写 HTML、CSS、JS 实现宣传网页",
+              "确保页面在主流浏览器正常显示并优化加载性能"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "新疆葵花籽春节团圆促销宣传页",
+        "goals": [
+          "在春节期间提升新疆葵花籽的品牌曝光度",
+          "促进线上购买转化率，提高销售额",
+          "传递团圆、年味的情感价值，增强用户共鸣",
+          "突出原产地和品质优势，提升用户信任感",
+          "增强用户的节日参与感和互动体验"
+        ],
+        "target_users": [
+          "准备春节年货的家庭主妇与家庭决策者，追求物美价廉的坚果零食",
+          "年轻白领和学生群体，喜欢节日期间与家人朋友分享零食的社交氛围"
+        ],
+        "page_sections": [
+          {
+            "id": "hero-banner",
+            "purpose": "首屏大图呈现春节氛围与新疆葵花籽产品形象，立即吸引访客注意并传递团圆主题"
+          },
+          {
+            "id": "product-details",
+            "purpose": "展示产品规格（500g，小包装）、价格（19.9元）、葵花籽产地及品质优势"
+          },
+          {
+            "id": "festival-story",
+            "purpose": "结合春节团圆场景讲述嗑瓜子的文化和年味故事，增强情感共鸣"
+          },
+          {
+            "id": "benefits",
+            "purpose": "列出健康营养、原产地优势、小包装便利等卖点，解决用户品质与便捷性需求"
+          },
+          {
+            "id": "purchase-cta",
+            "purpose": "提供醒目的购买入口按钮，引导用户快速下单"
+          },
+          {
+            "id": "reviews",
+            "purpose": "展示用户好评与晒图，增加信任感与社交认同"
+          },
+          {
+            "id": "footer-info",
+            "purpose": "展示联系方式、配送说明及品牌信息，提供额外保障"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "hero + content",
+        "colors": [
+          "#D32F2F",
+          "#FFCC00",
+          "#F4F4F5",
+          "#8BC34A",
+          "#FFFFFF"
+        ],
+        "components": [
+          {
+            "id": "hero-banner",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "春节团圆主题与新疆葵花籽品牌标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "首屏文案，突出年味和团圆氛围"
+              }
+            ]
+          },
+          {
+            "id": "product-details",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "产品名称与规格"
+              },
+              {
+                "tag": "p",
+                "content_hint": "价格信息与品质产地介绍"
+              }
+            ]
+          },
+          {
+            "id": "festival-story",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "春节与嗑瓜子的文化故事标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "描绘团圆场景与文化背景的文案"
+              }
+            ]
+          },
+          {
+            "id": "benefits",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "产品卖点总览标题"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "列出健康营养、原产地优势、小包装便利等要点列表"
+              }
+            ]
+          },
+          {
+            "id": "purchase-cta",
+            "html": "section",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "醒目购买按钮文案"
+              },
+              {
+                "tag": "p",
+                "content_hint": "下单优惠或配送提示文案"
+              }
+            ]
+          },
+          {
+            "id": "reviews",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "用户评价标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "用户好评文字与晒图展示"
+              }
+            ]
+          },
+          {
+            "id": "footer-info",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "品牌联系方式与服务说明"
+              },
+              {
+                "tag": "p",
+                "content_hint": "配送信息与保障文案"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>春节团圆·新疆葵花籽</title>\n<style>\n    body {\n        margin: 0;\n        font-family: Arial, sans-serif;\n        background-color: #F4F4F5;\n        color: #333;\n    }\n    section, footer {\n        padding: 40px 20px;\n        max-width: 1200px;\n        margin: auto;\n    }\n    #hero-banner {\n        background-color: #D32F2F;\n        color: #FFFFFF;\n        text-align: center;\n        padding: 80px 20px;\n    }\n    #hero-banner h1 {\n        font-size: 2.5rem;\n        margin-bottom: 20px;\n    }\n    #hero-banner p {\n        font-size: 1.2rem;\n    }\n    #product-details {\n        background-color: #FFFFFF;\n        border-bottom: 4px solid #FFCC00;\n    }\n    #product-details h2 {\n        color: #D32F2F;\n        margin-bottom: 10px;\n    }\n    #product-details p {\n        font-size: 1rem;\n        color: #555;\n    }\n    #festival-story {\n        background-color: #FFCC00;\n        color: #D32F2F;\n    }\n    #festival-story h2 {\n        font-size: 1.8rem;\n        margin-bottom: 15px;\n    }\n    #festival-story p {\n        font-size: 1rem;\n        line-height: 1.6;\n    }\n    #benefits {\n        background-color: #FFFFFF;\n    }\n    #benefits h2 {\n        color: #8BC34A;\n        margin-bottom: 15px;\n    }\n    #benefits ul {\n        list-style-type: disc;\n        padding-left: 20px;\n        color: #555;\n    }\n    #purchase-cta {\n        text-align: center;\n        background-color: #8BC34A;\n        color: #FFFFFF;\n    }\n    #purchase-cta button {\n        background-color: #D32F2F;\n        color: #FFFFFF;\n        border: none;\n        padding: 15px 30px;\n        font-size: 1.2rem;\n        cursor: pointer;\n        margin-bottom: 10px;\n        border-radius: 5px;\n    }\n    #purchase-cta button:hover {\n        background-color: #b71c1c;\n    }\n    #reviews {\n        background-color: #FFFFFF;\n    }\n    #reviews h2 {\n        color: #D32F2F;\n        margin-bottom: 20px;\n    }\n    #reviews div {\n        display: flex;\n        flex-wrap: wrap;\n        gap: 20px;\n    }\n    .review-card {\n        background-color: #F4F4F5;\n        padding: 20px;\n        flex: 1 1 calc(33.333% - 20px);\n        box-sizing: border-box;\n        border-radius: 5px;\n    }\n    footer {\n        background-color: #D32F2F;\n        color: #FFFFFF;\n        text-align: center;\n    }\n    footer p {\n        margin: 5px 0;\n        font-size: 0.9rem;\n    }\n    @media (max-width: 768px) {\n        .review-card {\n            flex: 1 1 100%;\n        }\n    }\n</style>\n</head>\n<body>\n\n<section id=\"hero-banner\">\n    <h1>春节团圆好味道 · 新疆葵花籽</h1>\n    <p>围炉夜话，嗑香葵花籽，分享暖心年味，承载家的味道。</p>\n</section>\n\n<section id=\"product-details\">\n    <h2>优选新疆原产葵花籽 · 500g/袋</h2>\n    <p>¥19.9 / 袋 · 精选阳光充沛产地，颗粒饱满，天然健康。</p>\n</section>\n\n<section id=\"festival-story\">\n    <h2>瓜子与团圆的故事</h2>\n    <p>在除夕的夜晚，一家人围坐在炭火旁，笑声与葵花籽的香味交织成最温暖的节日画卷。嗑瓜子不仅是味觉享受，更是亲情与乡愁的纽带。</p>\n</section>\n\n<section id=\"benefits\">\n    <h2>产品优势</h2>\n    <ul>\n        <li>低温烘焙保留更多营养</li>\n        <li>新疆原产地直供，颗粒饱满</li>\n        <li>小包装随时享用，便于储存</li>\n    </ul>\n</section>\n\n<section id=\"purchase-cta\">\n    <button>立即购买</button>\n    <p>春节特惠 · 下单即享包邮配送</p>\n</section>\n\n<section id=\"reviews\">\n    <h2>用户好评</h2>\n    <div>\n        <div class=\"review-card\">\n            <p>颗粒大又香，年夜饭时家人都爱嗑。</p>\n        </div>\n        <div class=\"review-card\">\n            <p>包装精致，送礼很体面，味道纯正。</p>\n        </div>\n        <div class=\"review-card\">\n            <p>物流很快，收到时瓜子香气扑鼻。</p>\n        </div>\n    </div>\n</section>\n\n<footer id=\"footer-info\">\n    <p>联系方式：400-123-4567 · 服务时间：9:00-18:00</p>\n    <p>全国包邮 · 破损免费退换保障</p>\n</footer>\n\n</body>\n</html>"
+    }
+  ]
+}

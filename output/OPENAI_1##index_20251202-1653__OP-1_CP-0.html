@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春节促销活动</title>
+    <style>
+        :root {
+            --color-primary: #D32F2F;
+            --color-secondary: #FBC02D;
+            --color-light: #FFFFFF;
+            --color-bg: #F4F4F5;
+            --color-accent: #388E3C;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: var(--color-bg);
+            color: #333;
+            line-height: 1.5;
+        }
+        header.hero {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            padding: 2rem;
+            text-align: center;
+        }
+        header.hero h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        header.hero p {
+            font-size: 1.2rem;
+        }
+        .layout-two-column {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        main.product-details, section.reviews-section, section.recommendations, section.share-rewards {
+            background-color: var(--color-light);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+        section.price-box {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        section.buy-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        section.buy-actions button {
+            flex: 1;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--color-light);
+        }
+        section.buy-actions button:first-child {
+            background-color: var(--color-accent);
+        }
+        section.buy-actions button:last-child {
+            background-color: var(--color-primary);
+        }
+        .promotion-banner {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            padding: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        section.coupon-center {
+            background-color: var(--color-light);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        aside.cart-sidebar {
+            background-color: var(--color-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .layout-two-column {
+                grid-template-columns: 1fr;
+            }
+            section.buy-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero" id="hero">
+        <h1>喜迎春节 品牌盛宴</h1>
+        <p>限时促销 火热开抢</p>
+    </header>
+    <div class="layout-two-column">
+        <div>
+            <section class="price-box" id="price-box">
+                <h2>现价 ¥199 <del>¥299</del></h2>
+                <p>领券再减 满减优惠享不停</p>
+            </section>
+            <section class="buy-actions" id="buy-actions">
+                <button>立即购买</button>
+                <button>加入购物车</button>
+            </section>
+            <div class="promotion-banner" id="promotion-banner">
+                <span>倒计时：00:45:23</span>
+                <span>库存紧张 热销中</span>
+            </div>
+            <section class="coupon-center" id="coupon-center">
+                <h3>优惠券中心</h3>
+                <p>点击领取 更多优惠等你来</p>
+            </section>
+            <main class="product-details" id="product-details">
+                <h2>商品规格与产地</h2>
+                <p>优选材质 精致做工，为您呈现完美外观与舒适体验</p>
+            </main>
+            <section class="reviews-section" id="reviews-section">
+                <h3>用户评分</h3>
+                <p>精选好评 与实拍展示</p>
+            </section>
+            <section class="recommendations" id="recommendations">
+                <h3>推荐商品</h3>
+                <p>更多爆款 为您精选</p>
+            </section>
+            <section class="share-rewards" id="share-rewards">
+                <h3>分享赢红包</h3>
+                <p>邀请好友购享福利，共享购物快乐</p>
+            </section>
+        </div>
+        <aside class="cart-sidebar" id="cart-sidebar">
+            <h3>购物车</h3>
+            <p>合计: ¥399  快去结算吧</p>
+        </aside>
+    </div>
+</body>
+</html>

@@ -1,0 +1,335 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "请基于以下要求开发一个完整的电商销售网页。  \n\n产品信息与素材  \n- 品牌：LYF  \n- 产品：新疆香瓜子葵花子  \n- 规格：30g × 10 包  \n- 价格：¥16.9（原价 ¥29.9）  \n- 主图链接：  \n  https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\n\n4P 营销要求（必须实现）\n1) 产品（外观图、规格、卖点、评论区、详情展示）\n2) 价格（现价、原价、折扣展示、券后价逻辑）\n3) 渠道（清晰的购买入口与购物流程）\n4) 促销（限时倒计时、热销标签、库存提醒、优惠券）\n\nUI 风格  \n- 对标天猫移动端视觉规范\n- 春节红主色调（#E4393C 或类似）\n- 动效与交互体现节日感、紧迫感与愉悦感\n\n设备与布局要求  \n- 页面宽度950px  \n- 顶部保留状态区和导航栏结构（如返回、购物车图标等）。  \n- 不需要使用占位符，来体现插入图片(如果没有图片的链接，则禁止使用图片)。\n\n功能规范（必须实现）\nA. 购物模块  \n- 数量增减、加入购物车、立即购买  \n- localStorage 保存购物车数据  \n- 购物车侧栏展开/关闭  \n- 购物车商品编辑、删除、结算总价计算  \n\nB. 促销模块  \n- 限时倒计时（自动更新 UI）  \n- 库存动态显示（库存减少逻辑）  \n- 领券中心（用户可领券，并用于结算减免）  \n\nC. 内容展示  \n- 商品评价（评分+评论列表，含表情符号与图片示例）  \n- 商品详情折叠与展开  \n\n\n创新功能（自定义添加1个以上的创新功能）\n\n\n 输出格式:直接输出完整 HTML 文件代码 (只需要输出HTML)\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "分析客户简报并提炼关键营销目标（如提升点击率、加购率、成交转化率）",
+              "确定产品核心卖点（如产地、口感、春节促销氛围）与目标人群",
+              "拆解营销目标为具体网页模块需求（如购物模块、促销模块、评价展示等）",
+              "制定整体制作时间表并分配任务至 PM、Architect、Engineer，明确质量标准"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "编写 PRD 文档，覆盖产品信息、价格策略、渠道布局、促销机制",
+              "设计用户购买路径及转化流程（如数量选择→加入购物车→结算）",
+              "定义 UI 风格及节日氛围动效要求参考天猫移动端规范",
+              "列出页面需展示的全部内容版块（如主视觉、规格详情、评价列表、优惠券中心、库存与倒计时）"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "制定页面信息架构，规划首屏与后续内容区的视觉与功能优先级",
+              "设计可复用的营销组件（价格组件、库存组件、倒计时组件、购物车组件等）",
+              "定义组件间的交互逻辑和数据接口规范（如库存变化触发 UI 更新、优惠券应用逻辑）",
+              "输出页面结构标注及组件接口文档供工程开发使用"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "开发符合 950px 布局的响应式 HTML/CSS/JS 电商页面",
+              "实现购物模块功能（数量增减、localStorage 存储、购物车侧栏编辑与结算）",
+              "实现促销模块动态功能（限时倒计时更新、库存动态减少、优惠券领取与结算减免）",
+              "实现内容展示功能（评价区含评分及多媒体展示、详情折叠与展开）",
+              "开发并集成创新功能（如节日主题动画或互动小游戏以提升停留时间）",
+              "进行跨设备兼容与性能优化测试，确保交付可在商业环境稳定运行"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF新疆香瓜子葵花子春节促销页面，突出产地品质与节日氛围以驱动加购与快速转化",
+        "goals": [
+          "提升页面点击率与首屏停留时长",
+          "提升加购率和购物车转化率",
+          "加强春节节日氛围营造与购买紧迫感",
+          "强化价格优势与折扣信息呈现",
+          "优化购买路径并减少结算步骤",
+          "增加优惠券使用率促进复购"
+        ],
+        "target_users": [
+          "注重食品品质与产地的都市白领 + 希望购买安全健康的坚果零食",
+          "价格敏感且喜欢节日促销的家庭消费者 + 想在春节备货美味零食",
+          "喜好方便快捷购物体验的移动端用户 + 希望快速完成下单支付"
+        ],
+        "page_sections": [
+          {
+            "id": "status-bar",
+            "purpose": "保留返回与购物车入口以便用户快速导航",
+            "kpi": "跳出率 / 购物车入口点击率"
+          },
+          {
+            "id": "hero",
+            "purpose": "展示产品主图、品牌LOGO与节日视觉氛围吸引注意力",
+            "kpi": "CTR / 首屏停留时长"
+          },
+          {
+            "id": "price-box",
+            "purpose": "突出现价、原价、折扣与券后价，强化价格优势",
+            "kpi": "转化率 / 优惠券使用率"
+          },
+          {
+            "id": "promo-banner",
+            "purpose": "显示限时倒计时、热销标签与库存提醒，制造购买紧迫感",
+            "kpi": "加购率 / 转化率"
+          },
+          {
+            "id": "coupon-center",
+            "purpose": "提供可领取优惠券，增加结算减免，促进购买",
+            "kpi": "优惠券领取率 / 成交转化率"
+          },
+          {
+            "id": "product-spec",
+            "purpose": "展示规格、包装数量、产地及卖点，支撑用户决策",
+            "kpi": "加购率"
+          },
+          {
+            "id": "buy-box",
+            "purpose": "数量增减、加入购物车、立即购买操作区，简化购买流程",
+            "kpi": "加购率 / 转化率"
+          },
+          {
+            "id": "cart-sidebar",
+            "purpose": "购物车侧栏查看、编辑、删除商品并结算，总价动态计算",
+            "kpi": "结算完成率 / 平均客单价"
+          },
+          {
+            "id": "reviews",
+            "purpose": "展示评分、评论、图片与表情符号，提升信任与口碑",
+            "kpi": "转化率 / 停留时长"
+          },
+          {
+            "id": "details-toggle",
+            "purpose": "商品详情的折叠与展开，提供更多信息而不干扰首屏",
+            "kpi": "信息查看率 / 加购率"
+          },
+          {
+            "id": "festive-animation",
+            "purpose": "创新功能：春节主题互动动效或小游戏提升用户参与度",
+            "kpi": "停留时长 / 品牌好感度"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#E4393C",
+          "#FFD700",
+          "#333333",
+          "#FFFFFF",
+          "#F4F4F5"
+        ],
+        "components": [
+          {
+            "id": "status-bar",
+            "html": "header",
+            "children": [
+              {
+                "tag": "nav",
+                "content_hint": "返回按钮与购物车入口"
+              }
+            ]
+          },
+          {
+            "id": "hero",
+            "html": "section",
+            "children": [
+              {
+                "tag": "img",
+                "content_hint": "产品主图与节日视觉"
+              },
+              {
+                "tag": "h1",
+                "content_hint": "品牌名称与春节促销标题"
+              }
+            ]
+          },
+          {
+            "id": "price-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "现价、原价、折扣与券后价信息"
+              }
+            ]
+          },
+          {
+            "id": "promo-banner",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "限时倒计时UI"
+              },
+              {
+                "tag": "span",
+                "content_hint": "热销标签"
+              },
+              {
+                "tag": "p",
+                "content_hint": "库存剩余提醒"
+              }
+            ]
+          },
+          {
+            "id": "coupon-center",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "领券中心标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "可领取的优惠券列表"
+              }
+            ]
+          },
+          {
+            "id": "product-spec",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "规格信息标题"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "规格、包装数量、产地、卖点列表"
+              }
+            ]
+          },
+          {
+            "id": "buy-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "数量增减控件"
+              },
+              {
+                "tag": "button",
+                "content_hint": "加入购物车按钮"
+              },
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              }
+            ]
+          },
+          {
+            "id": "cart-sidebar",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "购物车标题"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "购物车商品列表（可编辑/删除）"
+              },
+              {
+                "tag": "p",
+                "content_hint": "结算总价动态显示"
+              },
+              {
+                "tag": "button",
+                "content_hint": "结算按钮"
+              }
+            ]
+          },
+          {
+            "id": "reviews",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "用户评分"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "评论列表，含文字、表情与图片"
+              }
+            ]
+          },
+          {
+            "id": "details-toggle",
+            "html": "section",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "展开/折叠商品详情按钮"
+              },
+              {
+                "tag": "div",
+                "content_hint": "商品详细信息内容"
+              }
+            ]
+          },
+          {
+            "id": "festive-animation",
+            "html": "section",
+            "children": [
+              {
+                "tag": "canvas",
+                "content_hint": "春节主题互动动效或小游戏区域"
+              }
+            ]
+          },
+          {
+            "id": "footer",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "版权信息与品牌声明"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF新疆香瓜子葵花子春节促销</title>\n<style>\n    body {\n        margin: 0;\n        font-family: 'Helvetica Neue', Arial, sans-serif;\n        background-color: #F4F4F5;\n        color: #333333;\n    }\n    header {\n        background-color: #E4393C;\n        color: #FFFFFF;\n        padding: 10px;\n    }\n    nav {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        max-width: 950px;\n        margin: 0 auto;\n    }\n    nav a {\n        color: #FFFFFF;\n        text-decoration: none;\n        font-size: 14px;\n    }\n    .container {\n        max-width: 950px;\n        margin: 0 auto;\n        padding: 15px;\n    }\n    #hero {\n        text-align: center;\n        background-color: #FFFFFF;\n        padding: 15px;\n    }\n    #hero img {\n        max-width: 100%;\n        border-radius: 8px;\n    }\n    #hero h1 {\n        color: #E4393C;\n        font-size: 20px;\n        margin-top: 10px;\n    }\n    #price-box {\n        background-color: #FFFFFF;\n        padding: 10px;\n        margin-top: 10px;\n        display: flex;\n        justify-content: space-between;\n        align-items: baseline;\n    }\n    .price-current {\n        color: #E4393C;\n        font-size: 22px;\n        font-weight: bold;\n    }\n    .price-original {\n        color: #999999;\n        font-size: 14px;\n        text-decoration: line-through;\n    }\n    .discount {\n        color: #FFD700;\n        font-size: 14px;\n        margin-left: 8px;\n    }\n    #promo-banner {\n        background-color: #FFD700;\n        padding: 10px;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        margin-top: 10px;\n    }\n    #coupon-center {\n        background-color: #FFFFFF;\n        padding: 10px;\n        margin-top: 10px;\n    }\n    .coupon {\n        background-color: #E4393C;\n        color: #FFFFFF;\n        padding: 8px;\n        margin-right: 5px;\n        border-radius: 4px;\n        font-size: 14px;\n        display: inline-block;\n    }\n    #product-spec {\n        background-color: #FFFFFF;\n        padding: 10px;\n        margin-top: 10px;\n    }\n    #product-spec ul {\n        list-style: none;\n        padding: 0;\n    }\n    #product-spec ul li {\n        padding: 5px 0;\n        border-bottom: 1px solid #F4F4F5;\n    }\n    #buy-box {\n        background-color: #FFFFFF;\n        padding: 10px;\n        margin-top: 10px;\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n    }\n    .quantity-control {\n        display: flex;\n        align-items: center;\n    }\n    .quantity-control button {\n        background-color: #FFD700;\n        border: none;\n        padding: 5px 10px;\n        font-size: 16px;\n        cursor: pointer;\n    }\n    .quantity-control input {\n        width: 40px;\n        text-align: center;\n        margin: 0 5px;\n    }\n    .btn-cart, .btn-buy {\n        background-color: #E4393C;\n        color: #FFFFFF;\n        border: none;\n        padding: 8px 12px;\n        font-size: 14px;\n        cursor: pointer;\n        border-radius: 4px;\n    }\n    #cart-sidebar {\n        position: fixed;\n        right: -300px;\n        top: 0;\n        width: 300px;\n        height: 100%;\n        background-color: #FFFFFF;\n        box-shadow: -2px 0 5px rgba(0,0,0,0.3);\n        transition: right 0.3s ease;\n        padding: 15px;\n        overflow-y: auto;\n    }\n    #cart-sidebar.active {\n        right: 0;\n    }\n    .cart-item {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        padding: 5px 0;\n        border-bottom: 1px solid #F4F4F5;\n    }\n    #reviews {\n        background-color: #FFFFFF;\n        padding: 10px;\n        margin-top: 10px;\n    }\n    #reviews ul {\n        list-style: none;\n        padding: 0;\n    }\n    #reviews ul li {\n        padding: 5px 0;\n        border-bottom: 1px solid #F4F4F5;\n    }\n    #details-toggle {\n        background-color: #FFFFFF;\n        padding: 10px;\n        margin-top: 10px;\n    }\n    #festive-animation {\n        background-color: #FFFFFF;\n        margin-top: 10px;\n        text-align: center;\n        padding: 10px;\n    }\n    footer {\n        background-color: #E4393C;\n        color: #FFFFFF;\n        text-align: center;\n        padding: 15px;\n        margin-top: 20px;\n    }\n    @media (max-width: 960px) {\n        .container, nav {\n            padding: 0 10px;\n        }\n    }\n</style>\n</head>\n<body>\n<header id=\"status-bar\">\n    <nav>\n        <a href=\"#\">← 返回</a>\n        <a href=\"#\" id=\"cart-toggle\">🛒购物车</a>\n    </nav>\n</header>\n<main class=\"container\">\n    <section id=\"hero\">\n        <img src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" alt=\"LYF新疆香瓜子葵花子\">\n        <h1>LYF 新疆香瓜子葵花子 春节特惠</h1>\n    </section>\n    <section id=\"price-box\">\n        <span class=\"price-current\">¥16.9</span>\n        <span class=\"price-original\">¥29.9</span>\n        <span class=\"discount\">限时4折</span>\n    </section>\n    <section id=\"promo-banner\">\n        <div id=\"countdown\">⏳ 00:00:00</div>\n        <span>🔥 热销</span>\n        <p id=\"stock\">库存剩余：100</p>\n    </section>\n    <section id=\"coupon-center\">\n        <h2>领券中心</h2>\n        <div>\n            <span class=\"coupon\">满15减3元</span>\n            <span class=\"coupon\">满30减8元</span>\n        </div>\n    </section>\n    <section id=\"product-spec\">\n        <h2>产品规格</h2>\n        <ul>\n            <li>品牌：LYF</li>\n            <li>产地：新疆</li>\n            <li>规格：30g × 10 包</li>\n            <li>卖点：香脆可口，节日必备零食</li>\n        </ul>\n    </section>\n    <section id=\"buy-box\">\n        <div class=\"quantity-control\">\n            <button id=\"decrease\">-</button>\n            <input type=\"text\" id=\"quantity\" value=\"1\">\n            <button id=\"increase\">+</button>\n        </div>\n        <button class=\"btn-cart\">加入购物车</button>\n        <button class=\"btn-buy\">立即购买</button>\n    </section>\n    <aside id=\"cart-sidebar\">\n        <h2>购物车</h2>\n        <ul id=\"cart-list\"></ul>\n        <p id=\"total\">总价：¥0</p>\n        <button id=\"checkout\">结算</button>\n    </aside>\n    <section id=\"reviews\">\n        <h2>用户评价</h2>\n        <ul>\n            <li>⭐⭐⭐⭐⭐ 很香很脆，家人都喜欢！😊</li>\n            <li>⭐⭐⭐⭐ 美味实惠，春节必备！📷</li>\n        </ul>\n    </section>\n    <section id=\"details-toggle\">\n        <button id=\"toggle-details\">展开详情</button>\n        <div id=\"details\" style=\"display:none;\">\n            来自新疆的优质葵花子，经过精心挑选与加工，香脆爽口，包装方便，适合春节走亲访友、家庭聚会。\n        </div>\n    </section>\n    <section id=\"festive-animation\">\n        <canvas id=\"canvas-animation\" width=\"300\" height=\"150\"></canvas>\n    </section>\n</main>\n<footer>\n    <p>©2024 LYF 品牌所有权保留</p>\n</footer>\n<script>\n    const cartToggle = document.getElementById('cart-toggle');\n    const cartSidebar = document.getElementById('cart-sidebar');\n    cartToggle.addEventListener('click', () => {\n        cartSidebar.classList.toggle('active');\n    });\n    let qtyInput = document.getElementById('quantity');\n    document.getElementById('increase').addEventListener('click', () => {\n        qtyInput.value = parseInt(qtyInput.value) + 1;\n    });\n    document.getElementById('decrease').addEventListener('click', () => {\n        let val = parseInt(qtyInput.value);\n        if(val > 1) qtyInput.value = val - 1;\n    });\n    const btnCart = document.querySelector('.btn-cart');\n    const cartList = document.getElementById('cart-list');\n    const totalDisplay = document.getElementById('total');\n    let cart = JSON.parse(localStorage.getItem('cart')) || [];\n    const renderCart = () => {\n        cartList.innerHTML = '';\n        let total = 0;\n        cart.forEach((item, index) => {\n            total += item.price * item.qty;\n            const li = document.createElement('li');\n            li.className = 'cart-item';\n            li.innerHTML = `${item.name} x${item.qty} <span>¥${item.price*item.qty}</span> <button data-index=\"${index}\">删除</button>`;\n            cartList.appendChild(li);\n        });\n        totalDisplay.textContent = '总价：¥' + total.toFixed(2);\n        localStorage.setItem('cart', JSON.stringify(cart));\n    };\n    renderCart();\n    btnCart.addEventListener('click', () => {\n        cart.push({name:'LYF新疆香瓜子葵花子', qty: parseInt(qtyInput.value), price: 16.9});\n        renderCart();\n    });\n    cartList.addEventListener('click', e => {\n        if(e.target.tagName === 'BUTTON'){\n            cart.splice(e.target.dataset.index, 1);\n            renderCart();\n        }\n    });\n    const countdownElem = document.getElementById('countdown');\n    let countdown = 3600;\n    setInterval(() => {\n        if(countdown > 0) countdown--;\n        let h = String(Math.floor(countdown/3600)).padStart(2,'0');\n        let m = String(Math.floor((countdown%3600)/60)).padStart(2,'0');\n        let s = String(countdown%60).padStart(2,'0');\n        countdownElem.textContent = `⏳ ${h}:${m}:${s}`;\n    }, 1000);\n    const stockElem = document.getElementById('stock');\n    let stock = 100;\n    document.querySelector('.btn-buy').addEventListener('click', () => {\n        if(stock > 0){\n            stock -= parseInt(qtyInput.value);\n            if(stock < 0) stock = 0;\n            stockElem.textContent = '库存剩余：' + stock;\n            alert('购买成功！');\n        }\n    });\n    document.getElementById('toggle-details').addEventListener('click', () => {\n        const details = document.getElementById('details');\n        if(details.style.display === 'none'){\n            details.style.display = 'block';\n            document.getElementById('toggle-details').textContent = '收起详情';\n        } else {\n            details.style.display = 'none';\n            document.getElementById('toggle-details').textContent = '展开详情';\n        }\n    });\n    const canvas = document.getElementById('canvas-animation');\n    const ctx = canvas.getContext('2d');\n    let particles = [];\n    function createParticle(){\n        return {\n            x: Math.random()*canvas.width,\n            y: canvas.height,\n            r: Math.random()*4+2,\n            color: '#FFD700',\n            speed: Math.random()*2+1\n        };\n    }\n    function drawParticles(){\n        ctx.clearRect(0,0,canvas.width,canvas.height);\n        particles.forEach(p => {\n            ctx.beginPath();\n            ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);\n            ctx.fillStyle = p.color;\n            ctx.fill();\n            p.y -= p.speed;\n            if(p.y < 0) {\n                p.x = Math.random()*canvas.width;\n                p.y = canvas.height;\n            }\n        });\n    }\n    for(let i=0;i<50;i++){particles.push(createParticle());}\n    setInterval(drawParticles, 30);\n</script>\n</body>\n</html>"
+    }
+  ]
+}

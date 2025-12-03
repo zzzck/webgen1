@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 新疆香瓜子葵花子 - 春节限时特惠</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #F4F4F5;
+        color: #333333;
+    }
+    header, section, footer, aside {
+        padding: 16px;
+    }
+    h1, h2, h3 {
+        margin: 0 0 12px;
+    }
+    img {
+        max-width: 100%;
+        display: block;
+        border-radius: 8px;
+    }
+    .hero {
+        background-color: #FFFFFF;
+        text-align: center;
+    }
+    .hero h1 {
+        color: #E4393C;
+        font-size: 1.4em;
+    }
+    .price-box {
+        background-color: #FFFFFF;
+        margin-top: 8px;
+        padding: 16px;
+        font-size: 1.1em;
+        color: #333333;
+    }
+    .price-current {
+        color: #E4393C;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .price-original {
+        text-decoration: line-through;
+        color: #999999;
+        margin-left: 8px;
+    }
+    .countdown-promo {
+        background-color: #FFD700;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 6px;
+    }
+    .stock-alert {
+        background-color: #FFFFFF;
+        margin-top: 8px;
+        padding: 12px;
+        color: #E4393C;
+        font-weight: bold;
+    }
+    .coupon-center {
+        background-color: #FFFFFF;
+        padding: 16px;
+        margin-top: 8px;
+    }
+    .coupon-list {
+        display: flex;
+        gap: 8px;
+    }
+    .coupon {
+        background-color: #E4393C;
+        color: #FFFFFF;
+        padding: 8px;
+        border-radius: 4px;
+        text-align: center;
+        flex: 1;
+    }
+    .purchase-actions {
+        background-color: #FFFFFF;
+        padding: 16px;
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+    .qty-control {
+        display: flex;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .qty-btn {
+        background: #FFD700;
+        border: none;
+        padding: 6px 12px;
+        font-size: 1em;
+    }
+    .qty-input {
+        width: 40px;
+        text-align: center;
+        border: none;
+    }
+    .btn-primary {
+        background-color: #E4393C;
+        color: #FFF;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 4px;
+        font-size: 1em;
+    }
+    .btn-buy {
+        background-color: #FFD700;
+        color: #333333;
+    }
+    .cart-sidebar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100%;
+        background: #FFFFFF;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    .cart-sidebar.open {
+        right: 0;
+    }
+    .cart-sidebar h3 {
+        padding: 16px;
+        background: #E4393C;
+        color: #FFF;
+    }
+    .cart-items {
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px;
+    }
+    .cart-items li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .cart-total {
+        padding: 16px;
+        font-weight: bold;
+    }
+    .reviews {
+        background-color: #FFFFFF;
+        margin-top: 8px;
+        padding: 16px;
+    }
+    .reviews ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .reviews li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .product-details {
+        background-color: #FFFFFF;
+        margin-top: 8px;
+        padding: 16px;
+    }
+    .recommendation {
+        background-color: #FFFFFF;
+        margin-top: 8px;
+        padding: 16px;
+    }
+    .recommendation ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+    }
+    footer {
+        background-color: #E4393C;
+        color: #FFFFFF;
+        padding: 16px;
+        text-align: center;
+    }
+    footer nav {
+        margin-top: 8px;
+    }
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>LYF 新疆香瓜子葵花子</h1>
+    <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="新疆香瓜子葵花子">
+</section>
+
+<section class="price-box">
+    <p><span class="price-current">¥16.9</span><span class="price-original">¥29.9</span></p>
+    <p>领券后立减 ¥5，券后价低至 ¥11.9</p>
+</section>
+
+<section class="countdown-promo">
+    <p>限时抢购：剩余 02:15:45</p>
+    <span>🔥 热销中</span>
+</section>
+
+<section class="stock-alert">
+    <p>库存紧张：仅剩 35 件</p>
+</section>
+
+<section class="coupon-center">
+    <h2>领券中心</h2>
+    <div class="coupon-list">
+        <div class="coupon">¥5 优惠券</div>
+        <div class="coupon">满 ¥50 减 ¥10</div>
+    </div>
+</section>
+
+<section class="purchase-actions">
+    <div class="qty-control">
+        <button class="qty-btn">-</button>
+        <input type="text" class="qty-input" value="1">
+        <button class="qty-btn">+</button>
+    </div>
+    <button class="btn-primary">加入购物车</button>
+    <button class="btn-primary btn-buy">立即购买</button>
+</section>
+
+<aside class="cart-sidebar" id="cartSidebar">
+    <h3>购物车</h3>
+    <ul class="cart-items">
+        <li><span>新疆香瓜子 ×1</span><span>¥16.9</span></li>
+    </ul>
+    <p class="cart-total">总价：¥16.9</p>
+</aside>
+
+<section class="reviews">
+    <h2>用户评价</h2>
+    <ul>
+        <li>⭐⭐⭐⭐⭐ 香脆可口，春节必备零食 😊</li>
+        <li>⭐⭐⭐⭐ 口感很好，包装精美 🎁</li>
+    </ul>
+</section>
+
+<section class="product-details">
+    <h2>商品详情</h2>
+    <div>规格：30g × 10 包<br>产地：新疆<br>特点：低盐香脆、健康美味</div>
+</section>
+
+<section class="recommendation">
+    <h2>猜你喜欢</h2>
+    <ul>
+        <li>坚果大礼包</li>
+        <li>原味花生</li>
+        <li>红枣枸杞茶</li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2024 LYF 品质保证</p>
+    <nav>首页 | 分类 | 客服</nav>
+</footer>
+
+</body>
+</html>

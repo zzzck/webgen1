@@ -1,0 +1,53 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n为以下产品生成一个完整的电商购物网页,使用html+css+js实现（模仿网址：https://item.jd.com/100168004567.html）：\n品牌为 LTF 的新疆葵花籽（30g 小包装），售价为 10 包 16.9 元，网页销售场景。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n输出功能需包括：\nF1：渲染购买功能模块（按钮、支付入口）：生成简洁、功能完整的购买模块，重点优化响应速度与兼容性，确保快速加载和流畅支付体验\nF2：设置互动功能（评分、评论）：实现简洁的评分和评论模块，优先考虑功能实现的速度与稳定性，确保用户互动流畅。\nF3：联系客服功能模块（按钮）：快速实现一个标准的联系客服按钮，具备良好的可用性，能快速与客服系统对接。\nF4：推荐或组合销售模块：生成简洁的推荐或组合销售模块，重点是快速展示相关产品，提高转化率。\n\n其他设计：\n用户登录/注册功能模块：实现基本的登录和注册功能，快速验证用户身份，提供常规的忘记密码等操作，确保页面流畅。\n用户推荐功能：生成简洁的用户推荐模块，基于简单的历史购买数据或浏览记录，快速展示推荐商品。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求，明确电商购物网页的产品信息（品牌、规格、价格、促销要素）",
+              "划分交付物为完整的 HTML+CSS+JS 页面，包含4P营销要素：产品、价格、渠道、促销",
+              "拆解功能模块：F1购买模块、F2评分评论模块、F3联系客服模块、F4推荐/组合销售模块",
+              "增加用户登录/注册模块和用户推荐模块",
+              "将开发任务分配给Engineer"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据TeamLeader提供的规格实现完整HTML页面，展示LTF新疆葵花籽（30g小包装，10包16.9元）的电商销售场景",
+              "实现4P营销要素：产品展示（外观图、规格介绍、卖点文案）、价格模块（现价、对比价、优惠信息）、渠道入口（购买按钮、购物流程）、促销元素（促销标签、库存或限时购买说明）",
+              "开发F1购买模块（按钮、支付入口），优化响应速度与兼容性",
+              "开发F2评分与评论模块，保证功能稳定流畅",
+              "开发F3联系客服按钮，快速对接客服系统",
+              "开发F4推荐或组合销售模块，展示相关产品",
+              "实现用户登录/注册功能模块，包括身份验证、忘记密码",
+              "实现基于简单历史记录的用户推荐功能模块"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LTF 新疆葵花籽 30g 小包装 电商页面</title>\n<style>\nbody{font-family:\"Microsoft YaHei\",sans-serif;margin:0;padding:0;background:#f7f7f7;color:#333;}\na{text-decoration:none;color:#333;}\nheader{background:#fff;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px rgba(0,0,0,0.1);}\nheader h1{font-size:20px;color:#e53e3e;}\nnav a{margin:0 10px;}\n.container{max-width:1200px;margin:auto;padding:20px;background:#fff;}\n.product-main{display:flex;flex-wrap:wrap;}\n.product-img{flex:1 1 400px;padding:20px;}\n.product-img img{max-width:100%;border:1px solid #ddd;}\n.product-info{flex:1 1 500px;padding:20px;}\n.product-info h2{margin-top:0;}\n.price{color:#e53e3e;font-size:28px;margin:10px 0;}\n.old-price{text-decoration:line-through;color:#888;margin-left:10px;font-size:16px;}\n.promo{color:#ff6600;background:#fff3e0;padding:5px;margin:10px 0;display:inline-block;}\n.buy-module{display:flex;align-items:center;margin:20px 0;}\n.buy-module input{width:50px;padding:5px;margin-right:10px;}\n.buy-button{background:#e53e3e;color:#fff;padding:10px 20px;border:none;cursor:pointer;font-size:16px;}\n.buy-button:hover{background:#c53030;}\n.stock-info{color:#28a745;margin-top:10px;}\nhr{margin:20px 0;}\n.comments{margin-top:20px;}\n.comment-form textarea{width:100%;padding:10px;margin-top:10px;}\n.comment-form button{margin-top:10px;padding:10px 15px;background:#007bff;color:#fff;border:none;cursor:pointer;}\n.comment-form button:hover{background:#0069d9;}\n.rating{margin:10px 0;}\n.star{color:gold;font-size:20px;cursor:pointer;}\n.contact-service{margin-top:20px;}\n.contact-button{background:#17a2b8;color:#fff;padding:10px 15px;border:none;cursor:pointer;}\n.contact-button:hover{background:#117a8b;}\n.recommend-section{margin-top:30px;}\n.recommend-items{display:flex;flex-wrap:wrap;}\n.recommend-item{flex:1 1 200px;margin:10px;padding:10px;border:1px solid #ddd;text-align:center;}\n.recommend-item img{max-width:100%;}\n.login-register{background:#f1f1f1;padding:20px;margin-top:20px;}\n.login-register input{padding:10px;margin:5px 0;width:100%;}\n.login-register button{padding:10px 20px;margin-top:10px;background:#28a745;color:#fff;border:none;cursor:pointer;}\n.login-register button:hover{background:#218838;}\n.user-recommend{margin-top:20px;}\n.user-recommend h3{margin-bottom:10px;}\n.user-recommend-items{display:flex;}\n.user-recommend-item{flex:1 1 200px;margin:10px;padding:10px;border:1px solid #ddd;text-align:center;}\n.user-recommend-item img{max-width:100%;}\n</style>\n</head>\n<body>\n<header>\n  <h1>LTF 官方旗舰店</h1>\n  <nav>\n    <a href=\"#\">首页</a>\n    <a href=\"#\">全部商品</a>\n    <a href=\"#\">促销活动</a>\n    <a href=\"#\">我的订单</a>\n  </nav>\n</header>\n\n<div class=\"container\">\n  <div class=\"product-main\">\n    <div class=\"product-img\">\n      <img src=\"https://via.placeholder.com/400x400?text=LTF+%E6%96%B0%E7%96%86%E8%91%B5%E8%8A%B1%E7%B1%BD+30g\" alt=\"LTF 新疆葵花籽\">\n    </div>\n    <div class=\"product-info\">\n      <h2>LTF 新疆葵花籽 30g 小包装（10包装）</h2>\n      <div class=\"price\">￥16.9 <span class=\"old-price\">￥19.9</span></div>\n      <div class=\"promo\">限时优惠，全场满50元包邮！</div>\n      <p>精选新疆优质葵花籽，30g 独立小包装，10包组合装，随时随地轻松享用。健康零食，优质蛋白与膳食纤维，适合全家。</p>\n      <div class=\"buy-module\">\n        <input type=\"number\" value=\"1\" min=\"1\" id=\"quantity\">\n        <button class=\"buy-button\" onclick=\"buyNow()\">立即购买</button>\n      </div>\n      <div class=\"stock-info\">库存充足 · 下单即发</div>\n    </div>\n  </div>\n\n  <hr>\n\n  <div class=\"comments\">\n    <h3>用户评分与评论</h3>\n    <div class=\"rating\">\n      <span class=\"star\" onclick=\"rateProduct(1)\">★</span>\n      <span class=\"star\" onclick=\"rateProduct(2)\">★</span>\n      <span class=\"star\" onclick=\"rateProduct(3)\">★</span>\n      <span class=\"star\" onclick=\"rateProduct(4)\">★</span>\n      <span class=\"star\" onclick=\"rateProduct(5)\">★</span>\n      <span id=\"rating-score\"></span>\n    </div>\n    <div class=\"comment-form\">\n      <textarea id=\"comment-text\" placeholder=\"写下您的评论...\"></textarea>\n      <button onclick=\"submitComment()\">提交评论</button>\n    </div>\n    <div id=\"comment-list\"></div>\n  </div>\n\n  <div class=\"contact-service\">\n    <button class=\"contact-button\" onclick=\"contactService()\">联系客服</button>\n  </div>\n\n  <div class=\"recommend-section\">\n    <h3>推荐搭配购买</h3>\n    <div class=\"recommend-items\">\n      <div class=\"recommend-item\">\n        <img src=\"https://via.placeholder.com/200x200?text=%E6%A9%99%E5%AD%90%E5%B0%8F%E9%A5%BC\" alt=\"橙子小饼\">\n        <p>橙子小饼 500g</p>\n        <p>￥12.9</p>\n      </div>\n      <div class=\"recommend-item\">\n        <img src=\"https://via.placeholder.com/200x200?text=%E6%A2%A8%E5%B9%B2\" alt=\"梨干\">\n        <p>新疆梨干 200g</p>\n        <p>￥9.9</p>\n      </div>\n      <div class=\"recommend-item\">\n        <img src=\"https://via.placeholder.com/200x200?text=%E8%8A%92%E5%B9%B2\" alt=\"芒干\">\n        <p>泰国芒干 250g</p>\n        <p>￥15.9</p>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"login-register\">\n    <h3>用户登录/注册</h3>\n    <input type=\"text\" id=\"username\" placeholder=\"用户名\">\n    <input type=\"password\" id=\"password\" placeholder=\"密码\">\n    <button onclick=\"login()\">登录</button>\n    <button onclick=\"register()\">注册</button>\n    <button onclick=\"forgotPassword()\">忘记密码</button>\n  </div>\n\n  <div class=\"user-recommend\">\n    <h3>根据您的浏览记录推荐</h3>\n    <div class=\"user-recommend-items\">\n      <div class=\"user-recommend-item\">\n        <img src=\"https://via.placeholder.com/200x200?text=%E6%A6%84%E6%B2%B9%E6%9E%9C%E5%B0%8F%E5%8C%85\" alt=\"榴油果小包\">\n        <p>榴油果小包</p>\n        <p>￥8.9</p>\n      </div>\n      <div class=\"user-recommend-item\">\n        <img src=\"https://via.placeholder.com/200x200?text=%E5%8F%A4%E6%9F%94%E8%80%B3%E6%9E%9C\" alt=\"古柔耳果\">\n        <p>古柔耳果</p>\n        <p>￥12.0</p>\n      </div>\n    </div>\n  </div>\n</div>\n\n<script>\nfunction buyNow(){\n  alert(\"已添加到购物车，准备结算付款！\");\n}\nfunction rateProduct(score){\n  document.getElementById('rating-score').innerText = \"评分：\" + score + \" 星\";\n}\nfunction submitComment(){\n  var text = document.getElementById('comment-text').value;\n  if(text.trim() !== \"\"){\n    var list = document.getElementById('comment-list');\n    var item = document.createElement('div');\n    item.textContent = text;\n    list.appendChild(item);\n    document.getElementById('comment-text').value = \"\";\n  }else{\n    alert(\"请填写评论内容\");\n  }\n}\nfunction contactService(){\n  alert(\"正在连接客服...\");\n}\nfunction login(){\n  var user = document.getElementById('username').value;\n  var pass = document.getElementById('password').value;\n  if(user && pass){\n    alert(\"登录成功，欢迎 \" + user);\n  }else{\n    alert(\"请输入用户名和密码\");\n  }\n}\nfunction register(){\n  alert(\"注册流程启动\");\n}\nfunction forgotPassword(){\n  alert(\"请联系邮箱或客服找回密码\");\n}\n</script>\n</body>\n</html>"
+    }
+  ]
+}

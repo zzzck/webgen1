@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYF 新疆香瓜子葵花子 春节促销</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #F4F4F5;
+            color: #333;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: #E4393C;
+            color: #fff;
+        }
+        .status-btn, .cart-btn {
+            font-size: 1.2rem;
+        }
+        .cart-btn {
+            position: relative;
+        }
+        .cart-count {
+            position: absolute;
+            top: -0.3rem;
+            right: -0.5rem;
+            background: #FFD700;
+            color: #E4393C;
+            border-radius: 50%;
+            padding: 0 0.4rem;
+            font-size: 0.8rem;
+        }
+        section {
+            padding: 1rem;
+            background-color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .hero img {
+            width: 100%;
+            border-radius: 0.5rem;
+        }
+        .hero h1 {
+            font-size: 1.4rem;
+            margin-top: 0.5rem;
+            color: #E4393C;
+        }
+        .price-box {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        .price-current {
+            font-size: 1.5rem;
+            color: #E4393C;
+            font-weight: bold;
+        }
+        .price-original {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+        .discount-info {
+            color: #FFD700;
+            font-size: 0.9rem;
+        }
+        .coupon-price {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .promo-countdown {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #E4393C;
+        }
+        .promo-label {
+            background: #FFD700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+            font-size: 0.9rem;
+            color: #E4393C;
+        }
+        .stock-indicator p {
+            color: #E4393C;
+            font-size: 0.9rem;
+        }
+        .coupon-center h2 {
+            font-size: 1.2rem;
+            color: #E4393C;
+            margin-bottom: 0.5rem;
+        }
+        .coupon-card {
+            background: #FFD700;
+            padding: 0.5rem;
+            border-radius: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #E4393C;
+        }
+        .buy-box {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .qty-control {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+        .qty-btn {
+            background: #FFD700;
+            border: none;
+            padding: 0.5rem;
+            font-size: 1rem;
+            color: #E4393C;
+            border-radius: 0.3rem;
+        }
+        .action-btn {
+            flex: 1;
+            background: #E4393C;
+            color: #fff;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 0.3rem;
+            font-size: 1rem;
+        }
+        aside {
+            background: #fff;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 80%;
+            max-width: 320px;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            list-style: none;
+            padding: 1rem;
+            margin: 0;
+        }
+        .cart-footer {
+            padding: 1rem;
+            border-top: 1px solid #eee;
+        }
+        .product-detail h2,
+        .reviews h2,
+        .recommend h2,
+        .lottery h2,
+        .share-reward h2 {
+            color: #E4393C;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .reviews ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer {
+            background: #f8f8f8;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+        @media (max-width: 414px) {
+            .price-current {
+                font-size: 1.2rem;
+            }
+            .action-btn {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="status-bar">
+        <div class="status-btn">← 返回</div>
+        <div class="cart-btn">🛒<span class="cart-count">0</span></div>
+    </header>
+
+    <section id="hero" class="hero">
+        <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="LYF 新疆香瓜子葵花子">
+        <h1>LYF 新疆香瓜子葵花子</h1>
+        <p>规格：30g × 10 包</p>
+    </section>
+
+    <section id="price-box" class="price-box">
+        <span class="price-current">¥16.9</span>
+        <span class="price-original">¥29.9</span>
+        <span class="discount-info">限时优惠 4.5折</span>
+        <span class="coupon-price">领券后更优惠</span>
+    </section>
+
+    <section id="promo-countdown" class="promo-countdown">
+        <div>⏳ 活动结束倒计时：<span>00:12:34</span></div>
+        <span class="promo-label">热销</span>
+    </section>
+
+    <section id="stock-indicator" class="stock-indicator">
+        <p>库存仅剩 <strong>58</strong> 件，欲购从速！</p>
+    </section>
+
+    <section id="coupon-center" class="coupon-center">
+        <h2>领券中心</h2>
+        <div class="coupon-card">
+            <span>满15减3</span>
+            <button class="qty-btn">领取</button>
+        </div>
+    </section>
+
+    <section id="buy-box" class="buy-box">
+        <div class="qty-control">
+            <button class="qty-btn">-</button>
+            <span>1</span>
+            <button class="qty-btn">+</button>
+        </div>
+        <button class="action-btn">加入购物车</button>
+        <button class="action-btn">立即购买</button>
+    </section>
+
+    <aside id="cart-sidebar">
+        <ul class="cart-items">
+            <!-- 商品列表 -->
+        </ul>
+        <div class="cart-footer">
+            <div>总价：¥0.00</div>
+            <button class="action-btn">去结算</button>
+        </div>
+    </aside>
+
+    <section id="product-detail" class="product-detail">
+        <h2>商品详情</h2>
+        <div>精选新疆葵花籽，粒大饱满，香脆可口。</div>
+        <div>节日喜庆包装，送礼佳选。</div>
+    </section>
+
+    <section id="reviews" class="reviews">
+        <h2>用户评价</h2>
+        <div>评分：⭐️⭐️⭐️⭐️⭐️</div>
+        <ul>
+            <li>👍 好吃不腻，家人很喜欢！</li>
+            <li>🎉 包装喜庆，过年送礼超有面子！</li>
+        </ul>
+    </section>
+
+    <section id="recommend" class="recommend">
+        <h2>猜你喜欢</h2>
+        <div>推荐商品列表</div>
+    </section>
+
+    <section id="lottery" class="lottery">
+        <h2>福袋抽奖</h2>
+        <button class="action-btn">参与抽奖</button>
+    </section>
+
+    <section id="share-reward" class="share-reward">
+        <h2>分享返红包</h2>
+        <button class="action-btn">立即分享</button>
+    </section>
+
+    <footer id="footer">
+        <p>© LYF 品牌所有权</p>
+        <nav>关于我们 | 帮助中心 | 售后服务</nav>
+    </footer>
+</body>
+</html>

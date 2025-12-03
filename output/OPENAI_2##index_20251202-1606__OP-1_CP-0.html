@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春节营销活动页面</title>
+    <style>
+        :root {
+            --color-primary: #D0021B;
+            --color-secondary: #FFD700;
+            --color-bg-light: #F4F4F5;
+            --color-white: #FFFFFF;
+            --color-dark-red: #8B0000;
+        }
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--color-bg-light);
+            color: #333;
+        }
+        header, section, footer, div {
+            box-sizing: border-box;
+        }
+        header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+        header button {
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .hero {
+            text-align: center;
+            background-color: var(--color-white);
+            padding: 1rem;
+        }
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .hero h1 {
+            color: var(--color-dark-red);
+            margin: 1rem 0 0;
+            font-size: 1.5rem;
+        }
+        .price-box {
+            background-color: var(--color-white);
+            padding: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: baseline;
+            font-size: 1.2rem;
+        }
+        .price-current {
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        .price-original {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 1rem;
+        }
+        .price-discount {
+            background-color: var(--color-secondary);
+            color: var(--color-dark-red);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .promo-banner {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .stock-indicator {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            color: var(--color-dark-red);
+        }
+        .coupon-center {
+            background-color: var(--color-secondary);
+            padding: 1rem;
+            text-align: center;
+        }
+        .coupon-center button {
+            background-color: var(--color-dark-red);
+            color: var(--color-white);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .buy-actions {
+            background-color: var(--color-white);
+            padding: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .buy-actions input {
+            width: 60px;
+            padding: 0.3rem;
+        }
+        .buy-actions button {
+            flex: 1;
+            padding: 0.5rem;
+            border: none;
+            color: var(--color-white);
+            cursor: pointer;
+        }
+        .btn-cart {
+            background-color: var(--color-dark-red);
+        }
+        .btn-buy {
+            background-color: var(--color-primary);
+        }
+        .product-detail, .reviews, .recommendations, .lucky-bag, .share-redpack {
+            background-color: var(--color-white);
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+        .product-detail h2, .reviews h2, .recommendations h2, .lucky-bag h2, .share-redpack h2 {
+            margin-top: 0;
+            color: var(--color-dark-red);
+        }
+        .product-detail button {
+            background-color: var(--color-secondary);
+            border: none;
+            padding: 0.5rem 1rem;
+            color: var(--color-dark-red);
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .reviews .rating {
+            margin: 0.5rem 0;
+        }
+        .reviews ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .reviews ul li {
+            border-bottom: 1px solid #eee;
+            padding: 0.5rem 0;
+        }
+        .reviews img {
+            max-width: 100%;
+            margin-top: 0.5rem;
+            border-radius: 4px;
+        }
+        .recommendations ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.5rem;
+            margin: 0;
+        }
+        .recommendations ul li {
+            background-color: var(--color-bg-light);
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .lucky-bag button, .share-redpack button {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        footer {
+            background-color: var(--color-dark-red);
+            color: var(--color-white);
+            padding: 1rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        footer nav {
+            margin-top: 0.5rem;
+        }
+        footer nav a {
+            color: var(--color-secondary);
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .price-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .buy-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="top-nav">
+        <button>返回</button>
+        <button>购物车</button>
+    </header>
+
+    <section id="hero" class="hero">
+        <img src="spring-festival-hero.jpg" alt="春节主题大图">
+        <h1>新春特惠好礼，抢先购</h1>
+    </section>
+
+    <section id="price-box" class="price-box">
+        <span class="price-current">¥99</span>
+        <span class="price-original">¥199</span>
+        <span class="price-discount">限时5折</span>
+    </section>
+
+    <div id="promo-banner" class="promo-banner">
+        <span>倒计时：02:15:45</span>
+        <span>热销</span>
+    </div>
+
+    <div id="stock-indicator" class="stock-indicator">
+        <p>仅剩 25 件</p>
+    </div>
+
+    <section id="coupon-center" class="coupon-center">
+        <button>领取优惠券</button>
+        <p>满200减50元，限春节期间</p>
+    </section>
+
+    <section id="buy-actions" class="buy-actions">
+        <input type="number" min="1" value="1">
+        <button class="btn-cart">加入购物车</button>
+        <button class="btn-buy">立即购买</button>
+    </section>
+
+    <section id="product-detail" class="product-detail">
+        <h2>产品详情</h2>
+        <p>来自优质产地，规格丰富，口感香醇，是新春佳节送礼佳选。</p>
+        <button>查看更多</button>
+    </section>
+
+    <section id="reviews" class="reviews">
+        <h2>用户评价</h2>
+        <div class="rating">★★★★☆</div>
+        <ul>
+            <li>好吃，包装精美，送礼有面子！</li>
+            <li>味道不错，家人很喜欢。</li>
+        </ul>
+        <img src="buyer-show.jpg" alt="买家秀">
+    </section>
+
+    <section id="recommendations" class="recommendations">
+        <h2>猜你喜欢</h2>
+        <ul>
+            <li>推荐商品1</li>
+            <li>推荐商品2</li>
+            <li>推荐商品3</li>
+            <li>推荐商品4</li>
+        </ul>
+    </section>
+
+    <section id="lucky-bag" class="lucky-bag">
+        <h2>春节福袋抽奖</h2>
+        <button>参与抽奖</button>
+    </section>
+
+    <section id="share-redpack" class="share-redpack">
+        <h2>分享返红包</h2>
+        <button>立即分享</button>
+    </section>
+
+    <footer id="page-footer">
+        <p>© 2024 新春特惠商城 版权所有</p>
+        <nav>
+            <a href="#">首页</a>
+            <a href="#">客服</a>
+            <a href="#">帮助</a>
+        </nav>
+    </footer>
+</body>
+</html>

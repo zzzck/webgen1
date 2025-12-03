@@ -1,0 +1,309 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**电商产品详情页。该网页必须是一个完整的、可交互的原型。\n\n# Product Context\n我们需要为一款春节热销零食制作落地页，模仿京东（JD.com）的移动端/PC端响应式布局风格。\n* **品牌**：LYF\n* **商品名称**：新疆原产葵花籽（30g 独立小包装）\n* **价格策略**：10包组合装，售价 16.9 元。\n\n# Functional Requirements (功能需求)\n1.  **布局结构**：\n    * **顶部**：简单的导航栏（包含 Logo 占位符和搜索框占位符）。\n    * **左侧/顶部（视宽度而定）**：产品主图展示区。包含 1 张大图和 4 张缩略图。点击缩略图需切换大图。\n    图片链接1“https://detail.1688.com/offer/988089985291.html?spm=a261b.8768355.pic-list.30.432360cd4VYDtD”\n    图片链接2“https://detail.1688.com/offer/981519203786.html?spm=a261b.8768355.pic-list.16.424760cd9rabYd”\n    图片链接3“https://detail.1688.com/offer/990628769471.html?spm=a261b.8768355.pic-list.7.667160cdECaV86”\n    * **右侧/底部（视宽度而定）**：产品信息区。包含标题、红色价格高亮、促销标签（“春节特惠”、“包邮”）。\n    * **交互区**：数量选择器（支持 +/-，且数量不能小于 1），以及“立即购买”和“加入购物车”两个按钮。\n    * **详情区**：页面底部需包含 Tab 切换功能（“商品介绍” vs “售后保障”），点击 Tab 切换显示不同文本内容。\n\n2.  **核心逻辑 (JavaScript)**：\n    * **数量联动**：默认数量为 1。点击 +/- 按钮更新数量，并实时更新“总价”（Total Price = 16.9 * 数量）。结果保留 1 位小数。\n    * **购物车反馈**：点击“加入购物车”后，弹出轻提示（Toast Notification）：\"已成功加入购物车：LYF葵花籽 x [数量]\"，2秒后自动消失。\n    * **图片切换**：鼠标悬停或点击缩略图时，主图需平滑切换。\n\n3.  **UI/Design Requirements (设计规范)**：\n    * **配色**：主色调使用京东红（#f23030 或类似），背景色为浅灰（#f6f6f6），内容区为白色。\n    * **图片处理**：由于无法访问外部图库，请使用 placeholder 图片服务（如 `https://via.placeholder.com/400x400?text=LYF+Product`）来生成不同颜色的占位图，确保页面不出现破图。\n    * **响应式**：页面需适配手机端和 PC 端（使用 Flexbox 或 Grid 布局）。\n4.营销倒计时系统 (Complex Logic)\n在价格旁显示“春节限时抢购倒计时”。\n逻辑要求：倒计时设定为 2 小时 0 分 0 秒。必须实时跳动（每秒 -1）。\n边界状态：当倒计时归零时，按钮变为灰色“活动已结束”，且不可点击。\n\n5. 优惠券与价格计算 (State Management)\n界面中间需展示两张优惠券：\nA券：满 10 减 2 元\nB券：满 20 减 5 元\n\n6.交互逻辑：\n用户点击优惠券可“领取”（变为高亮状态，只能选一张）。\n数量选择器调整商品数量时，**总价（Total Price）**必须根据（单价 * 数量 - 优惠券金额）实时重新计算。\n如果总价不满足优惠券门槛，优惠券自动失效（取消高亮）。\n\n7. 评论区筛选器 (DOM Manipulation)\n展示评论列表。\n顶部有 Filter 按钮：“全部”、“好评”、“中评”。\n交互逻辑：点击不同按钮，下方评论列表必须根据 productData.reviews 数组进行实时过滤并重新渲染 DOM。\n\n8. 模态框购物车 (UI Interaction)\n点击底部的“立即购买”按钮，不跳转，而是从底部弹出一个半透明遮罩层 + 确认面板（Slide-up Modal）。\n面板内显示：已选商品信息、最终计算后的价格。\n包含“确认支付”按钮，点击后 alert 输出最终订单信息对象。\n\n# Technical Constraints (技术约束)\n* 所有代码（HTML, CSS, JS）必须包含在一个 HTML 文件中，CSS 放 `<style>`，JS 放 `<script>`。\n* 代码结构清晰，有注释，不依赖 React/Vue 等外部框架，使用原生 Vanilla JS。\n* CSS 需处理好按钮的 hover 状态和阴影细节，体现电商的高级感。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求",
+              "识别可交付成果",
+              "划分任务并分配至各角色"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "将客户需求转化为结构化 PRD",
+              "明确功能模块说明",
+              "列出交互与边界条件",
+              "编写详细业务流程说明"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "设计页面整体信息架构（导航栏、主图区、信息区、详情Tab、评论区等）",
+              "拆分为独立组件（数量选择器、优惠券模块、倒计时模块、评论过滤器、购物车模态框）",
+              "规划响应式布局方案（移动端与PC端）",
+              "定义各组件的DOM结构与数据流"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据PRD与架构方案编写单HTML文件，包含HTML结构、CSS样式、JavaScript逻辑",
+              "实现布局与响应式设计",
+              "实现缩略图切换主图交互",
+              "实现数量选择与总价计算，保留优惠券状态联动逻辑",
+              "实现倒计时功能及活动结束禁用逻辑",
+              "实现评论区过滤按钮与DOM实时更新",
+              "实现购物车toast提示与立即购买模态框交互",
+              "添加hover状态与阴影效果提升UI品质"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF新疆原产葵花籽春节热销落地页（响应式电商详情页原型）",
+        "goals": [
+          "提供春节特惠促销信息及购买入口，提升转化率",
+          "实现数量选择、优惠券领取及价格动态计算，增强交互体验",
+          "支持缩略图切换展示主图，增加产品视觉吸引力",
+          "增加营销倒计时功能，制造限时购买紧迫感",
+          "实现评论筛选功能，提升用户决策效率",
+          "集成购物车提示和立即购买模态框，提高购买确认率",
+          "保证页面在手机和PC端的响应式布局与视觉一致性"
+        ],
+        "target_users": [
+          "春节送礼及自用零食消费者：关注价格优惠与促销活动，追求高性价比与快速购买体验",
+          "京东或其他电商平台的活跃用户：希望界面友好、购买流程简单、能够在多设备上流畅浏览和操作"
+        ],
+        "page_sections": [
+          {
+            "id": "nav-bar",
+            "purpose": "顶部导航栏，含品牌Logo占位符和搜索框占位符，便于用户快速定位商品或其他内容"
+          },
+          {
+            "id": "product-gallery",
+            "purpose": "主图与缩略图展示模块，用户可通过点击或悬停缩略图切换主图，增加商品视觉细节"
+          },
+          {
+            "id": "product-info",
+            "purpose": "商品标题、价格高亮、促销标签展示区，增加购买欲和促销引导"
+          },
+          {
+            "id": "countdown-timer",
+            "purpose": "春节限时抢购倒计时，实时显示剩余时间并在结束时禁用购买按钮"
+          },
+          {
+            "id": "quantity-selector",
+            "purpose": "数量调整控件，通过 +/- 按钮修改购买数量，动态更新总价"
+          },
+          {
+            "id": "coupons",
+            "purpose": "优惠券展示及领取交互，用户可领取并应用优惠券，自动校验门槛并更新价格"
+          },
+          {
+            "id": "purchase-buttons",
+            "purpose": "“立即购买”和“加入购物车”按钮区，处理对应交互逻辑及反馈提示"
+          },
+          {
+            "id": "product-tabs",
+            "purpose": "详情区Tab切换模块，展示商品介绍与售后保障信息"
+          },
+          {
+            "id": "reviews-filter",
+            "purpose": "评论筛选器和评论列表展示，根据用户选择的评价类型筛选并渲染评论"
+          },
+          {
+            "id": "buy-modal",
+            "purpose": "立即购买时的底部弹出模态框，显示选中商品信息和最终价格，包含确认支付交互"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "two-column",
+        "colors": [
+          "#D32F2F",
+          "#FFD54F",
+          "#333333",
+          "#F4F4F5",
+          "#FFFFFF"
+        ],
+        "components": [
+          {
+            "id": "nav-bar",
+            "html": "header",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "品牌Logo占位符"
+              },
+              {
+                "tag": "input",
+                "content_hint": "搜索框占位符"
+              }
+            ]
+          },
+          {
+            "id": "product-gallery",
+            "html": "section",
+            "children": [
+              {
+                "tag": "img",
+                "content_hint": "主图展示区"
+              },
+              {
+                "tag": "div",
+                "content_hint": "缩略图列表供切换主图"
+              }
+            ]
+          },
+          {
+            "id": "product-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "商品标题"
+              },
+              {
+                "tag": "span",
+                "content_hint": "高亮价格显示"
+              },
+              {
+                "tag": "div",
+                "content_hint": "促销标签或活动信息"
+              }
+            ]
+          },
+          {
+            "id": "countdown-timer",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "倒计时数字显示"
+              },
+              {
+                "tag": "p",
+                "content_hint": "倒计时说明文字"
+              }
+            ]
+          },
+          {
+            "id": "quantity-selector",
+            "html": "div",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "减少购买数量按钮"
+              },
+              {
+                "tag": "span",
+                "content_hint": "当前购买数量显示"
+              },
+              {
+                "tag": "button",
+                "content_hint": "增加购买数量按钮"
+              }
+            ]
+          },
+          {
+            "id": "coupons",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "优惠券列表展示"
+              },
+              {
+                "tag": "button",
+                "content_hint": "领取优惠券按钮"
+              }
+            ]
+          },
+          {
+            "id": "purchase-buttons",
+            "html": "div",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              },
+              {
+                "tag": "button",
+                "content_hint": "加入购物车按钮"
+              }
+            ]
+          },
+          {
+            "id": "product-tabs",
+            "html": "section",
+            "children": [
+              {
+                "tag": "nav",
+                "content_hint": "Tab导航切换"
+              },
+              {
+                "tag": "div",
+                "content_hint": "商品详情内容"
+              },
+              {
+                "tag": "div",
+                "content_hint": "售后保障内容"
+              }
+            ]
+          },
+          {
+            "id": "reviews-filter",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "评论筛选控件"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "评论列表"
+              }
+            ]
+          },
+          {
+            "id": "buy-modal",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "选中商品信息展示"
+              },
+              {
+                "tag": "span",
+                "content_hint": "最终价格显示"
+              },
+              {
+                "tag": "button",
+                "content_hint": "确认支付按钮"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>商品页面</title>\n<style>\n    body {\n        margin: 0;\n        font-family: Arial, sans-serif;\n        background-color: #F4F4F5;\n        color: #333333;\n    }\n    header {\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        padding: 10px 20px;\n        background-color: #D32F2F;\n        color: #FFFFFF;\n    }\n    header div {\n        font-weight: bold;\n    }\n    header input {\n        padding: 5px;\n        border: none;\n        border-radius: 4px;\n    }\n    main {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 20px;\n        padding: 20px;\n    }\n    section, div, aside {\n        background-color: #FFFFFF;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n    }\n    #product-gallery img {\n        width: 100%;\n        border-radius: 8px;\n        margin-bottom: 10px;\n    }\n    #product-gallery div {\n        display: flex;\n        gap: 10px;\n    }\n    #product-gallery div img {\n        width: 60px;\n        height: 60px;\n        object-fit: cover;\n        cursor: pointer;\n    }\n    #product-info h1 {\n        margin-top: 0;\n    }\n    #product-info span {\n        color: #D32F2F;\n        font-size: 1.5em;\n        font-weight: bold;\n    }\n    #countdown-timer div {\n        font-size: 1.2em;\n        font-weight: bold;\n        color: #D32F2F;\n    }\n    #quantity-selector {\n        display: flex;\n        align-items: center;\n        gap: 10px;\n    }\n    #quantity-selector button {\n        background-color: #FFD54F;\n        border: none;\n        padding: 5px 10px;\n        cursor: pointer;\n        border-radius: 4px;\n    }\n    #coupons div {\n        margin-bottom: 10px;\n    }\n    #coupons button {\n        background-color: #FFD54F;\n        border: none;\n        padding: 8px 12px;\n        cursor: pointer;\n        border-radius: 4px;\n    }\n    #purchase-buttons {\n        display: flex;\n        gap: 10px;\n    }\n    #purchase-buttons button {\n        flex: 1;\n        padding: 10px;\n        border: none;\n        cursor: pointer;\n        border-radius: 4px;\n        font-size: 1em;\n    }\n    #purchase-buttons button:first-child {\n        background-color: #D32F2F;\n        color: #FFFFFF;\n    }\n    #purchase-buttons button:last-child {\n        background-color: #FFD54F;\n        color: #333333;\n    }\n    #product-tabs nav {\n        display: flex;\n        gap: 10px;\n        margin-bottom: 10px;\n    }\n    #product-tabs nav a {\n        text-decoration: none;\n        color: #333333;\n        padding: 5px 10px;\n        background-color: #F4F4F5;\n        border-radius: 4px;\n    }\n    #reviews-filter ul {\n        list-style: none;\n        padding: 0;\n        margin: 0;\n    }\n    #reviews-filter ul li {\n        padding: 10px 0;\n        border-bottom: 1px solid #F4F4F5;\n    }\n    aside {\n        position: fixed;\n        top: 0;\n        right: -300px;\n        width: 300px;\n        height: 100%;\n        background-color: #FFFFFF;\n        box-shadow: -2px 0 5px rgba(0,0,0,0.1);\n        transition: right 0.3s;\n    }\n    aside.show {\n        right: 0;\n    }\n    aside button {\n        background-color: #D32F2F;\n        color: #FFFFFF;\n        border: none;\n        padding: 10px;\n        cursor: pointer;\n        border-radius: 4px;\n        width: 100%;\n    }\n</style>\n</head>\n<body>\n<header id=\"nav-bar\">\n    <div>品牌Logo</div>\n    <input type=\"text\" placeholder=\"搜索\">\n</header>\n<main>\n    <section id=\"product-gallery\">\n        <img src=\"main-product.jpg\" alt=\"主图\">\n        <div>\n            <img src=\"thumb1.jpg\" alt=\"缩略图1\">\n            <img src=\"thumb2.jpg\" alt=\"缩略图2\">\n            <img src=\"thumb3.jpg\" alt=\"缩略图3\">\n        </div>\n    </section>\n    <section id=\"product-info\">\n        <h1>商品标题</h1>\n        <span>￥199.00</span>\n        <div>限时促销中</div>\n        <section id=\"countdown-timer\">\n            <div>01:23:45</div>\n            <p>促销倒计时</p>\n        </section>\n        <div id=\"quantity-selector\">\n            <button>-</button>\n            <span>1</span>\n            <button>+</button>\n        </div>\n        <section id=\"coupons\">\n            <div>满200减20优惠券</div>\n            <button>领取</button>\n        </section>\n        <div id=\"purchase-buttons\">\n            <button>立即购买</button>\n            <button>加入购物车</button>\n        </div>\n    </section>\n</main>\n<section id=\"product-tabs\">\n    <nav>\n        <a href=\"#\">商品详情</a>\n        <a href=\"#\">售后保障</a>\n    </nav>\n    <div>商品详情内容...</div>\n    <div>售后保障内容...</div>\n</section>\n<section id=\"reviews-filter\">\n    <div>评论筛选控件</div>\n    <ul>\n        <li>评论1</li>\n        <li>评论2</li>\n        <li>评论3</li>\n    </ul>\n</section>\n<aside id=\"buy-modal\">\n    <div>已选商品信息</div>\n    <span>￥199.00</span>\n    <button>确认支付</button>\n</aside>\n</body>\n</html>"
+    }
+  ]
+}

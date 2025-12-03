@@ -1,0 +1,257 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的单文件（Single HTML File）一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n主页图片链接： “https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n#Functional Requirements (功能需求)\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n页面支持商品分类展示与在线购买流程（渠道）。您还可以加入促销元素，如限时倒计时、库存提醒、热销标签和优惠卷（促销），进一步提升购物体验与趣味性。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "解析客户业务简报，提炼春节零食页面必须呈现的核心卖点（如现价优惠、限时促销、库存提醒）与目标用户",
+              "设定商业目标（如点击率、加购率、转化率）并拆解为具体网页制作任务",
+              "将整体任务分配至 PM、Architect、Engineer 并明确交付物标准"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "根据营销目标撰写网页 PRD，明确 4P 营销要素在页面中的呈现方式与互动逻辑",
+              "设计用户购买流程，包括选择数量、加入购物车、结算路径等，确保流程可提升成交转化",
+              "定义促销元素（倒计时、库存提醒、优惠券）在页面中的触发条件与展示位置"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "制定页面结构规范，规划首屏卖点、产品规格、价格对比、促销信息、购买入口等模块布局",
+              "定义可复用的组件说明（价格模块、库存模块、倒计时模块、购物车模块）及其接口",
+              "规划交互逻辑文档，包括库存状态更新、倒计时计时器、localStorage 数据读写"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "基于结构规范与交互逻辑实现单文件 HTML/CSS/JavaScript 电商销售页面",
+              "开发购物车数据在 localStorage 中的新增、更新、删除功能并保证数据持久化",
+              "实现倒计时、库存提醒、促销标签等动态交互效果，保证移动端的良好显示与操作体验",
+              "在不同浏览器与设备上进行页面测试与性能优化，确保加载速度与稳定性符合上线要求"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "春节年货零食促销页面，围绕LYF香瓜子葵花子的卖点与限时优惠，快速驱动加购与下单。",
+        "goals": [
+          "提升春节零食类目页面的点击率和加购率",
+          "突出产品核心卖点与节日氛围，增强用户购买动机",
+          "通过明确优惠与对比价信息提升转化率",
+          "优化渠道入口，降低购买路径阻力",
+          "利用库存提醒与倒计时制造紧迫感，缩短决策时间"
+        ],
+        "target_users": [
+          "春节家庭聚会筹备者 + 希望一次性购齐多包零食方便招待亲友",
+          "年轻上班族 + 追求节省时间和享受节日氛围的便捷网购体验"
+        ],
+        "page_sections": [
+          {
+            "id": "hero",
+            "purpose": "以视觉冲击展示产品外观和春节氛围，吸引首次访问用户注意",
+            "kpi": "CTR"
+          },
+          {
+            "id": "product-detail",
+            "purpose": "详细展示规格、组合装数量和产品卖点，加深用户理解与兴趣",
+            "kpi": "加购率"
+          },
+          {
+            "id": "price-box",
+            "purpose": "展示现价与原价对比，明确优惠力度促进购买决策",
+            "kpi": "转化率"
+          },
+          {
+            "id": "promo-banner",
+            "purpose": "显示促销标签、限时倒计时和库存提醒，制造购买紧迫感",
+            "kpi": "加购率"
+          },
+          {
+            "id": "channel-entry",
+            "purpose": "提供清晰的购买入口和数量选择功能，引导用户进入购物流程",
+            "kpi": "转化率"
+          },
+          {
+            "id": "cart-panel",
+            "purpose": "展示购物车内容并支持数量管理，加强结算引导",
+            "kpi": "转化率"
+          },
+          {
+            "id": "category-list",
+            "purpose": "显示其他相关零食分类入口，增加交叉销售机会",
+            "kpi": "CTR"
+          },
+          {
+            "id": "coupon-section",
+            "purpose": "提供可领取的优惠券信息，提高用户参与度与复购动机",
+            "kpi": "加购率"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "hero + content",
+        "colors": [
+          "#D0021B",
+          "#FFD700",
+          "#F4F4F5",
+          "primary",
+          "secondary"
+        ],
+        "components": [
+          {
+            "id": "hero",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "春节氛围标题，突出LYF香瓜子葵花子"
+              },
+              {
+                "tag": "p",
+                "content_hint": "视觉化产品卖点描述，如香脆口感与节日喜庆"
+              }
+            ]
+          },
+          {
+            "id": "product-detail",
+            "html": "main",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "产品规格与组合装数量标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "详细的产品特点与材质来源说明"
+              }
+            ]
+          },
+          {
+            "id": "price-box",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "现价显示"
+              },
+              {
+                "tag": "p",
+                "content_hint": "原价对比与优惠力度说明"
+              }
+            ]
+          },
+          {
+            "id": "promo-banner",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "促销标签文案"
+              },
+              {
+                "tag": "p",
+                "content_hint": "限时倒计时与库存提醒内容"
+              }
+            ]
+          },
+          {
+            "id": "channel-entry",
+            "html": "nav",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              },
+              {
+                "tag": "select",
+                "content_hint": "数量选择功能"
+              }
+            ]
+          },
+          {
+            "id": "cart-panel",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "购物车标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "已选商品列表与数量管理"
+              }
+            ]
+          },
+          {
+            "id": "category-list",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "相关零食分类标题"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "其他零食类目入口列表"
+              }
+            ]
+          },
+          {
+            "id": "coupon-section",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "可领取优惠券标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "优惠券信息与领取提示"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>LYF香瓜子葵花子春节特惠</title>\n    <style>\n        :root {\n            --primary-color: #D0021B;\n            --secondary-color: #FFD700;\n            --light-color: #F4F4F5;\n        }\n\n        body {\n            margin: 0;\n            font-family: \"Microsoft YaHei\", sans-serif;\n            background-color: var(--light-color);\n            color: #333;\n            line-height: 1.6;\n        }\n\n        header, section, main, nav, aside, footer, div {\n            box-sizing: border-box;\n        }\n\n        .hero {\n            background-color: var(--primary-color);\n            color: #fff;\n            text-align: center;\n            padding: 2rem 1rem;\n        }\n\n        .hero h1 {\n            font-size: 2rem;\n            margin-bottom: 0.5rem;\n        }\n\n        .hero p {\n            font-size: 1.1rem;\n        }\n\n        .product-detail {\n            padding: 2rem 1rem;\n            background-color: #fff;\n            max-width: 1200px;\n            margin: auto;\n        }\n\n        .product-detail h2 {\n            font-size: 1.5rem;\n            color: var(--primary-color);\n            margin-bottom: 1rem;\n        }\n\n        .price-box {\n            display: flex;\n            justify-content: flex-start;\n            align-items: baseline;\n            background-color: var(--light-color);\n            padding: 1rem;\n            margin-top: 1rem;\n            border-radius: 4px;\n        }\n\n        .price-box p:first-child {\n            font-size: 1.5rem;\n            color: var(--primary-color);\n            margin-right: 1rem;\n        }\n\n        .price-box p:last-child {\n            font-size: 1rem;\n            text-decoration: line-through;\n            color: #888;\n        }\n\n        .promo-banner {\n            background-color: var(--secondary-color);\n            padding: 1rem;\n            text-align: center;\n            font-weight: bold;\n            margin-top: 1rem;\n            border-radius: 4px;\n        }\n\n        .channel-entry {\n            display: flex;\n            gap: 1rem;\n            padding: 1rem;\n            background-color: #fff;\n            justify-content: center;\n        }\n\n        .channel-entry button {\n            background-color: var(--primary-color);\n            color: #fff;\n            border: none;\n            padding: 0.75rem 1.5rem;\n            font-size: 1rem;\n            border-radius: 4px;\n            cursor: pointer;\n        }\n\n        .channel-entry select {\n            padding: 0.5rem;\n            border-radius: 4px;\n            border: 1px solid #ccc;\n        }\n\n        .cart-panel {\n            background-color: #fff;\n            padding: 1rem;\n            margin: 1rem auto;\n            max-width: 1200px;\n            border-top: 2px solid var(--primary-color);\n        }\n\n        .cart-panel h3 {\n            margin-bottom: 0.5rem;\n            color: var(--primary-color);\n        }\n\n        .category-list {\n            padding: 1rem;\n            background-color: var(--light-color);\n            max-width: 1200px;\n            margin: auto;\n        }\n\n        .category-list h3 {\n            margin-bottom: 0.5rem;\n        }\n\n        .category-list ul {\n            list-style: none;\n            padding: 0;\n        }\n\n        .category-list ul li {\n            padding: 0.5rem 0;\n            border-bottom: 1px solid #ddd;\n        }\n\n        .coupon-section {\n            padding: 1rem;\n            background-color: var(--secondary-color);\n            max-width: 1200px;\n            margin: auto;\n            margin-top: 1rem;\n            border-radius: 4px;\n        }\n\n        .coupon-section h3 {\n            margin-bottom: 0.5rem;\n            color: var(--primary-color);\n        }\n\n        @media (max-width: 768px) {\n            .price-box {\n                flex-direction: column;\n                align-items: flex-start;\n            }\n\n            .channel-entry {\n                flex-direction: column;\n                align-items: center;\n            }\n        }\n    </style>\n</head>\n<body>\n    <section class=\"hero\">\n        <h1>LYF香瓜子葵花子，欢庆春节好味道</h1>\n        <p>香脆口感与节日喜庆相融合，品味舌尖上的团聚</p>\n    </section>\n\n    <main class=\"product-detail\">\n        <h2>规格齐全·多重组合装</h2>\n        <p>源自优质产区的葵花子，颗粒饱满，精选原料，保留天然香味，搭配节日组合装满足不同人群的喜好</p>\n        <div class=\"price-box\">\n            <p>¥39.9</p>\n            <p>¥59.9</p>\n        </div>\n        <aside class=\"promo-banner\">\n            <p>限时促销·春节专享</p>\n            <p>剩余时间：2天  库存紧张</p>\n        </aside>\n    </main>\n\n    <nav class=\"channel-entry\">\n        <button>立即购买</button>\n        <select>\n            <option>数量 1</option>\n            <option>数量 2</option>\n            <option>数量 3</option>\n        </select>\n    </nav>\n\n    <aside class=\"cart-panel\">\n        <h3>购物车</h3>\n        <p>您已选择：LYF香瓜子葵花子 组合装 × 2</p>\n    </aside>\n\n    <section class=\"category-list\">\n        <h3>相关零食分类</h3>\n        <ul>\n            <li>坚果类</li>\n            <li>糖果类</li>\n            <li>饼干类</li>\n            <li>果干类</li>\n        </ul>\n    </section>\n\n    <section class=\"coupon-section\">\n        <h3>领取优惠券</h3>\n        <p>满99减20，限春节期间领取</p>\n    </section>\n</body>\n</html>"
+    }
+  ]
+}

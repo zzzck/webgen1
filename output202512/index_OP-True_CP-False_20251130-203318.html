@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>春节促销页面</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #F4F4F5;
+        color: #333;
+    }
+    header {
+        background-color: #D5191A;
+        color: #FFD700;
+        text-align: center;
+        padding: 1rem;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+    header p {
+        margin: 0.5rem 0 0;
+    }
+    section, nav, footer, div {
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+    .search-bar {
+        display: flex;
+        gap: 0.5rem;
+        background-color: #fff;
+    }
+    .search-bar input {
+        flex: 1;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .search-bar button {
+        background-color: #D5191A;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        padding: 0;
+        margin: 0;
+    }
+    nav {
+        background-color: #FFD700;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav div {
+        background-color: #D5191A;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+    }
+    .product-gallery {
+        background-color: #fff;
+        text-align: center;
+    }
+    .product-gallery img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .product-info {
+        background-color: #fff;
+    }
+    .product-info h2 {
+        margin-top: 0;
+    }
+    .price-promotion {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background-color: #FFD700;
+    }
+    .price-promotion span {
+        font-weight: bold;
+    }
+    .coupon-section {
+        background-color: #fff;
+    }
+    .variant-selector {
+        background-color: #fff;
+    }
+    .promotion-tags {
+        display: flex;
+        gap: 1rem;
+        background-color: #FFD700;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #D5191A;
+        text-align: center;
+        padding: 1rem;
+    }
+    footer button {
+        background-color: #FFD700;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    #modal-cart {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        max-width: 400px;
+        width: 90%;
+    }
+    #reviews {
+        background-color: #fff;
+    }
+    #countdown-timer {
+        background-color: #FFD700;
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<header id="header-section">
+    <h1>品牌名称与春节促销主题</h1>
+    <p>节日问候或促销标语</p>
+</header>
+
+<section id="search-bar" class="search-bar">
+    <input type="text" placeholder="搜索节日零食或品牌">
+    <button>搜索</button>
+</section>
+
+<nav id="nav-bar">
+    <ul>
+        <li>商品分类</li>
+        <li>促销专区</li>
+        <li>新品推荐</li>
+    </ul>
+    <div>🛒 0</div>
+</nav>
+
+<section id="product-gallery" class="product-gallery">
+    <div>
+        <img src="product1.jpg" alt="产品展示">
+    </div>
+    <p>图片描述与包装风格说明</p>
+</section>
+
+<section id="product-info" class="product-info">
+    <h2>商品规格标题</h2>
+    <ul>
+        <li>规格详情 1</li>
+        <li>卖点 1</li>
+        <li>卖点 2</li>
+    </ul>
+</section>
+
+<section id="price-promotion" class="price-promotion">
+    <span>现价：¥88</span>
+    <span>原价：¥128</span>
+    <div>倒计时：00:10:00</div>
+</section>
+
+<section id="coupon-section" class="coupon-section">
+    <div>
+        <button>领取优惠券</button>
+    </div>
+    <p>优惠后价格¥78</p>
+</section>
+
+<section id="variant-selector" class="variant-selector">
+    <label for="variants">选择规格：</label>
+    <select id="variants">
+        <option>规格A</option>
+        <option>规格B</option>
+    </select>
+</section>
+
+<section id="promotion-tags" class="promotion-tags">
+    <span>限时促销</span>
+    <span>库存紧张</span>
+</section>
+
+<footer id="purchase-cta">
+    <button>立即购买</button>
+</footer>
+
+<div id="modal-cart">
+    <h3>购物车</h3>
+    <ul>
+        <li>已选商品</li>
+    </ul>
+    <p>优惠后价格 ¥XX <button>确认支付</button></p>
+</div>
+
+<section id="reviews">
+    <h3>用户评论</h3>
+    <div>评论列表与筛选功能</div>
+    <form>
+        <textarea placeholder="发表评论"></textarea>
+        <button type="submit">提交</button>
+    </form>
+</section>
+
+<section id="countdown-timer">
+    <p>春节限时抢购倒计时：00:10:00</p>
+</section>
+
+</body>
+</html>

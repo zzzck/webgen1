@@ -1,0 +1,221 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**电商产品详情页。该网页必须是一个完整的、可交互的原型。\n\n# Product Context\n我们需要为一款春节热销零食制作落地页，模仿京东（JD.com）的移动端/PC端响应式布局风格。\n* **品牌**：LYF (良一坊)\n* **商品名称**：新疆原产葵花籽（30g 独立小包装）\n* **价格策略**：10包组合装，售价 16.9 元。\n\n# Functional Requirements (功能需求)\n1.  **布局结构**：\n    * **顶部**：简单的导航栏（包含 Logo 占位符和搜索框占位符）。\n    * **左侧/顶部（视宽度而定）**：产品主图展示区。包含 1 张大图和 4 张缩略图。点击缩略图需切换大图。\n    * **右侧/底部（视宽度而定）**：产品信息区。包含标题、红色价格高亮、促销标签（“春节特惠”、“包邮”）。\n    * **交互区**：数量选择器（支持 +/-，且数量不能小于 1），以及“立即购买”和“加入购物车”两个按钮。\n    * **详情区**：页面底部需包含 Tab 切换功能（“商品介绍” vs “售后保障”），点击 Tab 切换显示不同文本内容。\n\n2.  **核心逻辑 (JavaScript)**：\n    * **数量联动**：默认数量为 1。点击 +/- 按钮更新数量，并实时更新“总价”（Total Price = 16.9 * 数量）。结果保留 1 位小数。\n    * **购物车反馈**：点击“加入购物车”后，弹出轻提示（Toast Notification）：\"已成功加入购物车：LYF葵花籽 x [数量]\"，2秒后自动消失。\n    * **图片切换**：鼠标悬停或点击缩略图时，主图需平滑切换。\n\n3.  **UI/Design Requirements (设计规范)**：\n    * **配色**：主色调使用京东红（#f23030 或类似），背景色为浅灰（#f6f6f6），内容区为白色。\n    * **图片处理**：由于无法访问外部图库，请使用 placeholder 图片服务（如 `https://via.placeholder.com/400x400?text=LYF+Product`）来生成不同颜色的占位图，确保页面不出现破图。\n    * **响应式**：页面需适配手机端和 PC 端（使用 Flexbox 或 Grid 布局）。\n\n# Technical Constraints (技术约束)\n* 所有代码（HTML, CSS, JS）必须包含在一个 HTML 文件中，CSS 放 `<style>`，JS 放 `<script>`。\n* 代码结构清晰，有注释，不依赖 React/Vue 等外部框架，使用原生 Vanilla JS。\n* CSS 需处理好按钮的 hover 状态和阴影细节，体现电商的高级感。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求",
+              "识别可交付成果：单文件（HTML+CSS+JS）电商产品详情页原型",
+              "划分并分配任务到各角色"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "将客户需求整理为结构化 PRD，包括功能需求、交互逻辑、UI 设计规范、技术约束",
+              "明确响应式布局和交互行为的细节标准"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "基于 PRD 设计页面信息架构：导航栏、图片展示区、产品信息区、交互区、详情区",
+              "定义各 UI 组件的结构与交互逻辑（数量选择器、按钮、Tab 切换、Toast）",
+              "规划响应式布局（Flex/Grid）以及占位图片方案"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据 PRD 和架构方案实现最终 HTML 文件，将 CSS 写在 <style> 中，JS 写在 <script> 中",
+              "实现布局与样式（京东红主色调、浅灰背景、按钮 hover 阴影效果）",
+              "编写 JavaScript：数量联动计算总价、图片切换效果、购物车 Toast 提示",
+              "确保响应式适配 PC 与移动端"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "响应式春节零食电商详情页原型（LYF葵花籽组合装）",
+        "goals": [
+          "展示商品图片与核心信息，提升春节档购买转化率",
+          "提供流畅的数量选择与总价联动功能，提升用户交互体验",
+          "实现购物车加入反馈提示，提高操作完成度感知",
+          "确保在PC和移动端均有良好布局适配，提高访问覆盖率",
+          "突出促销标签与价格高亮，刺激下单意愿",
+          "提供商品介绍与售后保障信息，减少用户疑虑"
+        ],
+        "target_users": [
+          "春节期间为亲友采购零食的消费者，关注价格优惠与快速购买流程",
+          "注重产品产地和品质的零食爱好者，希望方便查看详细信息和售后保障"
+        ],
+        "page_sections": [
+          {
+            "id": "header-nav",
+            "purpose": "显示Logo与搜索框占位符，提供品牌识别及搜索入口"
+          },
+          {
+            "id": "product-gallery",
+            "purpose": "展示商品主图与缩略图，支持点击/悬停切换大图以查看不同视角"
+          },
+          {
+            "id": "product-info",
+            "purpose": "呈现商品标题、售价、促销标签以突出优惠信息"
+          },
+          {
+            "id": "purchase-controls",
+            "purpose": "提供数量选择（带数量下限验证）和立即购买/加入购物车按钮，实现总价实时联动"
+          },
+          {
+            "id": "toast-notification",
+            "purpose": "加入购物车操作后的轻提示反馈，2秒消失，增强操作确认感"
+          },
+          {
+            "id": "details-tabs",
+            "purpose": "底部商品介绍与售后保障的Tab切换，满足用户信息查询需求"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "two-column",
+        "colors": [
+          "#f23030",
+          "#f6f6f6",
+          "#ffffff",
+          "#333333",
+          "#ff9900"
+        ],
+        "components": [
+          {
+            "id": "header-nav",
+            "html": "header",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "Logo占位"
+              },
+              {
+                "tag": "div",
+                "content_hint": "搜索框占位"
+              }
+            ]
+          },
+          {
+            "id": "product-gallery",
+            "html": "section",
+            "children": [
+              {
+                "tag": "img",
+                "content_hint": "产品主图"
+              },
+              {
+                "tag": "div",
+                "content_hint": "缩略图列表"
+              }
+            ]
+          },
+          {
+            "id": "product-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "商品标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "促销标签（春节特惠、包邮）"
+              },
+              {
+                "tag": "p",
+                "content_hint": "价格高亮显示"
+              }
+            ]
+          },
+          {
+            "id": "purchase-controls",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "数量选择器（+/-按钮与数量显示）"
+              },
+              {
+                "tag": "p",
+                "content_hint": "总价显示"
+              },
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              },
+              {
+                "tag": "button",
+                "content_hint": "加入购物车按钮"
+              }
+            ]
+          },
+          {
+            "id": "toast-notification",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "加入购物车反馈提示文本"
+              }
+            ]
+          },
+          {
+            "id": "details-tabs",
+            "html": "section",
+            "children": [
+              {
+                "tag": "nav",
+                "content_hint": "Tab导航（商品介绍 vs 售后保障）"
+              },
+              {
+                "tag": "div",
+                "content_hint": "Tab内容区"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF新疆葵花籽详情页</title>\n<style>\n/* 全局样式 */\nbody {\n    margin: 0;\n    font-family: Arial, sans-serif;\n    background-color: #f6f6f6;\n    color: #333333;\n}\n\n/* 顶部导航栏 */\nheader {\n    background-color: #ffffff;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 10px 20px;\n    box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n}\n.logo {\n    font-weight: bold;\n    font-size: 18px;\n    color: #f23030;\n}\n.search {\n    flex: 0 1 200px;\n    background-color: #f6f6f6;\n    padding: 6px 10px;\n    border-radius: 4px;\n    color: #999999;\n}\n\n/* 主内容布局 */\n.main {\n    display: flex;\n    flex-wrap: wrap;\n    max-width: 1200px;\n    margin: 20px auto;\n    gap: 20px;\n}\n.product-gallery {\n    flex: 1 1 400px;\n    background-color: #ffffff;\n    padding: 20px;\n    box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n}\n.product-gallery img.main-image {\n    width: 100%;\n    display: block;\n    border: 1px solid #f6f6f6;\n    border-radius: 4px;\n    transition: opacity 0.3s ease;\n}\n.thumbnails {\n    display: flex;\n    justify-content: space-between;\n    margin-top: 10px;\n}\n.thumbnails img {\n    width: 22%;\n    cursor: pointer;\n    border: 2px solid transparent;\n    border-radius: 4px;\n    transition: border-color 0.2s;\n}\n.thumbnails img:hover {\n    border-color: #f23030;\n}\n\n.product-info {\n    flex: 1 1 300px;\n    background-color: #ffffff;\n    padding: 20px;\n    box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n}\n.product-info h1 {\n    font-size: 20px;\n    margin-bottom: 10px;\n}\n.promotions span {\n    display: inline-block;\n    background-color: #ff9900;\n    color: #ffffff;\n    padding: 4px 8px;\n    margin-right: 8px;\n    border-radius: 4px;\n    font-size: 12px;\n}\n.price {\n    color: #f23030;\n    font-size: 24px;\n    font-weight: bold;\n    margin: 15px 0;\n}\n\n/* 购买控制区 */\n.purchase-controls {\n    background-color: #ffffff;\n    padding: 20px;\n    margin-top: 10px;\n    box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n}\n.quantity-selector {\n    display: flex;\n    align-items: center;\n    margin-bottom: 10px;\n}\n.quantity-selector button {\n    width: 30px;\n    height: 30px;\n    border: none;\n    background-color: #f6f6f6;\n    font-size: 18px;\n    cursor: pointer;\n}\n.quantity-selector input {\n    width: 50px;\n    text-align: center;\n    border: 1px solid #ccc;\n    margin: 0 5px;\n}\n.total-price {\n    margin-bottom: 10px;\n    font-weight: bold;\n}\n.purchase-controls button {\n    padding: 10px 15px;\n    margin-right: 10px;\n    border: none;\n    cursor: pointer;\n    border-radius: 4px;\n    font-size: 14px;\n    transition: box-shadow 0.2s ease;\n}\n.purchase-btn {\n    background-color: #f23030;\n    color: #ffffff;\n}\n.cart-btn {\n    background-color: #ff9900;\n    color: #ffffff;\n}\n.purchase-controls button:hover {\n    box-shadow: 0 4px 8px rgba(0,0,0,0.2);\n}\n\n/* Toast提示 */\n.toast {\n    position: fixed;\n    bottom: 20px;\n    left: 50%;\n    transform: translateX(-50%);\n    background-color: rgba(0,0,0,0.8);\n    color: #ffffff;\n    padding: 10px 20px;\n    border-radius: 20px;\n    font-size: 14px;\n    opacity: 0;\n    transition: opacity 0.3s ease;\n    pointer-events: none;\n}\n\n/* 详情Tab区 */\n.details-tabs {\n    background-color: #ffffff;\n    max-width: 1200px;\n    margin: 20px auto;\n    box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n}\n.tab-nav {\n    display: flex;\n    border-bottom: 1px solid #f6f6f6;\n}\n.tab-nav button {\n    flex: 1;\n    padding: 10px;\n    background-color: transparent;\n    border: none;\n    cursor: pointer;\n    font-size: 14px;\n}\n.tab-nav button.active {\n    color: #f23030;\n    border-bottom: 2px solid #f23030;\n}\n.tab-content {\n    padding: 20px;\n    font-size: 14px;\n}\n\n/* 响应式 */\n@media (max-width: 768px) {\n    .main {\n        flex-direction: column;\n        align-items: center;\n    }\n}\n</style>\n</head>\n<body>\n<header id=\"header-nav\">\n    <div class=\"logo\">LYF</div>\n    <div class=\"search\">搜索框</div>\n</header>\n\n<div class=\"main\">\n    <section class=\"product-gallery\" id=\"product-gallery\">\n        <img src=\"https://via.placeholder.com/400x400?text=LYF+Product+1\" alt=\"产品主图\" class=\"main-image\" id=\"mainImage\">\n        <div class=\"thumbnails\">\n            <img src=\"https://via.placeholder.com/100x100/ff9999?text=Pic1\" data-large=\"https://via.placeholder.com/400x400/ff9999?text=LYF+Product+1\">\n            <img src=\"https://via.placeholder.com/100x100/99ccff?text=Pic2\" data-large=\"https://via.placeholder.com/400x400/99ccff?text=LYF+Product+2\">\n            <img src=\"https://via.placeholder.com/100x100/99ff99?text=Pic3\" data-large=\"https://via.placeholder.com/400x400/99ff99?text=LYF+Product+3\">\n            <img src=\"https://via.placeholder.com/100x100/cccccc?text=Pic4\" data-large=\"https://via.placeholder.com/400x400/cccccc?text=LYF+Product+4\">\n        </div>\n    </section>\n\n    <section class=\"product-info\" id=\"product-info\">\n        <h1>新疆原产葵花籽（30g 独立小包装） - 10包组合装</h1>\n        <div class=\"promotions\">\n            <span>春节特惠</span>\n            <span>包邮</span>\n        </div>\n        <p class=\"price\">¥16.9</p>\n        <section class=\"purchase-controls\" id=\"purchase-controls\">\n            <div class=\"quantity-selector\">\n                <button id=\"minusBtn\">-</button>\n                <input type=\"text\" id=\"quantityInput\" value=\"1\" readonly>\n                <button id=\"plusBtn\">+</button>\n            </div>\n            <p class=\"total-price\">总价：¥<span id=\"totalPrice\">16.9</span></p>\n            <button class=\"purchase-btn\">立即购买</button>\n            <button class=\"cart-btn\" id=\"addToCartBtn\">加入购物车</button>\n        </section>\n    </section>\n</div>\n\n<div class=\"details-tabs\" id=\"details-tabs\">\n    <nav class=\"tab-nav\">\n        <button class=\"active\" data-tab=\"intro\">商品介绍</button>\n        <button data-tab=\"service\">售后保障</button>\n    </nav>\n    <div class=\"tab-content\" id=\"tabContent\">\n        新疆原产优质葵花籽，独立小包装，卫生方便，春节休闲零食首选！\n    </div>\n</div>\n\n<div class=\"toast\" id=\"toast\"></div>\n\n<script>\n// 数量控制与总价更新\nconst minusBtn = document.getElementById('minusBtn');\nconst plusBtn = document.getElementById('plusBtn');\nconst quantityInput = document.getElementById('quantityInput');\nconst totalPriceEl = document.getElementById('totalPrice');\nconst unitPrice = 16.9;\n\nminusBtn.addEventListener('click', () => {\n    let qty = parseInt(quantityInput.value);\n    if(qty > 1) {\n        qty--;\n        quantityInput.value = qty;\n        updateTotal();\n    }\n});\n\nplusBtn.addEventListener('click', () => {\n    let qty = parseInt(quantityInput.value);\n    qty++;\n    quantityInput.value = qty;\n    updateTotal();\n});\n\nfunction updateTotal() {\n    const qty = parseInt(quantityInput.value);\n    const total = (unitPrice * qty).toFixed(1);\n    totalPriceEl.textContent = total;\n}\n\n// Toast提示\nconst toastEl = document.getElementById('toast');\ndocument.getElementById('addToCartBtn').addEventListener('click', () => {\n    const qty = quantityInput.value;\n    toastEl.textContent = `已成功加入购物车：LYF葵花籽 x ${qty}`;\n    toastEl.style.opacity = 1;\n    setTimeout(() => {\n        toastEl.style.opacity = 0;\n    }, 2000);\n});\n\n// 缩略图切换\nconst thumbnails = document.querySelectorAll('.thumbnails img');\nconst mainImage = document.getElementById('mainImage');\n\nthumbnails.forEach(thumb => {\n    thumb.addEventListener('mouseover', () => {\n        mainImage.style.opacity = 0;\n        setTimeout(() => {\n            mainImage.src = thumb.dataset.large;\n            mainImage.style.opacity = 1;\n        }, 200);\n    });\n    thumb.addEventListener('click', () => {\n        mainImage.style.opacity = 0;\n        setTimeout(() => {\n            mainImage.src = thumb.dataset.large;\n            mainImage.style.opacity = 1;\n        }, 200);\n    });\n});\n\n// Tab切换\nconst tabs = document.querySelectorAll('.tab-nav button');\nconst tabContent = document.getElementById('tabContent');\n\ntabs.forEach(tab => {\n    tab.addEventListener('click', () => {\n        tabs.forEach(t => t.classList.remove('active'));\n        tab.classList.add('active');\n        if(tab.dataset.tab === 'intro') {\n            tabContent.textContent = '新疆原产优质葵花籽，独立小包装，卫生方便，春节休闲零食首选！';\n        } else {\n            tabContent.textContent = '本产品支持七天无理由退换货，质量问题包邮退换。';\n        }\n    });\n});\n</script>\n</body>\n</html>"
+    }
+  ]
+}

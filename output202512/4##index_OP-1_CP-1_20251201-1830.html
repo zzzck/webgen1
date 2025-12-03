@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 春节香瓜子葵花子促销页</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "微软雅黑", sans-serif;
+        background-color: #F4F4F5;
+        color: #333;
+    }
+    header {
+        background-color: #E4393C;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+    }
+    header img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+    }
+    .promotion-tag {
+        background-color: #FFD700;
+        color: #E4393C;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        text-align: center;
+    }
+    section, div, aside, nav, footer {
+        padding: 1rem;
+        background-color: #fff;
+        margin-bottom: 0.5rem;
+    }
+    .price-box p {
+        margin: 0.25rem 0;
+    }
+    .price-current {
+        font-size: 1.5rem;
+        color: #E4393C;
+    }
+    .price-old {
+        text-decoration: line-through;
+        color: #999;
+        margin-left: 0.5rem;
+    }
+    .countdown-timer, .stock-alert {
+        font-weight: bold;
+        color: #E4393C;
+    }
+    .quantity-selector {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .quantity-selector input {
+        width: 50px;
+        padding: 0.25rem;
+        text-align: center;
+    }
+    .btn {
+        background-color: #E4393C;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    .btn:hover {
+        opacity: 0.9;
+    }
+    aside {
+        background-color: #fff;
+    }
+    aside ul {
+        list-style: none;
+        padding: 0;
+    }
+    aside li {
+        border-bottom: 1px solid #eee;
+        padding: 0.5rem 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        padding: 0;
+        justify-content: center;
+    }
+    nav a {
+        color: #E4393C;
+        text-decoration: none;
+    }
+    .coupon-banner {
+        background-color: #FFD700;
+        text-align: center;
+        color: #E4393C;
+        font-weight: bold;
+    }
+    footer {
+        background-color: #E4393C;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+    }
+    @media (min-width: 768px) {
+        body {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    }
+</style>
+</head>
+<body>
+    <header id="hero-section">
+        <h1>LYF 春节香瓜子葵花子年货大促</h1>
+        <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="LYF 香瓜子葵花子组合装">
+    </header>
+
+    <div id="promotion-tag" class="promotion-tag">
+        <span>限时特惠 · 热销爆款</span>
+    </div>
+
+    <section id="product-specs">
+        <h2>产品规格</h2>
+        <p>30g 小包装 / 10包组合装，颗颗饱满香脆，独立小包装方便分享，春节必备零食。</p>
+    </section>
+
+    <section id="price-box" class="price-box">
+        <p class="price-current">¥16.9 <span class="price-old">¥29.9</span></p>
+        <p>立省 ¥13，机会难得</p>
+    </section>
+
+    <div id="countdown-timer" class="countdown-timer">
+        <p>促销剩余时间：<span id="timer">00:00:00</span></p>
+    </div>
+
+    <div id="stock-alert" class="stock-alert">
+        <p>库存仅剩 <span id="stock">50</span> 件，赶快下单！</p>
+    </div>
+
+    <div id="quantity-selector" class="quantity-selector">
+        <label for="quantity">数量</label>
+        <input type="number" id="quantity" min="1" value="1">
+    </div>
+
+    <button id="add-to-cart" class="btn"><span>加入购物车</span></button>
+
+    <aside id="cart-management">
+        <h3>购物车</h3>
+        <ul id="cart-items"></ul>
+        <button id="checkout" class="btn">去结算</button>
+    </aside>
+
+    <nav id="category-nav">
+        <ul>
+            <li><a href="#">坚果类</a></li>
+            <li><a href="#">糖果类</a></li>
+            <li><a href="#">干果类</a></li>
+        </ul>
+    </nav>
+
+    <div id="coupon-banner" class="coupon-banner">
+        <p>领取满50减5元优惠券，春节加购更优惠！</p>
+    </div>
+
+    <footer id="footer-purchase-flow">
+        <p>购买流程：选择商品数量 → 加入购物车 → 结算 → 支付 → 等待收货</p>
+        <button class="btn">立即购买</button>
+    </footer>
+
+<script>
+    // 倒计时逻辑
+    let countdownSeconds = 3600; // 1小时限时
+    const timerEl = document.getElementById('timer');
+    function updateTimer() {
+        if(countdownSeconds <= 0) return;
+        const hrs = String(Math.floor(countdownSeconds / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((countdownSeconds % 3600) / 60)).padStart(2, '0');
+        const secs = String(countdownSeconds % 60).padStart(2, '0');
+        timerEl.textContent = `${hrs}:${mins}:${secs}`;
+        countdownSeconds--;
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // 库存动态减少模拟
+    let stock = 50;
+    const stockEl = document.getElementById('stock');
+
+    // 购物车功能
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsEl = document.getElementById('cart-items');
+
+    function renderCart() {
+        cartItemsEl.innerHTML = '';
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `${item.name} × ${item.quantity} 
+                <span style="color:#E4393C;cursor:pointer;" onclick="removeItem(${index})">删除</span>`;
+            cartItemsEl.appendChild(li);
+        });
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    document.getElementById('add-to-cart').addEventListener('click', () => {
+        const quantity = parseInt(document.getElementById('quantity').value);
+        cart.push({ name: 'LYF 香瓜子葵花子', quantity: quantity });
+        stock = Math.max(0, stock - quantity);
+        stockEl.textContent = stock;
+        renderCart();
+    });
+
+    function removeItem(index) {
+        cart.splice(index, 1);
+        renderCart();
+    }
+
+    document.getElementById('checkout').addEventListener('click', () => {
+        alert('结算流程待开发示例 —— 您的购物车会保留在浏览器中。');
+    });
+
+    renderCart();
+</script>
+</body>
+</html>

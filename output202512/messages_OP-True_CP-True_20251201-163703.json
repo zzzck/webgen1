@@ -1,0 +1,254 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的单文件（Single HTML File）一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n参考图片链接： \n图1“https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n图2“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n图3“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n#Functional Requirements (功能需求)\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n页面支持商品分类展示与在线购买流程（渠道）。您还可以加入促销元素，如限时倒计时、库存提醒、热销标签和优惠卷（促销），进一步提升购物体验与趣味性。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求：春节零食电商单页（LYF 瓜子）",
+              "确认技术约束：原生 HTML/CSS/JS，无框架，单文件交付",
+              "分配任务链：PM 定义规格 -> Architect 设计结构 -> Engineer 编写代码"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "撰写 PRD：细化 4P 营销要素落地（产品信息、价格策略、购买流程、促销激励）",
+              "定义功能需求：购物车交互逻辑、localStorage 持久化规则、倒计时与库存提醒机制",
+              "确立 UI 规范：提取“春节红”主色调，参考京东/天猫移动端布局"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "设计页面结构：规划 Header、Banner、商品卡片、购物车浮层、底部结算栏的 DOM 结构",
+              "设计数据模型：定义商品数据 JSON 结构及购物车 State 管理方案",
+              "技术选型确认：CSS 变量管理配色，原生 JS 实现无依赖组件"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "执行开发：编写单文件 HTML/CSS/JS",
+              "UI 实现：还原春节大促视觉风格，实现移动端响应式布局",
+              "功能实现：购物车逻辑（增删、计算总价）、localStorage 读写、促销倒计时脚本"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF 品牌春节年货大促移动端单页 H5，聚焦香瓜子组合装限时特卖与转化。",
+        "goals": [
+          "构建高冲击力的春节大促视觉氛围，强化 LYF 品牌节日营销心智。",
+          "通过限时倒计时、库存告急文案等促销手段，提升用户购买紧迫感与转化率。",
+          "实现基于原生 JavaScript 和 localStorage 的购物车持久化功能，保证购物流程中断可恢复。",
+          "清晰展示产品 4P 要素（产品、价格、渠道、促销），提供极简流畅的从浏览到模拟结算体验。"
+        ],
+        "target_users": [
+          "年货采购者：需要高性价比、大包装、喜庆外观的春节待客零食，对价格敏感。",
+          "休闲零食消费者：易受节日氛围感染，倾向于“囤货”心理，追求便捷购买体验的用户。"
+        ],
+        "page_sections": [
+          {
+            "id": "header-nav",
+            "purpose": "展示品牌 Logo 及当前活动主题，提供购物车入口（带红点数量角标）。"
+          },
+          {
+            "id": "product-gallery",
+            "purpose": "轮播展示产品高清外观图、30g*10包组合装实物图，强化视觉吸引力。"
+          },
+          {
+            "id": "price-flash-sale",
+            "purpose": "核心决策区：展示特价 ¥16.9、原价 ¥29.9、折扣力度、限时倒计时及实时库存条。"
+          },
+          {
+            "id": "coupon-incentive",
+            "purpose": "促销互动区：领取大额优惠券，增加沉没成本，刺激下单欲望。"
+          },
+          {
+            "id": "product-specs",
+            "purpose": "详细参数与卖点：展示配料表、保质期、口感描述及“春节红”包装寓意。"
+          },
+          {
+            "id": "cart-sidebar",
+            "purpose": "侧滑或弹窗式购物车管理：支持增删商品、数量调整、总价计算，数据通过 localStorage 持久化。"
+          },
+          {
+            "id": "sticky-footer",
+            "purpose": "底部悬浮操作栏：包含“加入购物车”与“立即购买”按钮，确保 CTA 随时可见。"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "mobile-vertical-scroll + sticky-footer",
+        "colors": [
+          "#E4393C",
+          "#FF9900",
+          "#FFF0F0",
+          "#F4F4F5"
+        ],
+        "components": [
+          {
+            "id": "header-nav",
+            "html": "header",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "LYF 年货节"
+              },
+              {
+                "tag": "div",
+                "content_hint": "购物车图标 (带数量角标)"
+              }
+            ]
+          },
+          {
+            "id": "product-gallery",
+            "html": "section",
+            "children": [
+              {
+                "tag": "img",
+                "content_hint": "香瓜子组合装高清展示图"
+              },
+              {
+                "tag": "div",
+                "content_hint": "图片轮播指示点"
+              }
+            ]
+          },
+          {
+            "id": "flash-sale-bar",
+            "html": "div",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "抢购价 ¥16.9 (大号字体)"
+              },
+              {
+                "tag": "div",
+                "content_hint": "原价 ¥29.9 (划线价) & 距结束倒计时"
+              }
+            ]
+          },
+          {
+            "id": "product-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "LYF 香瓜子 30g*10包 休闲零食年货礼包"
+              },
+              {
+                "tag": "p",
+                "content_hint": "颗粒饱满 | 酥脆可口 | 春节待客首选"
+              },
+              {
+                "tag": "div",
+                "content_hint": "库存进度条 & '仅剩50件' 提示"
+              }
+            ]
+          },
+          {
+            "id": "coupon-zone",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "¥5 优惠券 (点击领取)"
+              },
+              {
+                "tag": "p",
+                "content_hint": "年货节限时福利"
+              }
+            ]
+          },
+          {
+            "id": "product-details",
+            "html": "article",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "商品详情 / 规格参数"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "配料表、保质期、产地信息列表"
+              },
+              {
+                "tag": "img",
+                "content_hint": "产品细节图与春节氛围图"
+              }
+            ]
+          },
+          {
+            "id": "cart-drawer",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "header",
+                "content_hint": "购物车标题 & 关闭按钮"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "已选商品列表 (含数量加减控件)"
+              },
+              {
+                "tag": "div",
+                "content_hint": "总价合计区域"
+              }
+            ]
+          },
+          {
+            "id": "sticky-footer",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "加入购物车 (次级按钮)"
+              },
+              {
+                "tag": "button",
+                "content_hint": "立即购买 (主色调按钮)"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\">\n    <title>LYF 年货节 - 香瓜子特惠</title>\n    <style>\n        :root {\n            --primary-red: #E4393C;\n            --festival-red: #C81623;\n            --accent-gold: #FFD700;\n            --price-color: #F2270C;\n            --text-dark: #333333;\n            --text-gray: #999999;\n            --bg-color: #F7F7F7;\n            --white: #FFFFFF;\n        }\n\n        * {\n            box-sizing: border-box;\n            margin: 0;\n            padding: 0;\n            -webkit-tap-highlight-color: transparent;\n        }\n\n        body {\n            font-family: -apple-system, BlinkMacSystemFont, \"PingFang SC\", \"Helvetica Neue\", Arial, sans-serif;\n            background-color: var(--bg-color);\n            color: var(--text-dark);\n            max-width: 540px; /* 模拟移动端宽度 */\n            margin: 0 auto;\n            padding-bottom: 60px; /* 为底部栏留空 */\n            box-shadow: 0 0 20px rgba(0,0,0,0.1);\n        }\n\n        /* --- Header --- */\n        header {\n            position: sticky;\n            top: 0;\n            z-index: 100;\n            background: rgba(255, 255, 255, 0.95);\n            backdrop-filter: blur(5px);\n            height: 50px;\n            display: flex;\n            align-items: center;\n            justify-content: space-between;\n            padding: 0 15px;\n            border-bottom: 1px solid #eee;\n        }\n\n        .brand-logo {\n            font-weight: 800;\n            color: var(--primary-red);\n            font-size: 1.2rem;\n            letter-spacing: 1px;\n        }\n\n        .cart-icon-wrapper {\n            position: relative;\n            cursor: pointer;\n        }\n\n        .cart-icon {\n            font-size: 1.5rem;\n        }\n\n        .cart-badge {\n            position: absolute;\n            top: -5px;\n            right: -8px;\n            background-color: var(--primary-red);\n            color: white;\n            font-size: 10px;\n            height: 16px;\n            min-width: 16px;\n            border-radius: 8px;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            padding: 0 4px;\n            border: 1px solid #fff;\n        }\n\n        /* --- Product Gallery --- */\n        .gallery {\n            position: relative;\n            width: 100%;\n            height: 375px;\n            background: #fff;\n            overflow: hidden;\n        }\n\n        .gallery img {\n            width: 100%;\n            height: 100%;\n            object-fit: cover;\n        }\n\n        /* --- Flash Sale Bar (Price) --- */\n        .flash-sale-bar {\n            background: linear-gradient(90deg, var(--primary-red), var(--festival-red));\n            color: white;\n            padding: 10px 15px;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n        }\n\n        .price-box {\n            display: flex;\n            align-items: baseline;\n        }\n\n        .currency { font-size: 1rem; }\n        .price-now { font-size: 1.8rem; font-weight: bold; margin-right: 10px; }\n        .price-old { font-size: 0.9rem; text-decoration: line-through; opacity: 0.8; }\n\n        .timer-box {\n            text-align: right;\n        }\n        .timer-label { font-size: 10px; margin-bottom: 2px; opacity: 0.9; }\n        .timer-nums span {\n            background: var(--accent-gold);\n            color: var(--primary-red);\n            padding: 1px 3px;\n            border-radius: 2px;\n            font-weight: bold;\n            font-size: 12px;\n        }\n\n        /* --- Product Info --- */\n        .product-info {\n            background: white;\n            padding: 15px;\n            margin-bottom: 10px;\n            border-radius: 0 0 12px 12px;\n        }\n\n        .product-title {\n            font-size: 1.1rem;\n            line-height: 1.4;\n            font-weight: 600;\n            margin-bottom: 8px;\n            display: -webkit-box;\n            -webkit-line-clamp: 2;\n            -webkit-box-orient: vertical;\n            overflow: hidden;\n        }\n\n        .tag {\n            display: inline-block;\n            font-size: 10px;\n            padding: 1px 4px;\n            border-radius: 2px;\n            margin-right: 5px;\n            vertical-align: middle;\n        }\n\n        .tag-red { border: 1px solid var(--primary-red); color: var(--primary-red); }\n        .tag-gold { background: var(--accent-gold); color: #333; }\n\n        .sub-title {\n            font-size: 0.85rem;\n            color: var(--text-gray);\n            margin-bottom: 12px;\n        }\n\n        /* Stock Bar */\n        .stock-wrapper {\n            display: flex;\n            align-items: center;\n            font-size: 12px;\n            color: var(--text-gray);\n        }\n        .progress-bg {\n            width: 100px;\n            height: 6px;\n            background: #eee;\n            border-radius: 3px;\n            margin: 0 8px;\n            overflow: hidden;\n        }\n        .progress-fill {\n            height: 100%;\n            background: var(--primary-red);\n            width: 92%; /* Initial Mock */\n            transition: width 0.3s;\n        }\n\n        /* --- Coupon --- */\n        .section {\n            background: white;\n            margin-bottom: 10px;\n            padding: 15px;\n            border-radius: 12px;\n        }\n\n        .coupon-row {\n            display: flex;\n            background: #FFF0F0;\n            border-radius: 4px;\n            padding: 10px;\n            align-items: center;\n            justify-content: space-between;\n            border: 1px dashed rgba(228, 57, 60, 0.3);\n        }\n        .coupon-left { color: var(--primary-red); font-weight: bold; }\n        .coupon-desc { font-size: 12px; color: #666; margin-left: 10px; flex: 1;}\n        .coupon-btn {\n            background: var(--primary-red);\n            color: white;\n            border: none;\n            padding: 4px 10px;\n            border-radius: 10px;\n            font-size: 12px;\n            cursor: pointer;\n        }\n        .coupon-btn.claimed {\n            background: #ccc;\n            cursor: default;\n        }\n\n        /* --- Details --- */\n        .details-header {\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            margin-bottom: 15px;\n            color: var(--text-gray);\n            font-size: 14px;\n        }\n        .details-header::before, .details-header::after {\n            content: '';\n            width: 30px;\n            height: 1px;\n            background: #ddd;\n            margin: 0 10px;\n        }\n\n        .specs-table {\n            width: 100%;\n            font-size: 13px;\n            border-collapse: collapse;\n            margin-bottom: 15px;\n        }\n        .specs-table td {\n            padding: 8px 0;\n            border-bottom: 1px solid #eee;\n        }\n        .specs-label { color: #999; width: 80px; }\n        .specs-val { color: #333; }\n\n        .detail-img {\n            width: 100%;\n            display: block;\n            margin-bottom: -1px; /* Remove gap */\n        }\n\n        /* --- Sticky Footer --- */\n        .footer-nav {\n            position: fixed;\n            bottom: 0;\n            left: 0;\n            right: 0;\n            max-width: 540px;\n            margin: 0 auto;\n            background: white;\n            height: 50px;\n            display: flex;\n            align-items: center;\n            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);\n            z-index: 100;\n            padding: 5px 10px;\n        }\n\n        .nav-icon {\n            flex: 1;\n            text-align: center;\n            font-size: 10px;\n            color: #666;\n            display: flex;\n            flex-direction: column;\n            justify-content: center;\n            height: 100%;\n        }\n        .nav-icon span { font-size: 18px; margin-bottom: 2px; }\n\n        .action-btn {\n            flex: 2;\n            height: 40px;\n            border: none;\n            color: white;\n            font-size: 14px;\n            font-weight: bold;\n            cursor: pointer;\n        }\n        .btn-cart {\n            background: #FFB900;\n            border-radius: 20px 0 0 20px;\n        }\n        .btn-buy {\n            background: var(--primary-red);\n            border-radius: 0 20px 20px 0;\n        }\n\n        /* --- Cart Modal --- */\n        .cart-modal-overlay {\n            position: fixed;\n            top: 0; left: 0; right: 0; bottom: 0;\n            background: rgba(0,0,0,0.5);\n            z-index: 200;\n            display: none;\n            justify-content: center;\n            align-items: flex-end;\n        }\n        .cart-modal {\n            background: white;\n            width: 100%;\n            max-width: 540px;\n            border-radius: 16px 16px 0 0;\n            padding: 20px;\n            animation: slideUp 0.3s ease-out;\n            max-height: 70vh;\n            overflow-y: auto;\n        }\n\n        @keyframes slideUp {\n            from { transform: translateY(100%); }\n            to { transform: translateY(0); }\n        }\n\n        .modal-header {\n            display: flex;\n            justify-content: space-between;\n            margin-bottom: 20px;\n            font-weight: bold;\n        }\n        .cart-item {\n            display: flex;\n            margin-bottom: 20px;\n            border-bottom: 1px solid #eee;\n            padding-bottom: 15px;\n        }\n        .cart-item img {\n            width: 80px;\n            height: 80px;\n            border-radius: 4px;\n            object-fit: cover;\n            border: 1px solid #eee;\n        }\n        .item-info {\n            margin-left: 15px;\n            flex: 1;\n            display: flex;\n            flex-direction: column;\n            justify-content: space-between;\n        }\n        .counter-box {\n            display: flex;\n            align-items: center;\n        }\n        .counter-btn {\n            width: 24px;\n            height: 24px;\n            background: #f5f5f5;\n            border: none;\n            border-radius: 2px;\n            font-weight: bold;\n        }\n        .counter-val {\n            width: 40px;\n            text-align: center;\n            font-size: 14px;\n        }\n\n        /* Toast Notification */\n        .toast {\n            position: fixed;\n            top: 50%;\n            left: 50%;\n            transform: translate(-50%, -50%);\n            background: rgba(0,0,0,0.7);\n            color: white;\n            padding: 10px 20px;\n            border-radius: 5px;\n            z-index: 300;\n            display: none;\n            font-size: 14px;\n        }\n    </style>\n</head>\n<body>\n\n    <!-- Header -->\n    <header>\n        <div class=\"brand-logo\">LYF 年货节</div>\n        <div class=\"cart-icon-wrapper\" onclick=\"toggleCart()\">\n            <span class=\"cart-icon\">🛒</span>\n            <div class=\"cart-badge\" id=\"cartBadge\">0</div>\n        </div>\n    </header>\n\n    <!-- Main Content -->\n    <main>\n        <!-- Gallery -->\n        <div class=\"gallery\">\n            <img src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" alt=\"LYF 香瓜子\">\n        </div>\n\n        <!-- Price Flash Sale -->\n        <div class=\"flash-sale-bar\">\n            <div class=\"price-box\">\n                <span class=\"currency\">¥</span>\n                <span class=\"price-now\">16.9</span>\n                <span class=\"price-old\">¥29.9</span>\n            </div>\n            <div class=\"timer-box\">\n                <div class=\"timer-label\">距优惠结束仅剩</div>\n                <div class=\"timer-nums\">\n                    <span id=\"h\">02</span>:<span id=\"m\">14</span>:<span id=\"s\">59</span>\n                </div>\n            </div>\n        </div>\n\n        <!-- Product Info -->\n        <div class=\"product-info\">\n            <div class=\"product-title\">\n                <span class=\"tag tag-red\">年货节</span>\n                <span class=\"tag tag-gold\">热销</span>\n                LYF 香瓜子葵花子 30g*10包/组合装 休闲零食炒货 春节待客大礼包\n            </div>\n            <div class=\"sub-title\">颗粒饱满 | 奶香浓郁 | 独立小包装方便分享</div>\n            \n            <div class=\"stock-wrapper\">\n                <span>抢购进度</span>\n                <div class=\"progress-bg\">\n                    <div class=\"progress-fill\" id=\"stockBar\"></div>\n                </div>\n                <span id=\"stockText\">仅剩 45 件</span>\n            </div>\n        </div>\n\n        <!-- Coupons -->\n        <div class=\"section\">\n            <div class=\"coupon-row\">\n                <div>\n                    <span class=\"coupon-left\">¥5</span>\n                    <span class=\"coupon-desc\">满29元可用 | 年货专享券</span>\n                </div>\n                <button class=\"coupon-btn\" onclick=\"claimCoupon(this)\">立即领取</button>\n            </div>\n        </div>\n\n        <!-- Specs & Details -->\n        <div class=\"section\" id=\"details\">\n            <div class=\"details-header\">商品详情</div>\n            <table class=\"specs-table\">\n                <tr><td class=\"specs-label\">品牌</td><td class=\"specs-val\">LYF</td></tr>\n                <tr><td class=\"specs-label\">产地</td><td class=\"specs-val\">中国大陆</td></tr>\n                <tr><td class=\"specs-label\">保质期</td><td class=\"specs-val\">180 天</td></tr>\n                <tr><td class=\"specs-label\">规格</td><td class=\"specs-val\">30g * 10包</td></tr>\n                <tr><td class=\"specs-label\">储存</td><td class=\"specs-val\">阴凉干燥处</td></tr>\n            </table>\n            <img class=\"detail-img\" src=\"https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b\" alt=\"产品场景图\">\n            <img class=\"detail-img\" src=\"https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg\" alt=\"产品细节图\">\n        </div>\n    </main>\n\n    <!-- Footer -->\n    <nav class=\"footer-nav\">\n        <div class=\"nav-icon\" onclick=\"window.scrollTo(0,0)\">\n            <span>🏠</span>\n            首页\n        </div>\n        <div class=\"nav-icon\">\n            <span>🎧</span>\n            客服\n        </div>\n        <button class=\"action-btn btn-cart\" onclick=\"addToCart()\">加入购物车</button>\n        <button class=\"action-btn btn-buy\" onclick=\"buyNow()\">立即购买</button>\n    </nav>\n\n    <!-- Cart Modal -->\n    <div class=\"cart-modal-overlay\" id=\"cartOverlay\" onclick=\"if(event.target === this) toggleCart()\">\n        <div class=\"cart-modal\">\n            <div class=\"modal-header\">\n                <span>购物车</span>\n                <span onclick=\"toggleCart()\" style=\"color:#999; cursor:pointer;\">✕</span>\n            </div>\n            <div id=\"cartItemsContainer\">\n                <!-- Cart Items Render Here -->\n            </div>\n            <div style=\"display:flex; justify-content:space-between; align-items:center; margin-top:20px; padding-top:15px; border-top:1px solid #eee;\">\n                <div style=\"font-size:14px;\">\n                    合计: <span style=\"color:var(--price-color); font-weight:bold; font-size:18px;\">¥<span id=\"cartTotal\">0.00</span></span>\n                </div>\n                <button style=\"background:var(--primary-red); color:white; border:none; padding:10px 25px; border-radius:20px; font-weight:bold;\" onclick=\"checkout()\">去结算</button>\n            </div>\n        </div>\n    </div>\n\n    <!-- Toast -->\n    <div class=\"toast\" id=\"toast\">已加入购物车</div>\n\n    <script>\n        // --- State Management ---\n        const PRODUCT = {\n            id: 'lyf_sf_001',\n            name: 'LYF 香瓜子葵花子 30g*10包',\n            price: 16.9,\n            img: 'https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp'\n        };\n\n        let cart = JSON.parse(localStorage.getItem('lyf_cart')) || {};\n        let stock = parseInt(localStorage.getItem('lyf_stock')) || 45;\n        \n        // --- Initialization ---\n        document.addEventListener('DOMContentLoaded', () => {\n            updateBadge();\n            startTimer();\n            renderStock();\n        });\n\n        // --- Functions ---\n\n        // 1. Countdown Timer\n        function startTimer() {\n            let duration = 7200; // 2 hours in seconds\n            const hEl = document.getElementById('h');\n            const mEl = document.getElementById('m');\n            const sEl = document.getElementById('s');\n\n            setInterval(() => {\n                duration--;\n                if (duration < 0) duration = 7200;\n                \n                let h = Math.floor(duration / 3600);\n                let m = Math.floor((duration % 3600) / 60);\n                let s = duration % 60;\n\n                hEl.innerText = h.toString().padStart(2, '0');\n                mEl.innerText = m.toString().padStart(2, '0');\n                sEl.innerText = s.toString().padStart(2, '0');\n            }, 1000);\n        }\n\n        // 2. Stock Logic\n        function renderStock() {\n            const stockBar = document.getElementById('stockBar');\n            const stockText = document.getElementById('stockText');\n            // Mock Logic: Max 50\n            const percent = (stock / 50) * 100;\n            stockBar.style.width = percent + '%';\n            stockText.innerText = stock > 0 ? `仅剩 ${stock} 件` : '已售罄';\n            \n            if(stock <= 0) {\n                document.querySelector('.btn-buy').disabled = true;\n                document.querySelector('.btn-buy').style.backgroundColor = '#ccc';\n                document.querySelector('.btn-cart').disabled = true;\n            }\n        }\n\n        // 3. Cart Logic\n        function addToCart() {\n            if (stock <= 0) return showToast(\"商品已售罄\");\n\n            if (cart[PRODUCT.id]) {\n                cart[PRODUCT.id].qty += 1;\n            } else {\n                cart[PRODUCT.id] = {\n                    name: PRODUCT.name,\n                    price: PRODUCT.price,\n                    img: PRODUCT.img,\n                    qty: 1\n                };\n            }\n            \n            // Simulate stock reduction locally\n            stock--;\n            saveData();\n            updateBadge();\n            renderStock();\n            showToast(\"已加入购物车\");\n        }\n\n        function saveData() {\n            localStorage.setItem('lyf_cart', JSON.stringify(cart));\n            localStorage.setItem('lyf_stock', stock.toString());\n        }\n\n        function updateBadge() {\n            const badge = document.getElementById('cartBadge');\n            let total = 0;\n            for(let key in cart) {\n                total += cart[key].qty;\n            }\n            badge.innerText = total;\n            badge.style.display = total > 0 ? 'flex' : 'none';\n        }\n\n        function toggleCart() {\n            const overlay = document.getElementById('cartOverlay');\n            if (overlay.style.display === 'flex') {\n                overlay.style.display = 'none';\n            } else {\n                renderCartItems();\n                overlay.style.display = 'flex';\n            }\n        }\n\n        function renderCartItems() {\n            const container = document.getElementById('cartItemsContainer');\n            const totalEl = document.getElementById('cartTotal');\n            container.innerHTML = '';\n            \n            let totalPrice = 0;\n            const hasItems = Object.keys(cart).length > 0;\n\n            if (!hasItems) {\n                container.innerHTML = '<div style=\"text-align:center; padding:30px; color:#999;\">购物车是空的</div>';\n            } else {\n                for(let id in cart) {\n                    const item = cart[id];\n                    totalPrice += item.price * item.qty;\n                    container.innerHTML += `\n                        <div class=\"cart-item\">\n                            <img src=\"${item.img}\" alt=\"prod\">\n                            <div class=\"item-info\">\n                                <div style=\"font-size:14px;\">${item.name}</div>\n                                <div style=\"display:flex; justify-content:space-between; align-items:center;\">\n                                    <div style=\"color:var(--price-color); font-weight:bold;\">¥${item.price}</div>\n                                    <div class=\"counter-box\">\n                                        <button class=\"counter-btn\" onclick=\"changeQty('${id}', -1)\">-</button>\n                                        <div class=\"counter-val\">${item.qty}</div>\n                                        <button class=\"counter-btn\" onclick=\"changeQty('${id}', 1)\">+</button>\n                                    </div>\n                                </div>\n                            </div>\n                        </div>\n                    `;\n                }\n            }\n            totalEl.innerText = totalPrice.toFixed(2);\n        }\n\n        function changeQty(id, delta) {\n            if (cart[id]) {\n                cart[id].qty += delta;\n                if (delta > 0) {\n                     if(stock > 0) stock--;\n                     else return showToast(\"库存不足\");\n                } else {\n                    stock++; // Return stock if removed from cart (simplified logic)\n                }\n\n                if (cart[id].qty <= 0) {\n                    delete cart[id];\n                }\n                saveData();\n                renderCartItems();\n                renderStock();\n                updateBadge();\n            }\n        }\n\n        function buyNow() {\n            addToCart();\n            toggleCart();\n        }\n\n        function checkout() {\n            if (Object.keys(cart).length === 0) return;\n            alert(\"正在跳转支付页面... (模拟)\");\n            // Reset for demo\n            cart = {};\n            saveData();\n            window.location.reload();\n        }\n\n        // 4. Interaction\n        function claimCoupon(btn) {\n            btn.innerText = '已领取';\n            btn.classList.add('claimed');\n            showToast(\"优惠券领取成功！\");\n        }\n\n        function showToast(msg) {\n            const toast = document.getElementById('toast');\n            toast.innerText = msg;\n            toast.style.display = 'block';\n            setTimeout(() => {\n                toast.style.display = 'none';\n            }, 2000);\n        }\n    </script>\n</body>\n</html>"
+    }
+  ]
+}

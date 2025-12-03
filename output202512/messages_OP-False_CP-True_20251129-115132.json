@@ -1,0 +1,60 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：内蒙古葵花籽（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n\n# Functional Requirements (功能需求)\n1.  实现合理的布局结构：尽量包含搜索栏目、导航栏、产品介绍、交互、详情信息等\n    可插入如下图片作为产品预览图\n     1 张大图链接“https://cbu01.alicdn.com/img/ibank/O1CN01N71Meg2Mm3r6R3NbC_!!2218940509869-0-cib.220x220.jpg”\n    缩略图1“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n    缩略图2“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n    卖点文案：突出“内蒙古原产”、“颗粒饱满”、“独立包装不脏手”、“买多少送多少”、“四种口味”\n额外功能：\n1.营销倒计时系统 (Complex Logic)：在价格旁显示“春节限时抢购倒计时”。\n2. 优惠券与价格计算 界面中间需展示两张优惠券：\nA券：满 10 减 2 元\nB券：满 20 减 5 元\n3.添加购买选项：可以包含10包、20包、30包，价格可以买的越多越优惠。\n4. 评论区筛选器：展示评论列表。\n5. 模态框购物车 (UI Interaction)\n点击底部的“立即购买”按钮，不跳转，而是从底部弹出一个半透明遮罩层 + 确认面板（Slide-up Modal）。\n面板内显示：已选商品信息、最终计算后的价格。\n包含“确认支付”按钮，点击后 alert 输出最终订单信息对象。\n6.随机优化功能\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求，提炼关键功能点",
+              "确认交付物为一个包含 HTML/CSS/JavaScript 的单文件春节零食电商网页",
+              "明确设计风格为移动端京东/天猫参考，主题色#E4393C",
+              "确保实现4P营销要素：产品展示（含图片与卖点文案）、价格（现价/原价/优惠信息）、渠道（网页购买入口与购物流程）、促销（促销标签、库存/限时购买）",
+              "功能点拆解：布局结构包括搜索栏、导航栏、产品介绍、交互区、详情信息区",
+              "添加营销倒计时系统，限时抢购提示",
+              "在界面中部展示A券与B券优惠券信息及逻辑计算",
+              "添加购买选项（10包、20包、30包），实现价格动态优惠",
+              "增加评论区及筛选功能",
+              "实现底部“立即购买”按钮触发Slide-up Modal购物车，显示已选商品和最终价格，并确认支付alert订单对象",
+              "包含随机优化功能，例如交互优化或动态效果"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据规格实现包含 HTML、CSS、JavaScript 的单文件网页",
+              "布局包含搜索栏、导航栏、产品大图和缩略图展示、卖点文案区、价格区（包含现价、原价、优惠标签、倒计时）",
+              "在价格区实现春节限时抢购倒计时逻辑（JS动态更新）",
+              "优惠券展示模块，分别为满10减2元与满20减5元，及对应价格计算逻辑",
+              "购买选项模块：可选择10包、20包、30包，价格越多越优惠逻辑实现",
+              "评论区模块：可筛选评论（按好评、中评、差评）并展示评论列表",
+              "实现模态购物车（Slide-up Modal）：底部按钮控制遮罩与确认面板显示，内含已选商品信息和最终计算价格，确认支付按钮触发alert展示订单对象",
+              "实现随机优化功能（如动效、按钮样式优化或图片切换动画）",
+              "使用主色调#E4393C，参考京东/天猫移动端样式进行CSS设计"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF 春节零食大促</title>\n<style>\nbody {margin:0;font-family:Arial, sans-serif;background:#fff;color:#333;}\nheader {background:#E4393C;color:#fff;padding:10px;text-align:center;}\nheader input[type=\"search\"] {width:80%;padding:8px;border:none;border-radius:4px;}\nnav {display:flex;justify-content:space-around;background:#f8f8f8;padding:10px 0;font-size:14px;}\nnav a {color:#333;text-decoration:none;}\n.product {padding:10px;}\n.product-images {text-align:center;}\n.product-images img {width:90%;max-width:300px;border-radius:8px;}\n.thumbnails {display:flex;justify-content:center;margin-top:8px;}\n.thumbnails img {width:80px;height:80px;margin:0 5px;cursor:pointer;border-radius:4px;}\n.points {background:#fff2f0;padding:10px;margin-top:10px;border-radius:8px;color:#E4393C;}\n.price {display:flex;justify-content:space-between;align-items:center;margin-top:10px;}\n.price .current {color:#E4393C;font-size:20px;font-weight:bold;}\n.price .original {text-decoration:line-through;color:#aaa;}\n.countdown {color:#E4393C;font-size:14px;}\n.coupons {display:flex;justify-content:center;margin-top:10px;}\n.coupon {background:#ffeaea;border:1px dashed #E4393C;padding:10px;margin:5px;border-radius:8px;font-size:14px;text-align:center;flex:1;}\n.options {margin-top:10px;}\n.options label {display:block;margin:5px 0;}\n.comments {padding:10px;}\n.comment-filter {margin-bottom:10px;}\n.comment-filter button {margin-right:5px;padding:4px 8px;border:none;background:#E4393C;color:#fff;border-radius:4px;cursor:pointer;}\n.comment {border-bottom:1px solid #eee;padding:5px 0;}\n.buy-bar {position:fixed;bottom:0;width:100%;background:#E4393C;color:#fff;text-align:center;padding:10px;cursor:pointer;font-size:18px;}\n.modal-overlay {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);}\n.modal {position:fixed;bottom:-300px;left:0;width:100%;background:#fff;border-top-left-radius:12px;border-top-right-radius:12px;transition:bottom 0.3s;padding:20px;}\n.modal.active {bottom:0;}\n.modal h3 {margin-top:0;}\n.modal button {width:100%;padding:10px;background:#E4393C;color:#fff;border:none;border-radius:4px;font-size:16px;cursor:pointer;}\n</style>\n</head>\n<body>\n<header>\n  <input type=\"search\" placeholder=\"搜索春节零食...\">\n</header>\n<nav>\n  <a href=\"#\">首页</a>\n  <a href=\"#\">新品</a>\n  <a href=\"#\">优惠</a>\n  <a href=\"#\">客服</a>\n</nav>\n\n<div class=\"product\">\n  <div class=\"product-images\">\n    <img id=\"mainImage\" src=\"https://cbu01.alicdn.com/img/ibank/O1CN01N71Meg2Mm3r6R3NbC_!!2218940509869-0-cib.220x220.jpg\" alt=\"LYF 内蒙古葵花籽\">\n    <div class=\"thumbnails\">\n      <img src=\"https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b\" onclick=\"changeImage(this.src)\">\n      <img src=\"https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg\" onclick=\"changeImage(this.src)\">\n    </div>\n  </div>\n  <div class=\"points\">\n    <strong>卖点：</strong> 内蒙古原产 · 颗粒饱满 · 独立包装不脏手 · 买多少送多少 · 四种口味\n  </div>\n  <div class=\"price\">\n    <div>\n      <span class=\"current\">¥<span id=\"price\">16.9</span></span>\n      <span class=\"original\">¥29.9</span>\n    </div>\n    <div class=\"countdown\">春节限时抢购倒计时：<span id=\"countdown\"></span></div>\n  </div>\n\n  <div class=\"coupons\">\n    <div class=\"coupon\">A券: 满10减2元</div>\n    <div class=\"coupon\">B券: 满20减5元</div>\n  </div>\n\n  <div class=\"options\">\n    <label><input type=\"radio\" name=\"pack\" value=\"10\" checked onclick=\"updatePrice()\"> 10包 ¥16.9</label>\n    <label><input type=\"radio\" name=\"pack\" value=\"20\" onclick=\"updatePrice()\"> 20包 ¥32.0</label>\n    <label><input type=\"radio\" name=\"pack\" value=\"30\" onclick=\"updatePrice()\"> 30包 ¥45.0</label>\n  </div>\n</div>\n\n<div class=\"comments\">\n  <div class=\"comment-filter\">\n    <button onclick=\"filterComments('all')\">全部</button>\n    <button onclick=\"filterComments('good')\">好评</button>\n    <button onclick=\"filterComments('medium')\">中评</button>\n    <button onclick=\"filterComments('bad')\">差评</button>\n  </div>\n  <div id=\"commentList\"></div>\n</div>\n\n<div class=\"buy-bar\" onclick=\"openModal()\">立即购买</div>\n\n<div class=\"modal-overlay\" id=\"overlay\" onclick=\"closeModal()\"></div>\n<div class=\"modal\" id=\"modal\">\n  <h3>确认订单</h3>\n  <p id=\"orderInfo\"></p>\n  <button onclick=\"confirmPay()\">确认支付</button>\n</div>\n\n<script>\nfunction changeImage(src) {\n  document.getElementById('mainImage').src = src;\n}\n\n// 倒计时\nlet endTime = new Date();\nendTime.setHours(endTime.getHours()+5);\nfunction updateCountdown() {\n  let now = new Date();\n  let diff = endTime - now;\n  if(diff <=0) {document.getElementById('countdown').innerText=\"已结束\";return;}\n  let h = Math.floor(diff/1000/60/60);\n  let m = Math.floor(diff/1000/60%60);\n  let s = Math.floor(diff/1000%60);\n  document.getElementById('countdown').innerText = `${h}小时${m}分${s}秒`;\n}\nsetInterval(updateCountdown,1000);\n\n// 评论数据\nconst commentsData = [\n  {type:'good',text:'颗粒饱满，味道很好！'},\n  {type:'medium',text:'口味一般，包装不错'},\n  {type:'bad',text:'不太符合口味'},\n  {type:'good',text:'买多少送多少，很划算'}\n];\nfunction renderComments(list) {\n  const container = document.getElementById('commentList');\n  container.innerHTML = '';\n  list.forEach(c=>{\n    let div = document.createElement('div');\n    div.className = 'comment';\n    div.textContent = c.text;\n    container.appendChild(div);\n  });\n}\nfunction filterComments(type) {\n  if(type==='all') renderComments(commentsData);\n  else renderComments(commentsData.filter(c=>c.type===type));\n}\nrenderComments(commentsData);\n\n// 价格更新和优惠券计算\nfunction updatePrice() {\n  const packs = document.querySelector('input[name=\"pack\"]:checked').value;\n  let price = packs==10?16.9:packs==20?32.0:45.0;\n  // 优惠券逻辑\n  if(price>=20) {price-=5;}\n  else if(price>=10) {price-=2;}\n  document.getElementById('price').innerText = price.toFixed(2);\n}\n\n// 模态框购物车\nfunction openModal() {\n  document.getElementById('overlay').style.display='block';\n  document.getElementById('modal').classList.add('active');\n  const packs = document.querySelector('input[name=\"pack\"]:checked').value;\n  const price = document.getElementById('price').innerText;\n  document.getElementById('orderInfo').innerText = `LYF 内蒙古葵花籽 - ${packs}包 - 总价 ¥${price}`;\n}\nfunction closeModal() {\n  document.getElementById('overlay').style.display='none';\n  document.getElementById('modal').classList.remove('active');\n}\nfunction confirmPay() {\n  const packs = document.querySelector('input[name=\"pack\"]:checked').value;\n  const price = document.getElementById('price').innerText;\n  const order = {product:'LYF 内蒙古葵花籽',packs:packs,price:price};\n  alert(JSON.stringify(order));\n  closeModal();\n}\n\n// 随机优化功能（随机背景色闪烁按钮）\nsetInterval(()=>{\n  document.querySelector('.buy-bar').style.background = Math.random()>0.5?'#E4393C':'#c71c1c';\n},1000);\n\nupdatePrice();\nupdateCountdown();\n</script>\n</body>\n</html>"
+    }
+  ]
+}

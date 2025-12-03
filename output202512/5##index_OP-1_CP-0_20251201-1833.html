@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>春节大促活动页</title>
+<style>
+    :root {
+        --red: #D0021B;
+        --gold: #FFD700;
+        --light-gray: #F4F4F5;
+        --white: #FFFFFF;
+        --dark: #333333;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: var(--light-gray);
+        color: var(--dark);
+        line-height: 1.6;
+    }
+    header, section, nav, aside, footer {
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .hero-section {
+        background-color: var(--red);
+        color: var(--white);
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .hero-section h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    h2, h3, h4 {
+        color: var(--red);
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 1rem;
+    }
+    .price-box {
+        background-color: var(--gold);
+        color: var(--dark);
+        text-align: center;
+    }
+    .promo-banner {
+        background-color: var(--red);
+        color: var(--white);
+        text-align: center;
+    }
+    nav.category-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    footer {
+        background-color: var(--dark);
+        color: var(--white);
+        text-align: center;
+    }
+    @media (min-width: 768px) {
+        body {
+            padding: 20px;
+        }
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        nav.category-list {
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    }
+</style>
+</head>
+<body>
+
+<section class="hero-section" id="hero-section">
+    <h1>春节年货大促销 - 喜迎新春</h1>
+    <p>浓浓的节日氛围，限时优惠，囤好年货迎新年！</p>
+</section>
+
+<div class="layout-grid">
+    <div>
+        <section class="product-specs" id="product-specs">
+            <h2>组合装规格 - 多口味精选</h2>
+            <p>丰富搭配，满足全家人的味蕾，份量足，性价比高。</p>
+        </section>
+
+        <section class="price-box" id="price-box">
+            <h3>现价 ¥199<span style="text-decoration: line-through; margin-left:10px;">¥299</span></h3>
+            <p>立省33%，立即下单享受优惠！</p>
+        </section>
+
+        <section class="promo-banner" id="promo-banner">
+            <h4>限时抢购 - 剩余2天</h4>
+            <p>年货必备 · 热销推荐</p>
+        </section>
+
+        <section class="channel-flow" id="channel-flow">
+            <h4>选择购买数量</h4>
+            <p>挑选数量后加入购物车，轻松结算。</p>
+        </section>
+
+        <section class="coupon-zone" id="coupon-zone">
+            <h4>领取优惠券</h4>
+            <p>满100减20，领取后结算自动抵扣。</p>
+        </section>
+
+        <section class="trust-badges" id="trust-badges">
+            <h4>品牌保障</h4>
+            <p>正品保证，快速发货，放心购买。</p>
+        </section>
+    </div>
+
+    <aside class="cart-panel" id="cart-panel">
+        <h4>购物车管理</h4>
+        <p>查看已选商品，可修改数量或删除。</p>
+    </aside>
+</div>
+
+<nav class="category-list" id="category-list">
+    <h4>商品分类</h4>
+    <p>浏览更多年货零食、美味特产。</p>
+</nav>
+
+<footer id="footer">
+    <h4>联系客服与售后政策</h4>
+    <p>支持多种支付方式，保障您的购物体验。</p>
+</footer>
+
+</body>
+</html>

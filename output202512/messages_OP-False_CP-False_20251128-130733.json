@@ -1,0 +1,52 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n\n为以下产品生成一个完整的电商购物网页,使用html+css+js实现（模仿网址：https://item.jd.com/100168004567.html）：\n品牌为 LTF 的新疆葵花籽（30g 小包装），售价为 10 包 16.9 元，网页销售场景。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n输出功能需包括：\n\nF1：渲染购买功能模块（按钮、支付入口）\nF2：设置互动功能（评分、评论）\nF3：联系客服功能模块（按钮）\nF4：推荐或组合销售模块\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求，包括产品信息（品牌LTF、新疆葵花籽30g小包装、售价10包16.9元）、网页销售场景及模版参考",
+              "明确网页必须包含的4P要素：产品（外观图、规格介绍、卖点）、价格（现价、对比价、优惠）、渠道（购买入口与流程）、促销（促销标签、库存/限时激励）",
+              "拆解功能模块需求F1-F4：购买功能模块（按钮、支付入口），互动功能（评分、评论），联系客服模块（按钮），推荐/组合销售模块",
+              "将上述规格与功能分配给Engineer进行网页实现"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据TeamLeader提供的规格，实现完整的HTML/CSS/JS电商购物网页",
+              "在网页中实现产品信息展示模块（外观图、规格、卖点文案）",
+              "实现价格模块（现价、对比价、优惠信息）",
+              "实现购买功能模块（按钮、支付入口，F1）",
+              "实现互动功能模块（评分、评论，F2）",
+              "实现联系客服功能模块（按钮，F3）",
+              "实现推荐或组合销售模块（F4）",
+              "确保网页销售流程和交互符合客户要求并可运行"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LTF 新疆葵花籽 30g 小包装</title>\n<style>\n    body {\n        font-family: Arial, sans-serif;\n        margin: 0;\n        padding: 0;\n        background-color: #f5f5f5;\n        color: #333;\n    }\n    header {\n        background-color: #fff;\n        border-bottom: 1px solid #ddd;\n        padding: 15px 20px;\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n    }\n    header h1 {\n        font-size: 20px;\n    }\n    .container {\n        max-width: 1200px;\n        margin: auto;\n        padding: 20px;\n        background-color: #fff;\n    }\n    .product-detail {\n        display: flex;\n        flex-wrap: wrap;\n    }\n    .product-image {\n        flex: 1;\n        min-width: 300px;\n        padding: 20px;\n    }\n    .product-image img {\n        width: 100%;\n        border: 1px solid #ddd;\n    }\n    .product-info {\n        flex: 2;\n        padding: 20px;\n    }\n    .price {\n        font-size: 24px;\n        color: #e4393c;\n        margin-top: 10px;\n    }\n    .old-price {\n        text-decoration: line-through;\n        color: #999;\n        margin-left: 10px;\n        font-size: 16px;\n    }\n    .promo {\n        background-color: #fffae5;\n        padding: 10px;\n        margin-top: 10px;\n        border: 1px solid #ffd700;\n    }\n    .buy-btn {\n        background-color: #e4393c;\n        color: #fff;\n        padding: 15px 30px;\n        border: none;\n        cursor: pointer;\n        font-size: 16px;\n        margin-top: 20px;\n    }\n    .buy-btn:hover {\n        background-color: #c62828;\n    }\n    .rating {\n        margin-top: 20px;\n    }\n    .rating span {\n        font-size: 20px;\n        cursor: pointer;\n        color: #ccc;\n    }\n    .rating span.active {\n        color: #ff9800;\n    }\n    .comment-box {\n        margin-top: 20px;\n    }\n    .comment-box textarea {\n        width: 100%;\n        height: 80px;\n        margin-bottom: 10px;\n    }\n    .comment-box button {\n        background-color: #0275d8;\n        color: #fff;\n        padding: 10px 20px;\n        border: none;\n        cursor: pointer;\n    }\n    .contact-service {\n        margin-top: 20px;\n    }\n    .contact-btn {\n        background-color: #ff9800;\n        color: #fff;\n        padding: 10px 20px;\n        border: none;\n        cursor: pointer;\n    }\n    .recommend {\n        margin-top: 40px;\n    }\n    .recommend h2 {\n        margin-bottom: 20px;\n    }\n    .recommend-items {\n        display: flex;\n        gap: 20px;\n        flex-wrap: wrap;\n    }\n    .recommend-item {\n        width: 220px;\n        border: 1px solid #ddd;\n        padding: 15px;\n        background-color: #fff;\n        text-align: center;\n    }\n    .recommend-item img {\n        max-width: 100%;\n        height: auto;\n    }\n    .recommend-item p {\n        margin: 10px 0;\n    }\n    .stock-info {\n        margin-top: 15px;\n        color: green;\n    }\n</style>\n</head>\n<body>\n\n<header>\n    <h1>LTF 新疆葵花籽 30g 小包装</h1>\n    <nav>\n        <a href=\"#\">首页</a> | \n        <a href=\"#\">全部商品</a> | \n        <a href=\"#\">联系我们</a>\n    </nav>\n</header>\n\n<div class=\"container\">\n    <div class=\"product-detail\">\n        <div class=\"product-image\">\n            <img src=\"https://via.placeholder.com/400x400?text=LTF+新疆葵花籽\" alt=\"LTF 新疆葵花籽 30g 小包装\">\n        </div>\n        <div class=\"product-info\">\n            <h2>品牌：LTF</h2>\n            <p>规格：30g 小包装，精选新疆葵花籽，饱满香脆。</p>\n            <p>卖点：源自新疆日照充足的葵花田，颗颗饱满，低温烘焙锁住原香，随时随地享用健康零食。</p>\n            <div class=\"price\">\n                现价：¥16.9 <span class=\"old-price\">¥25.0</span>\n            </div>\n            <div class=\"promo\">\n                促销信息：买 10 包仅需 ¥16.9，限时优惠至月底，库存有限！\n            </div>\n            <div class=\"stock-info\">库存剩余：25 套</div>\n            <button class=\"buy-btn\" onclick=\"buyNow()\">立即购买</button>\n            <div class=\"rating\">\n                评分：\n                <span onclick=\"setRating(1)\">★</span>\n                <span onclick=\"setRating(2)\">★</span>\n                <span onclick=\"setRating(3)\">★</span>\n                <span onclick=\"setRating(4)\">★</span>\n                <span onclick=\"setRating(5)\">★</span>\n            </div>\n            <div class=\"comment-box\">\n                <textarea id=\"comment\" placeholder=\"发表你的评论...\"></textarea>\n                <button onclick=\"submitComment()\">提交评论</button>\n            </div>\n            <div class=\"contact-service\">\n                <button class=\"contact-btn\" onclick=\"contactService()\">联系客服</button>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"recommend\">\n        <h2>推荐组合销售</h2>\n        <div class=\"recommend-items\">\n            <div class=\"recommend-item\">\n                <img src=\"https://via.placeholder.com/200x200?text=LTF+杏仁\" alt=\"LTF 杏仁\">\n                <p>LTF 新疆杏仁 50g</p>\n                <p>¥12.9</p>\n                <button onclick=\"buyNow()\">加入购物车</button>\n            </div>\n            <div class=\"recommend-item\">\n                <img src=\"https://via.placeholder.com/200x200?text=LTF+核桃\" alt=\"LTF 核桃\">\n                <p>LTF 新疆核桃 100g</p>\n                <p>¥22.9</p>\n                <button onclick=\"buyNow()\">加入购物车</button>\n            </div>\n            <div class=\"recommend-item\">\n                <img src=\"https://via.placeholder.com/200x200?text=LTF+混合坚果\" alt=\"LTF 混合坚果\">\n                <p>LTF 混合坚果 200g</p>\n                <p>¥39.9</p>\n                <button onclick=\"buyNow()\">加入购物车</button>\n            </div>\n        </div>\n    </div>\n</div>\n\n<script>\nfunction buyNow() {\n    alert(\"已将商品加入购物车，请前往支付页面完成购买。\");\n}\nfunction setRating(rating) {\n    const stars = document.querySelectorAll('.rating span');\n    stars.forEach((star, index) => {\n        if (index < rating) {\n            star.classList.add('active');\n        } else {\n            star.classList.remove('active');\n        }\n    });\n}\nfunction submitComment() {\n    const comment = document.getElementById('comment').value.trim();\n    if (comment) {\n        alert(\"评论提交成功：\" + comment);\n        document.getElementById('comment').value = '';\n    } else {\n        alert(\"请填写评论内容！\");\n    }\n}\nfunction contactService() {\n    alert(\"客服连接中，请稍候...\");\n}\n</script>\n\n</body>\n</html>"
+    }
+  ]
+}

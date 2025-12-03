@@ -1,0 +1,324 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "你现在是一名电商前端开发与营销专家，请基于以下要求开发一个完整的电商销售网页：\n\n📌 项目类型  \n创建一个包含 HTML、CSS 和 JavaScript 的 **单文件（Single HTML File）** 春节主题零食电商页面。\n\n📌 商业目标  \n对标淘宝/天猫移动端购物流程，提升：  \n- 点击率（CTR）\n- 加购率（Add-to-Cart Rate）\n- 成交转化率（GMV Conversion）\n\n📌 4P 营销要求（必须实现）\n1) 产品（外观图、规格、卖点、评论区、详情展示）\n2) 价格（现价、原价、折扣展示、券后价逻辑）\n3) 渠道（清晰的购买入口与购物流程）\n4) 促销（限时倒计时、热销标签、库存提醒、优惠券）\n\n📌 产品信息与素材  \n- 品牌：LYF  \n- 产品：新疆香瓜子葵花子  \n- 规格：30g × 10 包  \n- 价格：¥16.9（原价 ¥29.9）  \n- 主图链接：  \n  https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\n\n📌 UI 风格  \n- 对标天猫移动端视觉规范\n- 春节红主色调（#E4393C 或类似）\n- 动效与交互体现节日感、紧迫感与愉悦感\n\n📌 功能规范（必须实现）\nA. 购物模块  \n- 数量增减、加入购物车、立即购买  \n- localStorage 保存购物车数据  \n- 购物车侧栏展开/关闭  \n- 购物车商品编辑、删除、结算总价计算  \n\nB. 促销模块  \n- 限时倒计时（自动更新 UI）  \n- 库存动态显示（库存减少逻辑）  \n- 领券中心（用户可领券，并用于结算减免）  \n- 热销标签和实时销量滚动广播  \n\nC. 内容展示  \n- 商品评价（评分+评论列表，含表情符号与图片示例）  \n- 商品详情折叠与展开  \n- *相似推荐模块*（3–4 个推荐产品）  \n\n📌 创新功能（必须至少添加 1 个）\n示例（可选其一或自行发挥）👇  \n- AI 场景推荐：根据浏览或加购行为展示“猜你喜欢”  \n- 福袋抽奖：增加用户停留时长  \n- 分享返红包功能  \n- 福气值积分体系  \n- “春节返乡礼包”多装组合 SKU 切换  \n- AR 弹窗：点击产品可 360°查看（可使用 CSS 动画模拟）\n\n📌 技术约束  \n- 原生 HTML + CSS + JavaScript  \n- ❌ 不允许使用任何框架（如 Vue/React/Bootstrap 等）\n- CSS 写在 `<style>` 内  \n- JavaScript 写在 `<script>` 内  \n- 页面所有内容输出在**同一个 HTML 文件中**\n\n📌 输出格式  \n直接输出完整 HTML 文件代码  \n包含所有依赖、脚本与样式，可一键运行。  \n代码无需解释，无需 Markdown 格式。\n\n⚠ 如果部分功能需使用假数据，请合理模拟，但保持真实电商逻辑。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "分析客户简报，提炼核心卖点（LYF 新疆香瓜子葵花子、主视觉、促销策略）与目标用户人群",
+              "将商业目标（CTR、加购率、成交转化率）转化为页面功能与营销元素清单",
+              "制定整体项目执行计划，分配任务至 PM、Architect、Engineer 并定义验收标准"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "编写详细 PRD 文档，包含产品信息、价格体系、4P 营销元素、促销模块、购物流程与创新功能",
+              "制定信息结构与购买路径设计，确保页面从主视觉到购买入口的转化逻辑清晰",
+              "定义所有交互需求与数据显示规则（库存逻辑、倒计时更新、优惠券领取与结算减免）"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "规划页面结构层次，包括首屏主视觉区、商品规格区、价格及促销区、购物功能区、评价区、详情和推荐区",
+              "设计可复用的营销组件（如价格标签组件、库存提示组件、倒计时组件、优惠券组件）及其交互接口",
+              "制定库存减少、倒计时刷新、优惠触发等前端行为逻辑规范，输出组件结构与事件接口文档"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "开发符合天猫移动端视觉规范的响应式页面，使用单文件 HTML 内嵌 CSS 和 JavaScript 实现",
+              "实现购物模块（数量增减、本地存储购物车、购物车侧栏、商品编辑删除、结算总价）等功能",
+              "实现促销模块（限时倒计时、库存动态更新、优惠券中心、热销标签与实时销量广播）",
+              "实现内容展示模块（商品评价、详情折叠展开、相似推荐）及至少一种创新功能（如福袋抽奖）",
+              "完成功能、兼容性与性能测试，确保页面高加载速度与稳定交互"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "打造以春节氛围和紧迫促销为核心的新年零食电商页面，突出新疆香瓜子葵花子的性价比与限时优惠，强化用户加购与下单决策。",
+        "goals": [
+          "提升商品详情页点击率（CTR）",
+          "提高加购率（Add-to-Cart Rate）",
+          "增加成交转化率（GMV Conversion）",
+          "强化限时促销与稀缺感，引导快速决策",
+          "优化移动端购物流程与交互体验",
+          "增加春节节日氛围，提升停留时长与浏览深度"
+        ],
+        "target_users": [
+          "年轻上班族用户 + 春节送礼零食需求，追求高性价比与节庆包装",
+          "家庭购物主力 + 年节零食备货需求，关注促销与限时优惠"
+        ],
+        "page_sections": [
+          {
+            "id": "hero",
+            "purpose": "以大尺寸春节红色视觉和产品高清主图吸引用户注意力，快速传达核心卖点与优惠力度",
+            "kpi": "CTR"
+          },
+          {
+            "id": "price-box",
+            "purpose": "展示现价、原价、优惠券后价格，传递强烈性价比信息并推动购买决策",
+            "kpi": "转化率"
+          },
+          {
+            "id": "promo-countdown",
+            "purpose": "限时倒计时与库存提醒制造紧迫感，缩短用户犹豫时间",
+            "kpi": "加购率"
+          },
+          {
+            "id": "coupon-center",
+            "purpose": "集中展示可领取的优惠券，提高用户领取率并刺激下单",
+            "kpi": "转化率"
+          },
+          {
+            "id": "cart-module",
+            "purpose": "支持数量选择、加购、购物车编辑与结算，确保购买路径流畅",
+            "kpi": "加购率"
+          },
+          {
+            "id": "sales-ticker",
+            "purpose": "实时销量滚动广播与热销标签，营造畅销爆款氛围",
+            "kpi": "CTR"
+          },
+          {
+            "id": "product-specs",
+            "purpose": "清晰展示规格、产地、品牌，加强用户对产品的信任与理解",
+            "kpi": "转化率"
+          },
+          {
+            "id": "reviews-section",
+            "purpose": "展示评分与用户评论（含图片、表情），提升购买信心",
+            "kpi": "转化率"
+          },
+          {
+            "id": "details-toggle",
+            "purpose": "折叠展示详细介绍、配料表与产地文化，满足深入了解需求",
+            "kpi": "页面停留时长"
+          },
+          {
+            "id": "recommendations",
+            "purpose": "相似产品推荐模块，扩大用户购买范围并增加客单价",
+            "kpi": "交叉销售转化率"
+          },
+          {
+            "id": "innovation-luckybag",
+            "purpose": "春节福袋抽奖互动，增加趣味性与用户停留时长，促进二次加购",
+            "kpi": "停留时长"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#D0021B",
+          "#FFD700",
+          "#FAF3E0"
+        ],
+        "components": [
+          {
+            "id": "hero-section",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "春节氛围主标题，突出新疆香瓜子葵花子核心卖点"
+              },
+              {
+                "tag": "p",
+                "content_hint": "限时优惠与性价比宣传文案"
+              }
+            ]
+          },
+          {
+            "id": "price-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "现价与原价展示"
+              },
+              {
+                "tag": "p",
+                "content_hint": "优惠券后价格说明"
+              }
+            ]
+          },
+          {
+            "id": "promo-countdown",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "限时促销倒计时标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "剩余时间与库存提醒"
+              }
+            ]
+          },
+          {
+            "id": "coupon-center",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "优惠券领取区标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "可领取优惠券列表说明"
+              }
+            ]
+          },
+          {
+            "id": "cart-module",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "购物车操作标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "数量选择与加购功能说明"
+              }
+            ]
+          },
+          {
+            "id": "sales-ticker",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "实时销量标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "滚动广播热销提示"
+              }
+            ]
+          },
+          {
+            "id": "product-specs",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "产品规格标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "产地、品牌等参数描述"
+              }
+            ]
+          },
+          {
+            "id": "reviews-section",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "用户评价标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "评分与文字/图片评论摘要"
+              }
+            ]
+          },
+          {
+            "id": "details-toggle",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "详细介绍标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "产地文化与配料表简述"
+              }
+            ]
+          },
+          {
+            "id": "recommendations",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "相似产品推荐区标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "关联产品描述"
+              }
+            ]
+          },
+          {
+            "id": "innovation-luckybag",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "春节福袋互动标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "抽奖规则与参与说明"
+              }
+            ]
+          },
+          {
+            "id": "footer",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "版权信息与客服联系方式"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>新疆香瓜子葵花子春节特惠</title>\n    <style>\n        :root {\n            --primary-color: #D0021B;\n            --accent-color: #FFD700;\n            --bg-color: #FAF3E0;\n            --text-color: #333;\n            --max-width: 800px;\n        }\n        body {\n            margin: 0;\n            font-family: \"Microsoft YaHei\", sans-serif;\n            background-color: var(--bg-color);\n            color: var(--text-color);\n            line-height: 1.6;\n        }\n        .container {\n            max-width: var(--max-width);\n            margin: 0 auto;\n            padding: 1rem;\n        }\n        h1, h2, h3 {\n            color: var(--primary-color);\n            margin-bottom: 0.5rem;\n        }\n        section, footer {\n            background-color: #fff;\n            margin-bottom: 1rem;\n            padding: 1rem;\n            border-radius: 8px;\n            box-shadow: 0 2px 6px rgba(0,0,0,0.05);\n        }\n        .price-highlight {\n            font-size: 1.5rem;\n            font-weight: bold;\n            color: var(--accent-color);\n        }\n        @media (max-width: 600px) {\n            body {\n                font-size: 0.95rem;\n            }\n            h1 {\n                font-size: 1.5rem;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <section id=\"hero-section\">\n            <h1>春节盛宴，新疆香瓜子葵花子，香脆好味道</h1>\n            <p>限时优惠，节日囤货首选，高性价比美味享不停</p>\n        </section>\n\n        <section id=\"price-box\">\n            <h2>现价 ￥29.9 元 原价 ￥49.9 元</h2>\n            <p class=\"price-highlight\">使用优惠券后仅 ￥24.9 元</p>\n        </section>\n\n        <section id=\"promo-countdown\">\n            <h3>限时促销倒计时</h3>\n            <p>剩余 2 天 5 小时，库存不足 500 件，请及时抢购</p>\n        </section>\n\n        <section id=\"coupon-center\">\n            <h3>优惠券中心</h3>\n            <p>领取满 50 减 10 元、满 100 减 25 元等多种优惠券</p>\n        </section>\n\n        <section id=\"cart-module\">\n            <h3>购物车加购</h3>\n            <p>选择数量后立即加入购物车，享受春节包邮服务</p>\n        </section>\n\n        <section id=\"sales-ticker\">\n            <h3>实时销量</h3>\n            <p>已有 3254 位顾客完成下单，热销不停</p>\n        </section>\n\n        <section id=\"product-specs\">\n            <h3>产品规格</h3>\n            <p>产地：新疆<br>品牌：阳光葵花<br>净含量：500g/袋</p>\n        </section>\n\n        <section id=\"reviews-section\">\n            <h3>用户评价</h3>\n            <p>评分：4.8 分，用户一致好评，香脆可口，颗粒饱满</p>\n        </section>\n\n        <section id=\"details-toggle\">\n            <h3>详细介绍</h3>\n            <p>源自新疆优质葵花田，结合传统烘焙工艺，配料表简单纯粹</p>\n        </section>\n\n        <section id=\"recommendations\">\n            <h3>相似产品推荐</h3>\n            <p>葵花籽混合礼盒、瓜子礼品包装，让春节送礼更贴心</p>\n        </section>\n\n        <section id=\"innovation-luckybag\">\n            <h3>春节福袋互动</h3>\n            <p>参与福袋抽奖，赢取免单与限量礼品，活动火热进行中</p>\n        </section>\n\n        <footer id=\"footer\">\n            <p>© 2024 阳光葵花 | 客服热线：400-888-8888</p>\n        </footer>\n    </div>\n</body>\n</html>"
+    }
+  ]
+}

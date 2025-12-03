@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>春节零食商城</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #F4F4F5;
+    color: #333;
+  }
+  header {
+    background-color: #D32F2F;
+    color: #FFFFFF;
+    padding: 1rem;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+  }
+  nav a {
+    color: #FFFFFF;
+    margin: 0 0.5rem;
+    text-decoration: none;
+  }
+  #search-bar {
+    display: flex;
+    padding: 1rem;
+    background-color: #FFC107;
+    justify-content: center;
+    align-items: center;
+  }
+  #search-bar input {
+    padding: 0.5rem;
+    width: 60%;
+    border: none;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+  }
+  #search-bar button {
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #product-gallery {
+    padding: 1rem;
+    text-align: center;
+    background-color: #FFFFFF;
+  }
+  #product-gallery img {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+  #product-gallery .thumbnails img {
+    width: 60px;
+    height: 60px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+  }
+  #product-info {
+    padding: 1rem;
+    background-color: #FFFFFF;
+  }
+  #price-promo {
+    padding: 1rem;
+    background-color: #FFC107;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #price-promo span {
+    font-size: 1.2rem;
+  }
+  #price-promo span.original-price {
+    text-decoration: line-through;
+    color: #888;
+  }
+  #coupon-center {
+    padding: 1rem;
+    background-color: #FFFFFF;
+    text-align: center;
+  }
+  #coupon-center button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #comment-section {
+    padding: 1rem;
+    background-color: #FFFFFF;
+  }
+  #comment-section h3 {
+    margin-top: 0;
+  }
+  #comment-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  #buy-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    display: none;
+    z-index: 1000;
+  }
+  #buy-modal button {
+    background-color: #D32F2F;
+    color: #FFFFFF;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #random-optimize {
+    padding: 1rem;
+    background-color: #FFC107;
+    margin-top: 1rem;
+  }
+  #random-optimize span {
+    color: #D32F2F;
+    font-weight: bold;
+  }
+  footer {
+    padding: 1rem;
+    background-color: #D32F2F;
+    color: #FFFFFF;
+    text-align: center;
+  }
+  footer nav a {
+    color: #FFFFFF;
+    margin: 0 0.5rem;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<header id="header-bar">
+  <h1>春节零食大促</h1>
+  <nav>
+    <a href="#">坚果</a>
+    <a href="#">瓜子零食</a>
+    <a href="#">春节特卖</a>
+  </nav>
+</header>
+
+<section id="search-bar">
+  <input type="text" placeholder="搜索全站商品">
+  <button>搜索</button>
+</section>
+
+<section id="product-gallery">
+  <img src="sunflower-main.jpg" alt="新疆葵花籽主图">
+  <div class="thumbnails">
+    <img src="thumb1.jpg" alt="预览1">
+    <img src="thumb2.jpg" alt="预览2">
+    <img src="thumb3.jpg" alt="预览3">
+  </div>
+</section>
+
+<main id="product-info">
+  <h2>新疆葵花籽 500g</h2>
+  <p>精选新疆葵花籽，颗粒饱满，香脆可口，春节零食的不二选择。</p>
+</main>
+
+<section id="price-promo">
+  <span class="current-price">￥16.9</span>
+  <span class="original-price">￥25.9</span>
+  <div class="countdown">限时优惠倒计时：00:12:34</div>
+</section>
+
+<section id="coupon-center">
+  <button>领取满10减2优惠券</button>
+  <button>领取满20减5优惠券</button>
+</section>
+
+<section id="comment-section">
+  <h3>用户评论</h3>
+  <div class="filter">评论筛选控件</div>
+  <ul>
+    <li>用户A：很好吃，包装精美。</li>
+    <li>用户B：味道新鲜，价格实惠。</li>
+  </ul>
+</section>
+
+<div id="buy-modal">
+  <h4>已选商品：新疆葵花籽 500g</h4>
+  <p>最终价格：￥16.9</p>
+  <button>确认支付</button>
+</div>
+
+<aside id="random-optimize">
+  <div>为你推荐：特价腰果</div>
+  <span>限时买一送一</span>
+</aside>
+
+<footer id="footer-bar">
+  <p>© 2024 春节零食商城 版权所有</p>
+  <nav>
+    <a href="#">关于我们</a>
+    <a href="#">帮助中心</a>
+    <a href="#">联系我们</a>
+  </nav>
+</footer>
+</body>
+</html>

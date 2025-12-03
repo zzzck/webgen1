@@ -1,0 +1,54 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的单文件（Single HTML File）一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n参考图片链接： \n图1“https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n图2“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n图3“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n#Functional Requirements (功能需求)\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n页面支持商品分类展示与在线购买流程（渠道）。您还可以加入促销元素，如限时倒计时、库存提醒、热销标签和优惠卷（促销），进一步提升购物体验与趣味性。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求，明确春节年货大促的核心目标（提升转化率、增加销量）",
+              "提炼产品卖点（LYF 品牌、香瓜子葵花子组合装、喜庆视觉、优惠力度）",
+              "定义页面交付物（单文件 HTML 页面，包含 HTML/CSS/JS，与 4P 营销要素）",
+              "分解功能需求（价格展示、购物车、库存提醒、倒计时、优惠券、购买流程）",
+              "制定设计风格基准（移动端适配、主色调 #E4393C、参考京东/天猫风格）",
+              "分配实现任务至 Engineer，确保按规格交付"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据 TeamLeader 的规格撰写单文件 HTML 页面，集成 HTML、CSS、JavaScript",
+              "实现响应式布局与春节红主色调设计，遵循京东/天猫移动端风格",
+              "在页面中展示产品外观图（引用提供链接）、规格介绍与卖点文案",
+              "实现价格与优惠信息模块（现价、原价、折扣说明）",
+              "实现购买渠道入口（立即购买按钮、购物流程引导）",
+              "编写购物车功能，支持添加、修改、删除商品并使用 localStorage 保存数据",
+              "实现促销元素：限时倒计时、库存提醒、热销标签及优惠券显式展示",
+              "进行跨浏览器测试，保证高加载速度与稳定交互"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF 春节零食香瓜子葵花子 - 年货大促</title>\n<style>\n    body {\n        margin: 0;\n        font-family: 'Microsoft Yahei', sans-serif;\n        background-color: #fff5f5;\n        color: #333;\n    }\n    header {\n        background-color: #E4393C;\n        color: white;\n        padding: 10px;\n        text-align: center;\n        font-size: 20px;\n        font-weight: bold;\n    }\n    .container {\n        padding: 10px;\n    }\n    .product-images {\n        display: flex;\n        overflow-x: auto;\n    }\n    .product-images img {\n        width: 100%;\n        max-width: 300px;\n        margin-right: 10px;\n        border-radius: 8px;\n    }\n    .product-info {\n        background-color: white;\n        padding: 10px;\n        border-radius: 8px;\n        margin-top: 10px;\n    }\n    .product-title {\n        font-size: 18px;\n        font-weight: bold;\n        margin-bottom: 5px;\n    }\n    .product-specs {\n        font-size: 14px;\n        color: #666;\n        margin-bottom: 5px;\n    }\n    .product-selling-point {\n        font-size: 14px;\n        color: #E4393C;\n        font-weight: bold;\n    }\n    .price-box {\n        margin-top: 10px;\n    }\n    .price-current {\n        color: #E4393C;\n        font-size: 20px;\n        font-weight: bold;\n    }\n    .price-original {\n        text-decoration: line-through;\n        color: #999;\n        margin-left: 5px;\n    }\n    .promo-tag {\n        display: inline-block;\n        background-color: #FFD700;\n        color: #E4393C;\n        font-size: 12px;\n        padding: 3px 6px;\n        border-radius: 4px;\n        margin-left: 5px;\n    }\n    .countdown {\n        margin-top: 5px;\n        font-size: 14px;\n        color: #E4393C;\n    }\n    .stock-alert {\n        font-size: 14px;\n        color: #E4393C;\n        margin-top: 5px;\n    }\n    .purchase-box {\n        margin-top: 10px;\n        background-color: #fff;\n        padding: 10px;\n        border-radius: 8px;\n    }\n    .quantity {\n        display: flex;\n        align-items: center;\n        margin-bottom: 10px;\n    }\n    .quantity button {\n        width: 30px;\n        height: 30px;\n        font-size: 18px;\n        background-color: #E4393C;\n        color: white;\n        border: none;\n        border-radius: 4px;\n        cursor: pointer;\n    }\n    .quantity input {\n        width: 40px;\n        text-align: center;\n        margin: 0 5px;\n    }\n    .buy-btn, .cart-btn {\n        width: 48%;\n        padding: 10px;\n        font-size: 16px;\n        background-color: #E4393C;\n        color: white;\n        border: none;\n        border-radius: 8px;\n        cursor: pointer;\n        margin-right: 2%;\n    }\n    .cart-btn {\n        background-color: #FF8C00;\n        margin-right: 0;\n    }\n    .cart {\n        margin-top: 20px;\n        background-color: white;\n        padding: 10px;\n        border-radius: 8px;\n    }\n    .cart-item {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n    .cart-item span {\n        flex: 1;\n    }\n    .cart-item button {\n        background-color: #ccc;\n        border: none;\n        cursor: pointer;\n        padding: 3px 6px;\n        border-radius: 4px;\n        margin-left: 5px;\n    }\n</style>\n</head>\n<body>\n<header>LYF 春节年货大促 - 香瓜子葵花子</header>\n<div class=\"container\">\n    <div class=\"product-images\">\n        <img src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" alt=\"产品图1\">\n        <img src=\"https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b\" alt=\"产品图2\">\n        <img src=\"https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg\" alt=\"产品图3\">\n    </div>\n    <div class=\"product-info\">\n        <div class=\"product-title\">LYF 香瓜子葵花子 30g 小包装 / 10包组合装</div>\n        <div class=\"product-specs\">规格：每包30g，共10包，精选优质瓜子</div>\n        <div class=\"product-selling-point\">香脆可口，唇齿留香，过年必备零食</div>\n        <div class=\"price-box\">\n            <span class=\"price-current\">¥16.9</span>\n            <span class=\"price-original\">¥29.9</span>\n            <span class=\"promo-tag\">限时优惠</span>\n            <span class=\"promo-tag\">热销</span>\n        </div>\n        <div class=\"countdown\">活动倒计时：<span id=\"countdown\">00:00:00</span></div>\n        <div class=\"stock-alert\">库存紧张，仅剩 <span id=\"stock\">25</span> 件</div>\n    </div>\n    <div class=\"purchase-box\">\n        <div class=\"quantity\">\n            <button id=\"minus\">-</button>\n            <input type=\"text\" id=\"qty\" value=\"1\" readonly>\n            <button id=\"plus\">+</button>\n        </div>\n        <button class=\"buy-btn\" onclick=\"buyNow()\">立即购买</button>\n        <button class=\"cart-btn\" onclick=\"addToCart()\">加入购物车</button>\n    </div>\n    <div class=\"cart\">\n        <h3>购物车</h3>\n        <div id=\"cart-items\"></div>\n    </div>\n</div>\n<script>\n    let qtyInput = document.getElementById('qty');\n    document.getElementById('minus').onclick = function() {\n        let val = parseInt(qtyInput.value);\n        if(val > 1) qtyInput.value = val - 1;\n    };\n    document.getElementById('plus').onclick = function() {\n        let val = parseInt(qtyInput.value);\n        qtyInput.value = val + 1;\n    };\n\n    let countdownElement = document.getElementById('countdown');\n    function startCountdown(hours) {\n        let seconds = hours * 3600;\n        setInterval(function() {\n            if(seconds >= 0) {\n                let h = String(Math.floor(seconds / 3600)).padStart(2, '0');\n                let m = String(Math.floor(seconds % 3600 / 60)).padStart(2, '0');\n                let s = String(seconds % 60).padStart(2, '0');\n                countdownElement.textContent = `${h}:${m}:${s}`;\n                seconds--;\n            }\n        }, 1000);\n    }\n    startCountdown(3);\n\n    function getCart() {\n        let cart = localStorage.getItem('cart');\n        return cart ? JSON.parse(cart) : [];\n    }\n    function saveCart(cart) {\n        localStorage.setItem('cart', JSON.stringify(cart));\n    }\n    function renderCart() {\n        let cart = getCart();\n        let itemsContainer = document.getElementById('cart-items');\n        itemsContainer.innerHTML = '';\n        cart.forEach((item, index) => {\n            let div = document.createElement('div');\n            div.className = 'cart-item';\n            div.innerHTML = `<span>${item.name} x ${item.qty}</span>\n                             <span>¥${(item.price * item.qty).toFixed(2)}</span>\n                             <button onclick=\"removeFromCart(${index})\">删除</button>`;\n            itemsContainer.appendChild(div);\n        });\n    }\n    function addToCart() {\n        let cart = getCart();\n        let qty = parseInt(qtyInput.value);\n        let product = {\n            name: 'LYF 香瓜子葵花子 30g*10包',\n            price: 16.9,\n            qty: qty\n        };\n        let found = false;\n        cart.forEach(item => {\n            if(item.name === product.name) {\n                item.qty += qty;\n                found = true;\n            }\n        });\n        if(!found) cart.push(product);\n        saveCart(cart);\n        renderCart();\n    }\n    function removeFromCart(index) {\n        let cart = getCart();\n        cart.splice(index, 1);\n        saveCart(cart);\n        renderCart();\n    }\n    function buyNow() {\n        alert('跳转到支付页面（模拟）');\n    }\n    window.onload = renderCart;\n</script>\n</body>\n</html>"
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n为以下产品生成一个完整的电商购物网页,使用html+css+js实现（模仿网址：https://item.jd.com/100168004567.html）：\n品牌为 LTF 的新疆葵花籽（30g 小包装），售价为 10 包 16.9 元，网页销售场景。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n输出功能需包括：\nF1：渲染购买功能模块（按钮、支付入口）：生成简洁、功能完整的购买模块，重点优化响应速度与兼容性，确保快速加载和流畅支付体验\nF2：设置互动功能（评分、评论）：实现简洁的评分和评论模块，优先考虑功能实现的速度与稳定性，确保用户互动流畅。\nF3：联系客服功能模块（按钮）：快速实现一个标准的联系客服按钮，具备良好的可用性，能快速与客服系统对接。\nF4：推荐或组合销售模块：生成简洁的推荐或组合销售模块，重点是快速展示相关产品，提高转化率。\n\n其他设计：\n用户登录/注册功能模块：实现基本的登录和注册功能，快速验证用户身份，提供常规的忘记密码等操作，确保页面流畅。\n用户推荐功能：生成简洁的用户推荐模块，基于简单的历史购买数据或浏览记录，快速展示推荐商品。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求",
+              "识别交付物（完整电商购物网页，包含4P元素与各功能模块）",
+              "划分任务并分配到各角色"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "将客户需求转化为结构化PRD",
+              "明确F1-F4及其他设计功能的详细规格",
+              "补充性能与兼容性要求",
+              "确定交互流程与数据流"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "根据PRD设计页面信息架构",
+              "规划HTML结构与CSS样式体系",
+              "设计各功能模块的组件化方案",
+              "定义前端与后端接口需求"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "实现完整的HTML/CSS/JS页面",
+              "实现4P营销要素的前端渲染",
+              "开发F1购买功能模块（按钮与支付入口）",
+              "开发F2评分与评论模块",
+              "实现F3联系客服功能按钮并对接客服系统",
+              "开发F4推荐或组合销售模块",
+              "实现登录/注册模块与忘记密码功能",
+              "实现用户推荐模块（基于历史数据或浏览记录）",
+              "确保优化响应速度、兼容性与交互稳定性"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LTF 新疆葵花籽电商购物网页，为小包装坚果提供完整销售与互动体验",
+        "goals": [
+          "完整呈现4P营销元素以提升用户购买转化率",
+          "实现快速响应的购买与支付流程以提高成交效率",
+          "提供稳定的用户评分与评论互动功能增加社交证明",
+          "集成即时联系客服入口提高用户问题解决速度",
+          "通过推荐或组合销售引导提升客单价",
+          "实现登录、注册及忘记密码功能保证账户安全性",
+          "基于用户行为生成商品推荐以促进复购"
+        ],
+        "target_users": [
+          "注重零食品质与性价比的都市白领，痛点是需要快速了解产品信息并便捷下单",
+          "追求健康坚果零食的家庭主妇，痛点是希望有明确规格与优惠信息，以及简单的购买流程",
+          "喜欢尝试新品零食的年轻消费者，痛点是需要丰富的互动评价和推荐商品以参考选择"
+        ],
+        "page_sections": [
+          {
+            "id": "product-display",
+            "purpose": "展示产品外观图、规格介绍、卖点文案，让用户快速了解新疆葵花籽特点"
+          },
+          {
+            "id": "price-info",
+            "purpose": "呈现现价、对比价格和优惠信息，突出价格优势"
+          },
+          {
+            "id": "purchase-module",
+            "purpose": "提供购买按钮和支付入口，优化响应速度与兼容性，确保流畅支付体验"
+          },
+          {
+            "id": "rating-review",
+            "purpose": "用户可快速评分并发表评论，增强其他用户的信心与互动氛围"
+          },
+          {
+            "id": "customer-service",
+            "purpose": "快速联系客服的按钮入口，帮助用户及时解决问题"
+          },
+          {
+            "id": "promotion-banner",
+            "purpose": "显示促销标签、库存信息或限时购买激励，刺激用户下单"
+          },
+          {
+            "id": "combo-recommend",
+            "purpose": "呈现推荐或组合销售商品，提升相关商品曝光与转化"
+          },
+          {
+            "id": "login-register",
+            "purpose": "用户登录、注册和忘记密码功能，保障账户安全并提供个性化体验"
+          },
+          {
+            "id": "user-recommend",
+            "purpose": "基于历史购买或浏览记录的推荐商品模块，促进二次购买"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "two-column",
+        "colors": [
+          "#F5F5F5",
+          "#2B6CB0",
+          "#E53E3E",
+          "#38A169",
+          "#FFC107"
+        ],
+        "components": [
+          {
+            "id": "product-display",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "产品名称与品牌（LTF 新疆葵花籽）"
+              },
+              {
+                "tag": "p",
+                "content_hint": "规格介绍与卖点文案，例如：30g小包装，新疆原产，香脆可口"
+              },
+              {
+                "tag": "img",
+                "content_hint": "产品高清外观图"
+              }
+            ]
+          },
+          {
+            "id": "price-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "现价（例如：￥16.9/10包）"
+              },
+              {
+                "tag": "p",
+                "content_hint": "对比价格与优惠信息"
+              }
+            ]
+          },
+          {
+            "id": "purchase-module",
+            "html": "section",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              },
+              {
+                "tag": "div",
+                "content_hint": "支付入口组件"
+              }
+            ]
+          },
+          {
+            "id": "rating-review",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "评分星级控件"
+              },
+              {
+                "tag": "textarea",
+                "content_hint": "发表评论输入框"
+              },
+              {
+                "tag": "button",
+                "content_hint": "提交评论按钮"
+              }
+            ]
+          },
+          {
+            "id": "customer-service",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "联系客服入口按钮"
+              }
+            ]
+          },
+          {
+            "id": "promotion-banner",
+            "html": "section",
+            "children": [
+              {
+                "tag": "span",
+                "content_hint": "促销标签，如限时优惠"
+              },
+              {
+                "tag": "p",
+                "content_hint": "库存信息或倒计时激励"
+              }
+            ]
+          },
+          {
+            "id": "combo-recommend",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "组合销售或推荐标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "推荐商品列表"
+              }
+            ]
+          },
+          {
+            "id": "login-register",
+            "html": "section",
+            "children": [
+              {
+                "tag": "form",
+                "content_hint": "登录表单"
+              },
+              {
+                "tag": "form",
+                "content_hint": "注册表单"
+              },
+              {
+                "tag": "a",
+                "content_hint": "忘记密码链接"
+              }
+            ]
+          },
+          {
+            "id": "user-recommend",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "基于历史数据的推荐标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "推荐商品卡片列表"
+              }
+            ]
+          },
+          {
+            "id": "footer",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "版权信息与网站声明"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LTF 新疆葵花籽电商购物页</title>\n<style>\nbody {\n    font-family: Arial, sans-serif;\n    background-color: #F5F5F5;\n    margin: 0;\n    padding: 0;\n}\nheader {\n    background-color: #2B6CB0;\n    color: #fff;\n    padding: 15px;\n    text-align: center;\n}\nmain {\n    display: flex;\n    flex-wrap: wrap;\n    padding: 20px;\n}\nsection, aside {\n    background: #fff;\n    padding: 15px;\n    margin: 10px;\n    box-shadow: 0 0 5px rgba(0,0,0,0.1);\n}\n#product-display img {\n    max-width: 100%;\n    height: auto;\n}\n#price-info p {\n    font-size: 1.2em;\n    margin: 5px 0;\n}\n.price-current {\n    color: #E53E3E;\n    font-weight: bold;\n}\n.price-old {\n    text-decoration: line-through;\n    color: #999;\n}\n#purchase-module button {\n    background-color: #38A169;\n    color: #fff;\n    border: none;\n    padding: 10px 20px;\n    font-size: 1em;\n    cursor: pointer;\n}\n#purchase-module button:hover {\n    background-color: #2F855A;\n}\n#rating-review .stars {\n    color: #FFC107;\n    font-size: 1.5em;\n}\n#rating-review textarea {\n    width: 100%;\n    height: 80px;\n    margin-top: 10px;\n}\n#rating-review button {\n    background-color: #2B6CB0;\n    color: white;\n    border: none;\n    padding: 8px 16px;\n    margin-top: 8px;\n    cursor: pointer;\n}\n#customer-service button {\n    background-color: #E53E3E;\n    color: white;\n    border: none;\n    padding: 8px 16px;\n    cursor: pointer;\n}\n#promotion-banner {\n    color: #E53E3E;\n    font-weight: bold;\n}\n#combo-recommend .product-card, #user-recommend .product-card {\n    display: inline-block;\n    width: 45%;\n    margin: 5px;\n    vertical-align: top;\n}\n#login-register form {\n    margin-bottom: 15px;\n}\n#login-register input {\n    width: calc(100% - 10px);\n    margin: 5px 0;\n    padding: 5px;\n}\n#login-register button {\n    background-color: #2B6CB0;\n    color: white;\n    border: none;\n    padding: 8px;\n    cursor: pointer;\n}\nfooter {\n    background-color: #2B6CB0;\n    color: white;\n    text-align: center;\n    padding: 10px;\n}\n</style>\n</head>\n<body>\n<header>\n    <h1>LTF 新疆葵花籽（30g 小包装）</h1>\n</header>\n<main>\n    <section id=\"product-display\">\n        <h1>LTF 新疆葵花籽</h1>\n        <p>30g小包装，新疆原产，香脆可口，精选优质葵花籽，每一粒都蕴含自然阳光的香味。</p>\n        <img src=\"images/ltf_kuaizi.jpg\" alt=\"LTF 新疆葵花籽产品图\">\n    </section>\n    <section id=\"price-info\">\n        <p class=\"price-current\">￥16.9 / 10包</p>\n        <p class=\"price-old\">￥19.9</p>\n        <p>限时优惠立省3元！</p>\n    </section>\n    <section id=\"promotion-banner\">\n        <span>限时抢购</span>\n        <p>库存紧张，仅剩 50 份</p>\n    </section>\n    <section id=\"purchase-module\">\n        <button onclick=\"buyNow()\">立即购买</button>\n        <div id=\"payment-entry\" style=\"margin-top:10px;\">\n            <p>请选择支付方式：</p>\n            <button onclick=\"pay('支付宝')\">支付宝</button>\n            <button onclick=\"pay('微信支付')\">微信支付</button>\n        </div>\n    </section>\n    <section id=\"rating-review\">\n        <div class=\"stars\">★★★★★</div>\n        <textarea id=\"comment\" placeholder=\"请输入您的评论...\"></textarea>\n        <button onclick=\"submitComment()\">提交评论</button>\n        <div id=\"comments-list\"></div>\n    </section>\n    <aside id=\"customer-service\">\n        <button onclick=\"contactService()\">联系客服</button>\n    </aside>\n    <section id=\"combo-recommend\">\n        <h2>组合销售推荐</h2>\n        <div class=\"product-card\">\n            <img src=\"images/mixed_nuts.jpg\" alt=\"混合坚果\">\n            <p>混合坚果礼包</p>\n            <p>￥29.9</p>\n        </div>\n        <div class=\"product-card\">\n            <img src=\"images/pumpkin_seeds.jpg\" alt=\"南瓜籽\">\n            <p>南瓜籽小包装</p>\n            <p>￥12.9</p>\n        </div>\n    </section>\n    <section id=\"login-register\">\n        <form id=\"login-form\">\n            <h3>用户登录</h3>\n            <input type=\"text\" placeholder=\"用户名\" required>\n            <input type=\"password\" placeholder=\"密码\" required>\n            <button type=\"submit\">登录</button>\n        </form>\n        <form id=\"register-form\">\n            <h3>用户注册</h3>\n            <input type=\"text\" placeholder=\"用户名\" required>\n            <input type=\"email\" placeholder=\"邮箱\" required>\n            <input type=\"password\" placeholder=\"密码\" required>\n            <button type=\"submit\">注册</button>\n        </form>\n        <a href=\"#\">忘记密码？</a>\n    </section>\n    <section id=\"user-recommend\">\n        <h2>为您推荐</h2>\n        <div class=\"product-card\">\n            <img src=\"images/walnuts.jpg\" alt=\"核桃\">\n            <p>优质核桃</p>\n            <p>￥25.9</p>\n        </div>\n        <div class=\"product-card\">\n            <img src=\"images/cashew.jpg\" alt=\"腰果\">\n            <p>香脆腰果</p>\n            <p>￥22.9</p>\n        </div>\n    </section>\n</main>\n<footer>\n    <p>© 2024 LTF 零食商城 | 保留所有权利</p>\n</footer>\n<script>\nfunction buyNow() {\n    alert('进入购买流程...');\n}\nfunction pay(method) {\n    alert('已选择支付方式：' + method);\n}\nfunction submitComment() {\n    var text = document.getElementById('comment').value;\n    if(text.trim() === '') {\n        alert('请输入评论内容');\n        return;\n    }\n    var list = document.getElementById('comments-list');\n    var p = document.createElement('p');\n    p.textContent = text;\n    list.appendChild(p);\n    document.getElementById('comment').value = '';\n}\nfunction contactService() {\n    alert('正在为您连接客服...');\n}\n</script>\n</body>\n</html>"
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 新疆葵花籽 30g 小包装</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #fdf6ec;
+        color: #333;
+    }
+    header {
+        background-color: #d32f2f;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 1.4em;
+        font-weight: bold;
+    }
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+    }
+    .product-section {
+        display: flex;
+        flex-wrap: wrap;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .product-img {
+        flex: 1;
+        min-width: 300px;
+        text-align: center;
+    }
+    .product-img img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .product-details {
+        flex: 2;
+        padding: 20px;
+    }
+    .product-title {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #d32f2f;
+    }
+    .product-brand {
+        color: #888;
+        margin-bottom: 10px;
+    }
+    .price {
+        margin: 20px 0;
+        font-size: 1.4em;
+    }
+    .price .current {
+        color: #e65100;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    .price .original {
+        text-decoration: line-through;
+        color: #999;
+    }
+    .promo-tag {
+        display: inline-block;
+        background-color: #ff9800;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.9em;
+        margin-top: 10px;
+    }
+    .stock {
+        margin-top: 10px;
+        color: #388e3c;
+    }
+    .buy-module {
+        margin-top: 20px;
+    }
+    .buy-module input {
+        width: 50px;
+        text-align: center;
+    }
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: bold;
+        margin: 5px;
+    }
+    .btn-buy {
+        background-color: #d32f2f;
+        color: white;
+    }
+    .btn-cart {
+        background-color: #ff9800;
+        color: white;
+    }
+    .btn:hover {
+        opacity: 0.9;
+    }
+    .recommend-section {
+        margin-top: 30px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .recommend-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .recommend-item {
+        flex: 1 1 200px;
+        text-align: center;
+    }
+    .recommend-item img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .recommend-item p {
+        margin: 5px 0;
+    }
+    .comments-section {
+        margin-top: 30px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .comment {
+        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+    }
+    .comment:last-child {
+        border-bottom: none;
+    }
+    .rating {
+        color: #ffa000;
+    }
+    footer {
+        background-color: #d32f2f;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin-top: 30px;
+    }
+    @media (max-width: 768px) {
+        .product-section {
+            flex-direction: column;
+        }
+        .product-details {
+            padding: 10px;
+        }
+    }
+</style>
+</head>
+<body>
+<header>春节特惠！LYF新疆葵花籽 30g 小包装</header>
+
+<div class="container">
+    <div class="product-section">
+        <div class="product-img">
+            <img src="sunflower.jpg" alt="LYF 新疆葵花籽">
+        </div>
+        <div class="product-details">
+            <div class="product-title">LYF 新疆葵花籽 30g 小包装</div>
+            <div class="product-brand">品牌：LYF</div>
+            <div class="product-desc">精选新疆优质葵花籽，颗粒饱满，香脆可口，独立小包装，方便携带，春节走亲访友必备零食。</div>
+            <div class="price">
+                <span class="current">￥16.9 / 10包</span>
+                <span class="original">￥25.9</span>
+            </div>
+            <div class="promo-tag">限时抢购</div>
+            <div class="stock">库存充足，快来抢购！</div>
+            <div class="buy-module">
+                数量：
+                <button onclick="changeQty(-1)">-</button>
+                <input type="number" id="qty" value="1" min="1" onchange="updateTotal()">
+                <button onclick="changeQty(1)">+</button>
+                <div>单件价格：￥16.9</div>
+                <div id="total-price">总价：￥16.9</div>
+                <div id="delivery-info">预计送达：3-5天</div>
+                <button class="btn btn-cart" onclick="addToCart()">加入购物车</button>
+                <button class="btn btn-buy" onclick="buyNow()">立即购买</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="recommend-section">
+        <h2>为您推荐</h2>
+        <div class="recommend-list">
+            <div class="recommend-item">
+                <img src="nut.jpg" alt="新疆核桃">
+                <p>新疆核桃 200g</p>
+                <p>￥29.9</p>
+                <button class="btn btn-buy">购买</button>
+            </div>
+            <div class="recommend-item">
+                <img src="almond.jpg" alt="巴旦木">
+                <p>巴旦木 150g</p>
+                <p>￥19.9</p>
+                <button class="btn btn-buy">购买</button>
+            </div>
+            <div class="recommend-item">
+                <img src="pumpkin.jpg" alt="南瓜籽">
+                <p>南瓜籽 100g</p>
+                <p>￥15.9</p>
+                <button class="btn btn-buy">购买</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="comments-section">
+        <h2>用户评论</h2>
+        <div class="comment">
+            <div class="rating">★★★★★</div>
+            <p>葵花籽特别香，包装精美，春节送礼很合适！</p>
+        </div>
+        <div class="comment">
+            <div class="rating">★★★★</div>
+            <p>味道很好，就是快递稍微慢了一点。</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2024 LYF 零食旗舰店 | 支持支付宝、微信支付 | 物流：顺丰速运
+</footer>
+
+<script>
+    function changeQty(change) {
+        let qtyInput = document.getElementById('qty');
+        let qty = parseInt(qtyInput.value) + change;
+        if (qty < 1) qty = 1;
+        qtyInput.value = qty;
+        updateTotal();
+    }
+    function updateTotal() {
+        let qty = parseInt(document.getElementById('qty').value);
+        let total = (qty * 16.9).toFixed(2);
+        document.getElementById('total-price').innerText = '总价：￥' + total;
+    }
+    function addToCart() {
+        alert('已加入购物车！');
+    }
+    function buyNow() {
+        alert('跳转到支付页面...');
+    }
+</script>
+</body>
+</html>

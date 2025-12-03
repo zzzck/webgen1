@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极简生活 | 精选好物</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #f3f4f6;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --accent-red: #ef4444;
+            --accent-green: #10b981;
+            --white: #ffffff;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: var(--text-main);
+            padding-bottom: 80px; /* Space for mobile footer if needed */
+        }
+
+        /* Header & Nav */
+        header {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .cart-trigger {
+            position: relative;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .cart-icon {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: var(--text-main);
+            stroke-width: 2;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent-red);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cart-badge.active {
+            transform: scale(1);
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .countdown span {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 2rem 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            border: 1px solid #e5e7eb;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--text-main);
+            color: var(--white);
+            border-color: var(--text-main);
+        }
+
+        /* Product Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; /* 1:1 Aspect Ratio */
+            background: #f3f4f6;
+            overflow: hidden;
+        }
+
+        .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            z-index: 2;
+        }
+
+        .badge.hot { background: var(--accent-red); }
+        .badge.sale { background: var(--accent-green); }
+
+        .card-content {
+            padding: 1.25rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-tag {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .price-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .current-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        .stock-status {
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .stock-status.low { color: #eab308; }
+        .stock-status.out { color: var(--accent-red); }
+
+        .card-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover { background: var(--primary-hover); }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #d1d5db;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover { border-color: var(--text-main); background: #f9fafb; }
+
+        /* Cart Sidebar */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1000;
+            transition: cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+
+        .cart-open .cart-overlay { opacity: 1; visibility: visible; }
+        .cart-open .cart-sidebar { right: 0; }
+
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #f3f4f6;
+            padding-bottom: 1rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .cart-item img {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .item-details { flex-grow: 1; }
+        .item-title { font-weight: 600; font-size: 0.95rem; }
+        .item-price { color: var(--text-light); font-size: 0.9rem; margin: 4px 0; }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .qty-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid #d1d5db;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover { background: #f3f4f6; }
+
+        .remove-btn {
+            color: var(--accent-red);
+            font-size: 0.8rem;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-left: auto;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #f3f4f6;
+            background: #fafafa;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--text-main);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .checkout-btn:hover { opacity: 0.9; }
+
+        .empty-cart-msg {
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 3rem;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 1rem;
+        }
+
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 16px;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            max-height: 90vh;
+            flex-direction: column;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.8);
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: row;
+            overflow-y: auto;
+        }
+
+        .modal-img {
+            width: 50%;
+            object-fit: cover;
+            min-height: 300px;
+        }
+
+        .modal-details {
+            padding: 2rem;
+            width: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .modal-body { flex-direction: column; }
+            .modal-img, .modal-details { width: 100%; }
+            .modal-img { height: 250px; }
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text-main);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            z-index: 3000;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .toast.show { transform: translateX(-50%) translateY(0); }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand">MMinimal.</div>
+        <div class="cart-trigger" onclick="toggleCart()">
+            <svg class="cart-icon" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <div class="cart-badge" id="cart-count">0</div>
+        </div>
+    </header>
+
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        <span>⚡ 限时闪购：全场商品 8 折优惠！</span>
+        <div class="countdown" id="countdown">
+            <span id="cd-h">00</span> : <span id="cd-m">00</span> : <span id="cd-s">00</span>
+        </div>
+    </div>
+
+    <!-- Filter Navigation -->
+    <nav class="filters" id="filter-container">
+        <button class="filter-btn active" onclick="filterProducts('all', this)">全部</button>
+        <button class="filter-btn" onclick="filterProducts('electronics', this)">数码</button>
+        <button class="filter-btn" onclick="filterProducts('lifestyle', this)">生活</button>
+        <button class="filter-btn" onclick="filterProducts('clothing', this)">服饰</button>
+    </nav>
+
+    <!-- Product Grid -->
+    <main class="container">
+        <div class="product-grid" id="product-grid">
+            <!-- Products rendered via JS -->
+        </div>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-wrapper">
+        <div class="cart-overlay" onclick="toggleCart()"></div>
+        <aside class="cart-sidebar">
+            <div class="cart-header">
+                <h2>购物车</h2>
+                <button class="close-cart" onclick="toggleCart()">×</button>
+            </div>
+            <div class="cart-items" id="cart-items-container">
+                <!-- Cart Items rendered via JS -->
+            </div>
+            <div class="cart-footer">
+                <div class="summary-row">
+                    <span>小计</span>
+                    <span id="cart-subtotal">¥0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>折扣 (20%)</span>
+                    <span id="cart-discount" style="color: var(--accent-red)">-¥0.00</span>
+                </div>
+                <div class="summary-total">
+                    <span>总计</span>
+                    <span id="cart-total">¥0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="alert('感谢您的试用！功能开发中。')">立即结算</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="product-modal" onclick="closeModal(event)">
+        <div class="modal-content" id="modal-content">
+            <button class="close-modal" onclick="closeModal(event, true)">×</button>
+            <div class="modal-body">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">已加入购物车</div>
+
+    <script>
+        // --- Mock Data ---
+        const products = [
+            {
+                id: 1,
+                name: "无线降噪耳机 Pro",
+                price: 1299,
+                originalPrice: 1599,
+                category: "electronics",
+                image: "https://placehold.co/600x600/252f3f/FFF?text=Headphones",
+                stock: 15,
+                badges: ["sale", "hot"],
+                desc: "沉浸式音效体验，40小时超长续航，无论是通勤还是专注工作，都是您的最佳伴侣。"
+            },
+            {
+                id: 2,
+                name: "极简机械键盘",
+                price: 499,
+                originalPrice: 499,
+                category: "electronics",
+                image: "https://placehold.co/600x600/e5e7eb/1f2937?text=Keyboard",
+                stock: 3,
+                badges: ["hot"],
+                desc: "87键布局，PBT键帽，青轴手感清脆，专为程序员和写作者设计。"
+            },
+            {
+                id: 3,
+                name: "智能保温咖啡杯",
+                price: 199,
+                originalPrice: 259,
+                category: "lifestyle",
+                image: "https://placehold.co/600x600/d97706/FFF?text=Smart+Mug",
+                stock: 20,
+                badges: ["sale"],
+                desc: "手机APP控制温度，保持饮品最佳口感，IPX7级防水设计。"
+            },
+            {
+                id: 4,
+                name: "日式棉麻休闲衬衫",
+                price: 159,
+                originalPrice: 159,
+                category: "clothing",
+                image: "https://placehold.co/600x600/57534e/FFF?text=Shirt",
+                stock: 50,
+                badges: [],
+                desc: "透气亲肤，宽松版型，适合春秋季节穿着，回归自然舒适。"
+            },
+            {
+                id: 5,
+                name: "4K 高清网络摄像头",
+                price: 699,
+                originalPrice: 899,
+                category: "electronics",
+                image: "https://placehold.co/600x600/000/FFF?text=Webcam",
+                stock: 8,
+                badges: ["sale"],
+                desc: "直播级画质，自动对焦，内置降噪麦克风，远程会议必备。"
+            },
+            {
+                id: 6,
+                name: "人体工学办公椅",
+                price: 899,
+                originalPrice: 899,
+                category: "lifestyle",
+                image: "https://placehold.co/600x600/3b82f6/FFF?text=Chair",
+                stock: 0,
+                badges: [],
+                desc: "多点支撑设计，护腰护颈，久坐不累，透气网布材质。"
+            }
+        ];
+
+        // --- State Management ---
+        let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+
+        // --- DOM Elements ---
+        const grid = document.getElementById('product-grid');
+        const cartCount = document.getElementById('cart-count');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartWrapper = document.getElementById('cart-wrapper');
+        const modalOverlay = document.getElementById('product-modal');
+        
+        // --- Initialization ---
+        function init() {
+            renderProducts('all');
+            updateCartUI();
+            startTimer();
+        }
+
+        // --- Render Products ---
+        function renderProducts(filter) {
+            grid.innerHTML = '';
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+            filtered.forEach(p => {
+                const isSale = p.originalPrice > p.price;
+                const discount = isSale ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0;
+                
+                // Badges
+                let badgeHTML = '';
+                if (p.badges.includes('hot')) badgeHTML += `<span class="badge hot">热销</span>`;
+                else if (p.badges.includes('sale')) badgeHTML += `<span class="badge sale">-${discount}%</span>`;
+
+                // Stock
+                let stockHTML = '';
+                if (p.stock === 0) stockHTML = `<div class="stock-status out">已售罄</div>`;
+                else if (p.stock < 5) stockHTML = `<div class="stock-status low">仅剩 ${p.stock} 件</div>`;
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="card-image-wrapper">
+                        ${badgeHTML}
+                        <img src="${p.image}" alt="${p.name}" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <div class="category-tag">${p.category}</div>
+                        <h3 class="product-title">${p.name}</h3>
+                        <div class="price-wrapper">
+                            <span class="current-price">¥${p.price}</span>
+                            ${isSale ? `<span class="original-price">¥${p.originalPrice}</span>` : ''}
+                        </div>
+                        ${stockHTML}
+                        <div class="card-actions">
+                            <button class="btn btn-outline" onclick="openModal(${p.id})">详情</button>
+                            <button class="btn btn-primary" ${p.stock === 0 ? 'disabled style="opacity:0.5;cursor:not-allowed"' : ''} onclick="addToCart(${p.id})">
+                                ${p.stock === 0 ? '缺货' : '加入购物车'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterProducts(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProducts(cat);
+        }
+
+        // --- Cart Logic ---
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            if (!product || product.stock === 0) return;
+
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                if (existingItem.qty < product.stock) {
+                    existingItem.qty++;
+                    showToast('购物车数量 +1');
+                } else {
+                    showToast('库存不足', true);
+                    return;
+                }
+            } else {
+                cart.push({ id: product.id, qty: 1 });
+                showToast('已加入购物车');
+            }
+
+            saveCart();
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+            updateCartUI();
+        }
+
+        function changeQty(id, change) {
+            const item = cart.find(i => i.id === id);
+            const product = products.find(p => p.id === id);
+            
+            if (!item) return;
+
+            const newQty = item.qty + change;
+            if (newQty > 0 && newQty <= product.stock) {
+                item.qty = newQty;
+            } else if (newQty <= 0) {
+                return removeFromCart(id);
+            } else {
+                showToast('库存上限', true);
+            }
+
+            saveCart();
+            updateCartUI();
+        }
+
+        function saveCart() {
+            localStorage.setItem('myShopCart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            // Update Badge
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            cartCount.innerText = totalCount;
+            cartCount.classList.toggle('active', totalCount > 0);
+
+            // Render Items
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart-msg">购物车是空的</div>';
+            } else {
+                cart.forEach(item => {
+                    const product = products.find(p => p.id === item.id);
+                    subtotal += product.price * item.qty;
+
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="item-details">
+                            <div class="item-title">${product.name}</div>
+                            <div class="item-price">¥${product.price}</div>
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+                                <span>${item.qty}</span>
+                                <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                                <span class="remove-btn" onclick="removeFromCart(${item.id})">删除</span>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(div);
+                });
+            }
+
+            // Totals
+            const discount = subtotal * 0.2; // Mock 20% discount logic from banner
+            const total = subtotal - discount;
+
+            document.getElementById('cart-subtotal').innerText = `¥${subtotal.toFixed(2)}`;
+            document.getElementById('cart-discount').innerText = `-¥${discount.toFixed(2)}`;
+            document.getElementById('cart-total').innerText = `¥${total.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            cartWrapper.classList.toggle('cart-open');
+        }
+
+        // --- Modal Logic ---
+        function openModal(id) {
+            const product = products.find(p => p.id === id);
+            const modalBody = document.querySelector('.modal-body');
+            
+            modalBody.innerHTML = `
+                <img src="${product.image}" class="modal-img" alt="${product.name}">
+                <div class="modal-details">
+                    <div class="category-tag">${product.category}</div>
+                    <h2 style="margin-bottom: 10px; font-size: 1.5rem;">${product.name}</h2>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">${product.desc}</p>
+                    <div class="price-wrapper">
+                        <span class="current-price" style="font-size: 1.5rem">¥${product.price}</span>
+                        ${product.originalPrice > product.price ? `<span class="original-price">¥${product.originalPrice}</span>` : ''}
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: #f3f4f6; border-radius: 8px;">
+                        <p style="font-size: 0.9rem; margin-bottom: 5px;"><strong>库存状态:</strong> ${product.stock > 0 ? '有货 (' + product.stock + ')' : '缺货'}</p>
+                        <p style="font-size: 0.9rem;"><strong>配送:</strong> 预计 24 小时内发货</p>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 20px; padding: 15px;" 
+                        onclick="addToCart(${product.id}); closeModal(event, true)" 
+                        ${product.stock === 0 ? 'disabled' : ''}>
+                        ${product.stock === 0 ? '暂时缺货' : '加入购物车'}
+                    </button>
+                </div>
+            `;
+            
+            modalOverlay.classList.add('active');
+        }
+
+        function closeModal(e, force = false) {
+            if (force || e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
+        }
+
+        // --- Utilities ---
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.style.background = isError ? '#ef4444' : '#1f2937';
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        function startTimer() {
+            let time = 7200; // 2 hours in seconds
+            const h = document.getElementById('cd-h');
+            const m = document.getElementById('cd-m');
+            const s = document.getElementById('cd-s');
+
+            setInterval(() => {
+                time--;
+                if (time < 0) time = 7200;
+                
+                const hrs = Math.floor(time / 3600);
+                const mins = Math.floor((time % 3600) / 60);
+                const secs = time % 60;
+
+                h.innerText = hrs.toString().padStart(2, '0');
+                m.innerText = mins.toString().padStart(2, '0');
+                s.innerText = secs.toString().padStart(2, '0');
+            }, 1000);
+        }
+
+        // Run
+        init();
+
+    </script>
+</body>
+</html>

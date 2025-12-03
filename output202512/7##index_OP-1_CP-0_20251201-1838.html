@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春节零食促销</title>
+    <style>
+        :root {
+            --primary-color: #D32F2F;
+            --accent-color: #FFD54F;
+            --bg-color: #F4F4F5;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: #333;
+            line-height: 1.6;
+        }
+        header, section, main, aside, footer {
+            padding: 1.5rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .hero {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+        }
+        .content-section {
+            background-color: #fff;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .content-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        .content-section p {
+            color: #555;
+        }
+        .aside-section {
+            background-color: var(--accent-color);
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            color: #333;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+        }
+        footer p {
+            margin: 0.5rem 0;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .content-section, .aside-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="hero-section" class="hero">
+        <h1>春节零食盛宴，全场优惠欢享</h1>
+        <p>把节日的喜悦带回家，精选零食低至五折，限时抢购！</p>
+    </section>
+
+    <main id="product-showcase" class="content-section">
+        <h2>热销零食推荐</h2>
+        <p>美味多样，口感纯正，价格实惠，让您挑选满意。</p>
+    </main>
+
+    <section id="promotion-info" class="content-section">
+        <h2>当前优惠活动</h2>
+        <p>全场满100减20，满200减50，活动截止至正月十五。</p>
+    </section>
+
+    <aside id="purchase-guide" class="aside-section">
+        <h2>购买与配送指南</h2>
+        <p>支持支付宝、微信支付，全国快递配送，联系客服热线400-123-4567。</p>
+    </aside>
+
+    <footer id="site-footer">
+        <p>© 2024 欢乐零食有限公司 | 用心为您提供节日美味</p>
+        <p>关注我们的微信与微博，获取最新促销与新品信息</p>
+    </footer>
+</body>
+</html>

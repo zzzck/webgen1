@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 春节零食大促</title>
+<style>
+body {margin:0;font-family:Arial, sans-serif;background:#fff;color:#333;}
+header {background:#E4393C;color:#fff;padding:10px;text-align:center;}
+header input[type="search"] {width:80%;padding:8px;border:none;border-radius:4px;}
+nav {display:flex;justify-content:space-around;background:#f8f8f8;padding:10px 0;font-size:14px;}
+nav a {color:#333;text-decoration:none;}
+.product {padding:10px;}
+.product-images {text-align:center;}
+.product-images img {width:90%;max-width:300px;border-radius:8px;}
+.thumbnails {display:flex;justify-content:center;margin-top:8px;}
+.thumbnails img {width:80px;height:80px;margin:0 5px;cursor:pointer;border-radius:4px;}
+.points {background:#fff2f0;padding:10px;margin-top:10px;border-radius:8px;color:#E4393C;}
+.price {display:flex;justify-content:space-between;align-items:center;margin-top:10px;}
+.price .current {color:#E4393C;font-size:20px;font-weight:bold;}
+.price .original {text-decoration:line-through;color:#aaa;}
+.countdown {color:#E4393C;font-size:14px;}
+.coupons {display:flex;justify-content:center;margin-top:10px;}
+.coupon {background:#ffeaea;border:1px dashed #E4393C;padding:10px;margin:5px;border-radius:8px;font-size:14px;text-align:center;flex:1;}
+.options {margin-top:10px;}
+.options label {display:block;margin:5px 0;}
+.comments {padding:10px;}
+.comment-filter {margin-bottom:10px;}
+.comment-filter button {margin-right:5px;padding:4px 8px;border:none;background:#E4393C;color:#fff;border-radius:4px;cursor:pointer;}
+.comment {border-bottom:1px solid #eee;padding:5px 0;}
+.buy-bar {position:fixed;bottom:0;width:100%;background:#E4393C;color:#fff;text-align:center;padding:10px;cursor:pointer;font-size:18px;}
+.modal-overlay {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);}
+.modal {position:fixed;bottom:-300px;left:0;width:100%;background:#fff;border-top-left-radius:12px;border-top-right-radius:12px;transition:bottom 0.3s;padding:20px;}
+.modal.active {bottom:0;}
+.modal h3 {margin-top:0;}
+.modal button {width:100%;padding:10px;background:#E4393C;color:#fff;border:none;border-radius:4px;font-size:16px;cursor:pointer;}
+</style>
+</head>
+<body>
+<header>
+  <input type="search" placeholder="搜索春节零食...">
+</header>
+<nav>
+  <a href="#">首页</a>
+  <a href="#">新品</a>
+  <a href="#">优惠</a>
+  <a href="#">客服</a>
+</nav>
+
+<div class="product">
+  <div class="product-images">
+    <img id="mainImage" src="https://cbu01.alicdn.com/img/ibank/O1CN01N71Meg2Mm3r6R3NbC_!!2218940509869-0-cib.220x220.jpg" alt="LYF 内蒙古葵花籽">
+    <div class="thumbnails">
+      <img src="https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b" onclick="changeImage(this.src)">
+      <img src="https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg" onclick="changeImage(this.src)">
+    </div>
+  </div>
+  <div class="points">
+    <strong>卖点：</strong> 内蒙古原产 · 颗粒饱满 · 独立包装不脏手 · 买多少送多少 · 四种口味
+  </div>
+  <div class="price">
+    <div>
+      <span class="current">¥<span id="price">16.9</span></span>
+      <span class="original">¥29.9</span>
+    </div>
+    <div class="countdown">春节限时抢购倒计时：<span id="countdown"></span></div>
+  </div>
+
+  <div class="coupons">
+    <div class="coupon">A券: 满10减2元</div>
+    <div class="coupon">B券: 满20减5元</div>
+  </div>
+
+  <div class="options">
+    <label><input type="radio" name="pack" value="10" checked onclick="updatePrice()"> 10包 ¥16.9</label>
+    <label><input type="radio" name="pack" value="20" onclick="updatePrice()"> 20包 ¥32.0</label>
+    <label><input type="radio" name="pack" value="30" onclick="updatePrice()"> 30包 ¥45.0</label>
+  </div>
+</div>
+
+<div class="comments">
+  <div class="comment-filter">
+    <button onclick="filterComments('all')">全部</button>
+    <button onclick="filterComments('good')">好评</button>
+    <button onclick="filterComments('medium')">中评</button>
+    <button onclick="filterComments('bad')">差评</button>
+  </div>
+  <div id="commentList"></div>
+</div>
+
+<div class="buy-bar" onclick="openModal()">立即购买</div>
+
+<div class="modal-overlay" id="overlay" onclick="closeModal()"></div>
+<div class="modal" id="modal">
+  <h3>确认订单</h3>
+  <p id="orderInfo"></p>
+  <button onclick="confirmPay()">确认支付</button>
+</div>
+
+<script>
+function changeImage(src) {
+  document.getElementById('mainImage').src = src;
+}
+
+// 倒计时
+let endTime = new Date();
+endTime.setHours(endTime.getHours()+5);
+function updateCountdown() {
+  let now = new Date();
+  let diff = endTime - now;
+  if(diff <=0) {document.getElementById('countdown').innerText="已结束";return;}
+  let h = Math.floor(diff/1000/60/60);
+  let m = Math.floor(diff/1000/60%60);
+  let s = Math.floor(diff/1000%60);
+  document.getElementById('countdown').innerText = `${h}小时${m}分${s}秒`;
+}
+setInterval(updateCountdown,1000);
+
+// 评论数据
+const commentsData = [
+  {type:'good',text:'颗粒饱满，味道很好！'},
+  {type:'medium',text:'口味一般，包装不错'},
+  {type:'bad',text:'不太符合口味'},
+  {type:'good',text:'买多少送多少，很划算'}
+];
+function renderComments(list) {
+  const container = document.getElementById('commentList');
+  container.innerHTML = '';
+  list.forEach(c=>{
+    let div = document.createElement('div');
+    div.className = 'comment';
+    div.textContent = c.text;
+    container.appendChild(div);
+  });
+}
+function filterComments(type) {
+  if(type==='all') renderComments(commentsData);
+  else renderComments(commentsData.filter(c=>c.type===type));
+}
+renderComments(commentsData);
+
+// 价格更新和优惠券计算
+function updatePrice() {
+  const packs = document.querySelector('input[name="pack"]:checked').value;
+  let price = packs==10?16.9:packs==20?32.0:45.0;
+  // 优惠券逻辑
+  if(price>=20) {price-=5;}
+  else if(price>=10) {price-=2;}
+  document.getElementById('price').innerText = price.toFixed(2);
+}
+
+// 模态框购物车
+function openModal() {
+  document.getElementById('overlay').style.display='block';
+  document.getElementById('modal').classList.add('active');
+  const packs = document.querySelector('input[name="pack"]:checked').value;
+  const price = document.getElementById('price').innerText;
+  document.getElementById('orderInfo').innerText = `LYF 内蒙古葵花籽 - ${packs}包 - 总价 ¥${price}`;
+}
+function closeModal() {
+  document.getElementById('overlay').style.display='none';
+  document.getElementById('modal').classList.remove('active');
+}
+function confirmPay() {
+  const packs = document.querySelector('input[name="pack"]:checked').value;
+  const price = document.getElementById('price').innerText;
+  const order = {product:'LYF 内蒙古葵花籽',packs:packs,price:price};
+  alert(JSON.stringify(order));
+  closeModal();
+}
+
+// 随机优化功能（随机背景色闪烁按钮）
+setInterval(()=>{
+  document.querySelector('.buy-bar').style.background = Math.random()>0.5?'#E4393C':'#c71c1c';
+},1000);
+
+updatePrice();
+updateCountdown();
+</script>
+</body>
+</html>

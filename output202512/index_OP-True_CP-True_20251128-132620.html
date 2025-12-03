@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LTF 新疆葵花籽电商购物页</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #2B6CB0;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+section, aside {
+    background: #fff;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+#product-display img {
+    max-width: 100%;
+    height: auto;
+}
+#price-info p {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+.price-current {
+    color: #E53E3E;
+    font-weight: bold;
+}
+.price-old {
+    text-decoration: line-through;
+    color: #999;
+}
+#purchase-module button {
+    background-color: #38A169;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+#purchase-module button:hover {
+    background-color: #2F855A;
+}
+#rating-review .stars {
+    color: #FFC107;
+    font-size: 1.5em;
+}
+#rating-review textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+}
+#rating-review button {
+    background-color: #2B6CB0;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+#customer-service button {
+    background-color: #E53E3E;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+#promotion-banner {
+    color: #E53E3E;
+    font-weight: bold;
+}
+#combo-recommend .product-card, #user-recommend .product-card {
+    display: inline-block;
+    width: 45%;
+    margin: 5px;
+    vertical-align: top;
+}
+#login-register form {
+    margin-bottom: 15px;
+}
+#login-register input {
+    width: calc(100% - 10px);
+    margin: 5px 0;
+    padding: 5px;
+}
+#login-register button {
+    background-color: #2B6CB0;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+footer {
+    background-color: #2B6CB0;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>LTF 新疆葵花籽（30g 小包装）</h1>
+</header>
+<main>
+    <section id="product-display">
+        <h1>LTF 新疆葵花籽</h1>
+        <p>30g小包装，新疆原产，香脆可口，精选优质葵花籽，每一粒都蕴含自然阳光的香味。</p>
+        <img src="images/ltf_kuaizi.jpg" alt="LTF 新疆葵花籽产品图">
+    </section>
+    <section id="price-info">
+        <p class="price-current">￥16.9 / 10包</p>
+        <p class="price-old">￥19.9</p>
+        <p>限时优惠立省3元！</p>
+    </section>
+    <section id="promotion-banner">
+        <span>限时抢购</span>
+        <p>库存紧张，仅剩 50 份</p>
+    </section>
+    <section id="purchase-module">
+        <button onclick="buyNow()">立即购买</button>
+        <div id="payment-entry" style="margin-top:10px;">
+            <p>请选择支付方式：</p>
+            <button onclick="pay('支付宝')">支付宝</button>
+            <button onclick="pay('微信支付')">微信支付</button>
+        </div>
+    </section>
+    <section id="rating-review">
+        <div class="stars">★★★★★</div>
+        <textarea id="comment" placeholder="请输入您的评论..."></textarea>
+        <button onclick="submitComment()">提交评论</button>
+        <div id="comments-list"></div>
+    </section>
+    <aside id="customer-service">
+        <button onclick="contactService()">联系客服</button>
+    </aside>
+    <section id="combo-recommend">
+        <h2>组合销售推荐</h2>
+        <div class="product-card">
+            <img src="images/mixed_nuts.jpg" alt="混合坚果">
+            <p>混合坚果礼包</p>
+            <p>￥29.9</p>
+        </div>
+        <div class="product-card">
+            <img src="images/pumpkin_seeds.jpg" alt="南瓜籽">
+            <p>南瓜籽小包装</p>
+            <p>￥12.9</p>
+        </div>
+    </section>
+    <section id="login-register">
+        <form id="login-form">
+            <h3>用户登录</h3>
+            <input type="text" placeholder="用户名" required>
+            <input type="password" placeholder="密码" required>
+            <button type="submit">登录</button>
+        </form>
+        <form id="register-form">
+            <h3>用户注册</h3>
+            <input type="text" placeholder="用户名" required>
+            <input type="email" placeholder="邮箱" required>
+            <input type="password" placeholder="密码" required>
+            <button type="submit">注册</button>
+        </form>
+        <a href="#">忘记密码？</a>
+    </section>
+    <section id="user-recommend">
+        <h2>为您推荐</h2>
+        <div class="product-card">
+            <img src="images/walnuts.jpg" alt="核桃">
+            <p>优质核桃</p>
+            <p>￥25.9</p>
+        </div>
+        <div class="product-card">
+            <img src="images/cashew.jpg" alt="腰果">
+            <p>香脆腰果</p>
+            <p>￥22.9</p>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>© 2024 LTF 零食商城 | 保留所有权利</p>
+</footer>
+<script>
+function buyNow() {
+    alert('进入购买流程...');
+}
+function pay(method) {
+    alert('已选择支付方式：' + method);
+}
+function submitComment() {
+    var text = document.getElementById('comment').value;
+    if(text.trim() === '') {
+        alert('请输入评论内容');
+        return;
+    }
+    var list = document.getElementById('comments-list');
+    var p = document.createElement('p');
+    p.textContent = text;
+    list.appendChild(p);
+    document.getElementById('comment').value = '';
+}
+function contactService() {
+    alert('正在为您连接客服...');
+}
+</script>
+</body>
+</html>

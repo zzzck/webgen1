@@ -1,0 +1,299 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的单文件（Single HTML File）一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n主页图片链接： “https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n#Functional Requirements (功能需求)\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n为提升购物体验与趣味性（促销），加入限时倒计时、库存提醒、热销标签、优惠券等促销元素，并显示用户评论和评分区。此外,额外增加商品收藏与相似推荐功能，提升用户停留与转化率。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "解析客户需求并提炼网页必须呈现的核心卖点：4P 营销要素与春节促销氛围",
+              "明确商业目标（点击率、加购率、转化率）并拆解为可量化网页任务",
+              "制定全流程执行计划并分配任务至 PM、Architect、Engineer，设定交付时间节点",
+              "审核各阶段输出确保营销信息与品牌风格保持一致"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "撰写详细 PRD 文档，涵盖主视觉设计要求、卖点文案、促销元素、信任状信息",
+              "定义用户购买路径与转化流程（浏览→选择数量→加入购物车→结算）",
+              "列出页面必含模块及信息字段（产品图、规格、价格、优惠、库存、倒计时、评论评分、收藏、推荐）",
+              "设计促销互动逻辑，如库存提醒规则、限时优惠触发条件"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "规划整页信息架构，确保首屏呈现高转化核心信息与促销元素",
+              "设计可复用的营销组件（价格展示、优惠券领取、库存提示、倒计时、评论列表、推荐商品）",
+              "制定组件交互接口与数据流说明，包括 localStorage 保存购物车与收藏信息的机制",
+              "编写页面结构与样式约定文档供工程实现，确保符合移动端天猫风格与春节红主题"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "编码实现单文件 HTML/CSS/JavaScript 电商页面，应用 Architect 设计的结构和组件",
+              "集成购物车管理、库存动态更新、倒计时、优惠券交互等功能，数据持久化使用 localStorage",
+              "实现响应式布局与春节主题样式，优化加载速度与交互性能",
+              "进行功能性与兼容性测试，产出测试报告并修复问题，交付可上线版本"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF 香瓜子葵花子春节年货大促页面，聚焦春节红视觉与紧迫促销，提高移动端用户加购与下单转化。",
+        "goals": [
+          "提升春节大促期间页面访问到加购的转化率至30%",
+          "强化产品核心卖点与节日氛围，增强用户购买动机",
+          "通过限时促销和库存提醒提升即时下单率",
+          "增加用户收藏与相似推荐模块，提高停留时长与复购",
+          "优化移动端购物流程减少跳失率",
+          "提升优惠券领取率至20%"
+        ],
+        "target_users": [
+          "春节期间准备年货的年轻家庭用户 + 追求节日气氛、价格优惠与方便采购",
+          "注重零食品质与口感的中年用户 + 希望在促销期间囤货并享受优惠"
+        ],
+        "page_sections": [
+          {
+            "id": "hero",
+            "purpose": "用春节红视觉和产品大图抓住用户注意力，建立购买兴趣",
+            "kpi": "页面停留时间 / CTR"
+          },
+          {
+            "id": "product-specs",
+            "purpose": "展示产品名称、规格、组合装信息与核心卖点文案，解决用户购买疑虑",
+            "kpi": "加购率"
+          },
+          {
+            "id": "price-box",
+            "purpose": "清晰展示促销价与原价对比、优惠信息，刺激购买决策",
+            "kpi": "转化率"
+          },
+          {
+            "id": "promotion-banner",
+            "purpose": "显示限时倒计时、库存提醒、热销标签，制造紧迫感",
+            "kpi": "即时下单率"
+          },
+          {
+            "id": "coupon-section",
+            "purpose": "提供立即可领取的优惠券，促进加购或提高单客成交额",
+            "kpi": "优惠券领取率 / 转化率"
+          },
+          {
+            "id": "purchase-channel",
+            "purpose": "明确购买入口与数量选择功能，减少跳失",
+            "kpi": "加购率 / 转化率"
+          },
+          {
+            "id": "cart",
+            "purpose": "购物车管理模块，用 localStorage 保留数据，提升购物体验",
+            "kpi": "复购率 / 转化率"
+          },
+          {
+            "id": "reviews",
+            "purpose": "展示用户评论与评分，增强新用户信任",
+            "kpi": "转化率"
+          },
+          {
+            "id": "wishlist",
+            "purpose": "商品收藏功能增加潜在转化机会与用户黏性",
+            "kpi": "收藏率 / 再访率"
+          },
+          {
+            "id": "similar-products",
+            "purpose": "推荐相似零食产品，扩大客单价",
+            "kpi": "关联销售额"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#D0021B",
+          "#FFD700",
+          "#F4F4F5",
+          "primary",
+          "secondary"
+        ],
+        "components": [
+          {
+            "id": "hero",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "春节大促主标题与品牌名"
+              },
+              {
+                "tag": "p",
+                "content_hint": "节日氛围描述与促销口号"
+              }
+            ]
+          },
+          {
+            "id": "product-specs",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "产品名称与规格组合信息"
+              },
+              {
+                "tag": "p",
+                "content_hint": "核心卖点文案与品质说明"
+              }
+            ]
+          },
+          {
+            "id": "price-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "促销价与原价对比"
+              },
+              {
+                "tag": "p",
+                "content_hint": "优惠信息与节省金额描述"
+              }
+            ]
+          },
+          {
+            "id": "promotion-banner",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "限时倒计时标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "库存提醒和热销标签说明"
+              }
+            ]
+          },
+          {
+            "id": "coupon-section",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "优惠券领取标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "优惠券使用说明与有效期"
+              }
+            ]
+          },
+          {
+            "id": "purchase-channel",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "购买入口描述"
+              },
+              {
+                "tag": "p",
+                "content_hint": "数量选择说明及操作提示"
+              }
+            ]
+          },
+          {
+            "id": "cart",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "购物车标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "购物车内商品列表与总价说明"
+              }
+            ]
+          },
+          {
+            "id": "reviews",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "用户评论标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "精选评论内容或评分摘要"
+              }
+            ]
+          },
+          {
+            "id": "wishlist",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "收藏功能标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "收藏说明与引导文案"
+              }
+            ]
+          },
+          {
+            "id": "similar-products",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "相似零食推荐标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "推荐商品简短介绍"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>春节大促营销页</title>\n    <style>\n        :root {\n            --color-primary: #D0021B;\n            --color-secondary: #FFD700;\n            --color-light: #F4F4F5;\n        }\n        * {\n            box-sizing: border-box;\n            margin: 0;\n            padding: 0;\n        }\n        body {\n            font-family: Arial, sans-serif;\n            background-color: var(--color-light);\n            color: #333;\n            line-height: 1.6;\n        }\n        .container {\n            max-width: 800px;\n            margin: 0 auto;\n            padding: 1rem;\n        }\n        section {\n            background-color: #fff;\n            margin-bottom: 1.5rem;\n            padding: 1.5rem;\n            border-radius: 8px;\n            box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n        }\n        h1, h2 {\n            color: var(--color-primary);\n            margin-bottom: 0.5rem;\n        }\n        p {\n            margin-bottom: 0.5rem;\n            color: #555;\n        }\n        .hero {\n            text-align: center;\n            background-color: var(--color-secondary);\n            color: var(--color-primary);\n        }\n        .price-box {\n            background-color: var(--color-primary);\n            color: #fff;\n        }\n        .price-box h2 {\n            color: #fff;\n        }\n        .promotion-banner {\n            background-color: var(--color-secondary);\n            text-align: center;\n        }\n        .coupon-section {\n            border: 2px dashed var(--color-secondary);\n        }\n        .purchase-channel {\n            display: flex;\n            flex-direction: column;\n            align-items: flex-start;\n        }\n        .cart {\n            background-color: var(--color-light);\n        }\n        .reviews {\n            background-color: #fff2f2;\n        }\n        .wishlist {\n            background-color: #fff8dc;\n        }\n        .similar-products {\n            background-color: #f9f9f9;\n        }\n        @media (max-width: 600px) {\n            body {\n                font-size: 14px;\n            }\n            section {\n                padding: 1rem;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <section class=\"hero\">\n            <h1>春节大促 · 品牌盛宴</h1>\n            <p>欢享佳节，限时优惠，尽在此刻！</p>\n        </section>\n\n        <section class=\"product-specs\">\n            <h1>高端坚果礼盒 · 500g</h1>\n            <p>精选原料，香脆美味，包装典雅送礼佳选。</p>\n        </section>\n\n        <section class=\"price-box\">\n            <h2>促销价：￥99 原价：￥199</h2>\n            <p>立省￥100，超值优惠不容错过！</p>\n        </section>\n\n        <section class=\"promotion-banner\">\n            <h2>限时倒计时</h2>\n            <p>库存紧张 · 热销爆款</p>\n        </section>\n\n        <section class=\"coupon-section\">\n            <h2>领取消费券</h2>\n            <p>立即领取，满200减50 · 有效期至2月15日</p>\n        </section>\n\n        <section class=\"purchase-channel\">\n            <h2>立即购买</h2>\n            <p>请选择数量并点击购买按钮</p>\n        </section>\n\n        <section class=\"cart\">\n            <h2>购物车</h2>\n            <p>您的商品列表 · 总价一目了然</p>\n        </section>\n\n        <section class=\"reviews\">\n            <h2>用户评论</h2>\n            <p>五星好评率高达98% · 来自真实用户的赞誉</p>\n        </section>\n\n        <section class=\"wishlist\">\n            <h2>收藏商品</h2>\n            <p>添加到收藏夹，随时查看心仪好物</p>\n        </section>\n\n        <section class=\"similar-products\">\n            <h2>相似零食推荐</h2>\n            <p>更多美味等你探索</p>\n        </section>\n    </div>\n</body>\n</html>"
+    }
+  ]
+}

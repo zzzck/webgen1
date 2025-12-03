@@ -1,0 +1,241 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的单文件（Single HTML File）一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n参考图片链接： \n图1“https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n图2“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n图3“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n#Functional Requirements (功能需求)\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n页面支持商品分类展示与在线购买流程（渠道）。您还可以加入促销元素，如限时倒计时、库存提醒、热销标签和优惠卷（促销），进一步提升购物体验与趣味性。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求与商业目标",
+              "明确春节零食电商网页的交付物",
+              "将任务拆分并分配给 PM、Architect、Engineer",
+              "跟进进度并保证页面符合营销目标与设计风格"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "拆解 4P 营销要素至网页内容结构",
+              "编写春节零食销售网页 PRD 文档",
+              "设计购买路径与购物车流程",
+              "制定促销元素（限时倒计时、库存提醒、优惠券）在页面的呈现方案"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "规划单文件 HTML 页面结构和板块布局",
+              "定义价格组件、优惠组件、购买入口等可复用模块",
+              "设计库存提醒与倒计时的交互逻辑",
+              "输出 UI 区块划分与交互接口说明供 Engineer 实现"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据 PRD 和架构规划编写 HTML/CSS/JavaScript 单文件",
+              "实现购物车功能并使用 localStorage 持久化数据",
+              "实现库存动态显示与限时促销倒计时",
+              "确保页面在移动端视觉参考京东/天猫风格，主色为春节红",
+              "进行性能优化与测试保证上线质量"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF 春节香瓜子葵花子促销单品页，集成价格、渠道、促销等关键营销要素的移动端电商网页",
+        "goals": [
+          "提升春节期间香瓜子葵花子单品的销量与转化率",
+          "营造喜庆、紧迫的购买氛围，促进用户立即下单",
+          "优化移动端购物体验，实现快速浏览与一键加购",
+          "展示完整4P营销信息，强化品牌记忆与产品卖点",
+          "通过 localStorage 保留购物车数据，提高复购和连续购买概率"
+        ],
+        "target_users": [
+          "春节期间的家庭主妇/长辈：希望方便地选购年货零食，关注价格优惠和品质保障",
+          "年轻消费者：追求节日气氛、线上购物便利与促销活动参与感"
+        ],
+        "page_sections": [
+          {
+            "id": "product-banner",
+            "purpose": "展示产品外观图和春节主题背景，快速传递品牌形象与节庆氛围"
+          },
+          {
+            "id": "product-info",
+            "purpose": "提供产品规格、组合装信息及核心卖点，让用户了解商品价值"
+          },
+          {
+            "id": "price-block",
+            "purpose": "突出现价、原价及优惠幅度，增强用户购买意愿"
+          },
+          {
+            "id": "promotion-tools",
+            "purpose": "加入限时倒计时、优惠券、库存提醒等促销手段，激发紧迫感"
+          },
+          {
+            "id": "purchase-channel",
+            "purpose": "提供立即购买按钮和数量选择器，引导用户快速进入购物流程"
+          },
+          {
+            "id": "cart-management",
+            "purpose": "展示购物车内容，支持数量修改与删除，使用 localStorage 保持数据持久化"
+          },
+          {
+            "id": "category-nav",
+            "purpose": "支持商品分类入口，便于用户探索更多年货零食品"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#D32F2F",
+          "#FFD54F",
+          "#F4F4F5"
+        ],
+        "components": [
+          {
+            "id": "product-banner",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "春节主题产品标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "节庆氛围与品牌形象描述"
+              }
+            ]
+          },
+          {
+            "id": "product-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "产品规格与组合装信息标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "核心卖点说明"
+              }
+            ]
+          },
+          {
+            "id": "price-block",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "现价与原价显示"
+              },
+              {
+                "tag": "p",
+                "content_hint": "优惠幅度提示"
+              }
+            ]
+          },
+          {
+            "id": "promotion-tools",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "限时倒计时器"
+              },
+              {
+                "tag": "div",
+                "content_hint": "优惠券领取区"
+              },
+              {
+                "tag": "div",
+                "content_hint": "库存提醒信息"
+              }
+            ]
+          },
+          {
+            "id": "purchase-channel",
+            "html": "section",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              },
+              {
+                "tag": "div",
+                "content_hint": "数量选择器"
+              }
+            ]
+          },
+          {
+            "id": "cart-management",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "购物车标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "购物车商品列表"
+              },
+              {
+                "tag": "div",
+                "content_hint": "数量修改与删除功能"
+              }
+            ]
+          },
+          {
+            "id": "category-nav",
+            "html": "nav",
+            "children": [
+              {
+                "tag": "ul",
+                "content_hint": "商品分类列表"
+              },
+              {
+                "tag": "li",
+                "content_hint": "其他年货零食品入口项"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>春节主题产品页</title>\n<style>\n  body {\n    font-family: Arial, sans-serif;\n    background-color: #F4F4F5;\n    margin: 0;\n    padding: 0;\n    color: #333;\n  }\n  header, section, nav {\n    padding: 20px;\n    margin: 0 auto;\n    max-width: 800px;\n  }\n  h1, h2 {\n    color: #D32F2F;\n    margin-bottom: 10px;\n  }\n  p {\n    color: #333;\n    line-height: 1.5;\n  }\n  #product-banner {\n    background-color: #FFD54F;\n    text-align: center;\n    padding: 40px 20px;\n    border-bottom: 4px solid #D32F2F;\n  }\n  #product-info {\n    background-color: #fff;\n    border-bottom: 1px solid #ddd;\n  }\n  #price-block {\n    background-color: #fff;\n    border: 2px solid #D32F2F;\n    padding: 20px;\n    text-align: center;\n    font-size: 18px;\n    margin-top: 20px;\n  }\n  #promotion-tools {\n    background-color: #fff8e1;\n    padding: 20px;\n    margin-top: 20px;\n    border: 1px solid #FFD54F;\n  }\n  #promotion-tools div {\n    margin-bottom: 10px;\n  }\n  #purchase-channel {\n    background-color: #fff;\n    padding: 20px;\n    margin-top: 20px;\n    text-align: center;\n    border: 1px solid #ddd;\n  }\n  #purchase-channel button {\n    background-color: #D32F2F;\n    color: white;\n    padding: 10px 20px;\n    border: none;\n    font-size: 16px;\n    cursor: pointer;\n  }\n  #purchase-channel button:hover {\n    background-color: #b71c1c;\n  }\n  #cart-management {\n    background-color: #fff;\n    padding: 20px;\n    margin-top: 20px;\n    border: 1px solid #ddd;\n  }\n  #category-nav {\n    background-color: #D32F2F;\n    color: white;\n    margin-top: 20px;\n  }\n  #category-nav ul {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n    display: flex;\n  }\n  #category-nav li {\n    padding: 10px 15px;\n    cursor: pointer;\n  }\n  #category-nav li:hover {\n    background-color: #b71c1c;\n  }\n</style>\n</head>\n<body>\n\n<section id=\"product-banner\">\n  <h1>欢庆春节礼盒</h1>\n  <p>以喜庆红金配色呈现节日氛围，融合品牌传承与品质升级，带来新年的美好祝愿。</p>\n</section>\n\n<section id=\"product-info\">\n  <h2>礼盒规格与组合</h2>\n  <p>包含多款精选年货零食，礼盒包装精美，适合送礼与自用。</p>\n</section>\n\n<section id=\"price-block\">\n  <h2>现价 ￥199 原价 ￥299</h2>\n  <p>限时优惠立减 ￥100</p>\n</section>\n\n<section id=\"promotion-tools\">\n  <div>限时倒计时：00:12:45</div>\n  <div>领取满200减50优惠券</div>\n  <div>库存紧张，仅剩 20 件</div>\n</section>\n\n<section id=\"purchase-channel\">\n  <button>立即购买</button>\n  <div>\n    数量：\n    <select>\n      <option>1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n  </div>\n</section>\n\n<section id=\"cart-management\">\n  <h2>购物车</h2>\n  <div>商品列表：礼盒 A、礼盒 B</div>\n  <div>数量调整与删除操作</div>\n</section>\n\n<nav id=\"category-nav\">\n  <ul>\n    <li>坚果类</li>\n    <li>糖果类</li>\n    <li>干果类</li>\n    <li>其他年货</li>\n  </ul>\n</nav>\n\n</body>\n</html>"
+    }
+  ]
+}

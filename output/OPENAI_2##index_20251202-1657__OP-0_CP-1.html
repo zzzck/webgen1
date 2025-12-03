@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 新疆香瓜子葵花子</title>
+<style>
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fffaf5;
+        color: #333;
+    }
+    .container {
+        max-width: 950px;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+    header {
+        background-color: #E4393C;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+    .nav-left, .nav-right {
+        display: flex;
+        align-items: center;
+    }
+    .nav-left button, .nav-right button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    .product-section {
+        padding: 15px;
+    }
+    .product-main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .product-image {
+        flex: 1 1 300px;
+    }
+    .product-image img {
+        width: 100%;
+        border-radius: 8px;
+    }
+    .product-info {
+        flex: 1 1 300px;
+    }
+    .product-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #E4393C;
+    }
+    .product-spec {
+        color: #666;
+        margin: 8px 0;
+    }
+    .price {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+    }
+    .current-price {
+        font-size: 24px;
+        color: #E4393C;
+        font-weight: bold;
+    }
+    .original-price {
+        text-decoration: line-through;
+        color: #999;
+    }
+    .discount-tag {
+        background-color: #ffcc00;
+        color: #E4393C;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+    .promo-section {
+        margin: 15px 0;
+        background-color: #fff5f5;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    .promo-item {
+        margin-bottom: 10px;
+    }
+    .inventory {
+        color: #E4393C;
+        font-weight: bold;
+    }
+    .coupon-list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .coupon {
+        background-color: #E4393C;
+        color: #fff;
+        padding: 5px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .action-buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .quantity-control button {
+        width: 25px;
+        height: 25px;
+        background-color: #eee;
+        border: none;
+        cursor: pointer;
+    }
+    .quantity-control input {
+        width: 40px;
+        text-align: center;
+        border: 1px solid #ccc;
+        padding: 3px;
+    }
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .btn-buy {
+        background-color: #E4393C;
+        color: #fff;
+    }
+    .btn-cart {
+        background-color: #ffcc00;
+        color: #E4393C;
+    }
+    .details-section {
+        margin-top: 20px;
+    }
+    .details-toggle {
+        color: #E4393C;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .details-content {
+        display: none;
+        margin-top: 10px;
+        line-height: 1.6;
+    }
+    .reviews-section {
+        margin-top: 20px;
+    }
+    .review {
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+    }
+    .review-rating {
+        color: gold;
+    }
+    .review-text {
+        margin: 5px 0;
+    }
+    .review-images {
+        display: flex;
+        gap: 5px;
+    }
+    .review-images img {
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+    }
+    @media (max-width: 600px) {
+        .product-main {
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="nav-left">
+            <button>← 返回</button>
+            <span>LYF 店铺</span>
+        </div>
+        <div class="nav-right">
+            <button>🛒</button>
+        </div>
+    </header>
+    <section class="product-section">
+        <div class="product-main">
+            <div class="product-image">
+                <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="新疆香瓜子葵花子">
+            </div>
+            <div class="product-info">
+                <div class="product-title">新疆香瓜子葵花子</div>
+                <div class="product-spec">规格：30g × 10 包</div>
+                <div class="price">
+                    <span class="current-price">¥16.9</span>
+                    <span class="original-price">¥29.9</span>
+                    <span class="discount-tag">限时优惠</span>
+                </div>
+                <div class="promo-section">
+                    <div class="promo-item">限时抢购倒计时：<span id="countdown">00:15:32</span></div>
+                    <div class="promo-item">库存剩余：<span class="inventory" id="inventory">128</span> 件</div>
+                    <div class="promo-item">领券中心：
+                        <div class="coupon-list">
+                            <div class="coupon">满10减2</div>
+                            <div class="coupon">满20减5</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <div class="quantity-control">
+                        <button>-</button>
+                        <input type="text" value="1">
+                        <button>+</button>
+                    </div>
+                    <button class="btn btn-cart">加入购物车</button>
+                    <button class="btn btn-buy">立即购买</button>
+                </div>
+            </div>
+        </div>
+        <div class="details-section">
+            <div class="details-toggle">展开商品详情 ▼</div>
+            <div class="details-content">
+                新疆特产香瓜子葵花子，粒大饱满，香脆可口，精选原料，健康零食首选。
+            </div>
+        </div>
+        <div class="reviews-section">
+            <h3>用户评价</h3>
+            <div class="review">
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">很好吃！春节必备零食 😋</div>
+                <div class="review-images">
+                    <img src="https://via.placeholder.com/50" alt="review-img">
+                    <img src="https://via.placeholder.com/50" alt="review-img">
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-rating">⭐⭐⭐⭐</div>
+                <div class="review-text">瓜子香而不腻，包装喜庆 🎉</div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

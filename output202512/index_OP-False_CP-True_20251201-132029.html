@@ -1,0 +1,549 @@
+这是一个完整的单页面 HTML 解决方案。它包含 HTML 结构、CSS 样式（模仿京东 UI）和原生 JavaScript 逻辑（处理购物车、本地存储、倒计时和交互）。
+
+您可以将以下代码保存为 `.html` 文件（例如 `jd_melon_seeds.html`），并在浏览器中直接打开。
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新疆特级香瓜子 - 京东超市风格页</title>
+    <style>
+        /* --- CSS Reset & 基础变量 --- */
+        :root {
+            --jd-red: #e4393c;
+            --jd-dark-red: #c81623;
+            --text-dark: #333;
+            --text-gray: #666;
+            --text-light: #999;
+            --bg-gray: #f4f4f4;
+            --border-color: #eee;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+        body { font-family: "Microsoft YaHei", sans-serif; background-color: var(--bg-gray); color: var(--text-dark); padding-bottom: 60px; }
+        a { text-decoration: none; color: var(--text-dark); }
+        ul { list-style: none; }
+
+        /* --- 顶部导航模拟 --- */
+        .header { background: #fff; border-bottom: 1px solid #ddd; padding: 10px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; color: var(--jd-red); }
+        .search-bar { flex: 1; margin: 0 20px; position: relative; }
+        .search-bar input { width: 100%; padding: 8px 15px; border: 2px solid var(--jd-red); border-radius: 20px; }
+        .search-bar button { position: absolute; right: 0; top: 0; background: var(--jd-red); color: #fff; border: none; height: 100%; padding: 0 20px; border-radius: 0 20px 20px 0; cursor: pointer; }
+
+        /* --- 主要商品区域 --- */
+        .product-page { display: flex; flex-wrap: wrap; background: #fff; margin-top: 20px; border-radius: 8px; padding: 20px; box-shadow: 0 1px 6px rgba(0,0,0,0.1); }
+        
+        /* 左侧图片 */
+        .preview-wrap { flex: 0 0 400px; width: 400px; padding-right: 20px; }
+        .main-img { width: 100%; height: 400px; object-fit: cover; border: 1px solid #eee; border-radius: 4px; }
+        .thumb-list { display: flex; margin-top: 10px; gap: 10px; }
+        .thumb-list img { width: 60px; height: 60px; border: 2px solid transparent; cursor: pointer; }
+        .thumb-list img.active { border-color: var(--jd-red); }
+
+        /* 右侧详情 */
+        .item-info-wrap { flex: 1; min-width: 300px; }
+        .sku-name { font-size: 18px; font-weight: 700; line-height: 28px; margin-bottom: 10px; }
+        .sku-tags { margin-bottom: 10px; }
+        .tag { display: inline-block; background: var(--jd-red); color: #fff; font-size: 12px; padding: 2px 5px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
+        .sub-title { color: var(--jd-red); font-size: 14px; margin-bottom: 10px; line-height: 1.5; }
+
+        /* 价格与促销区 */
+        .summary-price-wrap { background: #f3f3f3; padding: 15px; border-radius: 4px; margin-bottom: 15px; position: relative; }
+        .price-row { display: flex; align-items: baseline; }
+        .dt { color: var(--text-light); font-size: 12px; width: 60px; }
+        .p-price { color: var(--jd-red); font-size: 24px; font-weight: bold; }
+        .p-price em { font-size: 16px; font-style: normal; margin-right: 2px; }
+        .market-price { text-decoration: line-through; color: var(--text-light); font-size: 12px; margin-left: 10px; }
+        
+        /* 倒计时 */
+        .countdown-box { position: absolute; right: 10px; top: 10px; background: #fff; border: 1px solid var(--jd-red); padding: 5px 10px; border-radius: 4px; font-size: 12px; color: var(--jd-red); display: flex; align-items: center; gap: 5px; }
+        .countdown-box span { font-weight: bold; }
+
+        /* 优惠券 */
+        .coupon-area { display: flex; align-items: center; margin-top: 10px; }
+        .coupon { border: 1px dashed var(--jd-red); color: var(--jd-red); background: #ffdedf; padding: 2px 8px; font-size: 12px; margin-right: 10px; cursor: pointer; position: relative; }
+        .coupon::after { content: "领取"; position: absolute; right: -30px; top: 0; width: 30px; background: var(--jd-red); color: white; text-align: center; display: none; }
+        .coupon:hover::after { display: block; }
+        .coupon.collected { filter: grayscale(1); cursor: default; }
+
+        /* 规格选择 */
+        .choose-attrs { margin-top: 20px; }
+        .li-row { display: flex; margin-bottom: 15px; align-items: center; }
+        .li-row .dt { line-height: 32px; }
+        .dd-items { display: flex; flex-wrap: wrap; gap: 10px; }
+        .item-sku { border: 1px solid #ccc; padding: 5px 15px; cursor: pointer; font-size: 12px; color: var(--text-gray); background: #fff; transition: all 0.2s; }
+        .item-sku:hover { border-color: var(--jd-red); color: var(--jd-red); }
+        .item-sku.selected { border: 1px solid var(--jd-red); position: relative; padding: 4px 14px; border: 2px solid var(--jd-red); color: var(--text-dark); }
+        
+        /* 数量选择 */
+        .count-selector { display: flex; border: 1px solid #ccc; width: 100px; height: 30px; }
+        .count-btn { width: 30px; background: #f8f8f8; border: none; cursor: pointer; font-size: 16px; }
+        .count-input { flex: 1; border: none; border-left: 1px solid #ccc; border-right: 1px solid #ccc; text-align: center; width: 40px; }
+        .stock-tip { color: var(--text-light); font-size: 12px; margin-left: 10px; }
+        .stock-low { color: var(--jd-red); font-weight: bold; }
+
+        /* 按钮组 */
+        .action-btns { display: flex; gap: 15px; margin-top: 30px; }
+        .btn { padding: 0 25px; height: 46px; line-height: 46px; font-size: 18px; font-weight: 700; text-align: center; border-radius: 4px; cursor: pointer; border: none; }
+        .btn-add-cart { background-color: var(--jd-red); color: #fff; flex: 1; max-width: 200px; }
+        .btn-add-cart:hover { background-color: var(--jd-dark-red); }
+        .btn-buy { background-color: #ffeded; color: var(--jd-red); border: 1px solid var(--jd-red); flex: 1; max-width: 200px; }
+
+        /* --- 卖点展示区 --- */
+        .details-section { background: #fff; margin-top: 20px; padding: 20px; border-radius: 8px; }
+        .section-title { font-size: 16px; font-weight: bold; border-left: 3px solid var(--jd-red); padding-left: 10px; margin-bottom: 15px; background: #f7f7f7; padding: 10px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .feature-card { text-align: center; padding: 15px; border: 1px solid #eee; border-radius: 8px; transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .feature-icon { font-size: 30px; margin-bottom: 10px; display: block; }
+        .feature-title { font-weight: bold; color: var(--text-dark); margin-bottom: 5px; display: block; }
+        .feature-desc { font-size: 12px; color: var(--text-gray); }
+
+        /* --- 悬浮购物车 & 侧边栏 --- */
+        .float-cart-btn { position: fixed; right: 20px; bottom: 100px; width: 50px; height: 50px; background: var(--jd-red); color: #fff; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(228, 57, 60, 0.4); z-index: 100; }
+        .cart-count { font-size: 10px; background: #fff; color: var(--jd-red); padding: 1px 5px; border-radius: 10px; position: absolute; top: 0; right: 0; border: 1px solid var(--jd-red); }
+        
+        .cart-sidebar { position: fixed; top: 0; right: -320px; width: 320px; height: 100vh; background: #fff; box-shadow: -2px 0 10px rgba(0,0,0,0.1); transition: right 0.3s; z-index: 200; display: flex; flex-direction: column; }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #f8f8f8; }
+        .close-cart { cursor: pointer; font-size: 20px; color: var(--text-gray); }
+        .cart-body { flex: 1; overflow-y: auto; padding: 10px; }
+        .cart-item { display: flex; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .cart-item img { width: 60px; height: 60px; object-fit: cover; margin-right: 10px; border: 1px solid #eee; }
+        .cart-item-info { flex: 1; }
+        .cart-item-title { font-size: 12px; line-height: 1.4; margin-bottom: 5px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .cart-item-attr { color: var(--text-light); font-size: 12px; margin-bottom: 5px; }
+        .cart-item-price { color: var(--jd-red); font-weight: bold; font-size: 14px; display: flex; justify-content: space-between; }
+        .cart-item-del { color: var(--text-light); cursor: pointer; font-size: 12px; }
+        .cart-footer { padding: 15px; border-top: 1px solid #eee; background: #fff; }
+        .cart-total { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; font-size: 16px; }
+        .btn-checkout { width: 100%; background: var(--jd-red); color: #fff; border: none; padding: 12px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+
+        /* Toast 提示 */
+        .toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: #fff; padding: 10px 20px; border-radius: 4px; font-size: 14px; display: none; z-index: 300; }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .preview-wrap { width: 100%; padding-right: 0; margin-bottom: 20px; }
+            .product-page { padding: 10px; margin-top: 0; border-radius: 0; }
+            .features-grid { grid-template-columns: 1fr 1fr; }
+            .cart-sidebar { width: 85%; }
+            .nav-bar .search-bar { display: none; } /* 移动端简化头部 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="container nav-bar">
+            <div class="logo">JD.SHOP</div>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索 新疆香瓜子...">
+                <button>搜索</button>
+            </div>
+            <div style="font-size: 12px; color: #666;">
+                <span>我的订单</span> | <span>我的京东</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容容器 -->
+    <main class="container">
+        
+        <!-- 商品购买区 -->
+        <section class="product-page">
+            <!-- 图片展示 -->
+            <div class="preview-wrap">
+                <img src="https://images.unsplash.com/photo-1599579181467-28414ba84011?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="新疆香瓜子" class="main-img" id="mainImage">
+                <div class="thumb-list">
+                    <img src="https://images.unsplash.com/photo-1599579181467-28414ba84011?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" class="active" onclick="changeImage(this)">
+                    <img src="https://images.unsplash.com/photo-1620136898253-c533619d9971?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" onclick="changeImage(this)">
+                    <img src="https://images.unsplash.com/photo-1627666821023-e74e518df743?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" onclick="changeImage(this)">
+                </div>
+            </div>
+
+            <!-- 商品信息 -->
+            <div class="item-info-wrap">
+                <div class="sku-name">
+                    <span class="tag">京东超市</span>新疆原产特级香瓜子 大颗粒 原味/五香/奶油味 休闲零食
+                </div>
+                <div class="sub-title">
+                    【限时抢购】精选新疆阿勒泰产区，颗粒饱满，手工筛选。坏籽包赔，满99元包邮！
+                </div>
+
+                <div class="summary-price-wrap">
+                    <div class="price-row">
+                        <span class="dt">京 东 价</span>
+                        <span class="p-price"><em>¥</em><span id="displayPrice">19.90</span></span>
+                        <span class="market-price">¥<span id="marketPrice">29.90</span></span>
+                    </div>
+                    <div class="coupon-area">
+                        <span class="dt">优 惠 券</span>
+                        <span class="coupon" onclick="collectCoupon(this)">满59减5</span>
+                        <span class="coupon" onclick="collectCoupon(this)">满99减10</span>
+                    </div>
+                    <div class="countdown-box">
+                        <i style="font-style:normal">⏰ 限时秒杀:</i>
+                        <span id="timer">02:00:00</span>
+                    </div>
+                </div>
+
+                <!-- 规格选择器 -->
+                <div class="choose-attrs">
+                    <div class="li-row">
+                        <div class="dt">选择口味</div>
+                        <div class="dd-items" id="flavorOptions">
+                            <div class="item-sku selected" onclick="selectOption('flavor', '原味', this)">原味经典</div>
+                            <div class="item-sku" onclick="selectOption('flavor', '五香', this)">五香浓郁</div>
+                            <div class="item-sku" onclick="selectOption('flavor', '奶油', this)">奶油香甜</div>
+                            <div class="item-sku" onclick="selectOption('flavor', '海盐', this)">海盐风味</div>
+                        </div>
+                    </div>
+                    <div class="li-row">
+                        <div class="dt">包装规格</div>
+                        <div class="dd-items" id="weightOptions">
+                            <div class="item-sku selected" onclick="selectOption('weight', '500g', this, 1)">500g (袋装)</div>
+                            <div class="item-sku" onclick="selectOption('weight', '1kg', this, 1.8)">1kg (超值装)</div>
+                            <div class="item-sku" onclick="selectOption('weight', '礼盒', this, 4.5)">2kg (精美礼盒)</div>
+                        </div>
+                    </div>
+                    <div class="li-row">
+                        <div class="dt">购买数量</div>
+                        <div class="count-selector">
+                            <button class="count-btn" onclick="changeQty(-1)">-</button>
+                            <input type="text" class="count-input" value="1" id="qtyInput" readonly>
+                            <button class="count-btn" onclick="changeQty(1)">+</button>
+                        </div>
+                        <span class="stock-tip">库存: <span id="stockCount">230</span>件 <span class="stock-low" id="stockWarning" style="display:none">(库存紧张)</span></span>
+                    </div>
+                </div>
+
+                <div class="action-btns">
+                    <button class="btn btn-buy" onclick="buyNow()">立即购买</button>
+                    <button class="btn btn-add-cart" onclick="addToCart()">加入购物车</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 详情介绍 -->
+        <section class="details-section">
+            <div class="section-title">商品详情 & 品质卖点</div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🌞</span>
+                    <span class="feature-title">新疆原产</span>
+                    <span class="feature-desc">日照时间长，昼夜温差大，瓜子更饱满。</span>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔍</span>
+                    <span class="feature-title">人工精选</span>
+                    <span class="feature-desc">三道工序筛选，保证每一颗都是精品。</span>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🥘</span>
+                    <span class="feature-title">传统炒制</span>
+                    <span class="feature-desc">保留瓜子原香，口感酥脆不脏手。</span>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📦</span>
+                    <span class="feature-title">防潮包装</span>
+                    <span class="feature-desc">铝箔自封袋，开袋即食，便于保存。</span>
+                </div>
+            </div>
+            <div style="margin-top:20px; text-align:center; color: #999; font-size: 14px;">
+                <p>--- 已经到底了 ---</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 悬浮购物车按钮 -->
+    <div class="float-cart-btn" onclick="toggleCart()">
+        <span>🛒</span>
+        <span style="font-size:10px">购物车</span>
+        <div class="cart-count" id="cartCountBadge">0</div>
+    </div>
+
+    <!-- 侧边购物车面板 -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <span>购物车</span>
+            <span class="close-cart" onclick="toggleCart()">×</span>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <!-- 购物车条目将通过JS注入 -->
+            <div style="text-align:center; margin-top:50px; color:#999">购物车是空的</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>总计:</span>
+                <span>¥<span id="cartTotal">0.00</span></span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">去结算</button>
+        </div>
+    </div>
+
+    <!-- 全局提示 Toast -->
+    <div class="toast" id="toast">提示消息</div>
+
+    <script>
+        // --- 数据与状态 ---
+        const basePrice = 19.90;
+        const baseMarketPrice = 29.90;
+        
+        // 当前选择状态
+        let currentSelection = {
+            flavor: '原味',
+            weight: '500g',
+            priceMultiplier: 1,
+            qty: 1,
+            image: 'https://images.unsplash.com/photo-1599579181467-28414ba84011?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+        };
+
+        // 购物车数据 (从 LocalStorage 初始化)
+        let cart = JSON.parse(localStorage.getItem('jd_melon_cart')) || [];
+
+        // --- 初始化执行 ---
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUI();
+            updateCartUI();
+            startTimer();
+            simulateStock();
+        });
+
+        // --- 交互逻辑函数 ---
+
+        // 切换主图
+        function changeImage(thumb) {
+            document.getElementById('mainImage').src = thumb.src.replace('w=100', 'w=800');
+            document.querySelectorAll('.thumb-list img').forEach(img => img.classList.remove('active'));
+            thumb.classList.add('active');
+            currentSelection.image = thumb.src;
+        }
+
+        // 规格选择
+        function selectOption(type, value, element, multiplier) {
+            // 更新数据
+            if (type === 'flavor') {
+                currentSelection.flavor = value;
+                // 清除同级选中样式
+                document.querySelectorAll('#flavorOptions .item-sku').forEach(el => el.classList.remove('selected'));
+            } else if (type === 'weight') {
+                currentSelection.weight = value;
+                currentSelection.priceMultiplier = multiplier;
+                document.querySelectorAll('#weightOptions .item-sku').forEach(el => el.classList.remove('selected'));
+            }
+            
+            // 添加选中样式
+            element.classList.add('selected');
+            
+            // 触发价格更新
+            updateUI();
+        }
+
+        // 数量变更
+        function changeQty(change) {
+            const newQty = currentSelection.qty + change;
+            if (newQty >= 1 && newQty <= 50) {
+                currentSelection.qty = newQty;
+                document.getElementById('qtyInput').value = newQty;
+            }
+        }
+
+        // 界面更新 (价格计算)
+        function updateUI() {
+            const finalPrice = (basePrice * currentSelection.priceMultiplier).toFixed(2);
+            const finalMarketPrice = (baseMarketPrice * currentSelection.priceMultiplier).toFixed(2);
+            
+            document.getElementById('displayPrice').innerText = finalPrice;
+            document.getElementById('marketPrice').innerText = finalMarketPrice;
+        }
+
+        // 模拟库存逻辑
+        function simulateStock() {
+            const stock = Math.floor(Math.random() * 50) + 5; // 5-55 随机
+            const stockEl = document.getElementById('stockCount');
+            const warningEl = document.getElementById('stockWarning');
+            
+            stockEl.innerText = stock;
+            if(stock < 20) {
+                warningEl.style.display = 'inline';
+            }
+        }
+
+        // 倒计时逻辑
+        function startTimer() {
+            let totalSeconds = 7200; // 2小时
+            const timerEl = document.getElementById('timer');
+            
+            setInterval(() => {
+                if (totalSeconds <= 0) return;
+                totalSeconds--;
+                
+                const h = Math.floor(totalSeconds / 3600).toString().padStart(2, '0');
+                const m = Math.floor((totalSeconds % 3600) / 60).toString().padStart(2, '0');
+                const s = (totalSeconds % 60).toString().padStart(2, '0');
+                
+                timerEl.innerText = `${h}:${m}:${s}`;
+            }, 1000);
+        }
+
+        // 领取优惠券
+        function collectCoupon(btn) {
+            if (!btn.classList.contains('collected')) {
+                btn.classList.add('collected');
+                btn.innerText = '已领取';
+                showToast('优惠券领取成功！');
+            }
+        }
+
+        // --- 购物车逻辑 ---
+
+        function addToCart() {
+            const unitPrice = (basePrice * currentSelection.priceMultiplier).toFixed(2);
+            const itemId = `${currentSelection.flavor}-${currentSelection.weight}`;
+            
+            const existingItem = cart.find(item => item.id === itemId);
+            
+            if (existingItem) {
+                existingItem.qty += currentSelection.qty;
+            } else {
+                cart.push({
+                    id: itemId,
+                    title: `新疆香瓜子 ${currentSelection.flavor} ${currentSelection.weight}`,
+                    flavor: currentSelection.flavor,
+                    weight: currentSelection.weight,
+                    price: unitPrice,
+                    qty: currentSelection.qty,
+                    image: currentSelection.image
+                });
+            }
+
+            saveCart();
+            updateCartUI();
+            showToast('商品已加入购物车');
+            
+            // 简单动画效果：打开侧边栏
+            document.getElementById('cartSidebar').classList.add('open');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            updateCartUI();
+        }
+
+        function saveCart() {
+            localStorage.setItem('jd_melon_cart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            const cartBody = document.getElementById('cartBody');
+            const cartBadge = document.getElementById('cartCountBadge');
+            const cartTotalEl = document.getElementById('cartTotal');
+            
+            let totalQty = 0;
+            let totalPrice = 0;
+            
+            if (cart.length === 0) {
+                cartBody.innerHTML = '<div style="text-align:center; margin-top:50px; color:#999">购物车是空的<br>快去选购吧</div>';
+            } else {
+                cartBody.innerHTML = '';
+                cart.forEach((item, index) => {
+                    totalQty += item.qty;
+                    totalPrice += (parseFloat(item.price) * item.qty);
+                    
+                    const itemHTML = `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="商品图">
+                            <div class="cart-item-info">
+                                <div class="cart-item-title">${item.title}</div>
+                                <div class="cart-item-attr">${item.flavor} | ${item.weight}</div>
+                                <div class="cart-item-price">
+                                    <span>¥${item.price} x ${item.qty}</span>
+                                    <span class="cart-item-del" onclick="removeFromCart(${index})">删除</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    cartBody.innerHTML += itemHTML;
+                });
+            }
+
+            cartBadge.innerText = totalQty;
+            cartTotalEl.innerText = totalPrice.toFixed(2);
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        function buyNow() {
+            showToast('正在跳转至结算页面...');
+            setTimeout(() => {
+                alert('感谢您的购买！(模拟结算流程)');
+            }, 1000);
+        }
+        
+        function checkout() {
+            if(cart.length === 0) {
+                showToast('购物车为空');
+                return;
+            }
+            alert(`结算成功！共消费 ¥${document.getElementById('cartTotal').innerText}`);
+            cart = [];
+            saveCart();
+            updateCartUI();
+            toggleCart();
+        }
+
+        // 提示框工具
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2000);
+        }
+
+    </script>
+</body>
+</html>
+```
+
+### 功能特点说明：
+
+1.  **京东风格设计 (UI/UX)：**
+    *   使用京东标志性的红色 (`#e4393c`) 作为主色调。
+    *   价格显示采用了大字体加粗，保留了“京东价”的布局。
+    *   规格选择器（口味、重量）模仿了电商网站常用的 SKU 切换样式（点击变红框）。
+    *   布局响应式：桌面端为左右分栏，移动端（宽度<768px）自动调整为垂直堆叠。
+
+2.  **产品展示 (Xinjiang Melon Seeds)：**
+    *   **图片：** 包含了缩略图切换主图的功能。
+    *   **详情：** 动态展示了原味、五香、奶油等口味，以及 500g、1kg、礼盒装等规格。
+    *   **卖点：** 底部设有专门的区域展示“新疆原产”、“人工精选”等品质卖点。
+
+3.  **价格与促销 (Logic)：**
+    *   **动态价格：** 选择不同重量（如1kg或礼盒）会自动更新总价（通过 `priceMultiplier` 系数）。
+    *   **倒计时：** 只有 JavaScript 实现的限时秒杀倒计时。
+    *   **库存提醒：** 随机生成的库存数量，如果低于20件会显示“库存紧张”警告。
+    *   **优惠券：** 点击可“领取”，状态会改变并变灰。
+
+4.  **购物车系统 (Core Feature)：**
+    *   **LocalStorage：** 使用 `localStorage` 保存购物车数据，刷新页面后数据不丢失。
+    *   **侧边栏体验：** 点击悬浮按钮或“加入购物车”，侧边栏会滑出，无需跳转页面即可管理。
+    *   **增删改：** 支持加入不同 SKU 的商品，自动合并同类项数量，计算总价，以及删除条目。
+
+5.  **技术栈：**
+    *   纯 HTML5 + CSS3 + Vanilla JavaScript。
+    *   无任何外部框架依赖。
+
+您可以直接复制上述代码查看效果。

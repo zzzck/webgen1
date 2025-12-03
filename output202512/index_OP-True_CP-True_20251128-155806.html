@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF新疆原产葵花籽详情页</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f6f6;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #f23030;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    font-size: 18px;
+    margin: 0;
+}
+header nav a {
+    color: #fff;
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
+main {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.product-gallery {
+    flex: 1 1 300px;
+    text-align: center;
+}
+.product-gallery img {
+    width: 100%;
+    max-width: 400px;
+    transition: opacity 0.3s;
+}
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.thumbnails img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+.thumbnails img:hover {
+    border-color: #f23030;
+}
+.product-info {
+    flex: 1 1 300px;
+    padding: 0 20px;
+}
+.product-info h2 {
+    font-size: 20px;
+    margin: 0;
+}
+.price {
+    color: #f23030;
+    font-size: 24px;
+    margin: 10px 0;
+}
+.tags span {
+    background-color: #ff9900;
+    color: #fff;
+    padding: 3px 8px;
+    margin-right: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+.countdown {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #f23030;
+}
+.coupon-section button {
+    padding: 8px;
+    margin-right: 5px;
+    border: 1px solid #f23030;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.coupon-section button.active {
+    background-color: #f23030;
+    color: #fff;
+}
+.quantity-selector {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+.quantity-selector button {
+    width: 30px;
+    height: 30px;
+}
+.quantity-selector span {
+    margin: 0 10px;
+}
+.action-buttons button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+}
+.buy-now {
+    background-color: #f23030;
+}
+.add-cart {
+    background-color: #ff9900;
+}
+.action-buttons button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+.product-tabs ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    border-bottom: 1px solid #ddd;
+}
+.product-tabs li {
+    padding: 10px;
+    cursor: pointer;
+}
+.product-tabs li.active {
+    border-bottom: 2px solid #f23030;
+    color: #f23030;
+}
+.tab-content {
+    padding: 10px;
+    font-size: 14px;
+}
+.review-filter {
+    padding: 20px;
+    background-color: #fff;
+    margin: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.review-filter .filter-buttons button {
+    margin-right: 8px;
+    padding: 5px 10px;
+}
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: none;
+}
+.modal-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+}
+.modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+}
+@media(max-width:768px) {
+    main {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>LYF零食店</h1>
+    <nav><a href="#">首页</a><a href="#">分类</a></nav>
+</header>
+<main>
+    <section class="product-gallery">
+        <img id="mainImg" src="https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg" alt="葵花籽">
+        <div class="thumbnails">
+            <img src="https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b" data-src="https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b">
+            <img src="data:image/jpeg;base64,/9j/4AAQSk..." data-src="data:image/jpeg;base64,/9j/4AAQSk...">
+        </div>
+    </section>
+    <section class="product-info">
+        <h2>新疆原产葵花籽（30g 独立小包装）</h2>
+        <p class="price">￥<span id="unitPrice">16.9</span></p>
+        <div class="tags"><span>春节特惠</span><span>包邮</span></div>
+        <div class="countdown">限时抢购倒计时: <span id="countdownTimer">02:00:00</span></div>
+        <div class="coupon-section">
+            <button id="couponA" data-threshold="10" data-discount="2">满10减2元</button>
+            <button id="couponB" data-threshold="20" data-discount="5">满20减5元</button>
+        </div>
+        <div class="quantity-selector">
+            <button id="qtyMinus">-</button>
+            <span id="qty">1</span>
+            <button id="qtyPlus">+</button>
+            <p>总价: ￥<span id="totalPrice">16.9</span></p>
+        </div>
+        <div class="action-buttons">
+            <button class="buy-now" id="buyNowBtn">立即购买</button>
+            <button class="add-cart" id="addCartBtn">加入购物车</button>
+        </div>
+    </section>
+</main>
+<section class="product-tabs">
+    <ul>
+        <li class="active" data-tab="desc">商品介绍</li>
+        <li data-tab="service">售后保障</li>
+    </ul>
+    <div class="tab-content" id="tabContent">优质新疆葵花籽，精心挑选，独立小包装，干净卫生。</div>
+</section>
+<section class="review-filter">
+    <div class="filter-buttons">
+        <button data-filter="all">全部</button>
+        <button data-filter="good">好评</button>
+        <button data-filter="medium">中评</button>
+    </div>
+    <ul id="reviewList"></ul>
+</section>
+<div class="toast" id="toast"></div>
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+        <h3>确认订单</h3>
+        <p id="modalInfo"></p>
+        <button id="confirmPay">确认支付</button>
+    </div>
+</div>
+<script>
+const unitPrice = 16.9;
+let qty = 1;
+let selectedCoupon = null;
+let countdown = 2 * 60 * 60;
+const qtyElem = document.getElementById('qty');
+const totalPriceElem = document.getElementById('totalPrice');
+const couponA = document.getElementById('couponA');
+const couponB = document.getElementById('couponB');
+function updateTotalPrice(){
+    let discount = 0;
+    if(selectedCoupon){
+        const threshold = parseFloat(selectedCoupon.dataset.threshold);
+        const d = parseFloat(selectedCoupon.dataset.discount);
+        if(qty*unitPrice >= threshold){
+            discount = d;
+        } else {
+            selectedCoupon.classList.remove('active');
+            selectedCoupon = null;
+        }
+    }
+    const total = (unitPrice * qty - discount).toFixed(1);
+    totalPriceElem.textContent = total;
+}
+document.getElementById('qtyMinus').addEventListener('click', ()=>{
+    if(qty>1){ qty--; qtyElem.textContent = qty; updateTotalPrice();}
+});
+document.getElementById('qtyPlus').addEventListener('click', ()=>{
+    qty++; qtyElem.textContent = qty; updateTotalPrice();
+});
+[couponA, couponB].forEach(c=>{
+    c.addEventListener('click', ()=>{
+        if(selectedCoupon === c){
+            c.classList.remove('active');
+            selectedCoupon = null;
+        } else {
+            couponA.classList.remove('active'); couponB.classList.remove('active');
+            c.classList.add('active');
+            selectedCoupon = c;
+        }
+        updateTotalPrice();
+    });
+});
+function updateCountdown(){
+    if(countdown<=0){
+        document.getElementById('countdownTimer').textContent = '00:00:00';
+        document.getElementById('buyNowBtn').disabled = true;
+        document.getElementById('addCartBtn').disabled = true;
+        return;
+    }
+    countdown--;
+    const h = String(Math.floor(countdown/3600)).padStart(2,'0');
+    const m = String(Math.floor((countdown%3600)/60)).padStart(2,'0');
+    const s = String(countdown%60).padStart(2,'0');
+    document.getElementById('countdownTimer').textContent = `${h}:${m}:${s}`;
+}
+setInterval(updateCountdown,1000);
+document.querySelectorAll('.thumbnails img').forEach(img=>{
+    img.addEventListener('mouseenter',()=>{document.getElementById('mainImg').src = img.dataset.src;});
+    img.addEventListener('click',()=>{document.getElementById('mainImg').src = img.dataset.src;});
+});
+document.querySelectorAll('.product-tabs li').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+        document.querySelectorAll('.product-tabs li').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        if(tab.dataset.tab==='desc'){
+            document.getElementById('tabContent').textContent = '优质新疆葵花籽，精心挑选，独立小包装，干净卫生。';
+        } else {
+            document.getElementById('tabContent').textContent = '售后保障：本产品包邮，支持七天无理由退换货。';
+        }
+    });
+});
+const productData = {
+    reviews: [
+        {type:'good', text:'味道很好，包装精美'},
+        {type:'good', text:'颗粒饱满，新鲜香脆'},
+        {type:'medium', text:'味道一般，包装不错'},
+        {type:'medium', text:'有些不新鲜'},
+    ]
+};
+function renderReviews(filter){
+    const list = document.getElementById('reviewList');
+    list.innerHTML = '';
+    productData.reviews.filter(r=>filter==='all'||r.type===filter).forEach(r=>{
+        const li = document.createElement('li');
+        li.textContent = r.text;
+        list.appendChild(li);
+    });
+}
+document.querySelectorAll('.filter-buttons button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        renderReviews(btn.dataset.filter);
+    });
+});
+renderReviews('all');
+function showToast(msg){
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    setTimeout(()=>{toast.style.display='none';},2000);
+}
+document.getElementById('addCartBtn').addEventListener('click',()=>{
+    showToast(`已成功加入购物车：LYF葵花籽 x ${qty}`);
+});
+const modalOverlay = document.getElementById('modalOverlay');
+document.getElementById('buyNowBtn').addEventListener('click',()=>{
+    modalOverlay.style.display='block';
+    document.getElementById('modalInfo').textContent = `LYF葵花籽 x ${qty}，总价：￥${totalPriceElem.textContent}`;
+});
+modalOverlay.addEventListener('click',e=>{
+    if(e.target===modalOverlay){
+        modalOverlay.style.display='none';
+    }
+});
+document.getElementById('confirmPay').addEventListener('click',()=>{
+    alert(`订单信息: 商品:LYF葵花籽, 数量:${qty}, 总价:${totalPriceElem.textContent}`);
+});
+</script>
+</body>
+</html>

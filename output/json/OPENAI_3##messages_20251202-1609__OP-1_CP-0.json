@@ -1,0 +1,334 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "请基于以下要求开发一个完整的电商销售网页。  \n\n产品信息与素材  \n- 品牌：LYF  \n- 产品：新疆香瓜子葵花子  \n- 规格：30g × 10 包  \n- 价格：¥16.9（原价 ¥29.9）  \n- 主图链接：  \n  https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\n\n4P 营销要求（必须实现）\n1) 产品（外观图、规格、卖点、评论区、详情展示）\n2) 价格（现价、原价、折扣展示、券后价逻辑）\n3) 渠道（清晰的购买入口与购物流程）\n4) 促销（限时倒计时、热销标签、库存提醒、优惠券）\n\nUI 风格  \n- 对标天猫移动端视觉规范\n- 春节红主色调（#E4393C 或类似）\n- 动效与交互体现节日感、紧迫感与愉悦感\n\n设备与布局要求（手机端尺寸）  \n- 页面主要适配手机竖屏：375px 宽度（@3x 出图，iPhone 经典尺寸）\n- 所有布局、字体、按钮大小均按移动端触控习惯设计，保证手指点击区域足够大。  \n- 顶部保留类似 App 的状态区和导航栏结构（如返回、购物车图标等）。  \n\n功能规范（必须实现）\nA. 购物模块  \n- 数量增减、加入购物车、立即购买  \n- localStorage 保存购物车数据  \n- 购物车侧栏展开/关闭  \n- 购物车商品编辑、删除、结算总价计算  \n\nB. 促销模块  \n- 限时倒计时（自动更新 UI）  \n- 库存动态显示（库存减少逻辑）  \n- 领券中心（用户可领券，并用于结算减免）  \n\nC. 内容展示  \n- 商品评价（评分+评论列表，含表情符号与图片示例）  \n- 商品详情折叠与展开  \n\n\n创新功能（可选项）\n- 场景推荐：根据浏览或加购行为展示“猜你喜欢”  \n- 福袋抽奖：增加用户停留时长  \n- 分享返红包功能  \n\n\n 输出格式:直接输出完整 HTML 文件代码 (只需要输出HTML)\n\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "分析客户销售简报，提炼品牌、产品规格、价格与核心卖点，以推动转化目标（点击率、加购率、成交率）",
+              "制定网页制作全流程任务拆解，并按角色分配任务确保营销目标与页面功能对齐",
+              "设定交付质量标准与验收指标，确保最终代码符合视觉规范、交互要求和商业目标"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "撰写包含产品信息（品牌、规格、价格）、核心卖点、促销策略、购买路径的完整 PRD 文档",
+              "设计电商页面的功能需求（购物模块、促销模块、内容展示、创新功能），明确交互细节与数据来源",
+              "输出用户浏览→购买的决策路径图，确保信息层次清晰且易于转化"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "定义页面信息架构，包括首屏元素（主视觉、折扣价格、购买按钮）、评价区、详情展示、促销区、购物车入口",
+              "规划核心营销组件（价格展示组件、倒计时组件、库存提醒组件、优惠券组件、购物车组件）并定义接口数据结构",
+              "制定动态行为逻辑（库存递减、限时倒计时、优惠券应用规则、猜你喜欢推荐触发条件）并输出给工程实现"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "依据页面结构规范与组件接口，实现适配手机竖屏（375px宽 @3x）的 HTML/CSS/JS 电商页面",
+              "编写购物模块功能代码（数量增减、加入购物车、localStorage 保存、侧栏购物车编辑与总价计算）",
+              "实现促销模块（限时倒计时自动更新 UI、库存动态显示、领券中心交互）的前端逻辑与渲染效果",
+              "实现商品评价展示（评分、评论列表、表情与图片）、详情折叠展开、创新功能（猜你喜欢、福袋抽奖、分享返红包）的交互代码",
+              "完成性能优化与多设备测试，确保高加载速度和流畅交互体验"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "打造以春节氛围为主题的LYF新疆香瓜子葵花子销售页面，通过节日感视觉、限时促销与便捷购物流程驱动用户快速下单。",
+        "goals": [
+          "提升页面点击率（CTR），吸引用户深入浏览商品详情",
+          "提高加购率，通过优化价格与促销信息引导用户加入购物车",
+          "提高转化率，通过限时倒计时与库存提醒制造购买紧迫感",
+          "强化品牌记忆，通过节日红主色和醒目的品牌视觉增强用户认同",
+          "提升用户停留时长，通过评价区与可选互动功能增强浏览体验"
+        ],
+        "target_users": [
+          "节日期间备货零食的年轻女性用户，注重性价比与节日氛围",
+          "喜欢嗑瓜子的家庭消费者，追求正宗产地和品牌保障"
+        ],
+        "page_sections": [
+          {
+            "id": "hero",
+            "purpose": "展示主图与品牌信息，立即抓住用户注意力",
+            "kpi": "CTR"
+          },
+          {
+            "id": "price-box",
+            "purpose": "突显现价与原价对比，呈现折扣力度",
+            "kpi": "加购率"
+          },
+          {
+            "id": "promotion-banner",
+            "purpose": "展示限时倒计时与热销标签，制造紧迫感",
+            "kpi": "转化率"
+          },
+          {
+            "id": "coupon-center",
+            "purpose": "引导用户领取优惠券，降低购买门槛",
+            "kpi": "加购率"
+          },
+          {
+            "id": "spec-info",
+            "purpose": "展示产品规格、产地、卖点，满足用户信息需求",
+            "kpi": "转化率"
+          },
+          {
+            "id": "buy-box",
+            "purpose": "提供数量选择、加入购物车和立即购买功能",
+            "kpi": "加购率"
+          },
+          {
+            "id": "stock-indicator",
+            "purpose": "显示实时库存，强化紧迫感",
+            "kpi": "转化率"
+          },
+          {
+            "id": "review-section",
+            "purpose": "展示用户评分与评论，提升信任度",
+            "kpi": "转化率"
+          },
+          {
+            "id": "detail-toggle",
+            "purpose": "折叠或展开商品详情，优化移动端可读性",
+            "kpi": "CTR"
+          },
+          {
+            "id": "recommendation",
+            "purpose": "基于用户行为推荐猜你喜欢商品，增加关联销售",
+            "kpi": "加购率"
+          },
+          {
+            "id": "lucky-draw",
+            "purpose": "增加用户互动与停留时长，通过福袋抽奖制造惊喜",
+            "kpi": "停留时长"
+          },
+          {
+            "id": "share-reward",
+            "purpose": "激励用户分享商品链接以获取红包，扩大传播",
+            "kpi": "CTR"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "hero + content",
+        "colors": [
+          "#D0021B",
+          "#FCE4EC",
+          "#FFD54F",
+          "#4CAF50",
+          "#F4F4F5"
+        ],
+        "components": [
+          {
+            "id": "hero",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "品牌与春节主题主图标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "节日氛围描述与产地正宗说明"
+              }
+            ]
+          },
+          {
+            "id": "price-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "现价与原价对比"
+              },
+              {
+                "tag": "p",
+                "content_hint": "折扣力度说明"
+              }
+            ]
+          },
+          {
+            "id": "promotion-banner",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "限时倒计时提示"
+              },
+              {
+                "tag": "p",
+                "content_hint": "热销标签与促销文案"
+              }
+            ]
+          },
+          {
+            "id": "coupon-center",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "优惠券领取标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "使用条件与优惠说明"
+              }
+            ]
+          },
+          {
+            "id": "spec-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "产品规格标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "产地与卖点文案"
+              }
+            ]
+          },
+          {
+            "id": "buy-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "购买选项标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "数量选择与按钮说明"
+              }
+            ]
+          },
+          {
+            "id": "stock-indicator",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "库存状态标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "剩余库存提示文案"
+              }
+            ]
+          },
+          {
+            "id": "review-section",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "用户评价标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "评分与评论摘要"
+              }
+            ]
+          },
+          {
+            "id": "detail-toggle",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "商品详情标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "可展开或折叠的详情说明"
+              }
+            ]
+          },
+          {
+            "id": "recommendation",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "猜你喜欢标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "推荐商品列表说明"
+              }
+            ]
+          },
+          {
+            "id": "lucky-draw",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "福袋抽奖标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "抽奖规则与奖品说明"
+              }
+            ]
+          },
+          {
+            "id": "share-reward",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "分享奖励标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "分享链接与红包规则说明"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>春节主题营销页面</title>\n    <style>\n        :root {\n            --primary-color: #D0021B;\n            --secondary-color: #FCE4EC;\n            --accent-color: #FFD54F;\n            --success-color: #4CAF50;\n            --light-color: #F4F4F5;\n        }\n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n        body {\n            font-family: \"Segoe UI\", Arial, sans-serif;\n            background-color: var(--light-color);\n            color: #333;\n            line-height: 1.6;\n        }\n        header, main, section {\n            padding: 1.5rem;\n            margin: auto;\n            max-width: 1200px;\n        }\n        h1, h2, h3 {\n            margin-bottom: 0.5rem;\n        }\n        p {\n            margin-bottom: 1rem;\n        }\n        .hero {\n            background-color: var(--secondary-color);\n            text-align: center;\n            padding: 3rem 1.5rem;\n        }\n        .hero h1 {\n            color: var(--primary-color);\n            font-size: 2.5rem;\n            font-weight: bold;\n        }\n        .price-box {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            background-color: var(--accent-color);\n            padding: 1rem;\n            border-radius: 8px;\n            color: #000;\n        }\n        .promotion-banner {\n            background-color: var(--primary-color);\n            color: #fff;\n            text-align: center;\n            padding: 1.2rem;\n            border-radius: 8px;\n        }\n        .coupon-center {\n            background-color: var(--secondary-color);\n            border: 1px dashed var(--primary-color);\n            padding: 1rem;\n            border-radius: 8px;\n        }\n        .spec-info {\n            background-color: #fff;\n            border: 1px solid #ddd;\n            padding: 1rem;\n            border-radius: 8px;\n        }\n        .buy-box {\n            background-color: var(--success-color);\n            color: #fff;\n            padding: 1rem;\n            border-radius: 8px;\n        }\n        .stock-indicator {\n            background-color: var(--accent-color);\n            padding: 1rem;\n            border-radius: 8px;\n        }\n        .review-section {\n            background-color: #fff;\n            border: 1px solid #ddd;\n            padding: 1rem;\n            border-radius: 8px;\n        }\n        .detail-toggle {\n            background-color: var(--secondary-color);\n            padding: 1rem;\n            border-radius: 8px;\n        }\n        .recommendation {\n            background-color: #fff;\n            padding: 1rem;\n            border-radius: 8px;\n        }\n        .lucky-draw {\n            background-color: var(--accent-color);\n            padding: 1rem;\n            border-radius: 8px;\n        }\n        .share-reward {\n            background-color: var(--secondary-color);\n            padding: 1rem;\n            border-radius: 8px;\n        }\n        @media (max-width: 768px) {\n            .price-box {\n                flex-direction: column;\n                text-align: center;\n            }\n        }\n    </style>\n</head>\n<body>\n    <section class=\"hero\">\n        <h1>品牌与春节主题主图标题</h1>\n        <p>节日氛围描述与产地正宗说明</p>\n    </section>\n\n    <section class=\"price-box\">\n        <h2>现价与原价对比</h2>\n        <p>折扣力度说明</p>\n    </section>\n\n    <section class=\"promotion-banner\">\n        <h3>限时倒计时提示</h3>\n        <p>热销标签与促销文案</p>\n    </section>\n\n    <section class=\"coupon-center\">\n        <h3>优惠券领取标题</h3>\n        <p>使用条件与优惠说明</p>\n    </section>\n\n    <section class=\"spec-info\">\n        <h3>产品规格标题</h3>\n        <p>产地与卖点文案</p>\n    </section>\n\n    <section class=\"buy-box\">\n        <h3>购买选项标题</h3>\n        <p>数量选择与按钮说明</p>\n    </section>\n\n    <section class=\"stock-indicator\">\n        <h3>库存状态标题</h3>\n        <p>剩余库存提示文案</p>\n    </section>\n\n    <section class=\"review-section\">\n        <h3>用户评价标题</h3>\n        <p>评分与评论摘要</p>\n    </section>\n\n    <section class=\"detail-toggle\">\n        <h3>商品详情标题</h3>\n        <p>可展开或折叠的详情说明</p>\n    </section>\n\n    <section class=\"recommendation\">\n        <h3>猜你喜欢标题</h3>\n        <p>推荐商品列表说明</p>\n    </section>\n\n    <section class=\"lucky-draw\">\n        <h3>福袋抽奖标题</h3>\n        <p>抽奖规则与奖品说明</p>\n    </section>\n\n    <section class=\"share-reward\">\n        <h3>分享奖励标题</h3>\n        <p>分享链接与红包规则说明</p>\n    </section>\n</body>\n</html>"
+    }
+  ]
+}

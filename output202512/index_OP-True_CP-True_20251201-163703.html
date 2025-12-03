@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LYF 年货节 - 香瓜子特惠</title>
+    <style>
+        :root {
+            --primary-red: #E4393C;
+            --festival-red: #C81623;
+            --accent-gold: #FFD700;
+            --price-color: #F2270C;
+            --text-dark: #333333;
+            --text-gray: #999999;
+            --bg-color: #F7F7F7;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            max-width: 540px; /* 模拟移动端宽度 */
+            margin: 0 auto;
+            padding-bottom: 60px; /* 为底部栏留空 */
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- Header --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .brand-logo {
+            font-weight: 800;
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .cart-icon-wrapper {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 1.5rem;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background-color: var(--primary-red);
+            color: white;
+            font-size: 10px;
+            height: 16px;
+            min-width: 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+            border: 1px solid #fff;
+        }
+
+        /* --- Product Gallery --- */
+        .gallery {
+            position: relative;
+            width: 100%;
+            height: 375px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- Flash Sale Bar (Price) --- */
+        .flash-sale-bar {
+            background: linear-gradient(90deg, var(--primary-red), var(--festival-red));
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-box {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .currency { font-size: 1rem; }
+        .price-now { font-size: 1.8rem; font-weight: bold; margin-right: 10px; }
+        .price-old { font-size: 0.9rem; text-decoration: line-through; opacity: 0.8; }
+
+        .timer-box {
+            text-align: right;
+        }
+        .timer-label { font-size: 10px; margin-bottom: 2px; opacity: 0.9; }
+        .timer-nums span {
+            background: var(--accent-gold);
+            color: var(--primary-red);
+            padding: 1px 3px;
+            border-radius: 2px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        /* --- Product Info --- */
+        .product-info {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 10px;
+            padding: 1px 4px;
+            border-radius: 2px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .tag-red { border: 1px solid var(--primary-red); color: var(--primary-red); }
+        .tag-gold { background: var(--accent-gold); color: #333; }
+
+        .sub-title {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+        }
+
+        /* Stock Bar */
+        .stock-wrapper {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+        .progress-bg {
+            width: 100px;
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            margin: 0 8px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-red);
+            width: 92%; /* Initial Mock */
+            transition: width 0.3s;
+        }
+
+        /* --- Coupon --- */
+        .section {
+            background: white;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .coupon-row {
+            display: flex;
+            background: #FFF0F0;
+            border-radius: 4px;
+            padding: 10px;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px dashed rgba(228, 57, 60, 0.3);
+        }
+        .coupon-left { color: var(--primary-red); font-weight: bold; }
+        .coupon-desc { font-size: 12px; color: #666; margin-left: 10px; flex: 1;}
+        .coupon-btn {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .coupon-btn.claimed {
+            background: #ccc;
+            cursor: default;
+        }
+
+        /* --- Details --- */
+        .details-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        .details-header::before, .details-header::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: #ddd;
+            margin: 0 10px;
+        }
+
+        .specs-table {
+            width: 100%;
+            font-size: 13px;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        .specs-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .specs-label { color: #999; width: 80px; }
+        .specs-val { color: #333; }
+
+        .detail-img {
+            width: 100%;
+            display: block;
+            margin-bottom: -1px; /* Remove gap */
+        }
+
+        /* --- Sticky Footer --- */
+        .footer-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 540px;
+            margin: 0 auto;
+            background: white;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            z-index: 100;
+            padding: 5px 10px;
+        }
+
+        .nav-icon {
+            flex: 1;
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+        .nav-icon span { font-size: 18px; margin-bottom: 2px; }
+
+        .action-btn {
+            flex: 2;
+            height: 40px;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-cart {
+            background: #FFB900;
+            border-radius: 20px 0 0 20px;
+        }
+        .btn-buy {
+            background: var(--primary-red);
+            border-radius: 0 20px 20px 0;
+        }
+
+        /* --- Cart Modal --- */
+        .cart-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 200;
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .cart-modal {
+            background: white;
+            width: 100%;
+            max-width: 540px;
+            border-radius: 16px 16px 0 0;
+            padding: 20px;
+            animation: slideUp 0.3s ease-out;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+        .item-info {
+            margin-left: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .counter-box {
+            display: flex;
+            align-items: center;
+        }
+        .counter-btn {
+            width: 24px;
+            height: 24px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+        .counter-val {
+            width: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 300;
+            display: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand-logo">LYF 年货节</div>
+        <div class="cart-icon-wrapper" onclick="toggleCart()">
+            <span class="cart-icon">🛒</span>
+            <div class="cart-badge" id="cartBadge">0</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Gallery -->
+        <div class="gallery">
+            <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="LYF 香瓜子">
+        </div>
+
+        <!-- Price Flash Sale -->
+        <div class="flash-sale-bar">
+            <div class="price-box">
+                <span class="currency">¥</span>
+                <span class="price-now">16.9</span>
+                <span class="price-old">¥29.9</span>
+            </div>
+            <div class="timer-box">
+                <div class="timer-label">距优惠结束仅剩</div>
+                <div class="timer-nums">
+                    <span id="h">02</span>:<span id="m">14</span>:<span id="s">59</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <div class="product-title">
+                <span class="tag tag-red">年货节</span>
+                <span class="tag tag-gold">热销</span>
+                LYF 香瓜子葵花子 30g*10包/组合装 休闲零食炒货 春节待客大礼包
+            </div>
+            <div class="sub-title">颗粒饱满 | 奶香浓郁 | 独立小包装方便分享</div>
+            
+            <div class="stock-wrapper">
+                <span>抢购进度</span>
+                <div class="progress-bg">
+                    <div class="progress-fill" id="stockBar"></div>
+                </div>
+                <span id="stockText">仅剩 45 件</span>
+            </div>
+        </div>
+
+        <!-- Coupons -->
+        <div class="section">
+            <div class="coupon-row">
+                <div>
+                    <span class="coupon-left">¥5</span>
+                    <span class="coupon-desc">满29元可用 | 年货专享券</span>
+                </div>
+                <button class="coupon-btn" onclick="claimCoupon(this)">立即领取</button>
+            </div>
+        </div>
+
+        <!-- Specs & Details -->
+        <div class="section" id="details">
+            <div class="details-header">商品详情</div>
+            <table class="specs-table">
+                <tr><td class="specs-label">品牌</td><td class="specs-val">LYF</td></tr>
+                <tr><td class="specs-label">产地</td><td class="specs-val">中国大陆</td></tr>
+                <tr><td class="specs-label">保质期</td><td class="specs-val">180 天</td></tr>
+                <tr><td class="specs-label">规格</td><td class="specs-val">30g * 10包</td></tr>
+                <tr><td class="specs-label">储存</td><td class="specs-val">阴凉干燥处</td></tr>
+            </table>
+            <img class="detail-img" src="https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b" alt="产品场景图">
+            <img class="detail-img" src="https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg" alt="产品细节图">
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <nav class="footer-nav">
+        <div class="nav-icon" onclick="window.scrollTo(0,0)">
+            <span>🏠</span>
+            首页
+        </div>
+        <div class="nav-icon">
+            <span>🎧</span>
+            客服
+        </div>
+        <button class="action-btn btn-cart" onclick="addToCart()">加入购物车</button>
+        <button class="action-btn btn-buy" onclick="buyNow()">立即购买</button>
+    </nav>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal-overlay" id="cartOverlay" onclick="if(event.target === this) toggleCart()">
+        <div class="cart-modal">
+            <div class="modal-header">
+                <span>购物车</span>
+                <span onclick="toggleCart()" style="color:#999; cursor:pointer;">✕</span>
+            </div>
+            <div id="cartItemsContainer">
+                <!-- Cart Items Render Here -->
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; padding-top:15px; border-top:1px solid #eee;">
+                <div style="font-size:14px;">
+                    合计: <span style="color:var(--price-color); font-weight:bold; font-size:18px;">¥<span id="cartTotal">0.00</span></span>
+                </div>
+                <button style="background:var(--primary-red); color:white; border:none; padding:10px 25px; border-radius:20px; font-weight:bold;" onclick="checkout()">去结算</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">已加入购物车</div>
+
+    <script>
+        // --- State Management ---
+        const PRODUCT = {
+            id: 'lyf_sf_001',
+            name: 'LYF 香瓜子葵花子 30g*10包',
+            price: 16.9,
+            img: 'https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp'
+        };
+
+        let cart = JSON.parse(localStorage.getItem('lyf_cart')) || {};
+        let stock = parseInt(localStorage.getItem('lyf_stock')) || 45;
+        
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            updateBadge();
+            startTimer();
+            renderStock();
+        });
+
+        // --- Functions ---
+
+        // 1. Countdown Timer
+        function startTimer() {
+            let duration = 7200; // 2 hours in seconds
+            const hEl = document.getElementById('h');
+            const mEl = document.getElementById('m');
+            const sEl = document.getElementById('s');
+
+            setInterval(() => {
+                duration--;
+                if (duration < 0) duration = 7200;
+                
+                let h = Math.floor(duration / 3600);
+                let m = Math.floor((duration % 3600) / 60);
+                let s = duration % 60;
+
+                hEl.innerText = h.toString().padStart(2, '0');
+                mEl.innerText = m.toString().padStart(2, '0');
+                sEl.innerText = s.toString().padStart(2, '0');
+            }, 1000);
+        }
+
+        // 2. Stock Logic
+        function renderStock() {
+            const stockBar = document.getElementById('stockBar');
+            const stockText = document.getElementById('stockText');
+            // Mock Logic: Max 50
+            const percent = (stock / 50) * 100;
+            stockBar.style.width = percent + '%';
+            stockText.innerText = stock > 0 ? `仅剩 ${stock} 件` : '已售罄';
+            
+            if(stock <= 0) {
+                document.querySelector('.btn-buy').disabled = true;
+                document.querySelector('.btn-buy').style.backgroundColor = '#ccc';
+                document.querySelector('.btn-cart').disabled = true;
+            }
+        }
+
+        // 3. Cart Logic
+        function addToCart() {
+            if (stock <= 0) return showToast("商品已售罄");
+
+            if (cart[PRODUCT.id]) {
+                cart[PRODUCT.id].qty += 1;
+            } else {
+                cart[PRODUCT.id] = {
+                    name: PRODUCT.name,
+                    price: PRODUCT.price,
+                    img: PRODUCT.img,
+                    qty: 1
+                };
+            }
+            
+            // Simulate stock reduction locally
+            stock--;
+            saveData();
+            updateBadge();
+            renderStock();
+            showToast("已加入购物车");
+        }
+
+        function saveData() {
+            localStorage.setItem('lyf_cart', JSON.stringify(cart));
+            localStorage.setItem('lyf_stock', stock.toString());
+        }
+
+        function updateBadge() {
+            const badge = document.getElementById('cartBadge');
+            let total = 0;
+            for(let key in cart) {
+                total += cart[key].qty;
+            }
+            badge.innerText = total;
+            badge.style.display = total > 0 ? 'flex' : 'none';
+        }
+
+        function toggleCart() {
+            const overlay = document.getElementById('cartOverlay');
+            if (overlay.style.display === 'flex') {
+                overlay.style.display = 'none';
+            } else {
+                renderCartItems();
+                overlay.style.display = 'flex';
+            }
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cartItemsContainer');
+            const totalEl = document.getElementById('cartTotal');
+            container.innerHTML = '';
+            
+            let totalPrice = 0;
+            const hasItems = Object.keys(cart).length > 0;
+
+            if (!hasItems) {
+                container.innerHTML = '<div style="text-align:center; padding:30px; color:#999;">购物车是空的</div>';
+            } else {
+                for(let id in cart) {
+                    const item = cart[id];
+                    totalPrice += item.price * item.qty;
+                    container.innerHTML += `
+                        <div class="cart-item">
+                            <img src="${item.img}" alt="prod">
+                            <div class="item-info">
+                                <div style="font-size:14px;">${item.name}</div>
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <div style="color:var(--price-color); font-weight:bold;">¥${item.price}</div>
+                                    <div class="counter-box">
+                                        <button class="counter-btn" onclick="changeQty('${id}', -1)">-</button>
+                                        <div class="counter-val">${item.qty}</div>
+                                        <button class="counter-btn" onclick="changeQty('${id}', 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            totalEl.innerText = totalPrice.toFixed(2);
+        }
+
+        function changeQty(id, delta) {
+            if (cart[id]) {
+                cart[id].qty += delta;
+                if (delta > 0) {
+                     if(stock > 0) stock--;
+                     else return showToast("库存不足");
+                } else {
+                    stock++; // Return stock if removed from cart (simplified logic)
+                }
+
+                if (cart[id].qty <= 0) {
+                    delete cart[id];
+                }
+                saveData();
+                renderCartItems();
+                renderStock();
+                updateBadge();
+            }
+        }
+
+        function buyNow() {
+            addToCart();
+            toggleCart();
+        }
+
+        function checkout() {
+            if (Object.keys(cart).length === 0) return;
+            alert("正在跳转支付页面... (模拟)");
+            // Reset for demo
+            cart = {};
+            saveData();
+            window.location.reload();
+        }
+
+        // 4. Interaction
+        function claimCoupon(btn) {
+            btn.innerText = '已领取';
+            btn.classList.add('claimed');
+            showToast("优惠券领取成功！");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

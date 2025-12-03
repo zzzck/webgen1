@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LYF 年货大促 - 香瓜子葵花子</title>
+    <style>
+        :root {
+            --primary-color: #E4393C; /* 京东/天猫红 */
+            --secondary-color: #ff9600;
+            --text-dark: #333;
+            --text-gray: #999;
+            --bg-light: #f4f4f4;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-light); color: var(--text-dark); padding-bottom: 60px; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        button { border: none; outline: none; cursor: pointer; font-family: inherit; }
+
+        /* --- Header & Nav --- */
+        header { background: var(--primary-color); color: var(--white); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(228, 57, 60, 0.3); }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 50px; padding: 0 15px; }
+        .logo { font-weight: 900; font-size: 20px; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 20px; font-size: 14px; }
+        .cart-icon-wrapper { position: relative; cursor: pointer; font-size: 24px; }
+        .cart-badge { position: absolute; top: -5px; right: -10px; background: var(--secondary-color); color: #fff; font-size: 10px; border-radius: 10px; padding: 2px 6px; border: 1px solid #fff; font-weight: bold; }
+
+        /* --- Layout --- */
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; background: var(--white); padding: 20px; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+
+        /* --- Product Gallery --- */
+        .gallery { display: flex; flex-direction: column; gap: 10px; }
+        .main-img-container { position: relative; overflow: hidden; border-radius: var(--border-radius); border: 1px solid #eee; aspect-ratio: 1/1; }
+        .main-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .thumb-list { display: flex; gap: 10px; overflow-x: auto; }
+        .thumb { width: 60px; height: 60px; border: 2px solid transparent; border-radius: 4px; cursor: pointer; object-fit: cover; }
+        .thumb.active { border-color: var(--primary-color); }
+
+        /* --- Product Info --- */
+        .info-section { display: flex; flex-direction: column; gap: 15px; }
+        .promo-bar { background: linear-gradient(90deg, #ff9000, #ff5000); color: white; padding: 8px 12px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+        .timer { font-weight: bold; }
+        .product-title { font-size: 22px; font-weight: 700; line-height: 1.4; }
+        .product-subtitle { color: var(--primary-color); font-size: 14px; margin-top: 5px; }
+        
+        .price-box { background: #fff5f5; padding: 15px; border-radius: 8px; }
+        .current-price { font-size: 28px; color: var(--primary-color); font-weight: 800; }
+        .current-price::before { content: '¥'; font-size: 16px; }
+        .old-price { text-decoration: line-through; color: var(--text-gray); font-size: 14px; margin-left: 10px; }
+        .tags { margin-top: 8px; display: flex; gap: 5px; flex-wrap: wrap; }
+        .tag { border: 1px solid var(--primary-color); color: var(--primary-color); font-size: 12px; padding: 1px 4px; border-radius: 2px; }
+
+        /* --- SKU & Controls --- */
+        .sku-group { margin-bottom: 10px; }
+        .sku-label { font-size: 14px; color: var(--text-gray); margin-bottom: 8px; display: block; }
+        .sku-options { display: flex; gap: 10px; flex-wrap: wrap; }
+        .sku-btn { padding: 6px 15px; border: 1px solid #ddd; background: #fff; border-radius: 4px; transition: all 0.2s; }
+        .sku-btn.selected { border-color: var(--primary-color); color: var(--primary-color); background: #fff5f5; }
+        .sku-btn:hover { border-color: var(--primary-color); }
+
+        .quantity-control { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+        .qty-btn { width: 30px; height: 30px; background: #f4f4f4; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; }
+        .qty-input { width: 50px; text-align: center; border: none; font-size: 16px; }
+
+        .stock-status { font-size: 12px; color: var(--text-gray); margin-left: 10px; }
+        .stock-warning { color: var(--primary-color); font-weight: bold; animation: flash 2s infinite; }
+
+        .action-buttons { display: flex; gap: 10px; margin-top: 20px; }
+        .btn { flex: 1; padding: 14px; border-radius: 25px; font-weight: 700; font-size: 16px; text-align: center; color: white; transition: opacity 0.2s; }
+        .btn-cart { background: linear-gradient(90deg, #ffcb00, #ff9402); }
+        .btn-buy { background: linear-gradient(90deg, #ff5000, #ff0036); }
+        .btn-wishlist { flex: 0 0 50px; background: #eee; color: #666; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .btn:active { opacity: 0.8; transform: scale(0.98); }
+
+        /* --- Details & Reviews --- */
+        .details-container { background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow); padding: 20px; margin-top: 20px; }
+        .section-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; border-left: 4px solid var(--primary-color); padding-left: 10px; }
+        .param-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 20px; }
+        .param-table td { border-bottom: 1px solid #eee; padding: 8px 0; }
+        .param-table td:first-child { color: var(--text-gray); width: 100px; }
+
+        .review-list { display: flex; flex-direction: column; gap: 15px; }
+        .review-item { border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .review-header { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-gray); margin-bottom: 5px; }
+        .stars { color: #ff9600; }
+        .add-review { margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd; }
+        .add-review input, .add-review textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
+        .btn-submit { background: var(--primary-color); color: white; padding: 8px 20px; border-radius: 4px; float: right; }
+
+        /* --- Recommendations --- */
+        .reco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; margin-top: 20px; }
+        .reco-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; }
+        .reco-card:hover { transform: translateY(-5px); }
+        .reco-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .reco-info { padding: 10px; }
+        .reco-price { color: var(--primary-color); font-weight: bold; }
+
+        /* --- Cart Sidebar --- */
+        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; opacity: 0; transition: opacity 0.3s; }
+        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 350px; height: 100%; background: white; z-index: 1000; box-shadow: -2px 0 10px rgba(0,0,0,0.1); transition: right 0.3s ease; display: flex; flex-direction: column; }
+        .cart-overlay.open { display: block; opacity: 1; }
+        .cart-sidebar.open { right: 0; }
+        
+        .cart-header { padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: var(--bg-light); }
+        .cart-items { flex: 1; overflow-y: auto; padding: 15px; }
+        .cart-item { display: flex; gap: 10px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; animation: slideIn 0.3s; }
+        .cart-item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+        .cart-item-details { flex: 1; }
+        .cart-item-title { font-size: 14px; font-weight: bold; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .cart-item-sku { font-size: 12px; color: #999; margin: 4px 0; }
+        .cart-item-price { color: var(--primary-color); font-weight: bold; }
+        .cart-item-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 5px; }
+        .cart-remove { color: #999; font-size: 12px; text-decoration: underline; cursor: pointer; }
+        
+        .cart-footer { padding: 15px; border-top: 1px solid #eee; background: white; }
+        .cart-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; margin-bottom: 15px; }
+        .btn-checkout { width: 100%; background: var(--primary-color); color: white; padding: 12px; border-radius: 25px; font-weight: bold; }
+
+        /* --- Toast Notification --- */
+        .toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 15px 25px; border-radius: 8px; z-index: 2000; display: none; animation: fadeIn 0.3s; text-align: center; }
+        .toast i { display: block; font-size: 30px; margin-bottom: 10px; color: #4cd964; }
+
+        /* --- Animations --- */
+        @keyframes flash { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Simplify nav for mobile */
+            .product-grid { grid-template-columns: 1fr; padding: 0; background: transparent; box-shadow: none; gap: 0; }
+            .gallery { background: white; padding: 0; }
+            .main-img-container { border-radius: 0; border: none; }
+            .info-section { background: white; padding: 20px; margin-top: 10px; border-radius: 0 0 8px 8px; }
+            .details-container { padding: 15px; }
+            
+            /* Mobile Sticky Bottom Bar */
+            .action-buttons { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 10px 15px; margin: 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 90; padding-bottom: max(10px, env(safe-area-inset-bottom)); }
+            .cart-sidebar { width: 85%; }
+            .btn-wishlist { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">LYF 年货节</div>
+            <ul class="nav-links">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">热销年货</a></li>
+                <li><a href="#">联系客服</a></li>
+            </ul>
+            <div class="cart-icon-wrapper" onclick="cartModule.toggleCart()">
+                🛒
+                <span id="cart-count" class="cart-badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Main Product Section -->
+        <main class="product-grid">
+            <!-- Gallery -->
+            <div class="gallery">
+                <div class="main-img-container">
+                    <img id="main-image" src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="香瓜子" class="main-img">
+                    <div style="position: absolute; top:10px; left:10px; background:var(--primary-color); color:white; padding:2px 8px; font-size:12px; border-radius:4px;">热销</div>
+                </div>
+                <div class="thumb-list">
+                    <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" class="thumb active" onclick="productModule.changeImage(this)">
+                    <img src="https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b" class="thumb" onclick="productModule.changeImage(this)">
+                    <img src="https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg" class="thumb" onclick="productModule.changeImage(this)">
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div class="info-section">
+                <div class="promo-bar">
+                    <span>🧧 年货大促 | 满99减10</span>
+                    <span class="timer" id="countdown">距结束: 00:00:00</span>
+                </div>
+
+                <div>
+                    <h1 class="product-title">LYF 精选香瓜子葵花子 休闲零食年货大礼包</h1>
+                    <p class="product-subtitle">源自优选产地 / 颗粒饱满 / 30g独立小包装 / 办公聚会首选</p>
+                </div>
+
+                <div class="price-box">
+                    <div>
+                        <span class="current-price" id="price-display">16.9</span>
+                        <span class="old-price">¥29.9</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">限时8折</span>
+                        <span class="tag">库存紧张</span>
+                        <span class="tag">包邮</span>
+                    </div>
+                </div>
+
+                <!-- SKU Selectors -->
+                <div class="sku-section">
+                    <div class="sku-group">
+                        <span class="sku-label">口味选择</span>
+                        <div class="sku-options" id="flavor-options">
+                            <button class="sku-btn selected" onclick="productModule.selectSku('flavor', '原味', this)">原味</button>
+                            <button class="sku-btn" onclick="productModule.selectSku('flavor', '五香味', this)">五香味</button>
+                            <button class="sku-btn" onclick="productModule.selectSku('flavor', '核桃味', this)">核桃味</button>
+                        </div>
+                    </div>
+                    <div class="sku-group">
+                        <span class="sku-label">规格选择</span>
+                        <div class="sku-options" id="size-options">
+                            <button class="sku-btn selected" data-price="16.9" data-stock="88" onclick="productModule.selectSku('size', '30g x 10包', this)">30g x 10包 (尝鲜)</button>
+                            <button class="sku-btn" data-price="29.9" data-stock="15" onclick="productModule.selectSku('size', '30g x 20包', this)">30g x 20包 (量贩)</button>
+                        </div>
+                    </div>
+
+                    <div class="quantity-control">
+                        <button class="qty-btn" onclick="productModule.updateQty(-1)">-</button>
+                        <input type="number" id="qty-input" class="qty-input" value="1" readonly>
+                        <button class="qty-btn" onclick="productModule.updateQty(1)">+</button>
+                        <span id="stock-display" class="stock-status">库存: 88件</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-wishlist" onclick="app.addToWishlist()">❤</button>
+                    <button class="btn btn-cart" onclick="cartModule.addToCart()">加入购物车</button>
+                    <button class="btn btn-buy" onclick="cartModule.buyNow()">立即购买</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Details & Reviews -->
+        <div class="details-container">
+            <div class="section-title">商品详情</div>
+            <table class="param-table">
+                <tr><td>品牌</td><td>LYF</td></tr>
+                <tr><td>产地</td><td>中国大陆</td></tr>
+                <tr><td>净含量</td><td>300g/600g</td></tr>
+                <tr><td>保质期</td><td>180天</td></tr>
+                <tr><td>储存方法</td><td>置于阴凉干燥处</td></tr>
+            </table>
+            <ul style="margin-bottom:20px; color:#555; line-height:1.6; padding-left:15px; list-style:disc;">
+                <li><strong>源自新疆：</strong> 优选日照充足产区，颗粒饱满。</li>
+                <li><strong>独立小包装：</strong> 30g一袋，锁住新鲜，方便分享。</li>
+                <li><strong>百煮入味：</strong> 传统工艺慢火烘烤，口口香脆。</li>
+            </ul>
+
+            <div class="section-title">用户评价 <span style="font-size:12px; font-weight:normal; color:#999;">(999+)</span></div>
+            <div id="review-list" class="review-list">
+                <!-- Reviews injected via JS -->
+            </div>
+
+            <div class="add-review">
+                <h4>我要评价</h4>
+                <div style="margin:10px 0;">
+                    <input type="text" id="review-name" placeholder="您的昵称">
+                    <select id="review-rating" style="padding:8px; border:1px solid #ddd; border-radius:4px;">
+                        <option value="5">⭐⭐⭐⭐⭐ (5星)</option>
+                        <option value="4">⭐⭐⭐⭐ (4星)</option>
+                        <option value="3">⭐⭐⭐ (3星)</option>
+                    </select>
+                </div>
+                <textarea id="review-content" rows="3" placeholder="写下您的感受..."></textarea>
+                <button class="btn-submit" onclick="reviewModule.submitReview()">提交评价</button>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div style="margin-top: 30px;">
+            <div class="section-title">你可能还喜欢</div>
+            <div class="reco-grid">
+                <!-- Reco 1 -->
+                <div class="reco-card" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <img src="https://gw.alicdn.com/imgextra/i2/O1CN01w1v1jR1j1v1j1v1j1_!!0-item_pic.jpg" class="reco-img" alt="开心果" onerror="this.src='https://via.placeholder.com/150?text=LYF+Nuts'">
+                    <div class="reco-info">
+                        <div style="font-size:14px; margin-bottom:5px;">LYF 加州大开心果</div>
+                        <div class="reco-price">¥39.9 <span style="font-size:12px; color:#999; text-decoration:line-through;">¥59</span></div>
+                    </div>
+                </div>
+                <!-- Reco 2 -->
+                <div class="reco-card" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <img src="https://gw.alicdn.com/imgextra/i4/O1CN01x2x2x2x2x2x2x2x2x_!!0-item_pic.jpg" class="reco-img" alt="巴旦木" onerror="this.src='https://via.placeholder.com/150?text=LYF+Almonds'">
+                    <div class="reco-info">
+                        <div style="font-size:14px; margin-bottom:5px;">LYF 手剥巴旦木</div>
+                        <div class="reco-price">¥25.9</div>
+                    </div>
+                </div>
+                <!-- Reco 3 -->
+                <div class="reco-card" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <img src="https://gw.alicdn.com/imgextra/i1/O1CN01y3y3y3y3y3y3y3y3y_!!0-item_pic.jpg" class="reco-img" alt="红枣" onerror="this.src='https://via.placeholder.com/150?text=LYF+Dates'">
+                    <div class="reco-info">
+                        <div style="font-size:14px; margin-bottom:5px;">LYF 若羌红枣</div>
+                        <div class="reco-price">¥19.9</div>
+                    </div>
+                </div>
+                <!-- Reco 4 -->
+                <div class="reco-card" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <img src="https://gw.alicdn.com/imgextra/i1/O1CN01y3y3y3y3y3y3y3y3y_!!0-item_pic.jpg" class="reco-img" alt="鱿鱼丝" onerror="this.src='https://via.placeholder.com/150?text=LYF+Squid'">
+                    <div class="reco-info">
+                        <div style="font-size:14px; margin-bottom:5px;">LYF 手撕风琴鱿鱼</div>
+                        <div class="reco-price">¥15.8</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cart-overlay" onclick="cartModule.toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>购物车 (<span id="cart-count-sidebar">0</span>)</h3>
+            <button onclick="cartModule.toggleCart()" style="font-size:20px; background:none;">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <!-- Items -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>合计:</span>
+                <span style="color:var(--primary-color);">¥<span id="cart-total-price">0.00</span></span>
+            </div>
+            <button class="btn-checkout" onclick="cartModule.checkout()">去结算</button>
+        </div>
+    </div>
+
+    <script>
+        /* --- State Management --- */
+        const state = {
+            product: {
+                name: "LYF 精选香瓜子",
+                basePrice: 16.9,
+                img: "https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp"
+            },
+            currentSelection: {
+                flavor: "原味",
+                size: "30g x 10包",
+                price: 16.9,
+                stock: 88,
+                qty: 1
+            },
+            cart: JSON.parse(localStorage.getItem('lyf_cart')) || [],
+            reviews: JSON.parse(localStorage.getItem('lyf_reviews')) || [
+                { name: "小吃货88", rating: 5, content: "超级好吃，过年必备！包装很喜庆。", date: "2023-12-20" },
+                { name: "王先生", rating: 4, content: "味道不错，物流很快。", date: "2023-12-18" }
+            ]
+        };
+
+        /* --- Helper Functions --- */
+        const $ = (selector) => document.querySelector(selector);
+        const saveStorage = () => {
+            localStorage.setItem('lyf_cart', JSON.stringify(state.cart));
+            localStorage.setItem('lyf_reviews', JSON.stringify(state.reviews));
+        };
+        const showToast = (msg, success = true) => {
+            const toast = $('#toast');
+            const icon = success ? '✔' : '❗';
+            toast.innerHTML = `<i>${icon}</i>${msg}`;
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 2000);
+        };
+
+        /* --- Product Module --- */
+        const productModule = {
+            init: () => {
+                productModule.renderStock();
+            },
+            changeImage: (el) => {
+                // Remove active class from all thumbs
+                document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+                // Add active to clicked
+                el.classList.add('active');
+                // Change main image
+                $('#main-image').src = el.src;
+                $('#main-image').style.opacity = 0;
+                setTimeout(() => $('#main-image').style.opacity = 1, 100);
+            },
+            selectSku: (type, value, btn) => {
+                // Update UI
+                btn.parentElement.querySelectorAll('.sku-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                
+                // Update State
+                state.currentSelection[type] = value;
+                
+                // Simulate Price/Stock change based on Size
+                if(type === 'size') {
+                    const price = parseFloat(btn.dataset.price);
+                    const stock = parseInt(btn.dataset.stock);
+                    state.currentSelection.price = price;
+                    state.currentSelection.stock = stock;
+                    
+                    $('#price-display').innerText = price;
+                    productModule.renderStock();
+                }
+            },
+            renderStock: () => {
+                const stockEl = $('#stock-display');
+                stockEl.innerText = `库存: ${state.currentSelection.stock}件`;
+                if(state.currentSelection.stock < 20) {
+                    stockEl.classList.add('stock-warning');
+                    stockEl.innerText += " (仅剩少量!)";
+                } else {
+                    stockEl.classList.remove('stock-warning');
+                }
+            },
+            updateQty: (change) => {
+                let newQty = state.currentSelection.qty + change;
+                if(newQty < 1) newQty = 1;
+                if(newQty > state.currentSelection.stock) {
+                    showToast('库存不足', false);
+                    newQty = state.currentSelection.stock;
+                }
+                state.currentSelection.qty = newQty;
+                $('#qty-input').value = newQty;
+            }
+        };
+
+        /* --- Cart Module --- */
+        const cartModule = {
+            init: () => {
+                cartModule.updateBadge();
+                cartModule.renderCart();
+            },
+            addToCart: () => {
+                const itemKey = `${state.currentSelection.flavor}-${state.currentSelection.size}`;
+                const existingItem = state.cart.find(item => item.key === itemKey);
+
+                if(existingItem) {
+                    existingItem.qty += state.currentSelection.qty;
+                } else {
+                    state.cart.push({
+                        key: itemKey,
+                        name: state.product.name,
+                        flavor: state.currentSelection.flavor,
+                        size: state.currentSelection.size,
+                        price: state.currentSelection.price,
+                        qty: state.currentSelection.qty,
+                        img: state.product.img
+                    });
+                }
+                saveStorage();
+                cartModule.updateBadge();
+                cartModule.renderCart();
+                showToast(`已加入购物车! <br><small>${state.currentSelection.flavor} / ${state.currentSelection.size}</small>`);
+            },
+            buyNow: () => {
+                cartModule.addToCart();
+                cartModule.toggleCart();
+            },
+            updateItemQty: (key, change) => {
+                const item = state.cart.find(i => i.key === key);
+                if(item) {
+                    item.qty += change;
+                    if(item.qty < 1) item.qty = 1;
+                    saveStorage();
+                    cartModule.renderCart();
+                }
+            },
+            removeItem: (key) => {
+                state.cart = state.cart.filter(i => i.key !== key);
+                saveStorage();
+                cartModule.updateBadge();
+                cartModule.renderCart();
+            },
+            toggleCart: () => {
+                const sidebar = $('#cart-sidebar');
+                const overlay = $('#cart-overlay');
+                if(sidebar.classList.contains('open')) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('open');
+                } else {
+                    sidebar.classList.add('open');
+                    overlay.classList.add('open');
+                }
+            },
+            updateBadge: () => {
+                const count = state.cart.reduce((acc, item) => acc + item.qty, 0);
+                $('#cart-count').innerText = count;
+                $('#cart-count-sidebar').innerText = count;
+            },
+            renderCart: () => {
+                const container = $('#cart-items-container');
+                container.innerHTML = '';
+                let total = 0;
+
+                if(state.cart.length === 0) {
+                    container.innerHTML = '<div style="text-align:center; padding:20px; color:#999;">购物车空空如也<br>快去选购年货吧!</div>';
+                }
+
+                state.cart.forEach(item => {
+                    const subtotal = item.price * item.qty;
+                    total += subtotal;
+                    container.innerHTML += `
+                        <div class="cart-item">
+                            <img src="${item.img}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-sku">${item.flavor} | ${item.size}</div>
+                                <div class="cart-item-price">¥${item.price}</div>
+                                <div class="cart-item-actions">
+                                    <div style="display:flex; gap:5px; align-items:center; background:#f4f4f4; border-radius:4px;">
+                                        <button style="padding:2px 8px;" onclick="cartModule.updateItemQty('${item.key}', -1)">-</button>
+                                        <span style="font-size:12px;">${item.qty}</span>
+                                        <button style="padding:2px 8px;" onclick="cartModule.updateItemQty('${item.key}', 1)">+</button>
+                                    </div>
+                                    <span class="cart-remove" onclick="cartModule.removeItem('${item.key}')">删除</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                $('#cart-total-price').innerText = total.toFixed(2);
+            },
+            checkout: () => {
+                if(state.cart.length === 0) {
+                    showToast('购物车是空的', false);
+                    return;
+                }
+                showToast('正在跳转支付... (模拟)', true);
+                setTimeout(() => {
+                    alert('感谢购买！祝您春节快乐！\n(这里是模拟结算流程)');
+                    state.cart = [];
+                    saveStorage();
+                    cartModule.init();
+                    cartModule.toggleCart();
+                }, 1500);
+            }
+        };
+
+        /* --- Review Module --- */
+        const reviewModule = {
+            init: () => {
+                reviewModule.render();
+            },
+            render: () => {
+                const list = $('#review-list');
+                list.innerHTML = state.reviews.map(r => `
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span>${r.name}</span>
+                            <span>${r.date}</span>
+                        </div>
+                        <div class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
+                        <div style="margin-top:5px; font-size:14px;">${r.content}</div>
+                    </div>
+                `).join('');
+            },
+            submitReview: () => {
+                const name = $('#review-name').value;
+                const content = $('#review-content').value;
+                const rating = parseInt($('#review-rating').value);
+
+                if(!name || !content) {
+                    showToast('请填写完整信息', false);
+                    return;
+                }
+
+                const newReview = {
+                    name,
+                    content,
+                    rating,
+                    date: new Date().toISOString().split('T')[0]
+                };
+
+                state.reviews.unshift(newReview); // Add to top
+                saveStorage();
+                reviewModule.render();
+                
+                // Clear form
+                $('#review-name').value = '';
+                $('#review-content').value = '';
+                showToast('评价提交成功!');
+            }
+        };
+
+        /* --- General App Logic --- */
+        const app = {
+            init: () => {
+                productModule.init();
+                cartModule.init();
+                reviewModule.init();
+                app.startTimer();
+                app.checkHistory();
+            },
+            addToWishlist: () => {
+                showToast('已加入心愿单 ❤');
+                // LocalStorage logic for wishlist could go here
+            },
+            startTimer: () => {
+                // Set deadline to 3 days from now for demo
+                const deadline = new Date();
+                deadline.setDate(deadline.getDate() + 3);
+                
+                setInterval(() => {
+                    const now = new Date().getTime();
+                    const dist = deadline - now;
+                    
+                    if (dist < 0) {
+                        $('#countdown').innerText = "已结束";
+                        return;
+                    }
+
+                    const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+                    const s = Math.floor((dist % (1000 * 60)) / 1000);
+                    
+                    $('#countdown').innerText = `距结束: ${h}时 ${m}分 ${s}秒`;
+                }, 1000);
+            },
+            checkHistory: () => {
+                // Simple logic: If user has visited before (has data in localstorage), welcome back
+                if(localStorage.getItem('lyf_cart')) {
+                    // Subtle console log or could trigger a toast
+                    console.log("Welcome back, valued customer!");
+                }
+            }
+        };
+
+        // Run App
+        document.addEventListener('DOMContentLoaded', app.init);
+
+    </script>
+</body>
+</html>

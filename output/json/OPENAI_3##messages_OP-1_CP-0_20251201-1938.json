@@ -1,0 +1,319 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "你现在是一名电商前端开发与营销专家，请基于以下要求开发一个完整的电商销售网页：\n\n📌 项目类型  \n创建一个包含 HTML、CSS 和 JavaScript 的 **单文件（Single HTML File）** 春节主题零食电商页面。\n\n📌 商业目标  \n对标淘宝/天猫移动端购物流程，提升：  \n- 点击率（CTR）\n- 加购率（Add-to-Cart Rate）\n- 成交转化率（GMV Conversion）\n\n📌 4P 营销要求（必须实现）\n1) 产品（外观图、规格、卖点、评论区、详情展示）\n2) 价格（现价、原价、折扣展示、券后价逻辑）\n3) 渠道（清晰的购买入口与购物流程）\n4) 促销（限时倒计时、热销标签、库存提醒、优惠券）\n\n📌 产品信息与素材  \n- 品牌：LYF  \n- 产品：新疆香瓜子葵花子  \n- 规格：30g × 10 包  \n- 价格：¥16.9（原价 ¥29.9）  \n- 主图链接：  \n  https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\n\n📌 UI 风格  \n- 对标天猫移动端视觉规范\n- 春节红主色调（#E4393C 或类似）\n- 动效与交互体现节日感、紧迫感与愉悦感\n\n📌 功能规范（必须实现）\nA. 购物模块  \n- 数量增减、加入购物车、立即购买  \n- localStorage 保存购物车数据  \n- 购物车侧栏展开/关闭  \n- 购物车商品编辑、删除、结算总价计算  \n\nB. 促销模块  \n- 限时倒计时（自动更新 UI）  \n- 库存动态显示（库存减少逻辑）  \n- 领券中心（用户可领券，并用于结算减免）  \n- 热销标签和实时销量滚动广播  \n\nC. 内容展示  \n- 商品评价（评分+评论列表，含表情符号与图片示例）  \n- 商品详情折叠与展开  \n- *相似推荐模块*（3–4 个推荐产品）  \n\n📌 创新功能（必须至少添加 1 个）\n示例（可选其一或自行发挥）👇  \n- AI 场景推荐：根据浏览或加购行为展示“猜你喜欢”  \n- 福袋抽奖：增加用户停留时长  \n- 分享返红包功能  \n- 福气值积分体系  \n- “春节返乡礼包”多装组合 SKU 切换  \n- AR 弹窗：点击产品可 360°查看（可使用 CSS 动画模拟）\n\n📌 技术约束  \n- 原生 HTML + CSS + JavaScript  \n- ❌ 不允许使用任何框架（如 Vue/React/Bootstrap 等）\n- CSS 写在 `<style>` 内  \n- JavaScript 写在 `<script>` 内  \n- 页面所有内容输出在**同一个 HTML 文件中**\n\n📌 输出格式  \n直接输出完整 HTML 文件代码  \n包含所有依赖、脚本与样式，可一键运行。  \n代码无需解释，无需 Markdown 格式。\n\n⚠ 如果部分功能需使用假数据，请合理模拟，但保持真实电商逻辑。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "提炼客户业务简报，明确产品核心卖点（新疆香瓜子葵花子春季促销）及目标人群洞察",
+              "定义商业目标在网页转化中的关键指标（CTR、加购率、成交转化率）并拆解为功能需求",
+              "制定生产链路安排，分配任务给 PM、Architect、Engineer 确保按时交付全部功能",
+              "审核各阶段交付成果与商业目标的一致性，确保页面符合4P营销策略"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "编写 PRD 文档，包含主视觉、利益点、促销点、信任状展示及购买路径的详细说明",
+              "确定信息结构：首屏展示产品图、规格、价格、优惠券入口、库存提醒、倒计时等",
+              "设计用户决策转化流程，从浏览到加购再到结算，包含购物车与结算逻辑",
+              "定义创新功能方案（如福袋抽奖或猜你喜欢模块），在 PRD 明确需求与业务价值"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "规划整体页面结构，将首屏卖点、详细商品信息、评价区、推荐模块、促销模块按逻辑排列",
+              "定义可复用的营销组件接口，如价格展示组件、优惠券组件、库存与销量广播组件",
+              "制定交互行为逻辑：库存动态减少机制、限时倒计时实时刷新、优惠触发与结算减免流程",
+              "输出 UI 区块与交互接口说明，确保 Engineer 可依此实现功能并保持响应式适配移动端"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "编写单文件 HTML，内嵌 CSS 与 JavaScript，实现春节主题零食页面的所有指定功能模块",
+              "实现购物模块：数量增减、加入购物车、立即购买、localStorage 购物车数据存储、侧栏购物车编辑删除与总价计算",
+              "实现促销模块：限时倒计时、库存动态显示、领券中心、热销标签与销量滚动广播",
+              "完成内容展示模块：商品评价列表、详情折叠展开、相似推荐产品展示及创新功能实现",
+              "进行跨设备测试与性能优化，确保页面加载速度快、交互流畅、提升转化率"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "春节主题新疆香瓜子葵花子电商页面，强化节日氛围与促销紧迫感，引导用户快速点击、加购并完成购买。",
+        "goals": [
+          "提升商品详情页面点击率（CTR）至少20%",
+          "提升加购率（Add-to-Cart Rate）至少15%",
+          "提升成交转化率（GMV Conversion）至少10%",
+          "强化核心卖点在首屏的可见性与记忆度",
+          "优化促销信息的可读性与用户紧迫感",
+          "增加用户在页面的停留时间与互动频次"
+        ],
+        "target_users": [
+          "城市白领：春节送礼需求，追求包装喜庆与品质保证",
+          "年轻家庭用户：节日期间家庭零食储备，关注优惠力度与促销活动"
+        ],
+        "page_sections": [
+          {
+            "id": "hero",
+            "purpose": "通过节日氛围主图与品牌强化，在首屏迅速抓住用户注意力",
+            "kpi": "CTR"
+          },
+          {
+            "id": "price-box",
+            "purpose": "展示现价、原价、折扣、券后价，突出节省金额",
+            "kpi": "转化率"
+          },
+          {
+            "id": "promo-countdown",
+            "purpose": "限时倒计时促销，制造购买紧迫感",
+            "kpi": "加购率"
+          },
+          {
+            "id": "stock-alert",
+            "purpose": "动态库存提醒与销量播报，刺激立即购买",
+            "kpi": "转化率"
+          },
+          {
+            "id": "coupon-center",
+            "purpose": "提供可立即领取并使用的优惠券，降低购买门槛",
+            "kpi": "加购率"
+          },
+          {
+            "id": "purchase-actions",
+            "purpose": "提供数量选择、加入购物车与立即购买功能，保证流程顺畅",
+            "kpi": "转化率"
+          },
+          {
+            "id": "cart-sidebar",
+            "purpose": "购物车可视化与编辑功能，减少结算流失",
+            "kpi": "转化率"
+          },
+          {
+            "id": "product-details",
+            "purpose": "折叠/展开商品详情，支持深度信息查看",
+            "kpi": "CTR"
+          },
+          {
+            "id": "reviews",
+            "purpose": "展示评分与带图片的评论，提升购买信心",
+            "kpi": "转化率"
+          },
+          {
+            "id": "recommendations",
+            "purpose": "相似推荐与猜你喜欢，提升二次加购机会",
+            "kpi": "加购率"
+          },
+          {
+            "id": "innovative-feature",
+            "purpose": "春节福袋抽奖功能，增加用户停留时间与互动",
+            "kpi": "CTR"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "two-column",
+        "colors": [
+          "#D6001C",
+          "#FFD700",
+          "#F4F4F5",
+          "#FF8C00",
+          "#FFFFFF"
+        ],
+        "components": [
+          {
+            "id": "hero",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "春节主题主标题，突出新疆香瓜子葵花子的品牌与卖点"
+              },
+              {
+                "tag": "p",
+                "content_hint": "节日氛围描述与核心促销信息"
+              }
+            ]
+          },
+          {
+            "id": "price-box",
+            "html": "div",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "现价与券后价"
+              },
+              {
+                "tag": "p",
+                "content_hint": "原价、折扣百分比与节省金额说明"
+              }
+            ]
+          },
+          {
+            "id": "promo-countdown",
+            "html": "div",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "限时促销标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "倒计时显示与紧迫感文案"
+              }
+            ]
+          },
+          {
+            "id": "stock-alert",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "剩余库存提醒"
+              },
+              {
+                "tag": "p",
+                "content_hint": "销量播报信息"
+              }
+            ]
+          },
+          {
+            "id": "coupon-center",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "优惠券领取标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "优惠券使用说明与有效期"
+              }
+            ]
+          },
+          {
+            "id": "purchase-actions",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "数量选择控件提示"
+              },
+              {
+                "tag": "p",
+                "content_hint": "加入购物车与立即购买按钮说明"
+              }
+            ]
+          },
+          {
+            "id": "cart-sidebar",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "购物车标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "已加入商品列表与可编辑说明"
+              }
+            ]
+          },
+          {
+            "id": "product-details",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "商品详细信息标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "折叠或展开的商品规格、产地、包装等描述"
+              }
+            ]
+          },
+          {
+            "id": "reviews",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "用户评分标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "精选带图片的用户评论内容"
+              }
+            ]
+          },
+          {
+            "id": "recommendations",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "猜你喜欢标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "相似商品推荐的简要描述"
+              }
+            ]
+          },
+          {
+            "id": "innovative-feature",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "春节福袋抽奖活动标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "活动玩法说明与参与按钮提示"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>新疆香瓜子葵花子春节促销</title>\n    <style>\n        :root {\n            --primary-color: #D6001C;\n            --secondary-color: #FFD700;\n            --accent-color: #FF8C00;\n            --bg-color: #F4F4F5;\n            --text-color: #FFFFFF;\n        }\n\n        body {\n            margin: 0;\n            font-family: \"Microsoft YaHei\", sans-serif;\n            background-color: var(--bg-color);\n            color: #333;\n            line-height: 1.6;\n        }\n\n        header, main, aside, section, div {\n            box-sizing: border-box;\n        }\n\n        .container {\n            display: flex;\n            flex-wrap: wrap;\n            max-width: 1200px;\n            margin: 0 auto;\n            padding: 1rem;\n        }\n\n        .main-content {\n            flex: 2;\n            padding: 1rem;\n        }\n\n        .sidebar {\n            flex: 1;\n            padding: 1rem;\n            background-color: var(--bg-color);\n        }\n\n        .hero {\n            background-color: var(--primary-color);\n            color: var(--text-color);\n            padding: 2rem;\n            text-align: center;\n        }\n\n        .hero h1 {\n            font-size: 2rem;\n            margin-bottom: 1rem;\n        }\n\n        .hero p {\n            font-size: 1.1rem;\n        }\n\n        .price-box {\n            background-color: var(--secondary-color);\n            padding: 1.5rem;\n            margin-top: 1rem;\n            border-radius: 8px;\n        }\n\n        .price-box h2 {\n            font-size: 1.5rem;\n            margin-bottom: 0.5rem;\n            color: var(--primary-color);\n        }\n\n        .promo-countdown {\n            background-color: var(--accent-color);\n            color: var(--text-color);\n            padding: 1rem;\n            margin-top: 1rem;\n            border-radius: 8px;\n        }\n\n        .stock-alert {\n            background-color: #fff;\n            padding: 1rem;\n            margin-top: 1rem;\n            border: 1px solid #ddd;\n            border-radius: 8px;\n        }\n\n        .coupon-center {\n            background-color: var(--secondary-color);\n            padding: 1rem;\n            margin-top: 1rem;\n            border-radius: 8px;\n        }\n\n        .purchase-actions {\n            background-color: var(--accent-color);\n            color: var(--text-color);\n            padding: 1rem;\n            margin-top: 1rem;\n            border-radius: 8px;\n        }\n\n        .cart-sidebar {\n            background-color: #fff;\n            padding: 1rem;\n            border: 1px solid #ddd;\n            border-radius: 8px;\n            margin-bottom: 1rem;\n        }\n\n        .product-details, .reviews, .recommendations, .innovative-feature {\n            background-color: #fff;\n            padding: 1rem;\n            margin-top: 1rem;\n            border-radius: 8px;\n            border: 1px solid #ddd;\n        }\n\n        h2, h3 {\n            margin-top: 0;\n        }\n\n        @media (max-width: 768px) {\n            .container {\n                flex-direction: column;\n            }\n            .main-content, .sidebar {\n                flex: 1;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"hero\" id=\"hero\">\n        <h1>新疆香瓜子葵花子春节特惠，鲜香酥脆送礼佳品</h1>\n        <p>春节欢聚时刻，限时享受香瓜子葵花子超值优惠，满载节日祝福与美味！</p>\n    </div>\n    <div class=\"container\">\n        <main class=\"main-content\">\n            <div class=\"price-box\" id=\"price-box\">\n                <h2>券后价：¥39.9 现价：¥49.9</h2>\n                <p>原价¥59.9，立享折扣33%，节省¥20</p>\n            </div>\n            <div class=\"promo-countdown\" id=\"promo-countdown\">\n                <h3>限时抢购</h3>\n                <p>活动仅剩 02:15:30，快下单锁定优惠！</p>\n            </div>\n            <div class=\"stock-alert\" id=\"stock-alert\">\n                <p>库存仅剩 120 件</p>\n                <p>今日已售出 3260 包</p>\n            </div>\n            <section class=\"coupon-center\" id=\"coupon-center\">\n                <h3>优惠券中心</h3>\n                <p>领取满99减20优惠券，有效期至大年初五</p>\n            </section>\n            <div class=\"purchase-actions\" id=\"purchase-actions\">\n                <p>请选择购买数量</p>\n                <p>点击加入购物车或立即购买享受节日优惠</p>\n            </div>\n            <section class=\"product-details\" id=\"product-details\">\n                <h2>商品详情</h2>\n                <p>精选新疆葵花子，产地直供，独立包装。净含量500g，工厂严选，确保每一粒饱满香酥。</p>\n            </section>\n            <section class=\"reviews\" id=\"reviews\">\n                <h3>用户评价</h3>\n                <p>★★★★★ 味道正宗，包装喜庆，送亲友很受欢迎！</p>\n            </section>\n            <section class=\"recommendations\" id=\"recommendations\">\n                <h3>猜你喜欢</h3>\n                <p>更多坚果炒货、新春零食好礼等你选购</p>\n            </section>\n            <section class=\"innovative-feature\" id=\"innovative-feature\">\n                <h3>春节福袋抽奖活动</h3>\n                <p>购买任意商品即可参与，每日抽取三位幸运用户送出福袋好礼</p>\n            </section>\n        </main>\n        <aside class=\"sidebar\">\n            <div class=\"cart-sidebar\" id=\"cart-sidebar\">\n                <h3>购物车</h3>\n                <p>已加入的商品列表，可在此编辑数量和删除</p>\n            </div>\n        </aside>\n    </div>\n</body>\n</html>"
+    }
+  ]
+}

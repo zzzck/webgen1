@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品页面</title>
+<style>
+    :root {
+        --color-red: #D62829;
+        --color-yellow: #F9C74F;
+        --color-gray: #F4F4F5;
+        --color-primary: #007BFF;
+        --color-secondary: #6C757D;
+    }
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: var(--color-gray);
+        color: #333;
+    }
+    header {
+        background-color: var(--color-red);
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    main {
+        flex: 3;
+        padding: 20px;
+    }
+    aside {
+        flex: 1;
+        padding: 20px;
+        background-color: var(--color-yellow);
+    }
+    section {
+        background-color: #fff;
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+        margin-top: 0;
+    }
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+        aside {
+            order: -1;
+        }
+    }
+    .festive {
+        background-color: var(--color-red);
+        color: var(--color-yellow);
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .animation-hover button:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+</style>
+</head>
+<body>
+<header id="banner-header">
+    <h1>高质量产品标题与品牌名称</h1>
+    <p>简短广告语，营造节日氛围</p>
+</header>
+<div class="container">
+    <main>
+        <section id="product-specs">
+            <h2>产品详细描述标题</h2>
+            <p>品牌信息、规格、产地、核心卖点</p>
+        </section>
+        <section id="pricing-info">
+            <h3>现价与原价展示</h3>
+            <p>促销标签、限时抢购信息、剩余库存</p>
+        </section>
+        <section id="purchase-module">
+            <h3>购买数量选择标题</h3>
+            <p>动态总价与预计配送时间说明</p>
+        </section>
+        <section id="reviews-section">
+            <h3>评论与评分系统标题</h3>
+            <p>评论排序与热门评论提示</p>
+        </section>
+        <section id="checkout-payment">
+            <h3>结算与支付标题</h3>
+            <p>配送时间、运费及物流信息说明</p>
+        </section>
+        <div id="responsive-layout">
+            <h3>响应式布局说明</h3>
+            <p>移动端、平板端适配细节</p>
+        </div>
+        <div id="festive-design-elements" class="festive">
+            <h3>节日设计元素标题</h3>
+            <p>温暖色调与春节元素描述</p>
+        </div>
+        <div id="ui-animation" class="animation-hover">
+            <h3>UI 动效标题</h3>
+            <p>按钮悬停、购物车动态、加载进度说明</p>
+            <button>加入购物车</button>
+        </div>
+    </main>
+    <aside id="recommended-products">
+        <h3>推荐产品模块标题</h3>
+        <p>相关或相似产品列表说明</p>
+    </aside>
+    <aside id="cart-sidebar">
+        <h3>购物车模块标题</h3>
+        <p>商品列表、数量、总价、修改删除功能</p>
+    </aside>
+</div>
+</body>
+</html>

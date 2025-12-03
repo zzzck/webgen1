@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春节香瓜子促销页</title>
+    <style>
+        :root {
+            --primary-color: #D32F2F;
+            --secondary-color: #FFD54F;
+            --light-gray: #F4F4F5;
+        }
+        body {
+            margin: 0;
+            font-family: "微软雅黑", sans-serif;
+            background-color: var(--light-gray);
+            color: #333;
+        }
+        header, section, aside, div {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        h1 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        p {
+            margin: 0.5rem 0 0;
+            line-height: 1.5;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        .main-column > * {
+            margin-bottom: 1.5rem;
+        }
+        .sidebar > * {
+            margin-bottom: 1.5rem;
+        }
+        .price-box {
+            background-color: var(--secondary-color);
+            color: #000;
+        }
+        .promo-countdown {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        .stock-reminder {
+            background-color: #ffecb3;
+            color: #000;
+        }
+        .coupon-center {
+            background-color: var(--secondary-color);
+            color: #000;
+        }
+        .purchase-actions {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        .cart-sidebar {
+            background-color: #fff8e1;
+            color: #000;
+        }
+        .reviews {
+            background-color: #fff3e0;
+        }
+        .product-details {
+            background-color: #fbe9e7;
+        }
+        .festival-animation {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-column">
+            <header id="hero-section">
+                <h1>欢庆春节·香瓜子好礼</h1>
+                <p>恭贺新春，品牌香瓜子强力钜惠，性价比超高，入袋必买！</p>
+            </header>
+            <section id="price-box" class="price-box">
+                <h1>现价 ¥19.9 原价 ¥29.9</h1>
+                <p>限时优惠，错过今天再等一年！</p>
+            </section>
+            <section id="promo-countdown" class="promo-countdown">
+                <h1>抢购倒计时</h1>
+                <p>还有 02:15:42 即将结束，赶快下单！</p>
+            </section>
+            <section id="stock-reminder" class="stock-reminder">
+                <h1>库存紧张</h1>
+                <p>仅剩 56 包，售完即止！</p>
+            </section>
+            <section id="purchase-actions" class="purchase-actions">
+                <h1>立即购买</h1>
+                <p>选择所需数量并点击“下单”完成购买</p>
+            </section>
+            <section id="reviews" class="reviews">
+                <h1>用户评论</h1>
+                <p>好评如潮，平均评分 4.9 星，精选评论尽显真实口碑。</p>
+            </section>
+            <section id="product-details" class="product-details">
+                <h1>产品详情</h1>
+                <p>优质瓜子原料，颗粒饱满，规格 500g/袋，无防腐剂，更健康！</p>
+            </section>
+            <div id="festival-animation" class="festival-animation">
+                <h1>春节喜庆动画</h1>
+                <p>背景动态飘落红色灯笼与金色福字，增添节日氛围。</p>
+            </div>
+        </div>
+        <div class="sidebar">
+            <aside id="coupon-center" class="coupon-center">
+                <h1>优惠券中心</h1>
+                <p>点击领取，结算时自动抵扣，优惠享不停。</p>
+            </aside>
+            <aside id="cart-sidebar" class="cart-sidebar">
+                <h1>购物车</h1>
+                <p>已加入：香瓜子 2 包，可随时调整数量或结算。</p>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>

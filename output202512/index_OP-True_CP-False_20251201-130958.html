@@ -1,0 +1,524 @@
+这是一个基于移动端电商通用架构（Mobile First）的HTML/CSS实现。代码采用语义化标签，使用CSS Variables管理颜色系统，并实现了固定头尾、弹性滚动区以及底部弹窗（Drawer）的布局结构。
+
+### 核心设计思路
+1.  **布局模式**：采用 `Fixed Header` + `Scrollable Main` + `Fixed Footer` 的经典三段式布局。
+2.  **颜色系统**：将 JSON 中提供的颜色映射为 CSS 变量，便于全局维护。
+3.  **交互模拟**：
+    *   顶部 Header 模拟了透明渐变层级（`z-index`）。
+    *   底部 Drawer 使用 `transform` 定位，可以通过添加 CSS 类来激活滑出效果。
+    *   使用了 Flexbox 和 Grid 布局来处理复杂的对齐需求（如价格倒计时条、SKU选择器）。
+
+### 代码实现
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>商品详情页 Demo</title>
+    <style>
+        /* =========================================
+           1. CSS Variables & Reset
+           ========================================= */
+        :root {
+            --c-primary: #F10215;
+            --c-secondary: #FF9600;
+            --c-bg: #F7F7F7;
+            --c-text-dark: #333333;
+            --c-text-gray: #999999;
+            --c-white: #FFFFFF;
+            --c-mask: rgba(0, 0, 0, 0.7);
+            
+            --header-h: 44px;
+            --footer-h: 50px;
+            --space-sm: 8px;
+            --space-md: 12px;
+            --space-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: var(--c-bg);
+            color: var(--c-text-dark);
+            line-height: 1.5;
+            padding-bottom: var(--footer-h); /* 防止底部遮挡 */
+        }
+
+        /* 通用工具类 */
+        .flex-row { display: flex; align-items: center; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        .text-primary { color: var(--c-primary); }
+        .text-gray { color: var(--c-text-gray); font-size: 12px; }
+        .bg-white { background: var(--c-white); }
+        .card { background: var(--c-white); margin-bottom: var(--space-md); padding: var(--space-md); }
+        
+        /* 模拟图标 */
+        .icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            font-style: normal;
+            font-size: 18px;
+        }
+
+        /* =========================================
+           2. Sticky Header
+           ========================================= */
+        #sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-h);
+            background: rgba(255,255,255,0.95); /* 模拟渐变/透明效果 */
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--space-md);
+            border-bottom: 1px solid #eee;
+        }
+
+        #sticky-header h2 {
+            font-size: 16px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .badge-container { position: relative; }
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--c-primary);
+            color: white;
+            font-size: 10px;
+            border-radius: 8px;
+            padding: 0 4px;
+            border: 1px solid white;
+        }
+
+        /* =========================================
+           3. Main Scroll Area
+           ========================================= */
+        #main-scroll-area {
+            padding-top: var(--header-h);
+            overflow-y: auto;
+        }
+
+        /* Gallery */
+        .product-gallery {
+            position: relative;
+            width: 100%;
+            height: 100vw; /* 1:1 比例 */
+            background: #fff;
+        }
+        .product-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-counter {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            background: rgba(0,0,0,0.4);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        /* Promo Timer */
+        .promo-timer {
+            background: linear-gradient(90deg, #F10215, #FF4D5A);
+            color: white;
+            padding: 0 var(--space-md);
+            height: 48px;
+        }
+        .price-tag { font-size: 24px; font-weight: bold; }
+        .price-tag span { font-size: 14px; }
+        .timer-box { font-size: 12px; font-weight: 500; }
+
+        /* Title Block */
+        .title-section {
+            padding: var(--space-lg) var(--space-md);
+            border-radius: 0 0 12px 12px;
+            margin-bottom: var(--space-md);
+        }
+        .product-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .action-row {
+            margin-top: var(--space-md);
+            justify-content: space-between;
+        }
+        .action-btn {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: var(--c-text-gray);
+            background: none;
+            border: none;
+        }
+
+        /* Coupon Widget */
+        .coupon-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            padding: 4px 0;
+            scrollbar-width: none; /* Firefox */
+        }
+        .coupon-scroll::-webkit-scrollbar { display: none; }
+        .coupon-tag {
+            background: #FFEBED;
+            color: var(--c-primary);
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(241, 2, 21, 0.1);
+            white-space: nowrap;
+        }
+
+        /* SKU Trigger */
+        .sku-trigger {
+            padding: var(--space-lg) var(--space-md);
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        .label { font-weight: bold; margin-right: 8px; color: var(--c-text-gray); }
+        .selected-val { flex: 1; font-weight: 500; }
+
+        /* Tabs */
+        .detail-tabs {
+            position: sticky;
+            top: var(--header-h);
+            background: white;
+            z-index: 90;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+        }
+        .tab-item {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 14px;
+            position: relative;
+        }
+        .tab-item.active {
+            color: var(--c-primary);
+            font-weight: bold;
+        }
+        .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: var(--c-primary);
+        }
+
+        /* Rich Content */
+        .rich-content {
+            min-height: 500px;
+            background: white;
+            padding: var(--space-md);
+        }
+        .placeholder-img {
+            width: 100%;
+            height: 300px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        /* =========================================
+           4. Action Bar (Footer)
+           ========================================= */
+        #action-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: var(--footer-h);
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            z-index: 100;
+        }
+
+        .nav-icons {
+            flex: 2;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+            color: var(--c-text-dark);
+        }
+
+        .btn-group {
+            flex: 3;
+            display: flex;
+        }
+        .big-btn {
+            flex: 1;
+            border: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .btn-cart { background: var(--c-secondary); }
+        .btn-buy { background: var(--c-primary); }
+
+        /* =========================================
+           5. Cart Drawer (Aside)
+           ========================================= */
+        /* 默认隐藏，可通过 JS 添加 class 显示 */
+        .drawer-mask {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--c-mask);
+            z-index: 200;
+            display: none; /* 默认隐藏 */
+        }
+        
+        .drawer-content {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            border-radius: 16px 16px 0 0;
+            z-index: 201;
+            padding: var(--space-lg);
+            transform: translateY(100%); /* 默认滑出屏幕 */
+            transition: transform 0.3s ease;
+        }
+
+        /* 演示用：Hover 到 footer 时显示 drawer (仅为无需JS展示效果) 
+           实际开发中应使用JS控制 class
+        */
+        /* #action-bar:hover ~ #cart-drawer .drawer-content { transform: translateY(0); } 
+           #action-bar:hover ~ #cart-drawer .drawer-mask { display: block; } */
+
+        .summary { display: flex; gap: 12px; margin-bottom: 20px; }
+        .thumb { width: 80px; height: 80px; background: #eee; border-radius: 4px; }
+        .summary-info .price { color: var(--c-primary); font-size: 18px; font-weight: bold; }
+        
+        .sku-group { margin-bottom: 16px; }
+        .sku-title { font-size: 13px; font-weight: bold; margin-bottom: 8px; }
+        .sku-options { display: flex; gap: 10px; flex-wrap: wrap; }
+        .sku-btn {
+            padding: 6px 12px;
+            border-radius: 16px;
+            background: #f2f2f2;
+            font-size: 12px;
+            border: 1px solid transparent;
+        }
+        .sku-btn.selected {
+            background: #FFF4F4;
+            color: var(--c-primary);
+            border-color: var(--c-primary);
+        }
+
+        .quantity-control {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .stepper { display: flex; border: 1px solid #eee; border-radius: 4px; }
+        .stepper button { width: 30px; height: 30px; border: none; background: #fff; }
+        .stepper input { width: 40px; text-align: center; border: none; border-left: 1px solid #eee; border-right: 1px solid #eee; }
+
+        .confirm-btn {
+            width: 100%;
+            height: 40px;
+            background: var(--c-primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Fixed Header -->
+    <header id="sticky-header">
+        <button class="icon" aria-label="返回">❮</button>
+        <h2>商品详情</h2>
+        <div class="flex-row" style="gap: 12px;">
+            <div class="icon">⋯</div>
+            <div class="badge-container">
+                <div class="icon">🛒</div>
+                <span class="badge">2</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Main Scroll Area -->
+    <main id="main-scroll-area">
+        
+        <!-- Gallery -->
+        <section class="product-gallery">
+            <!-- 占位图 -->
+            <div style="width:100%; height:100%; background:#ddd; display:flex; align-items:center; justify-content:center; color:#888;">
+                商品主图 (滑动区域)
+            </div>
+            <div class="gallery-counter">1/5</div>
+        </section>
+
+        <!-- Promo Timer -->
+        <div class="promo-timer flex-between">
+            <div class="price-tag"><span>¥</span>29.9</div>
+            <div class="timer-box">距结束 02:15:30</div>
+        </div>
+
+        <!-- Title Block -->
+        <section class="card title-section bg-white">
+            <h1 class="product-title">新疆原产大颗粒香瓜子 500g 坏籽包赔 颗颗饱满酥脆</h1>
+            <p class="text-gray" style="margin-top: 8px;">颗颗饱满，酥脆可口，原产地直发</p>
+            <div class="action-row flex-row">
+                <div class="flex-row text-gray" style="font-size: 12px;">
+                    <span style="margin-right:10px;">快递: 免运费</span>
+                    <span>月销 1000+</span>
+                </div>
+                <div class="flex-row" style="gap:15px;">
+                    <button class="action-btn"><span class="icon" style="font-size:16px;">♥</span> 收藏</button>
+                    <button class="action-btn"><span class="icon" style="font-size:16px;">↗</span> 分享</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coupon Widget -->
+        <section class="card flex-between" style="padding: 12px;">
+            <span class="label">优惠</span>
+            <div class="coupon-scroll" style="flex:1; overflow:hidden;">
+                <span class="coupon-tag">满99减10</span>
+                <span class="coupon-tag">新客专享</span>
+                <span class="coupon-tag">2件9折</span>
+            </div>
+            <div class="icon" style="font-size:12px; color:#999">❯</div>
+        </section>
+
+        <!-- SKU Trigger -->
+        <section class="card sku-trigger flex-between bg-white" onclick="document.getElementById('cart-drawer').style.display='block'">
+            <span class="label">已选</span>
+            <span class="selected-val">五香口味, 500g, 1件</span>
+            <div class="icon" style="font-size:12px; color:#999">❯</div>
+        </section>
+
+        <!-- Detail Tabs -->
+        <section class="detail-tabs">
+            <div class="tab-item active">商品介绍</div>
+            <div class="tab-item">规格参数</div>
+            <div class="tab-item">售后保障</div>
+        </section>
+
+        <!-- Rich Content -->
+        <div class="rich-content">
+            <div class="placeholder-img">产地实拍图 (Lazyload)</div>
+            <div class="placeholder-img">质检报告图 (Lazyload)</div>
+            <p style="padding:20px; text-align:center; color:#999;">—— 到底了 ——</p>
+        </div>
+    </main>
+
+    <!-- 3. Cart Drawer (Hidden by default logic) -->
+    <aside id="cart-drawer">
+        <!-- 模拟展开状态，实际需要JS切换 display: block -->
+        <div class="drawer-mask" style="display: none;"></div> 
+        
+        <!-- 为了演示静态页面，这里使用内联样式模拟'打开'状态，实际应移除 transform 的内联样式 -->
+        <!-- <div class="drawer-content" style="transform: translateY(0);"> -->
+        <div class="drawer-content">
+            <div class="summary">
+                <div class="thumb"></div>
+                <div class="summary-info">
+                    <div class="price">¥29.9</div>
+                    <div class="text-gray">已选：五香口味, 500g</div>
+                </div>
+            </div>
+
+            <div class="sku-group">
+                <div class="sku-title">口味</div>
+                <div class="sku-options">
+                    <button class="sku-btn">原味</button>
+                    <button class="sku-btn selected">五香</button>
+                    <button class="sku-btn">核桃味</button>
+                </div>
+            </div>
+
+            <div class="sku-group">
+                <div class="sku-title">净含量</div>
+                <div class="sku-options">
+                    <button class="sku-btn">250g</button>
+                    <button class="sku-btn selected">500g</button>
+                    <button class="sku-btn">1kg</button>
+                </div>
+            </div>
+
+            <div class="quantity-control">
+                <span class="sku-title">数量</span>
+                <div class="stepper">
+                    <button>-</button>
+                    <input type="number" value="1" readonly>
+                    <button>+</button>
+                </div>
+            </div>
+
+            <button class="confirm-btn">确定</button>
+        </div>
+    </aside>
+
+    <!-- 4. Action Bar Footer -->
+    <footer id="action-bar">
+        <nav class="nav-icons">
+            <div class="nav-item">
+                <span class="icon">🎧</span>
+                <span>客服</span>
+            </div>
+            <div class="nav-item">
+                <span class="icon">🛒</span>
+                <span>购物车</span>
+            </div>
+        </nav>
+        <div class="btn-group">
+            <button class="big-btn btn-cart">加入购物车</button>
+            <button class="big-btn btn-buy">立即购买</button>
+        </div>
+    </footer>
+
+</body>
+</html>
+```

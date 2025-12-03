@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>春节暖色风格购物页面</title>
+<style>
+    :root {
+        --color-primary: #B22222;
+        --color-secondary: #FFD700;
+        --color-bg: #F4F4F5;
+        --color-accent: #8B0000;
+        --color-highlight: #FFA500;
+    }
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-primary);
+    }
+    header, section, main, aside, div {
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    #hero-banner {
+        background-color: var(--color-accent);
+        color: var(--color-secondary);
+        text-align: center;
+        padding: 60px 20px;
+    }
+    #hero-banner h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+    #hero-banner p {
+        font-size: 1.2em;
+    }
+    #product-details {
+        background-color: #fff;
+        border-top: 5px solid var(--color-highlight);
+    }
+    #pricing-info {
+        background-color: var(--color-highlight);
+        color: #fff;
+    }
+    #purchase-module {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        margin-top: 10px;
+    }
+    #promotion-tags {
+        background-color: var(--color-primary);
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #recommendations {
+        background-color: var(--color-bg);
+    }
+    #reviews-comments {
+        background-color: #fff;
+        margin-top: 20px;
+    }
+    #shopping-cart {
+        background-color: var(--color-bg);
+    }
+    #checkout-payment {
+        background-color: #fff;
+    }
+    #responsive-design {
+        background-color: var(--color-secondary);
+        color: var(--color-primary);
+        text-align: center;
+    }
+    #animation-effects {
+        background-color: var(--color-highlight);
+        color: #fff;
+        text-align: center;
+    }
+    @media (max-width: 768px) {
+        #purchase-module {
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+<body>
+    <section id="hero-banner">
+        <h1>品牌名称和高质量产品图展示</h1>
+        <p>春节暖色风格核心卖点简介</p>
+    </section>
+
+    <main id="product-details">
+        <h2>产品规格标题</h2>
+        <p>品牌故事与详细参数说明</p>
+    </main>
+
+    <section id="pricing-info">
+        <h3>现价与原价对比</h3>
+        <p>限时特惠与折扣信息</p>
+    </section>
+
+    <section id="purchase-module">
+        <div>购买数量选择控件</div>
+        <div>动态总价显示与购买按钮</div>
+    </section>
+
+    <aside id="promotion-tags">
+        <span>促销标签文本</span>
+        <div>库存数量与倒计时显示</div>
+    </aside>
+
+    <section id="recommendations">
+        <h3>推荐产品标题</h3>
+        <div>相关产品图片与购买链接</div>
+    </section>
+
+    <section id="reviews-comments">
+        <h3>用户评论标题</h3>
+        <div>买家评分与评论排序组件</div>
+    </section>
+
+    <section id="shopping-cart">
+        <h2>购物车标题</h2>
+        <div>已选产品列表与数量管理</div>
+    </section>
+
+    <section id="checkout-payment">
+        <h2>支付页面标题</h2>
+        <div>支付方式选择与配送信息</div>
+    </section>
+
+    <div id="responsive-design">
+        <p>响应式布局提示</p>
+    </div>
+
+    <div id="animation-effects">
+        <p>说明动态交互效果</p>
+    </div>
+</body>
+</html>

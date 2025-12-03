@@ -1,0 +1,247 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n为网站创建一个响应式且视觉效果吸引人的电商销售页面小部件，界面风格模仿京东。商品为新疆香瓜子（产品），需展示包装规格、品质卖点和口味信息。\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n页面支持商品分类展示与在线购买流程（渠道）。您还可以加入促销元素，如限时倒计时、库存提醒、热销标签和优惠卷（促销），进一步提升购物体验与趣味性。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求",
+              "明确交付物为原生HTML/CSS/JS实现的电商小部件"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "撰写需求规格说明书(PRD)",
+              "定义新疆香瓜子商品详情与促销规则",
+              "梳理购物车与本地存储逻辑",
+              "明确京东风格UI交互要求"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "设计前端技术架构",
+              "规划DOM结构与CSS模块化方案",
+              "设计基于localStorage的数据存储方案与状态管理逻辑"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "执行代码开发",
+              "实现响应式布局与京东风格UI",
+              "编写无框架JS逻辑实现购物车、倒计时及数据持久化"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "仿京东风格的新疆香瓜子响应式电商单页应用",
+        "goals": [
+          "构建高保真仿京东UI，提供视觉吸引力强的沉浸式购物体验",
+          "清晰展示新疆香瓜子的产地优势、多口味选择及包装规格",
+          "利用限时倒计时、库存紧张提示和优惠券机制提升转化率",
+          "实现基于LocalStorage的购物车数据持久化，确保刷新不丢失",
+          "确保页面在移动端和桌面端均具备流畅的响应式交互"
+        ],
+        "target_users": [
+          "品质零食追求者：寻找产地正宗、颗粒饱满的新疆特产瓜子，关注口感与健康",
+          "价格敏感型消费者：容易被限时秒杀、满减优惠券及热销榜单打动",
+          "移动端购物习惯者：期望在Web端获得如同原生App般便捷的操作体验"
+        ],
+        "page_sections": [
+          {
+            "id": "nav-header",
+            "purpose": "顶部导航栏，包含品牌Logo及模拟搜索框，确立京东系视觉风格"
+          },
+          {
+            "id": "gallery-carousel",
+            "purpose": "商品主图轮播，展示产品包装、瓜子仁特写及原产地实拍图"
+          },
+          {
+            "id": "flash-sale-bar",
+            "purpose": "红色醒目的秒杀倒计时条，展示特价结束时间，制造购买紧迫感"
+          },
+          {
+            "id": "main-info-card",
+            "purpose": "展示商品标题、当前价格、原价划线、热销标签及'新疆特产'认证徽章"
+          },
+          {
+            "id": "coupon-section",
+            "purpose": "优惠券领取模块，通过点击领取交互增加用户参与感与购买动力"
+          },
+          {
+            "id": "sku-selection",
+            "purpose": "交互式规格选择区域，供用户选择口味（原味/五香/焦糖）与重量，并联动显示对应库存"
+          },
+          {
+            "id": "detail-tabs",
+            "purpose": "商品详情长图文区域，深度解析品质卖点（日照时长、人工筛选、独特工艺）"
+          },
+          {
+            "id": "cart-drawer",
+            "purpose": "侧滑或弹窗式购物车管理面板，支持增减数量、删除商品及计算总价"
+          },
+          {
+            "id": "sticky-footer",
+            "purpose": "底部固定操作栏，集成客服入口、购物车角标入口、加入购物车与立即购买按钮"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "mobile-first single-column + sticky footer",
+        "colors": [
+          "#E1251B",
+          "#FF9600",
+          "#FFFFFF",
+          "#F2F2F2",
+          "#2E2D2D"
+        ],
+        "components": [
+          {
+            "id": "jd-nav-header",
+            "html": "header",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "返回箭头图标"
+              },
+              {
+                "tag": "div",
+                "content_hint": "模拟搜索框：'新疆大颗粒香瓜子'"
+              },
+              {
+                "tag": "div",
+                "content_hint": "更多菜单图标"
+              }
+            ]
+          },
+          {
+            "id": "main-content-area",
+            "html": "main",
+            "children": [
+              {
+                "tag": "section",
+                "content_hint": "gallery-carousel: 轮播图容器 (包装图/瓜子特写/产地实拍)"
+              },
+              {
+                "tag": "div",
+                "content_hint": "flash-sale-bar: 红色背景，左侧秒杀价，右侧'距结束 02:15:30'"
+              },
+              {
+                "tag": "section",
+                "content_hint": "main-info-card: 容器"
+              },
+              {
+                "tag": "section",
+                "content_hint": "coupon-section: 优惠券横向滚动列表"
+              },
+              {
+                "tag": "section",
+                "content_hint": "sku-selection: 规格选择摘要 (已选：五香, 500g)"
+              },
+              {
+                "tag": "article",
+                "content_hint": "detail-tabs: 商品介绍/规格参数Tab + 长图文详情 (日照/筛选工艺)"
+              }
+            ]
+          },
+          {
+            "id": "main-info-card-content",
+            "html": "div",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "¥29.9 (大号字体) + ¥45.0 (划线价)"
+              },
+              {
+                "tag": "h1",
+                "content_hint": "新疆特产手选香瓜子 颗粒饱满 500g/袋 (多口味可选)"
+              },
+              {
+                "tag": "div",
+                "content_hint": "标签栏：【京东物流】【新疆产地】【热销榜TOP1】"
+              }
+            ]
+          },
+          {
+            "id": "cart-drawer-overlay",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "购物车标题栏 + 关闭按钮"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "购物车商品列表 (缩略图/标题/数量控制器)"
+              },
+              {
+                "tag": "div",
+                "content_hint": "底部结算栏 (合计金额 + 去结算按钮)"
+              }
+            ]
+          },
+          {
+            "id": "sticky-footer-bar",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "店铺图标 + 客服图标"
+              },
+              {
+                "tag": "div",
+                "content_hint": "购物车图标 (带红色数量角标)"
+              },
+              {
+                "tag": "button",
+                "content_hint": "加入购物车 (黄色背景)"
+              },
+              {
+                "tag": "button",
+                "content_hint": "立即购买 (红色背景)"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "这是一个基于您提供的JSON数据结构生成的HTML5和CSS3代码。\n\n作为工程师，我已将JSON中的逻辑结构转化为语义化的前端代码。该实现采用了 **Mobile-First（移动端优先）** 策略，使用了Flexbox布局，并严格遵循了您指定的配色方案（京东红、橙色等）。\n\n### 代码实现\n\n您可以直接将以下代码保存为 `.html` 文件并在浏览器（请使用手机模式预览）中打开。\n\n```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\">\n    <title>商品详情页 - 新疆大颗粒香瓜子</title>\n    <style>\n        /* --- 基础重置 --- */\n        :root {\n            --jd-red: #E1251B;\n            --jd-orange: #FF9600;\n            --white: #FFFFFF;\n            --bg-gray: #F2F2F2;\n            --text-dark: #2E2D2D;\n            --text-light: #999999;\n            --border-radius: 12px;\n        }\n\n        * { box-sizing: border-box; margin: 0; padding: 0; }\n        body {\n            font-family: -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n            background-color: var(--bg-gray);\n            color: var(--text-dark);\n            padding-bottom: 60px; /* 留出底部导航空间 */\n            padding-top: 44px; /* 留出顶部导航空间 */\n        }\n        ul { list-style: none; }\n\n        /* --- 1. 顶部导航 (Sticky Header) --- */\n        #jd-nav-header {\n            position: fixed;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 44px;\n            background: var(--white);\n            display: flex;\n            align-items: center;\n            padding: 0 10px;\n            z-index: 100;\n            box-shadow: 0 1px 3px rgba(0,0,0,0.05);\n        }\n        .nav-icon {\n            width: 30px;\n            height: 30px;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            font-size: 20px;\n        }\n        .search-bar {\n            flex: 1;\n            height: 30px;\n            background: #f7f7f7;\n            border-radius: 15px;\n            display: flex;\n            align-items: center;\n            padding-left: 15px;\n            margin: 0 10px;\n            color: var(--text-light);\n            font-size: 12px;\n        }\n\n        /* --- 2. 主内容区 --- */\n        #main-content-area {\n            width: 100%;\n            overflow-x: hidden;\n        }\n\n        /* 轮播图 */\n        .gallery-carousel {\n            width: 100%;\n            height: 375px; /* 1:1 ratio usually */\n            background-color: #ddd;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: #666;\n            position: relative;\n        }\n        .gallery-carousel::after {\n            content: \"商品图片 / 视频区域\";\n            font-size: 14px;\n        }\n\n        /* 秒杀栏 */\n        .flash-sale-bar {\n            background: linear-gradient(90deg, #F10000, var(--jd-red));\n            color: var(--white);\n            height: 50px;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            padding: 0 15px;\n        }\n        .flash-price-label { font-weight: bold; font-size: 14px; }\n        .flash-timer { font-size: 12px; background: rgba(0,0,0,0.1); padding: 4px 8px; border-radius: 4px; }\n\n        /* 通用卡片样式 */\n        .content-card {\n            background: var(--white);\n            border-radius: 0 0 var(--border-radius) var(--border-radius);\n            padding: 15px;\n            margin-bottom: 10px;\n        }\n        .card-standalone {\n            border-radius: var(--border-radius);\n        }\n\n        /* 主信息卡片 */\n        .price-row h2 {\n            color: var(--jd-red);\n            font-size: 24px;\n            display: inline-block;\n            margin-right: 8px;\n        }\n        .price-row .original-price {\n            text-decoration: line-through;\n            color: var(--text-light);\n            font-size: 14px;\n        }\n        .product-title {\n            font-size: 16px;\n            font-weight: 700;\n            line-height: 1.4;\n            margin: 10px 0;\n            display: -webkit-box;\n            -webkit-line-clamp: 2;\n            -webkit-box-orient: vertical;\n            overflow: hidden;\n        }\n        .tags-row {\n            display: flex;\n            gap: 5px;\n        }\n        .tag {\n            font-size: 10px;\n            padding: 2px 4px;\n            border-radius: 2px;\n            background: #ffeae9;\n            color: var(--jd-red);\n        }\n\n        /* 优惠券 */\n        .coupon-scroll {\n            display: flex;\n            overflow-x: auto;\n            gap: 10px;\n            padding-bottom: 5px;\n        }\n        .coupon-item {\n            flex: 0 0 auto;\n            background: #fff4f4;\n            border: 1px solid #ffc2c2;\n            color: var(--jd-red);\n            padding: 5px 10px;\n            font-size: 12px;\n            border-radius: 4px;\n            position: relative;\n        }\n\n        /* 规格选择 */\n        .sku-row {\n            display: flex;\n            justify-content: space-between;\n            font-size: 14px;\n            font-weight: bold;\n        }\n        .sku-row span { color: var(--text-light); font-weight: normal; margin-left: 10px; }\n\n        /* 详情Tab */\n        .detail-tabs {\n            background: var(--white);\n            margin-top: 10px;\n        }\n        .tab-header {\n            display: flex;\n            border-bottom: 1px solid #eee;\n        }\n        .tab-item {\n            flex: 1;\n            text-align: center;\n            padding: 15px 0;\n            font-size: 14px;\n        }\n        .tab-item.active {\n            color: var(--jd-red);\n            font-weight: bold;\n            border-bottom: 2px solid var(--jd-red);\n        }\n        .detail-content {\n            padding: 20px;\n            min-height: 300px;\n            text-align: center;\n            color: #999;\n        }\n\n        /* --- 3. 底部结算栏 (Sticky Footer) --- */\n        #sticky-footer-bar {\n            position: fixed;\n            bottom: 0;\n            left: 0;\n            width: 100%;\n            height: 50px;\n            background: var(--white);\n            display: flex;\n            box-shadow: 0 -1px 5px rgba(0,0,0,0.05);\n            z-index: 90;\n            padding: 0 10px; /* Safe area for sides */\n        }\n        .footer-icons {\n            display: flex;\n            flex: 1.2;\n            justify-content: space-around;\n            align-items: center;\n        }\n        .icon-btn {\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            font-size: 10px;\n            color: #666;\n            position: relative;\n        }\n        .icon-img { font-size: 18px; margin-bottom: 2px; }\n        .badge {\n            position: absolute;\n            top: -2px;\n            right: -2px;\n            background: var(--jd-red);\n            color: white;\n            font-size: 10px;\n            padding: 1px 4px;\n            border-radius: 8px;\n            border: 1px solid white;\n        }\n        .footer-btns {\n            flex: 2;\n            display: flex;\n            align-items: center;\n            justify-content: flex-end;\n            padding: 5px 0;\n        }\n        .action-btn {\n            flex: 1;\n            height: 38px;\n            border: none;\n            color: white;\n            font-size: 14px;\n            font-weight: bold;\n        }\n        .btn-cart {\n            background: linear-gradient(90deg, #FFCB00, var(--jd-orange));\n            border-radius: 20px 0 0 20px;\n        }\n        .btn-buy {\n            background: linear-gradient(90deg, #ff4142, var(--jd-red));\n            border-radius: 0 20px 20px 0;\n        }\n\n        /* --- 4. 购物车抽屉 (Cart Drawer) --- */\n        #cart-drawer-overlay {\n            position: fixed;\n            top: 0; left: 0; width: 100%; height: 100%;\n            background: rgba(0,0,0,0.5);\n            z-index: 200;\n            display: none; /* 默认隐藏 */\n            flex-direction: column;\n            justify-content: flex-end;\n        }\n        #cart-drawer-overlay.active { display: flex; }\n        \n        .drawer-content {\n            background: var(--white);\n            border-radius: 12px 12px 0 0;\n            max-height: 70%;\n            display: flex;\n            flex-direction: column;\n            animation: slideUp 0.3s ease-out;\n        }\n        @keyframes slideUp {\n            from { transform: translateY(100%); }\n            to { transform: translateY(0); }\n        }\n        .drawer-header {\n            padding: 15px;\n            text-align: center;\n            font-weight: bold;\n            border-bottom: 1px solid #eee;\n            position: relative;\n        }\n        .close-btn {\n            position: absolute;\n            right: 15px;\n            top: 15px;\n            color: #999;\n            cursor: pointer;\n        }\n        .cart-items {\n            padding: 15px;\n            overflow-y: auto;\n            flex: 1;\n        }\n        .cart-item {\n            display: flex;\n            gap: 10px;\n            margin-bottom: 15px;\n        }\n        .item-thumb { width: 80px; height: 80px; background: #eee; border-radius: 4px; }\n        .item-info { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }\n        .item-title { font-size: 14px; line-height: 1.2; }\n        .item-price { color: var(--jd-red); font-weight: bold; }\n        \n        .drawer-footer {\n            padding: 10px 15px;\n            border-top: 1px solid #eee;\n        }\n        .confirm-btn {\n            width: 100%;\n            height: 40px;\n            background: var(--jd-red);\n            color: white;\n            border: none;\n            border-radius: 20px;\n            font-size: 16px;\n            font-weight: bold;\n        }\n\n    </style>\n</head>\n<body>\n\n    <!-- 1. 导航栏 Header -->\n    <header id=\"jd-nav-header\">\n        <div class=\"nav-icon\">❮</div>\n        <div class=\"search-bar\">\n            🔍 新疆大颗粒香瓜子\n        </div>\n        <div class=\"nav-icon\">⋯</div>\n    </header>\n\n    <!-- 2. 主内容区域 Main -->\n    <main id=\"main-content-area\">\n        \n        <!-- 轮播图 -->\n        <section class=\"gallery-carousel\">\n            <!-- 图片占位 -->\n        </section>\n\n        <!-- 秒杀栏 -->\n        <div class=\"flash-sale-bar\">\n            <div class=\"flash-price-label\">京东秒杀</div>\n            <div class=\"flash-timer\">距结束 02:15:30</div>\n        </div>\n\n        <!-- 主信息卡片 -->\n        <section class=\"content-card\" id=\"main-info-card\">\n            <div id=\"main-info-card-content\">\n                <div class=\"price-row\">\n                    <h2>¥29.9</h2>\n                    <span class=\"original-price\">¥45.0</span>\n                </div>\n                <h1 class=\"product-title\">\n                    新疆特产手选香瓜子 颗粒饱满 500g/袋 (多口味可选) 休闲零食炒货\n                </h1>\n                <div class=\"tags-row\">\n                    <span class=\"tag\">京东物流</span>\n                    <span class=\"tag\">新疆产地</span>\n                    <span class=\"tag\">热销榜TOP1</span>\n                </div>\n            </div>\n        </section>\n\n        <!-- 优惠券 -->\n        <section class=\"content-card card-standalone coupon-section\">\n            <div class=\"sku-row\" style=\"margin-bottom:10px;\">优惠 <span style=\"color:#333; margin-left:0;\">领券</span></div>\n            <div class=\"coupon-scroll\">\n                <div class=\"coupon-item\">满99减10</div>\n                <div class=\"coupon-item\">满199减30</div>\n                <div class=\"coupon-item\">新客专享5元</div>\n            </div>\n        </section>\n\n        <!-- 规格选择 -->\n        <section class=\"content-card card-standalone sku-selection\">\n            <div class=\"sku-row\">\n                已选 <span>五香, 500g, 1件</span>\n                <div style=\"color:#999\">⋯</div>\n            </div>\n        </section>\n\n        <!-- 详情Tab -->\n        <article class=\"detail-tabs\">\n            <div class=\"tab-header\">\n                <div class=\"tab-item active\">商品介绍</div>\n                <div class=\"tab-item\">规格参数</div>\n                <div class=\"tab-item\">售后保障</div>\n            </div>\n            <div class=\"detail-content\">\n                <p>—— 产地实拍 ——</p>\n                <br>\n                <div style=\"background:#eee; height:200px; border-radius:8px; line-height:200px;\">长图文详情区域 (日照/筛选)</div>\n            </div>\n        </article>\n\n    </main>\n\n    <!-- 3. 购物车抽屉 Drawer (Overlay) -->\n    <aside id=\"cart-drawer-overlay\">\n        <div class=\"drawer-content\">\n            <div class=\"drawer-header\">\n                购物车\n                <span class=\"close-btn\" onclick=\"toggleDrawer()\">✕</span>\n            </div>\n            <ul class=\"cart-items\">\n                <li class=\"cart-item\">\n                    <div class=\"item-thumb\"></div>\n                    <div class=\"item-info\">\n                        <span class=\"item-title\">新疆特产手选香瓜子 五香 500g</span>\n                        <span class=\"item-price\">¥29.9</span>\n                    </div>\n                </li>\n            </ul>\n            <div class=\"drawer-footer\">\n                <button class=\"confirm-btn\">去结算 (¥29.9)</button>\n            </div>\n        </div>\n    </aside>\n\n    <!-- 4. 底部固定栏 Sticky Footer -->\n    <footer id=\"sticky-footer-bar\">\n        <div class=\"footer-icons\">\n            <div class=\"icon-btn\">\n                <span class=\"icon-img\">🏪</span>\n                <span>店铺</span>\n            </div>\n            <div class=\"icon-btn\">\n                <span class=\"icon-img\">🎧</span>\n                <span>客服</span>\n            </div>\n            <div class=\"icon-btn\" onclick=\"toggleDrawer()\">\n                <span class=\"icon-img\">🛒</span>\n                <span>购物车</span>\n                <span class=\"badge\">2</span>\n            </div>\n        </div>\n        <div class=\"footer-btns\">\n            <button class=\"action-btn btn-cart\" onclick=\"toggleDrawer()\">加入购物车</button>\n            <button class=\"action-btn btn-buy\">立即购买</button>\n        </div>\n    </footer>\n\n    <script>\n        // 简单的交互逻辑用于演示抽屉效果\n        function toggleDrawer() {\n            const drawer = document.getElementById('cart-drawer-overlay');\n            if (drawer.style.display === 'flex') {\n                drawer.style.display = 'none';\n            } else {\n                drawer.style.display = 'flex';\n                drawer.classList.add('active');\n            }\n        }\n\n        // 点击遮罩层关闭\n        document.getElementById('cart-drawer-overlay').addEventListener('click', function(e) {\n            if (e.target === this) {\n                toggleDrawer();\n            }\n        });\n    </script>\n</body>\n</html>\n```\n\n### 设计说明\n\n1.  **布局结构 (Layout)**:\n    *   使用了 `position: fixed` 来处理顶部的 **Header** 和底部的 **Footer**，保证它们在页面滚动时始终可见。\n    *   `main` 区域使用了 `padding-top` 和 `padding-bottom` 来防止内容被固定元素遮挡。\n    *   **Mobile-First**: 默认样式即针对小屏幕优化，使用了 `max-width` 和 `flex` 布局来适应屏幕宽度。\n\n2.  **色彩运用 (Colors)**:\n    *   **京东红 (`#E1251B`)**: 用于主价格、标签、秒杀栏背景、立即购买按钮以及徽标（Badge）。\n    *   **京东橙 (`#FF9600`)**: 用于“加入购物车”按钮的渐变起点，营造视觉层次。\n    *   **背景灰 (`#F2F2F2`)**: 用于页面背景，区分不同的内容板块（通过白色卡片浮在灰色背景上）。\n    *   **文本黑 (`#2E2D2D`)**: 用于标题和主要阅读文字。\n\n3.  **组件细节 (Components)**:\n    *   **Gallery Carousel**: 保持了常见的 1:1 正方形比例。\n    *   **Main Info Card**: 包含了价格（大字体）、划线价（灰色小字体）、多行文本截断（CSS `line-clamp`）以及标签栏。\n    *   **Cart Drawer**: 这是一个全屏遮罩 (`overlay`) 加上底部向上滑出的面板。我添加了简单的 JavaScript (`toggleDrawer`) 来演示点击购物车图标或按钮时的交互效果。\n    *   **Sticky Footer**: 左侧为图标区，右侧为经典的胶囊状双按钮组（左黄右红）。\n\n4.  **交互**:\n    *   您可以点击底部的 **“购物车”图标** 或 **“加入购物车”黄色按钮** 来查看购物车抽屉的弹出效果。"
+    }
+  ]
+}

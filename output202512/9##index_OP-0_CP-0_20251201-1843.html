@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF春节香瓜子葵花子大促</title>
+<style>
+    body {
+        font-family: "Segoe UI", "微软雅黑", sans-serif;
+        margin: 0;
+        background-color: #fff5f5;
+        color: #333;
+    }
+    header {
+        background-color: #E4393C;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    .promo-banner {
+        background-color: #ffefef;
+        color: #E4393C;
+        text-align: center;
+        padding: 0.5rem;
+        font-weight: bold;
+    }
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+    .product {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .product img {
+        width: 100%;
+        height: auto;
+    }
+    .product-info {
+        padding: 1rem;
+    }
+    .product-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #E4393C;
+    }
+    .product-specs {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+    .product-highlight {
+        background-color: #fff5f5;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid #E4393C;
+        color: #444;
+    }
+    .price {
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 1rem;
+    }
+    .current-price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #E4393C;
+        margin-right: 0.5rem;
+    }
+    .original-price {
+        font-size: 1rem;
+        color: #999;
+        text-decoration: line-through;
+        margin-right: 0.5rem;
+    }
+    .discount-info {
+        font-size: 0.9rem;
+        background-color: #E4393C;
+        color: #fff;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+    }
+    .purchase-panel {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-right: 1rem;
+    }
+    .quantity-control button {
+        background-color: #f5f5f5;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .quantity-control input {
+        width: 40px;
+        text-align: center;
+        border: none;
+        outline: none;
+    }
+    .add-to-cart {
+        flex: 1;
+        background-color: #E4393C;
+        color: #fff;
+        border: none;
+        padding: 0.7rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    .cart {
+        margin-top: 2rem;
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .cart h2 {
+        margin-top: 0;
+        font-size: 1.2rem;
+        color: #E4393C;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .cart-empty {
+        text-align: center;
+        color: #999;
+        padding: 1rem 0;
+    }
+    .cart-actions {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    .checkout-btn, .clear-cart-btn {
+        flex: 1;
+        margin: 0 0.5rem;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .checkout-btn {
+        background-color: #E4393C;
+        color: #fff;
+    }
+    .clear-cart-btn {
+        background-color: #ccc;
+        color: #333;
+    }
+    .stock-info, .countdown {
+        font-size: 0.9rem;
+        color: #E4393C;
+        margin-bottom: 0.5rem;
+    }
+    @media (max-width: 600px) {
+        .product-info {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+</head>
+<body>
+<header>
+    <h1>LYF 春节香瓜子葵花子大促</h1>
+</header>
+<div class="promo-banner">限时抢购，库存有限！抢完即止！</div>
+<main>
+    <section class="product">
+        <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="香瓜子葵花子">
+        <div class="product-info">
+            <div class="product-title">香瓜子葵花子组合装（30g x 10包）</div>
+            <div class="product-specs">规格：每包30g，共10包组合装</div>
+            <div class="product-highlight">粒粒饱满，香脆可口，春节送礼自享两相宜</div>
+            <div class="stock-info">剩余库存：<span id="stock-count">50</span> 件</div>
+            <div class="countdown">距优惠结束：<span id="countdown-timer">00:00:00</span></div>
+            <div class="price">
+                <div class="current-price">¥16.9</div>
+                <div class="original-price">¥29.9</div>
+                <div class="discount-info">春节特惠</div>
+            </div>
+            <div class="purchase-panel">
+                <div class="quantity-control">
+                    <button id="minus-btn">-</button>
+                    <input type="text" id="quantity-input" value="1">
+                    <button id="plus-btn">+</button>
+                </div>
+                <button class="add-to-cart" id="add-to-cart-btn">加入购物车</button>
+            </div>
+        </div>
+    </section>
+    <section class="cart">
+        <h2>购物车</h2>
+        <div id="cart-items"></div>
+        <div class="cart-actions">
+            <button class="checkout-btn" id="checkout-btn">去结算</button>
+            <button class="clear-cart-btn" id="clear-cart-btn">清空购物车</button>
+        </div>
+    </section>
+</main>
+<script>
+    const quantityInput = document.getElementById('quantity-input');
+    const minusBtn = document.getElementById('minus-btn');
+    const plusBtn = document.getElementById('plus-btn');
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const clearCartBtn = document.getElementById('clear-cart-btn');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const stockCountEl = document.getElementById('stock-count');
+    const countdownTimerEl = document.getElementById('countdown-timer');
+
+    let stockCount = parseInt(stockCountEl.textContent);
+    let countdownSeconds = 7200; // 2 hours
+
+    function renderCountdown() {
+        const hours = String(Math.floor(countdownSeconds / 3600)).padStart(2, '0');
+        const minutes = String(Math.floor((countdownSeconds % 3600) / 60)).padStart(2, '0');
+        const seconds = String(countdownSeconds % 60).padStart(2, '0');
+        countdownTimerEl.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    setInterval(() => {
+        if (countdownSeconds > 0) {
+            countdownSeconds--;
+            renderCountdown();
+        }
+    }, 1000);
+    renderCountdown();
+
+    function getCart() {
+        const cart = localStorage.getItem('cart');
+        return cart ? JSON.parse(cart) : [];
+    }
+
+    function saveCart(cart) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function renderCart() {
+        const cart = getCart();
+        cartItemsContainer.innerHTML = '';
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<div class="cart-empty">购物车为空</div>';
+            return;
+        }
+        cart.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `
+                <span>${item.name} x ${item.quantity}</span>
+                <span>¥${(item.price * item.quantity).toFixed(2)}</span>
+                <button data-index="${index}" class="remove-btn">删除</button>
+            `;
+            cartItemsContainer.appendChild(div);
+        });
+        document.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const index = e.target.dataset.index;
+                const cart = getCart();
+                const removedItem = cart.splice(index, 1)[0];
+                stockCount += removedItem.quantity;
+                stockCountEl.textContent = stockCount;
+                saveCart(cart);
+                renderCart();
+            });
+        });
+    }
+
+    minusBtn.addEventListener('click', () => {
+        let qty = parseInt(quantityInput.value);
+        if (qty > 1) {
+            quantityInput.value = qty - 1;
+        }
+    });
+
+    plusBtn.addEventListener('click', () => {
+        let qty = parseInt(quantityInput.value);
+        if (qty < stockCount) {
+            quantityInput.value = qty + 1;
+        }
+    });
+
+    addToCartBtn.addEventListener('click', () => {
+        let qty = parseInt(quantityInput.value);
+        if (qty <= 0) return;
+        if (qty > stockCount) {
+            alert('库存不足');
+            return;
+        }
+        const cart = getCart();
+        const existingIndex = cart.findIndex(item => item.name === '香瓜子葵花子组合装');
+        if (existingIndex >= 0) {
+            cart[existingIndex].quantity += qty;
+        } else {
+            cart.push({ name: '香瓜子葵花子组合装', price: 16.9, quantity: qty });
+        }
+        stockCount -= qty;
+        stockCountEl.textContent = stockCount;
+        saveCart(cart);
+        renderCart();
+    });
+
+    clearCartBtn.addEventListener('click', () => {
+        localStorage.removeItem('cart');
+        stockCount = 50;
+        stockCountEl.textContent = stockCount;
+        renderCart();
+    });
+
+    checkoutBtn.addEventListener('click', () => {
+        alert('结算成功！感谢您的购买！');
+        localStorage.removeItem('cart');
+        stockCount = 50;
+        stockCountEl.textContent = stockCount;
+        renderCart();
+    });
+
+    renderCart();
+</script>
+</body>
+</html>

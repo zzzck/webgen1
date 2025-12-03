@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 春节香瓜子葵花子促销</title>
+<style>
+body { margin:0; font-family: Arial, sans-serif; background:#F4F4F5; color:#333; }
+header { background:#E4393C; padding:10px; display:flex; }
+header input { flex:1; padding:8px; border:none; border-radius:4px; }
+header button { background:#FFD700; border:none; padding:8px 12px; margin-left:5px; border-radius:4px; }
+
+nav { background:#fff; display:flex; justify-content:space-around; padding:10px 0; border-bottom:1px solid #ddd; }
+nav ul { list-style:none; display:flex; padding:0; margin:0; }
+nav li { margin:0 10px; color:#E4393C; font-weight:bold; }
+
+section { background:#fff; margin-bottom:10px; padding:10px; }
+
+#product-gallery { text-align:center; }
+#product-gallery img { width:100%; max-height:250px; object-fit:cover; border-radius:8px; }
+#gallery-controls { display:flex; justify-content:center; margin-top:5px;}
+#gallery-controls button { margin:0 5px; padding:5px 10px; border:none; border-radius:4px; background:#E4393C; color:#fff; }
+
+#product-info h1 { color:#E4393C; }
+#product-info ul { list-style:none; padding:0; }
+#product-info li::before { content:"✔ "; color:#E4393C; }
+
+#price-block { display:flex; align-items:center; justify-content:space-between; }
+#price-block .current-price { font-size:1.5em; color:#E4393C; }
+#price-block .old-price { color:#999; margin-left:10px; }
+#countdown { color:#FFD700; font-weight:bold; }
+
+#coupon-section { display:flex; justify-content:space-around; }
+.coupon { background:#FFF4E5; padding:10px; border:2px dashed #E4393C; border-radius:8px; cursor:pointer; width:45%; text-align:center; }
+.coupon.active { background:#FFD700; }
+
+#spec-selection label { margin-right:10px; cursor:pointer; }
+#spec-selection input { margin-right:5px; }
+
+#promotion-tag { background:#FFD700; padding:5px; text-align:center; color:#E4393C; font-weight:bold; }
+
+#review-section { background:#fff; }
+.review-filters button { margin-right:5px; padding:5px 10px; border:none; background:#E4393C; color:#fff; border-radius:4px; }
+.review-list { list-style:none; padding:0; }
+.review-list li { border-bottom:1px solid #eee; padding:5px 0; }
+
+footer { position:fixed; bottom:0; left:0; width:100%; background:#E4393C; padding:10px; }
+footer button { width:100%; padding:10px; font-size:1.2em; background:#FFD700; border:none; border-radius:4px; color:#E4393C; font-weight:bold; }
+
+.modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); }
+.modal-cart { position:fixed; bottom:-100%; left:0; width:100%; background:#fff; border-top-left-radius:12px; border-top-right-radius:12px; transition:bottom 0.3s; padding:20px; }
+.modal-cart.active { bottom:0; }
+.modal-cart h2 { margin-top:0; }
+.modal-cart button { margin-top:10px; width:100%; padding:10px; background:#E4393C; color:#fff; border:none; border-radius:4px; font-size:1.2em; }
+</style>
+</head>
+<body>
+
+<header id="search-bar">
+  <input type="text" placeholder="搜索年货零食...">
+  <button>搜索</button>
+</header>
+
+<nav id="nav-bar">
+  <ul>
+    <li>节日零食</li>
+    <li>坚果瓜子</li>
+  </ul>
+</nav>
+
+<section id="product-gallery">
+  <img id="gallery-img" src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="产品图">
+  <div id="gallery-controls">
+    <button onclick="prevImg()">上一张</button>
+    <button onclick="nextImg()">下一张</button>
+  </div>
+</section>
+
+<section id="product-info">
+  <h1>LYF 香瓜子葵花子</h1>
+  <p>规格：30g × 10 包</p>
+  <ul>
+    <li>颗粒饱满</li>
+    <li>独立包装不脏手</li>
+    <li>买多少送多少</li>
+    <li>五香味</li>
+  </ul>
+</section>
+
+<section id="price-block">
+  <div>
+    <span class="current-price" id="current-price">¥16.9</span>
+    <del class="old-price">¥29.9</del>
+  </div>
+  <div id="countdown">剩余 00:00:00</div>
+</section>
+
+<section id="coupon-section">
+  <div class="coupon" data-discount="2" data-min="10">满10减2元</div>
+  <div class="coupon" data-discount="5" data-min="20">满20减5元</div>
+</section>
+
+<section id="spec-selection">
+  <label><input type="radio" name="spec" value="10" checked>10包</label>
+  <label><input type="radio" name="spec" value="20">20包</label>
+  <label><input type="radio" name="spec" value="30">30包</label>
+</section>
+
+<div id="promotion-tag">
+  限时优惠 · 库存仅剩 200 组
+</div>
+
+<section id="review-section">
+  <div class="review-filters">
+    <button onclick="filterReviews('all')">全部</button>
+    <button onclick="filterReviews('good')">好评</button>
+    <button onclick="filterReviews('mid')">中评</button>
+    <button onclick="filterReviews('bad')">差评</button>
+  </div>
+  <ul class="review-list" id="review-list">
+    <li data-type="good">颗粒很饱满，味道香！</li>
+    <li data-type="mid">包装不错，口味一般。</li>
+    <li data-type="bad">有点潮。</li>
+    <li data-type="good">春节送礼好选择！</li>
+  </ul>
+</section>
+
+<footer id="buy-button">
+  <button onclick="openCart()">立即购买</button>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" onclick="closeCart()"></div>
+<div class="modal-cart" id="modal-cart">
+  <h2>确认订单</h2>
+  <div id="cart-info"></div>
+  <button onclick="confirmPay()">确认支付</button>
+</div>
+
+<script>
+const imgs = [
+  "https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp",
+  "https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b",
+  "https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg"
+];
+let imgIndex=0;
+function prevImg(){ imgIndex=(imgIndex-1+imgs.length)%imgs.length; document.getElementById('gallery-img').src=imgs[imgIndex]; }
+function nextImg(){ imgIndex=(imgIndex+1)%imgs.length; document.getElementById('gallery-img').src=imgs[imgIndex]; }
+
+function countdown(){
+  let end = new Date();
+  end.setHours(end.getHours()+2);
+  setInterval(()=>{
+    let now = new Date();
+    let diff = Math.max(0, end-now);
+    let h = String(Math.floor(diff/3600000)).padStart(2,'0');
+    let m = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    let s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    document.getElementById('countdown').textContent = `剩余 ${h}:${m}:${s}`;
+  },1000);
+}
+countdown();
+
+let basePrice=16.9;
+function calcSpecPrice(){
+  const specVal = document.querySelector('input[name="spec"]:checked').value;
+  if(specVal=="10") basePrice=16.9; else if(specVal=="20") basePrice=30; else basePrice=42;
+  updatePrice();
+}
+document.querySelectorAll('input[name="spec"]').forEach(r=>r.addEventListener('change',calcSpecPrice));
+
+let couponDiscount=0;
+document.querySelectorAll('.coupon').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.coupon').forEach(cc=>cc.classList.remove('active'));
+    c.classList.add('active');
+    let min = parseFloat(c.dataset.min);
+    if(basePrice>=min) couponDiscount=parseFloat(c.dataset.discount); else couponDiscount=0;
+    updatePrice();
+  });
+});
+
+function updatePrice(){
+  let final = (basePrice - couponDiscount).toFixed(2);
+  document.getElementById('current-price').textContent = `¥${final}`;
+}
+updatePrice();
+
+function filterReviews(type){
+  document.querySelectorAll('#review-list li').forEach(li=>{
+    if(type=='all' || li.dataset.type==type) li.style.display='block';
+    else li.style.display='none';
+  });
+}
+
+function openCart(){
+  document.getElementById('modal-overlay').style.display='block';
+  document.getElementById('modal-cart').classList.add('active');
+  const specVal = document.querySelector('input[name="spec"]:checked').value;
+  const finalPrice = document.getElementById('current-price').textContent;
+  document.getElementById('cart-info').innerHTML = `商品：LYF 香瓜子葵花子<br>规格：${specVal}包<br>价格：${finalPrice}`;
+}
+
+function closeCart(){
+  document.getElementById('modal-overlay').style.display='none';
+  document.getElementById('modal-cart').classList.remove('active');
+}
+
+function confirmPay(){
+  const specVal = document.querySelector('input[name="spec"]:checked').value;
+  const finalPrice = document.getElementById('current-price').textContent;
+  const order = {
+    product:"LYF 香瓜子葵花子",
+    spec: specVal+"包",
+    price: finalPrice,
+    couponDiscount
+  };
+  alert(`订单信息：${JSON.stringify(order)}`);
+  closeCart();
+}
+</script>
+
+</body>
+</html>

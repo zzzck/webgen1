@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF新疆原产葵花籽 - 春节热销</title>
+<style>
+  body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background-color: #f6f6f6;
+    color:#333;
+  }
+  header {
+    background-color:#f23030;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+  }
+  header div.logo {
+    font-size:18px;
+    font-weight:bold;
+  }
+  header input {
+    flex:1;
+    margin-left:10px;
+    padding:5px;
+    border:none;
+    border-radius:3px;
+  }
+  .container {
+    display:flex;
+    flex-wrap:wrap;
+    padding:10px;
+    background-color:#fff;
+    max-width:1200px;
+    margin:auto;
+  }
+  .gallery {
+    flex:1 1 400px;
+    padding:10px;
+  }
+  .gallery img.main {
+    width:100%;
+    height:auto;
+    border:1px solid #ccc;
+    border-radius:5px;
+    transition:opacity 0.3s;
+  }
+  .thumbnails {
+    display:flex;
+    margin-top:10px;
+    gap:5px;
+  }
+  .thumbnails img {
+    width:60px;
+    height:60px;
+    border:1px solid #ccc;
+    border-radius:3px;
+    cursor:pointer;
+    transition: transform 0.2s;
+  }
+  .thumbnails img:hover {
+    transform:scale(1.05);
+  }
+  .product-info {
+    flex:1 1 400px;
+    padding:10px;
+  }
+  .product-info h1 {
+    font-size:20px;
+    margin-bottom:10px;
+  }
+  .price {
+    font-size:24px;
+    color:#f23030;
+    font-weight:bold;
+  }
+  .labels span {
+    display:inline-block;
+    background-color:#ffcccc;
+    color:#f23030;
+    padding:3px 5px;
+    margin-right:5px;
+    border-radius:3px;
+    font-size:12px;
+  }
+  .countdown {
+    margin-top:10px;
+    font-weight:bold;
+    color:#f23030;
+  }
+  .quantity-price {
+    margin-top:15px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .qty-control {
+    display:flex;
+    align-items:center;
+  }
+  .qty-control button {
+    width:30px;
+    height:30px;
+    border:none;
+    background-color:#f23030;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+    border-radius:3px;
+  }
+  .qty-control span {
+    display:inline-block;
+    width:40px;
+    text-align:center;
+  }
+  .total-price {
+    font-size:18px;
+    color:#333;
+  }
+  .coupons {
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+  }
+  .coupon {
+    border:1px solid #f23030;
+    padding:5px;
+    cursor:pointer;
+    flex:1;
+    text-align:center;
+    border-radius:5px;
+    transition: background-color 0.3s;
+  }
+  .coupon.active {
+    background-color:#f23030;
+    color:white;
+  }
+  .actions {
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+  }
+  .actions button {
+    flex:1;
+    padding:10px;
+    cursor:pointer;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+    color:#fff;
+    background-color:#f23030;
+    transition:box-shadow 0.3s, background-color 0.3s;
+  }
+  .actions button:hover {
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    background-color:#d62828;
+  }
+  .actions button.disabled {
+    background-color:#aaa;
+    cursor:default;
+  }
+  .details-tabs {
+    background-color:#fff;
+    margin-top:15px;
+    padding:10px;
+  }
+  .details-tabs nav {
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+  }
+  .details-tabs nav button {
+    flex:1;
+    cursor:pointer;
+    padding:8px;
+    border:none;
+    border-bottom:2px solid transparent;
+    background-color:#f6f6f6;
+    transition:border-color 0.3s;
+  }
+  .details-tabs nav button.active {
+    border-color:#f23030;
+    background-color:#fff;
+  }
+  .reviews {
+    background-color:#fff;
+    margin-top:15px;
+    padding:10px;
+  }
+  .review-filters {
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+  }
+  .review-filters button {
+    flex:1;
+    padding:8px;
+    cursor:pointer;
+    border:none;
+    border-radius:3px;
+    background-color:#f6f6f6;
+  }
+  .review-filters button.active {
+    background-color:#f23030;
+    color:#fff;
+  }
+  .reviews ul {
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  .reviews li {
+    padding:8px 0;
+    border-bottom:1px solid #ccc;
+  }
+  .purchase-modal {
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:-100%;
+    background-color:#fff;
+    padding:20px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    transition:bottom 0.3s;
+    z-index:1001;
+  }
+  .modal-overlay {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:rgba(0,0,0,0.5);
+    z-index:1000;
+  }
+  .purchase-modal.show {
+    bottom:0;
+  }
+  .modal-overlay.show {
+    display:block;
+  }
+  .toast {
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background-color:#333;
+    color:#fff;
+    padding:10px;
+    border-radius:5px;
+    opacity:0;
+    transition:opacity 0.3s;
+    z-index:1002;
+  }
+  .toast.show {
+    opacity:1;
+  }
+  @media(max-width:768px){
+    .container {
+      flex-direction:column;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">LYF</div>
+  <input type="text" placeholder="搜索商品...">
+</header>
+<div class="container">
+  <section class="gallery">
+    <img class="main" src="https://via.placeholder.com/400x400?text=LYF+Product+1" alt="主图">
+    <div class="thumbnails">
+      <img src="https://via.placeholder.com/60x60/ffcccc?text=1" data-large="https://via.placeholder.com/400x400?text=LYF+Product+1">
+      <img src="https://via.placeholder.com/60x60/ccffcc?text=2" data-large="https://via.placeholder.com/400x400?text=LYF+Product+2">
+      <img src="https://via.placeholder.com/60x60/ccccff?text=3" data-large="https://via.placeholder.com/400x400?text=LYF+Product+3">
+      <img src="https://via.placeholder.com/60x60/ffffcc?text=4" data-large="https://via.placeholder.com/400x400?text=LYF+Product+4">
+    </div>
+  </section>
+  <section class="product-info">
+    <h1>新疆原产葵花籽（30g 独立小包装） - 10包组合装</h1>
+    <div class="price">￥16.9</div>
+    <div class="labels">
+      <span>春节特惠</span><span>包邮</span>
+    </div>
+    <div class="countdown">春节限时抢购倒计时：<span id="countdown">02:00:00</span></div>
+    <section class="quantity-price">
+      <div class="qty-control">
+        <button id="minus">-</button>
+        <span id="quantity">1</span>
+        <button id="plus">+</button>
+      </div>
+      <div class="total-price">总价: ￥<span id="total">16.9</span></div>
+    </section>
+    <section class="coupons">
+      <div class="coupon" data-threshold="10" data-discount="2">满10减2元</div>
+      <div class="coupon" data-threshold="20" data-discount="5">满20减5元</div>
+    </section>
+    <section class="actions">
+      <button id="buyNow">立即购买</button>
+      <button id="addCart">加入购物车</button>
+    </section>
+  </section>
+</div>
+<section class="details-tabs">
+  <nav>
+    <button class="active" data-tab="intro">商品介绍</button>
+    <button data-tab="service">售后保障</button>
+  </nav>
+  <div class="tab-content">
+    <div id="intro">LYF新疆葵花籽，原产地直供，香脆可口，春节送礼佳品。</div>
+    <div id="service" style="display:none;">本商品享受七天无理由退换货，质量问题包退包换。</div>
+  </div>
+</section>
+<section class="reviews">
+  <div class="review-filters">
+    <button class="active" data-filter="all">全部</button>
+    <button data-filter="good">好评</button>
+    <button data-filter="medium">中评</button>
+  </div>
+  <ul id="reviewList"></ul>
+</section>
+<div class="modal-overlay" id="modalOverlay"></div>
+<div class="purchase-modal" id="purchaseModal">
+  <div>已选商品：LYF葵花籽 x <span id="modalQty">1</span></div>
+  <p>最终价格：￥<span id="modalPrice">16.9</span></p>
+  <button id="confirmPay">确认支付</button>
+</div>
+<div class="toast" id="toast">已成功加入购物车</div>
+<script>
+  const pricePerUnit = 16.9;
+  let quantity = 1;
+  let selectedCoupon = null;
+  let countdownSeconds = 2*60*60;
+  const quantityEl = document.getElementById('quantity');
+  const totalEl = document.getElementById('total');
+  const modalQty = document.getElementById('modalQty');
+  const modalPrice = document.getElementById('modalPrice');
+  const coupons = document.querySelectorAll('.coupon');
+  function updateTotal(){
+    let subtotal = pricePerUnit * quantity;
+    if(selectedCoupon && subtotal >= selectedCoupon.threshold){
+      subtotal -= selectedCoupon.discount;
+    }else{
+      selectedCoupon = null;
+      coupons.forEach(c=>c.classList.remove('active'));
+    }
+    totalEl.textContent = subtotal.toFixed(1);
+    modalPrice.textContent = subtotal.toFixed(1);
+    modalQty.textContent = quantity;
+  }
+  document.getElementById('plus').addEventListener('click',()=>{
+    quantity++;
+    quantityEl.textContent = quantity;
+    updateTotal();
+  });
+  document.getElementById('minus').addEventListener('click',()=>{
+    if(quantity>1){
+      quantity--;
+      quantityEl.textContent = quantity;
+      updateTotal();
+    }
+  });
+  coupons.forEach(c=>{
+    c.addEventListener('click',()=>{
+      coupons.forEach(x=>x.classList.remove('active'));
+      selectedCoupon = {threshold: parseFloat(c.dataset.threshold), discount: parseFloat(c.dataset.discount)};
+      c.classList.add('active');
+      updateTotal();
+    });
+  });
+  const countdownEl = document.getElementById('countdown');
+  function formatTime(sec){
+    let h = String(Math.floor(sec/3600)).padStart(2,'0');
+    let m = String(Math.floor((sec%3600)/60)).padStart(2,'0');
+    let s = String(sec%60).padStart(2,'0');
+    return `${h}:${m}:${s}`;
+  }
+  const buyBtn = document.getElementById('buyNow');
+  const cartBtn = document.getElementById('addCart');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const purchaseModal = document.getElementById('purchaseModal');
+  setInterval(()=>{
+    if(countdownSeconds>0){
+      countdownSeconds--;
+      countdownEl.textContent = formatTime(countdownSeconds);
+    }else{
+      buyBtn.classList.add('disabled');
+      cartBtn.classList.add('disabled');
+      buyBtn.disabled = true;
+      cartBtn.disabled = true;
+    }
+  },1000);
+  cartBtn.addEventListener('click',()=>{
+    const toast = document.getElementById('toast');
+    toast.textContent = `已成功加入购物车：LYF葵花籽 x ${quantity}`;
+    toast.classList.add('show');
+    setTimeout(()=>{toast.classList.remove('show');},2000);
+  });
+  buyBtn.addEventListener('click',()=>{
+    modalOverlay.classList.add('show');
+    purchaseModal.classList.add('show');
+  });
+  modalOverlay.addEventListener('click',()=>{
+    modalOverlay.classList.remove('show');
+    purchaseModal.classList.remove('show');
+  });
+  document.getElementById('confirmPay').addEventListener('click',()=>{
+    alert(JSON.stringify({product:"LYF葵花籽", qty:quantity, price:parseFloat(totalEl.textContent)}));
+  });
+  document.querySelectorAll('.thumbnails img').forEach(thumb=>{
+    thumb.addEventListener('mouseenter',()=>{document.querySelector('.main').src=thumb.dataset.large;});
+    thumb.addEventListener('click',()=>{document.querySelector('.main').src=thumb.dataset.large;});
+  });
+  document.querySelectorAll('.details-tabs nav button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.details-tabs nav button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('intro').style.display = btn.dataset.tab==='intro' ? '' : 'none';
+      document.getElementById('service').style.display = btn.dataset.tab==='service' ? '' : 'none';
+    });
+  });
+  const productData = {
+    reviews:[
+      {type:'good', text:'非常好吃，包装精美！'},
+      {type:'good', text:'口感不错，推荐'},
+      {type:'medium', text:'味道一般，偏咸'},
+      {type:'good', text:'性价比高'},
+      {type:'medium', text:'有些碎壳'}
+    ]
+  };
+  const reviewList = document.getElementById('reviewList');
+  function renderReviews(filter){
+    reviewList.innerHTML='';
+    productData.reviews.filter(r=>filter==='all' || r.type===filter).forEach(r=>{
+      const li=document.createElement('li'); li.textContent=r.text; reviewList.appendChild(li);
+    });
+  }
+  renderReviews('all');
+  document.querySelectorAll('.review-filters button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.review-filters button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      renderReviews(btn.dataset.filter);
+    });
+  });
+</script>
+</body>
+</html>

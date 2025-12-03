@@ -1,0 +1,61 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n\n# Functional Requirements (功能需求)\n1.  实现合理的布局结构：尽量包含搜索栏目、导航栏、产品介绍、交互、详情信息等\n    可插入如下图片作为产品展示图，可翻动：\n    图1“https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n    图2“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n    图3“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n    卖点文案：突出“颗粒饱满”、“独立包装不脏手”、“买多少送多少”、“五香味”\n额外功能：\n1.营销倒计时系统 (Complex Logic)：在价格旁显示“春节限时抢购倒计时”。\n2. 优惠券与价格计算 界面中间需展示两张优惠券：\nA券：满 10 减 2 元\nB券：满 20 减 5 元\n是否可实现点击优惠券，自动减少相应价格\n\n3.添加购买规格：包含10包、20包、30包，价格可以买的越多越优惠。\n4. 评论区筛选器：展示评论列表。\n5. 模态框购物车 (UI Interaction)\n点击底部的“立即购买”按钮，不跳转，而是从底部弹出一个半透明遮罩层 + 确认面板（Slide-up Modal）。\n面板内显示：已选商品信息、最终计算后的价格。\n包含“确认支付”按钮，点击后 alert 输出最终订单信息对象。\n6.随机优化功能\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求，明确网页需为单文件 HTML，包含 HTML、CSS、JavaScript",
+              "识别交付物：春节零食电商销售网页，涵盖 4P 营销要素",
+              "划分功能块：搜索栏、导航栏、产品展示（轮播）、规格与卖点文案、价格与促销信息、购买入口与购物流程",
+              "包含倒计时限时抢购系统",
+              "优惠券点击逻辑及价格自动计算",
+              "购买规格选择（10包、20包、30包）与单价优惠逻辑",
+              "评论区筛选器",
+              "底部模态购物车弹窗交互，确认支付输出订单信息",
+              "随机优化功能",
+              "视觉风格强调春节红，参考京东/天猫移动端风格"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据规格实现完整的单文件 HTML 页面（包含内联 CSS 和 JavaScript）",
+              "构建页面结构：搜索栏、导航栏、产品轮播图（加载提供的三张图片）、产品规格与卖点文案区域",
+              "实现价格展示（现价、原价、促销标签、库存或限时购买激励）",
+              "编写倒计时系统，显示春节限时抢购剩余时间",
+              "实现优惠券点击交互与价格实时计算（两种券：满10减2，满20减5）",
+              "开发购买规格选择逻辑（10包、20包、30包自动计算总价并体现优惠）",
+              "添加评论区筛选器功能",
+              "实现底部“立即购买”按钮触发的模态弹窗购物车交互（半透明遮罩 + 确认面板）",
+              "在模态中展示已选商品信息与最终计算价格，确认支付按钮触发 alert 输出订单信息对象",
+              "加入随机优化功能（如随机显示促销文案或推荐商品）",
+              "整体界面配色及样式以春节红为主调，参考京东/天猫移动端设计风格"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF 春节香瓜子葵花子大促</title>\n<style>\nbody {\n    margin: 0;\n    font-family: \"Microsoft YaHei\", sans-serif;\n    background-color: #fff;\n}\nheader {\n    background-color: #E4393C;\n    color: white;\n    padding: 10px;\n    text-align: center;\n}\nheader input[type=\"text\"] {\n    width: 80%;\n    padding: 8px;\n    border: none;\n    border-radius: 4px;\n}\nnav {\n    display: flex;\n    justify-content: space-around;\n    background-color: #E4393C;\n    padding: 8px;\n    color: white;\n}\nnav a {\n    color: white;\n    text-decoration: none;\n}\n.carousel {\n    position: relative;\n    overflow: hidden;\n    width: 100%;\n    height: 250px;\n}\n.carousel img {\n    width: 100%;\n    height: 250px;\n    object-fit: cover;\n    display: none;\n}\n.carousel img.active {\n    display: block;\n}\nsection {\n    padding: 15px;\n}\n.price {\n    color: #E4393C;\n    font-size: 1.5em;\n}\n.old-price {\n    text-decoration: line-through;\n    color: gray;\n    margin-left: 10px;\n}\n.countdown {\n    background: #E4393C;\n    color: white;\n    padding: 5px;\n    border-radius: 4px;\n    display: inline-block;\n    margin-top: 8px;\n}\n.coupons {\n    display: flex;\n    gap: 10px;\n    margin-top: 10px;\n}\n.coupon {\n    background-color: #fff3f3;\n    border: 1px dashed #E4393C;\n    padding: 10px;\n    flex: 1;\n    text-align: center;\n    cursor: pointer;\n}\n.specs {\n    margin-top: 15px;\n}\n.specs button {\n    padding: 8px 12px;\n    margin: 5px;\n    border: 1px solid #E4393C;\n    background-color: white;\n    color: #E4393C;\n    cursor: pointer;\n}\n.specs button.active {\n    background-color: #E4393C;\n    color: white;\n}\n.comments {\n    margin-top: 20px;\n}\n.comment-filter {\n    margin-bottom: 10px;\n}\n.comment {\n    border-bottom: 1px solid #eee;\n    padding: 5px 0;\n}\nfooter {\n    position: fixed;\n    bottom: 0;\n    width: 100%;\n    background-color: #E4393C;\n    color: white;\n    text-align: center;\n    padding: 12px;\n    cursor: pointer;\n}\n#cart-modal {\n    position: fixed;\n    bottom: -100%;\n    left:0;\n    width: 100%;\n    background: rgba(0,0,0,0.5);\n    height: 100%;\n    transition: bottom 0.3s ease;\n}\n#cart-panel {\n    background: white;\n    position: absolute;\n    bottom: 0;\n    width: 100%;\n    padding: 15px;\n    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);\n}\n#cart-panel h3 {\n    margin-top: 0;\n}\n</style>\n</head>\n<body>\n<header>\n    <input type=\"text\" placeholder=\"搜索春节零食...\">\n</header>\n<nav>\n    <a href=\"#\">首页</a>\n    <a href=\"#\">分类</a>\n    <a href=\"#\">促销</a>\n    <a href=\"#\">购物车</a>\n</nav>\n<div class=\"carousel\">\n    <img src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" class=\"active\">\n    <img src=\"https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b\">\n    <img src=\"https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg\">\n</div>\n<section>\n    <h1>LYF 香瓜子葵花子（30g 小包装）</h1>\n    <p>颗粒饱满，独立包装不脏手，买多少送多少，五香味</p>\n    <div class=\"price\">¥<span id=\"price\">16.9</span>\n        <span class=\"old-price\">¥29.9</span>\n    </div>\n    <div class=\"countdown\">春节限时抢购倒计时：<span id=\"timer\">00:00:00</span></div>\n    <div class=\"coupons\">\n        <div class=\"coupon\" data-discount=\"2\" data-min=\"10\">满10减2元</div>\n        <div class=\"coupon\" data-discount=\"5\" data-min=\"20\">满20减5元</div>\n    </div>\n    <div class=\"specs\">\n        <strong>购买规格：</strong>\n        <button data-spec=\"10\" data-base=\"16.9\" class=\"active\">10包</button>\n        <button data-spec=\"20\" data-base=\"32\">20包</button>\n        <button data-spec=\"30\" data-base=\"45\">30包</button>\n    </div>\n</section>\n<section class=\"comments\">\n    <div class=\"comment-filter\">\n        <button onclick=\"filterComments('all')\">全部</button>\n        <button onclick=\"filterComments('good')\">好评</button>\n        <button onclick=\"filterComments('bad')\">差评</button>\n    </div>\n    <div id=\"comment-list\">\n        <div class=\"comment\" data-type=\"good\">非常好吃，颗粒饱满！</div>\n        <div class=\"comment\" data-type=\"good\">包装方便，不脏手</div>\n        <div class=\"comment\" data-type=\"bad\">有点咸</div>\n    </div>\n</section>\n<footer id=\"buy-btn\">\n    立即购买\n</footer>\n<div id=\"cart-modal\">\n    <div id=\"cart-panel\">\n        <h3>确认订单</h3>\n        <p id=\"selected-info\"></p>\n        <p>最终价格：¥<span id=\"final-price\"></span></p>\n        <button onclick=\"confirmPay()\">确认支付</button>\n    </div>\n</div>\n<script>\nlet imgs = document.querySelectorAll('.carousel img');\nlet index = 0;\nsetInterval(()=>{\n    imgs[index].classList.remove('active');\n    index = (index+1) % imgs.length;\n    imgs[index].classList.add('active');\n}, 3000);\n\nlet endTime = new Date();\nendTime.setHours(endTime.getHours()+5); \nfunction updateTimer(){\n    let now = new Date();\n    let diff = endTime - now;\n    if(diff<=0){\n        document.getElementById('timer').textContent = '00:00:00';\n        return;\n    }\n    let h = String(Math.floor(diff/1000/60/60)).padStart(2,'0');\n    let m = String(Math.floor(diff/1000/60)%60).padStart(2,'0');\n    let s = String(Math.floor(diff/1000)%60).padStart(2,'0');\n    document.getElementById('timer').textContent = `${h}:${m}:${s}`;\n}\nsetInterval(updateTimer,1000);\n\nlet specButtons = document.querySelectorAll('.specs button');\nlet priceElement = document.getElementById('price');\nlet selectedSpec = {spec:10, price:16.9};\nspecButtons.forEach(btn=>{\n    btn.addEventListener('click', ()=>{\n        specButtons.forEach(b=>b.classList.remove('active'));\n        btn.classList.add('active');\n        selectedSpec.spec = parseInt(btn.dataset.spec);\n        selectedSpec.price = parseFloat(btn.dataset.base);\n        priceElement.textContent = selectedSpec.price.toFixed(2);\n        appliedDiscount = 0;\n    });\n});\nlet appliedDiscount = 0;\ndocument.querySelectorAll('.coupon').forEach(c=>{\n    c.addEventListener('click', ()=>{\n        let min = parseFloat(c.dataset.min);\n        if(selectedSpec.price >= min){\n            appliedDiscount = parseFloat(c.dataset.discount);\n            let newPrice = selectedSpec.price - appliedDiscount;\n            priceElement.textContent = newPrice.toFixed(2);\n        } else {\n            alert('当前规格价格不足以使用该优惠券');\n        }\n    });\n});\nfunction filterComments(type){\n    let comments = document.querySelectorAll('#comment-list .comment');\n    comments.forEach(c=>{\n        if(type==='all') c.style.display='block';\n        else if(c.dataset.type===type) c.style.display='block';\n        else c.style.display='none';\n    });\n}\ndocument.getElementById('buy-btn').addEventListener('click', ()=>{\n    document.getElementById('cart-modal').style.bottom = '0';\n    document.getElementById('selected-info').textContent = `${selectedSpec.spec}包香瓜子葵花子`;\n    document.getElementById('final-price').textContent = (selectedSpec.price - appliedDiscount).toFixed(2);\n});\nfunction confirmPay(){\n    let order = {\n        product: '香瓜子葵花子',\n        spec: selectedSpec.spec,\n        basePrice: selectedSpec.price,\n        discount: appliedDiscount,\n        finalPrice: (selectedSpec.price - appliedDiscount).toFixed(2)\n    };\n    alert(JSON.stringify(order));\n}\n</script>\n</body>\n</html>"
+    }
+  ]
+}

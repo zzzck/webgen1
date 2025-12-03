@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>任务管理面板</title>
+  <style>
+    :root {
+      --primary: #4A90E2;
+      --secondary: #50E3C2;
+      --background: #F4F4F5;
+      --accent: #FFB74D;
+      --danger: #E57373;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--background);
+      color: #333;
+      display: grid;
+      grid-template-columns: 240px 1fr 240px;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        "aside-left header aside-right"
+        "aside-left main aside-right"
+        "footer footer footer";
+      min-height: 100vh;
+    }
+
+    main {
+      grid-area: main;
+      padding: 1.5rem;
+    }
+
+    aside#notifications-panel {
+      grid-area: aside-left;
+      background-color: white;
+      border-right: 1px solid #ddd;
+      padding: 1rem;
+    }
+
+    aside#settings-panel {
+      grid-area: aside-right;
+      background-color: white;
+      border-left: 1px solid #ddd;
+      padding: 1rem;
+    }
+
+    footer {
+      grid-area: footer;
+      background-color: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    section {
+      background-color: white;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    input, select, button {
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: var(--secondary);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 0.5rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .priority-high { color: var(--danger); }
+    .priority-medium { color: var(--accent); }
+    .priority-low { color: var(--secondary); }
+
+    #task-actions div {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    #task-actions button {
+      background-color: var(--accent);
+      color: #333;
+    }
+
+    #task-export button {
+      background-color: var(--secondary);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <aside id="notifications-panel">
+    <h3>提醒与通知</h3>
+    <ul>
+      <li>即将到期任务提醒</li>
+      <li>未完成任务提醒</li>
+    </ul>
+  </aside>
+
+  <main id="widget-container">
+    <h1>待办任务</h1>
+    <p>管理你的任务，追踪进度并保持高效。</p>
+
+    <section id="task-input">
+      <h2>添加新任务</h2>
+      <form>
+        <input type="text" placeholder="任务标题">
+        <input type="date" placeholder="到期日期">
+        <select>
+          <option>类别</option>
+          <option>工作</option>
+          <option>个人</option>
+          <option>学习</option>
+        </select>
+        <select>
+          <option>优先级</option>
+          <option>高</option>
+          <option>中</option>
+          <option>低</option>
+        </select>
+        <button type="submit">添加任务</button>
+      </form>
+    </section>
+
+    <section id="task-list">
+      <h2>任务列表</h2>
+      <ul>
+        <li><span>示例任务 1</span> <span class="priority-high">高优先级</span></li>
+        <li><span>示例任务 2</span> <span class="priority-medium">中优先级</span></li>
+      </ul>
+    </section>
+
+    <section id="task-actions">
+      <h3>任务操作</h3>
+      <div>
+        <button>编辑</button>
+        <button>删除</button>
+        <button>标记完成</button>
+      </div>
+    </section>
+
+    <section id="task-export">
+      <h3>导出任务</h3>
+      <button>导出为 JSON</button>
+      <button>导出为文本</button>
+    </section>
+  </main>
+
+  <aside id="settings-panel">
+    <h3>设置</h3>
+    <div>
+      <label><input type="checkbox" checked> 启用通知</label><br>
+      <label>默认排序：
+        <select>
+          <option>按日期</option>
+          <option>按优先级</option>
+          <option>按类别</option>
+        </select>
+      </label><br>
+      <label>主题：
+        <select>
+          <option>浅色</option>
+          <option>深色</option>
+        </select>
+      </label>
+    </div>
+  </aside>
+
+  <footer id="footer-info">
+    <small>© 2024 任务管理应用</small>
+    <p>数据保存在本地浏览器中，确保你的隐私安全。</p>
+  </footer>
+</body>
+</html>

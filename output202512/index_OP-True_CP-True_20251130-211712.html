@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TODO List Widget</title>
+<style>
+:root {
+  --blue: #2563EB;
+  --green: #10B981;
+  --gray: #F4F4F5;
+  --yellow: #F59E0B;
+  --red: #EF4444;
+}
+body {
+  margin: 0;
+  font-family: "Segoe UI", "PingFang SC", sans-serif;
+  background-color: var(--gray);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  background-color: var(--blue);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+header nav button {
+  background: var(--green);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+main {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+#main-content {
+  flex: 3;
+  min-width: 300px;
+  margin-right: 1rem;
+}
+#right-panel {
+  flex: 1;
+  min-width: 240px;
+}
+#add-task-form, #filter-bar, #task-list, #notification-area, #export-panel, #settings-panel {
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+#add-task-form input, #add-task-form select, #add-task-form button {
+  margin: 0.25rem 0;
+  padding: 0.5rem;
+}
+#add-task-form button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: #888;
+}
+.task-actions button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: 0.25rem;
+}
+.priority-high { color: var(--red); }
+.priority-medium { color: var(--yellow); }
+.priority-low { color: var(--green); }
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: #666;
+  border-top: 1px solid #ddd;
+}
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+  #main-content {
+    margin-right: 0;
+  }
+}
+</style>
+</head>
+<body>
+<header id="header-bar">
+  <h1>我的待办清单</h1>
+  <nav>
+    <button id="exportTasks">导出任务</button>
+    <button id="clearCompleted">清空已完成</button>
+  </nav>
+</header>
+
+<main>
+  <div id="main-content">
+    <section id="add-task-form">
+      <h2>添加任务</h2>
+      <input type="text" id="taskTitle" placeholder="任务标题">
+      <input type="date" id="taskDueDate">
+      <select id="taskPriority">
+        <option value="low">低优先级</option>
+        <option value="medium">中优先级</option>
+        <option value="high">高优先级</option>
+      </select>
+      <input type="text" id="taskCategory" placeholder="分类标签">
+      <button id="addTaskBtn">添加</button>
+    </section>
+
+    <section id="filter-bar">
+      <h2>筛选任务</h2>
+      <select id="filterPriority">
+        <option value="all">所有优先级</option>
+        <option value="high">高优先级</option>
+        <option value="medium">中优先级</option>
+        <option value="low">低优先级</option>
+      </select>
+      <input type="text" id="filterCategory" placeholder="按分类筛选">
+    </section>
+
+    <section id="task-list">
+      <h2>任务列表</h2>
+      <div id="tasksContainer"></div>
+    </section>
+  </div>
+
+  <aside id="right-panel">
+    <section id="notification-area">
+      <h2>通知区域</h2>
+      <div id="notifications"></div>
+    </section>
+
+    <section id="export-panel">
+      <h2>任务导出</h2>
+      <button id="downloadTasks">下载 JSON</button>
+    </section>
+
+    <section id="settings-panel">
+      <h2>设置</h2>
+      <button id="toggleTheme">切换主题</button>
+    </section>
+  </aside>
+</main>
+
+<footer id="footer-bar">
+  <p>© 2024 TODO List Widget</p>
+</footer>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem('tasksData') || '[]');
+const tasksContainer = document.getElementById('tasksContainer');
+const notifications = document.getElementById('notifications');
+
+function saveTasks() {
+  localStorage.setItem('tasksData', JSON.stringify(tasks));
+}
+function renderTasks() {
+  tasksContainer.innerHTML = '';
+  let filterPriority = document.getElementById('filterPriority').value;
+  let filterCategory = document.getElementById('filterCategory').value.trim().toLowerCase();
+  tasks
+    .filter(t => (filterPriority === 'all' || t.priority === filterPriority))
+    .filter(t => (!filterCategory || t.category.toLowerCase().includes(filterCategory)))
+    .forEach((task, idx) => {
+      const div = document.createElement('div');
+      div.className = 'task-item' + (task.completed ? ' completed' : '');
+      let priorityClass = 'priority-' + task.priority;
+      div.innerHTML = `
+        <div>
+          <input type="checkbox" ${task.completed ? 'checked' : ''} data-index="${idx}">
+          <span class="task-title ${priorityClass}">${task.title}</span>
+          <small>(${task.category || '未分类'}) 截止: ${task.dueDate || '无'}</small>
+        </div>
+        <div class="task-actions">
+          <button data-action="delete" data-index="${idx}">🗑</button>
+        </div>
+      `;
+      tasksContainer.appendChild(div);
+    });
+}
+function notify(msg, type = 'info') {
+  const div = document.createElement('div');
+  div.textContent = msg;
+  div.style.padding = '0.5rem';
+  div.style.marginTop = '0.5rem';
+  div.style.borderRadius = '4px';
+  div.style.backgroundColor = type === 'error' ? 'var(--red)' : 'var(--green)';
+  div.style.color = '#fff';
+  notifications.appendChild(div);
+  setTimeout(() => div.remove(), 3000);
+}
+document.getElementById('addTaskBtn').addEventListener('click', () => {
+  const title = document.getElementById('taskTitle').value.trim();
+  const due = document.getElementById('taskDueDate').value;
+  const priority = document.getElementById('taskPriority').value;
+  const category = document.getElementById('taskCategory').value.trim();
+  if(!title) { notify('请输入任务标题', 'error'); return; }
+  tasks.push({ title, dueDate: due, priority, category, completed: false });
+  saveTasks();
+  notify('任务已添加');
+  document.getElementById('taskTitle').value = '';
+  renderTasks();
+});
+tasksContainer.addEventListener('change', e => {
+  if(e.target.type === 'checkbox') {
+    const idx = e.target.dataset.index;
+    tasks[idx].completed = e.target.checked;
+    saveTasks();
+    renderTasks();
+  }
+});
+tasksContainer.addEventListener('click', e => {
+  if(e.target.dataset.action === 'delete') {
+    const idx = e.target.dataset.index;
+    tasks.splice(idx, 1);
+    saveTasks();
+    renderTasks();
+    notify('任务已删除');
+  }
+});
+document.getElementById('clearCompleted').addEventListener('click', () => {
+  tasks = tasks.filter(t => !t.completed);
+  saveTasks();
+  renderTasks();
+  notify('已清除完成任务');
+});
+document.getElementById('filterPriority').addEventListener('change', renderTasks);
+document.getElementById('filterCategory').addEventListener('input', renderTasks);
+document.getElementById('exportTasks').addEventListener('click', () => {
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tasks, null, 2));
+  const dlAnchor = document.createElement('a');
+  dlAnchor.setAttribute("href", dataStr);
+  dlAnchor.setAttribute("download", "tasks.json");
+  dlAnchor.click();
+});
+document.getElementById('downloadTasks').addEventListener('click', () => {
+  document.getElementById('exportTasks').click();
+});
+document.getElementById('toggleTheme').addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});
+renderTasks();
+</script>
+</body>
+</html>

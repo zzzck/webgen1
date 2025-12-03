@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 春节零食大促 - 香瓜子葵花子</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #F4F4F5;
+  color: #333333;
+}
+header {
+  display: flex;
+  padding: 10px;
+  background-color: #E4393C;
+}
+header input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+}
+header button {
+  padding: 8px 12px;
+  background-color: #FFD700;
+  border: none;
+  cursor: pointer;
+}
+nav {
+  background-color: #fff;
+  padding: 10px;
+}
+nav ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  padding: 5px 10px;
+  background-color: #E4393C;
+  color: #fff;
+  border-radius: 4px;
+}
+#product-gallery {
+  position: relative;
+  overflow: hidden;
+}
+#product-gallery img {
+  width: 100%;
+  display: none;
+}
+#product-gallery img.active {
+  display: block;
+}
+.gallery-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+.gallery-controls span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: #FFD700;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#product-info {
+  background: #fff;
+  padding: 15px;
+}
+#product-info h1 {
+  margin-top: 0;
+  color: #E4393C;
+}
+#product-info ul {
+  padding-left: 20px;
+}
+#price-promo {
+  background: #fff;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#price-promo .current-price {
+  font-size: 1.5em;
+  color: #E4393C;
+}
+#price-promo .old-price {
+  text-decoration: line-through;
+  color: #999;
+}
+#price-promo .promo-tag {
+  background: #FFD700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+#countdown {
+  color: #E4393C;
+  font-weight: bold;
+}
+#coupon-area {
+  display: flex;
+  gap: 10px;
+  background: #fff;
+  padding: 15px;
+}
+.coupon {
+  flex: 1;
+  padding: 10px;
+  border: 1px dashed #E4393C;
+  text-align: center;
+  cursor: pointer;
+}
+.coupon.active {
+  background-color: #FFD700;
+}
+#spec-selector {
+  background: #fff;
+  padding: 15px;
+}
+#review-section {
+  background: #fff;
+  padding: 15px;
+}
+.review-filter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.review-filter button {
+  border: none;
+  background: #E4393C;
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.review-list {
+  list-style: none;
+  padding: 0;
+}
+.review-list li {
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #E4393C;
+  padding: 10px;
+}
+footer button {
+  width: 100%;
+  background-color: #FFD700;
+  border: none;
+  padding: 12px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+#cart-modal {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  transition: bottom 0.3s ease;
+  padding: 15px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+}
+#cart-modal.open {
+  bottom: 0;
+}
+#cart-modal .cart-item {
+  margin-bottom: 10px;
+}
+#cart-modal button {
+  width: 100%;
+  background-color: #E4393C;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<header id="search-bar">
+  <input type="text" placeholder="搜索年货零食...">
+  <button>搜索</button>
+</header>
+
+<nav id="nav-bar">
+  <ul>
+    <li>首页</li>
+    <li>年货零食</li>
+    <li>促销活动</li>
+    <li>品牌专区</li>
+  </ul>
+</nav>
+
+<section id="product-gallery">
+  <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" class="active">
+  <img src="https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b">
+  <img src="https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg">
+  <div class="gallery-controls">
+    <span data-index="0"></span>
+    <span data-index="1"></span>
+    <span data-index="2"></span>
+  </div>
+</section>
+
+<section id="product-info">
+  <h1>LYF 香瓜子葵花子</h1>
+  <ul>
+    <li>颗粒饱满</li>
+    <li>独立包装不脏手</li>
+    <li>买多少送多少</li>
+    <li>五香味</li>
+  </ul>
+</section>
+
+<section id="price-promo">
+  <span class="current-price">¥16.9</span>
+  <span class="old-price">¥29.9</span>
+  <span class="promo-tag">春节大促</span>
+  <div id="countdown">距离结束: 00:00:00</div>
+</section>
+
+<section id="coupon-area">
+  <div class="coupon" data-type="A" data-min="10" data-discount="2">满10减2元</div>
+  <div class="coupon" data-type="B" data-min="20" data-discount="5">满20减5元</div>
+</section>
+
+<section id="spec-selector">
+  <label for="spec">规格选择：</label>
+  <select id="spec">
+    <option value="10" data-price="16.9">10包 - ¥16.9</option>
+    <option value="20" data-price="30.0">20包 - ¥30.00</option>
+    <option value="30" data-price="42.0">30包 - ¥42.00</option>
+  </select>
+</section>
+
+<section id="review-section">
+  <div class="review-filter">
+    <button data-filter="all">全部</button>
+    <button data-filter="good">好评</button>
+    <button data-filter="bad">差评</button>
+  </div>
+  <ul class="review-list">
+    <li data-type="good">包装很好，分量足，味道棒！</li>
+    <li data-type="bad">有点咸。</li>
+    <li data-type="good">买多少送多少，太划算了！</li>
+  </ul>
+</section>
+
+<footer id="buy-button">
+  <button>立即购买</button>
+</footer>
+
+<aside id="cart-modal">
+  <div class="cart-item">商品：LYF 香瓜子葵花子 <span id="cart-spec"></span>包</div>
+  <div>总价：¥<span id="cart-price"></span></div>
+  <button id="confirm-pay">确认支付</button>
+</aside>
+
+<script>
+let currentPrice = 16.9;
+let selectedSpec = 10;
+let discount = 0;
+
+document.querySelectorAll('.gallery-controls span').forEach(dot => {
+  dot.addEventListener('click', () => {
+    document.querySelectorAll('#product-gallery img').forEach(img => img.classList.remove('active'));
+    document.querySelectorAll('#product-gallery img')[dot.dataset.index].classList.add('active');
+  });
+});
+
+const countdownEl = document.getElementById('countdown');
+let countdownSeconds = 3600;
+function updateCountdown(){
+  let h = String(Math.floor(countdownSeconds/3600)).padStart(2,'0');
+  let m = String(Math.floor((countdownSeconds%3600)/60)).padStart(2,'0');
+  let s = String(countdownSeconds%60).padStart(2,'0');
+  countdownEl.textContent = `距离结束: ${h}:${m}:${s}`;
+  if(countdownSeconds>0) countdownSeconds--;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+document.querySelectorAll('.coupon').forEach(c => {
+  c.addEventListener('click', ()=>{
+    document.querySelectorAll('.coupon').forEach(cc=>cc.classList.remove('active'));
+    c.classList.add('active');
+    let min = parseFloat(c.dataset.min);
+    let discountVal = parseFloat(c.dataset.discount);
+    if(selectedSpec >= min){
+      discount = discountVal;
+    } else {
+      discount = 0;
+    }
+  });
+});
+
+document.getElementById('spec').addEventListener('change', (e)=>{
+  selectedSpec = parseInt(e.target.value);
+  currentPrice = parseFloat(e.target.selectedOptions[0].dataset.price);
+});
+
+document.querySelectorAll('.review-filter button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    let filter = btn.dataset.filter;
+    document.querySelectorAll('.review-list li').forEach(li=>{
+      if(filter === 'all' || li.dataset.type === filter){
+        li.style.display = '';
+      } else {
+        li.style.display = 'none';
+      }
+    });
+  });
+});
+
+document.querySelector('#buy-button button').addEventListener('click', ()=>{
+  document.getElementById('cart-spec').textContent = selectedSpec;
+  let finalPrice = Math.max(0, currentPrice - discount).toFixed(2);
+  document.getElementById('cart-price').textContent = finalPrice;
+  document.getElementById('cart-modal').classList.add('open');
+});
+
+document.getElementById('confirm-pay').addEventListener('click', ()=>{
+  let order = {
+    product: 'LYF 香瓜子葵花子',
+    spec: selectedSpec,
+    price: Math.max(0, currentPrice - discount).toFixed(2)
+  };
+  alert(JSON.stringify(order));
+  document.getElementById('cart-modal').classList.remove('open');
+});
+</script>
+
+</body>
+</html>

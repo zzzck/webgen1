@@ -1,0 +1,239 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n为网站创建一个响应式且视觉效果吸引人的电商产品销售页面小部件。\n用户应能够浏览商品列表、查看商品详情、选择数量并加入购物车，以及从购物车中删除商品。页面应支持显示商品价格、折扣信息、库存状态和按分类浏览等功能。\n您还可以添加任何其他创意功能来提高转化率和趣味性，例如限时倒计时、热销标记或简易订单摘要。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。使用 localStorage 存储购物车等数据，确保信息在页面刷新后仍能保留。保持整体设计简洁、用户友好且引人入胜。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求",
+              "制定项目任务流"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "撰写电商小部件 PRD",
+              "定义功能模块（商品展示、购物车、持久化）与交互细节"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "设计技术方案",
+              "定义 HTML 结构、CSS 规范及 localStorage 数据模型"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "编写原生 HTML/CSS/JS 代码",
+              "实现响应式布局与业务逻辑"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "轻量级响应式电商单页销售组件 (Vanilla JS E-commerce Widget)",
+        "goals": [
+          "构建无需依赖框架的轻量级前端架构，利用 localStorage 实现数据持久化",
+          "提供完全响应式的视觉设计，确保在移动端和桌面端均有极致体验",
+          "通过限时倒计时和热销标记等心理学设计元素提高用户转化率",
+          "实现流畅的交互体验，包括无刷新分类筛选、商品加购及购物车管理",
+          "确保商品信息（库存、折扣、价格）展示清晰，辅助用户快速决策"
+        ],
+        "target_users": [
+          "冲动型消费者：被视觉吸引，希望在单页面内快速完成浏览和加购流程",
+          "移动端购物者：期望加载速度快、触控交互友好（大按钮、侧滑菜单）的界面",
+          "价格敏感用户：需要直观看到原价、折扣价对比以及购物车实时总额"
+        ],
+        "page_sections": [
+          {
+            "id": "sticky-header",
+            "purpose": "固定顶部导航，包含品牌标识和带有动态计数徽标的购物车切换按钮，方便随时查看"
+          },
+          {
+            "id": "promo-banner",
+            "purpose": "视觉焦点区域，展示限时促销倒计时（FOMO策略）和核心营销文案，吸引用户注意力"
+          },
+          {
+            "id": "category-filter",
+            "purpose": "标签式分类筛选栏，允许用户快速过滤商品列表，支持“全部”及特定类别切换"
+          },
+          {
+            "id": "product-grid",
+            "purpose": "核心商品展示区，使用卡片布局展示图片、价格、折扣标签、热销标记及直接加购按钮"
+          },
+          {
+            "id": "product-detail-modal",
+            "purpose": "模态弹窗，用于展示商品完整描述、库存具体状态，并提供数量增减选择器"
+          },
+          {
+            "id": "cart-drawer",
+            "purpose": "侧滑式购物车面板，支持查看订单摘要、调整商品数量、删除条目及实时计算总价"
+          },
+          {
+            "id": "toast-system",
+            "purpose": "全局消息通知模块，在用户执行加购、移除或库存不足时提供即时的非阻塞式反馈"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "sticky-header + single-column-grid + overlay-drawer",
+        "colors": [
+          "#FF5722",
+          "#333333",
+          "#FFFFFF",
+          "#F5F7FA",
+          "#FFC107"
+        ],
+        "components": [
+          {
+            "id": "sticky-header",
+            "html": "header",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "品牌Logo或名称"
+              },
+              {
+                "tag": "button",
+                "content_hint": "购物车图标 + 动态数量徽标(Badge)"
+              }
+            ]
+          },
+          {
+            "id": "promo-banner",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "限时促销营销文案"
+              },
+              {
+                "tag": "div",
+                "content_hint": "倒计时组件 (XX:XX:XX) - FOMO心理暗示"
+              }
+            ]
+          },
+          {
+            "id": "category-filter",
+            "html": "nav",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "全部商品 (激活状态)"
+              },
+              {
+                "tag": "button",
+                "content_hint": "分类标签 B"
+              },
+              {
+                "tag": "button",
+                "content_hint": "分类标签 C"
+              }
+            ]
+          },
+          {
+            "id": "product-grid",
+            "html": "main",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "商品卡片容器 (Grid布局)"
+              },
+              {
+                "tag": "article",
+                "content_hint": "单个商品卡片：包含图片、热销标记、价格对比(原价/现价)、加入购物车按钮"
+              }
+            ]
+          },
+          {
+            "id": "cart-drawer",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "header",
+                "content_hint": "标题 (购物车) + 关闭按钮"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "已选商品列表 (支持数量增减/删除)"
+              },
+              {
+                "tag": "footer",
+                "content_hint": "实时总价显示 + 去结算按钮"
+              }
+            ]
+          },
+          {
+            "id": "product-detail-modal",
+            "html": "dialog",
+            "children": [
+              {
+                "tag": "img",
+                "content_hint": "高清商品大图"
+              },
+              {
+                "tag": "div",
+                "content_hint": "详细描述 + 实时库存状态"
+              },
+              {
+                "tag": "div",
+                "content_hint": "数量选择器 + 确认添加按钮"
+              }
+            ]
+          },
+          {
+            "id": "toast-system",
+            "html": "div",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "消息气泡容器 (Fixed定位)"
+              },
+              {
+                "tag": "p",
+                "content_hint": "示例反馈：'已成功加入购物车'"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>E-Commerce Layout</title>\n    <style>\n        :root {\n            --primary: #FF5722;\n            --dark: #333333;\n            --white: #FFFFFF;\n            --bg: #F5F7FA;\n            --accent: #FFC107;\n            --shadow: 0 4px 12px rgba(0,0,0,0.1);\n            --radius: 8px;\n        }\n\n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n\n        body {\n            font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\n            background-color: var(--bg);\n            color: var(--dark);\n            padding-bottom: 80px;\n        }\n\n        /* Sticky Header */\n        #sticky-header {\n            position: sticky;\n            top: 0;\n            z-index: 100;\n            background-color: var(--white);\n            padding: 15px 20px;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            box-shadow: 0 2px 10px rgba(0,0,0,0.05);\n        }\n\n        .brand-logo {\n            font-size: 1.5rem;\n            font-weight: 800;\n            color: var(--primary);\n            text-transform: uppercase;\n            letter-spacing: 1px;\n        }\n\n        .cart-btn {\n            position: relative;\n            background: none;\n            border: none;\n            font-size: 1.5rem;\n            cursor: pointer;\n            padding: 5px;\n        }\n\n        .cart-badge {\n            position: absolute;\n            top: 0;\n            right: 0;\n            background-color: var(--primary);\n            color: var(--white);\n            font-size: 0.7rem;\n            font-weight: bold;\n            height: 18px;\n            width: 18px;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            transform: translate(25%, -25%);\n        }\n\n        /* Promo Banner */\n        #promo-banner {\n            background: linear-gradient(135deg, var(--primary), #FF8A65);\n            color: var(--white);\n            padding: 15px;\n            text-align: center;\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            justify-content: center;\n            gap: 8px;\n        }\n\n        #promo-banner h2 {\n            font-size: 1.1rem;\n            font-weight: 600;\n        }\n\n        .countdown {\n            background: rgba(255,255,255,0.2);\n            padding: 4px 12px;\n            border-radius: 20px;\n            font-family: monospace;\n            font-weight: bold;\n            font-size: 1.2rem;\n        }\n\n        /* Category Filter */\n        #category-filter {\n            padding: 20px;\n            display: flex;\n            gap: 12px;\n            overflow-x: auto;\n            white-space: nowrap;\n            scrollbar-width: none; /* Firefox */\n        }\n        #category-filter::-webkit-scrollbar {\n            display: none; /* Chrome/Safari */\n        }\n\n        .filter-btn {\n            padding: 8px 20px;\n            border-radius: 25px;\n            border: 1px solid #e0e0e0;\n            background: var(--white);\n            color: var(--dark);\n            font-size: 0.9rem;\n            cursor: pointer;\n            transition: all 0.3s;\n        }\n\n        .filter-btn.active {\n            background-color: var(--dark);\n            color: var(--white);\n            border-color: var(--dark);\n        }\n\n        /* Product Grid */\n        #product-grid {\n            padding: 0 20px;\n            display: grid;\n            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));\n            gap: 15px;\n        }\n\n        @media (min-width: 768px) {\n            #product-grid {\n                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));\n                gap: 24px;\n            }\n        }\n\n        .product-card {\n            background: var(--white);\n            border-radius: var(--radius);\n            overflow: hidden;\n            position: relative;\n            box-shadow: var(--shadow);\n            transition: transform 0.2s;\n            display: flex;\n            flex-direction: column;\n        }\n\n        .product-card:hover {\n            transform: translateY(-4px);\n        }\n\n        .hot-tag {\n            position: absolute;\n            top: 10px;\n            left: 10px;\n            background-color: var(--accent);\n            color: var(--dark);\n            font-size: 0.75rem;\n            font-weight: bold;\n            padding: 4px 8px;\n            border-radius: 4px;\n            z-index: 1;\n        }\n\n        .card-img-placeholder {\n            width: 100%;\n            padding-top: 100%; /* 1:1 Aspect Ratio */\n            background-color: #eee;\n            position: relative;\n        }\n        \n        .card-img-placeholder::after {\n            content: 'Product Image';\n            position: absolute;\n            top: 50%;\n            left: 50%;\n            transform: translate(-50%, -50%);\n            color: #999;\n        }\n\n        .card-info {\n            padding: 12px;\n            display: flex;\n            flex-direction: column;\n            flex-grow: 1;\n        }\n\n        .card-title {\n            font-size: 0.95rem;\n            margin-bottom: 8px;\n            color: var(--dark);\n            line-height: 1.4;\n        }\n\n        .price-row {\n            margin-top: auto;\n            display: flex;\n            align-items: baseline;\n            gap: 8px;\n            margin-bottom: 12px;\n        }\n\n        .current-price {\n            color: var(--primary);\n            font-size: 1.1rem;\n            font-weight: 700;\n        }\n\n        .original-price {\n            color: #999;\n            text-decoration: line-through;\n            font-size: 0.8rem;\n        }\n\n        .add-to-cart-btn {\n            width: 100%;\n            padding: 10px;\n            background-color: var(--dark);\n            color: var(--white);\n            border: none;\n            border-radius: 4px;\n            font-weight: 500;\n            cursor: pointer;\n            transition: background 0.2s;\n        }\n        \n        .add-to-cart-btn:hover {\n            background-color: #000;\n        }\n\n        /* Cart Drawer */\n        #cart-drawer {\n            position: fixed;\n            top: 0;\n            right: 0;\n            width: 320px;\n            max-width: 90%;\n            height: 100vh;\n            background: var(--white);\n            box-shadow: -5px 0 25px rgba(0,0,0,0.2);\n            z-index: 1000;\n            display: flex;\n            flex-direction: column;\n            /* To mimic closed state, normally transform: translateX(100%); */\n            transform: translateX(100%); \n            transition: transform 0.3s ease;\n        }\n\n        /* Just for demonstration, let's use a target hack or assume class 'open' */\n        #cart-drawer.open {\n            transform: translateX(0);\n        }\n\n        .drawer-header {\n            padding: 20px;\n            border-bottom: 1px solid #eee;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            font-weight: bold;\n            font-size: 1.2rem;\n        }\n\n        .close-btn {\n            background: none;\n            border: none;\n            font-size: 1.5rem;\n            cursor: pointer;\n            color: #999;\n        }\n\n        .cart-items {\n            flex: 1;\n            overflow-y: auto;\n            padding: 20px;\n            list-style: none;\n        }\n\n        .cart-item {\n            display: flex;\n            gap: 10px;\n            margin-bottom: 20px;\n        }\n\n        .cart-item-img {\n            width: 60px;\n            height: 60px;\n            background: #eee;\n            border-radius: 4px;\n        }\n\n        .cart-item-details {\n            flex: 1;\n        }\n\n        .cart-item-title {\n            font-size: 0.9rem;\n            margin-bottom: 5px;\n        }\n\n        .cart-qty-control {\n            display: flex;\n            align-items: center;\n            gap: 10px;\n            margin-top: 5px;\n        }\n\n        .qty-btn {\n            width: 24px;\n            height: 24px;\n            border: 1px solid #ddd;\n            background: #fff;\n            border-radius: 4px;\n            cursor: pointer;\n        }\n\n        .drawer-footer {\n            padding: 20px;\n            border-top: 1px solid #eee;\n            background: #fff;\n        }\n\n        .total-row {\n            display: flex;\n            justify-content: space-between;\n            font-weight: bold;\n            margin-bottom: 15px;\n            font-size: 1.1rem;\n        }\n\n        .checkout-btn {\n            width: 100%;\n            padding: 12px;\n            background-color: var(--primary);\n            color: var(--white);\n            border: none;\n            border-radius: var(--radius);\n            font-weight: bold;\n            font-size: 1rem;\n            cursor: pointer;\n        }\n\n        /* Detail Modal */\n        dialog {\n            width: 90%;\n            max-width: 500px;\n            margin: auto;\n            border: none;\n            border-radius: var(--radius);\n            box-shadow: 0 10px 40px rgba(0,0,0,0.2);\n            padding: 0;\n        }\n\n        dialog::backdrop {\n            background: rgba(0,0,0,0.5);\n        }\n\n        .modal-content {\n            padding: 20px;\n        }\n\n        .modal-img {\n            width: 100%;\n            height: 250px;\n            background: #eee;\n            object-fit: cover;\n            border-bottom: 1px solid #eee;\n        }\n\n        .modal-body {\n            padding: 20px;\n        }\n\n        .stock-status {\n            color: #4CAF50;\n            font-size: 0.85rem;\n            margin-bottom: 10px;\n            display: block;\n        }\n\n        /* Toast System */\n        #toast-system {\n            position: fixed;\n            bottom: 30px;\n            left: 50%;\n            transform: translateX(-50%);\n            z-index: 2000;\n            pointer-events: none;\n        }\n\n        .toast {\n            background-color: rgba(51, 51, 51, 0.95);\n            color: var(--white);\n            padding: 12px 24px;\n            border-radius: 30px;\n            font-size: 0.9rem;\n            box-shadow: 0 4px 12px rgba(0,0,0,0.15);\n            display: flex;\n            align-items: center;\n            gap: 8px;\n            animation: fadeUp 0.3s ease-out;\n        }\n\n        @keyframes fadeUp {\n            from { opacity: 0; transform: translateY(20px); }\n            to { opacity: 1; transform: translateY(0); }\n        }\n\n    </style>\n</head>\n<body>\n\n    <!-- Component: Sticky Header -->\n    <header id=\"sticky-header\">\n        <div class=\"brand-logo\">SHOPPY</div>\n        <button class=\"cart-btn\" aria-label=\"购物车\">\n            🛒\n            <span class=\"cart-badge\">3</span>\n        </button>\n    </header>\n\n    <!-- Component: Promo Banner -->\n    <section id=\"promo-banner\">\n        <h2>🔥 限时疯抢 - 全场低至5折</h2>\n        <div class=\"countdown\">02:45:12</div>\n    </section>\n\n    <!-- Component: Category Filter -->\n    <nav id=\"category-filter\">\n        <button class=\"filter-btn active\">全部商品</button>\n        <button class=\"filter-btn\">数码电子</button>\n        <button class=\"filter-btn\">潮流服饰</button>\n        <button class=\"filter-btn\">家居生活</button>\n        <button class=\"filter-btn\">美妆个护</button>\n    </nav>\n\n    <!-- Component: Product Grid -->\n    <main id=\"product-grid\">\n        <!-- Product Card 1 -->\n        <article class=\"product-card\">\n            <div class=\"hot-tag\">HOT</div>\n            <div class=\"card-img-placeholder\"></div>\n            <div class=\"card-info\">\n                <h3 class=\"card-title\">无线降噪蓝牙耳机 Pro版</h3>\n                <div class=\"price-row\">\n                    <span class=\"current-price\">¥299</span>\n                    <span class=\"original-price\">¥499</span>\n                </div>\n                <button class=\"add-to-cart-btn\">加入购物车</button>\n            </div>\n        </article>\n\n        <!-- Product Card 2 -->\n        <article class=\"product-card\">\n            <div class=\"card-img-placeholder\"></div>\n            <div class=\"card-info\">\n                <h3 class=\"card-title\">复古胶片相机 胶卷套装</h3>\n                <div class=\"price-row\">\n                    <span class=\"current-price\">¥899</span>\n                    <span class=\"original-price\">¥1299</span>\n                </div>\n                <button class=\"add-to-cart-btn\">加入购物车</button>\n            </div>\n        </article>\n\n        <!-- Product Card 3 -->\n        <article class=\"product-card\">\n            <div class=\"hot-tag\">SALE</div>\n            <div class=\"card-img-placeholder\"></div>\n            <div class=\"card-info\">\n                <h3 class=\"card-title\">极简人体工学办公椅</h3>\n                <div class=\"price-row\">\n                    <span class=\"current-price\">¥599</span>\n                    <span class=\"original-price\">¥899</span>\n                </div>\n                <button class=\"add-to-cart-btn\">加入购物车</button>\n            </div>\n        </article>\n\n        <!-- Product Card 4 -->\n        <article class=\"product-card\">\n            <div class=\"card-img-placeholder\"></div>\n            <div class=\"card-info\">\n                <h3 class=\"card-title\">智能运动手表 防水长续航</h3>\n                <div class=\"price-row\">\n                    <span class=\"current-price\">¥199</span>\n                    <span class=\"original-price\">¥299</span>\n                </div>\n                <button class=\"add-to-cart-btn\">加入购物车</button>\n            </div>\n        </article>\n    </main>\n\n    <!-- Component: Cart Drawer (Overlay) -->\n    <aside id=\"cart-drawer\">\n        <header class=\"drawer-header\">\n            <span>我的购物车 (3)</span>\n            <button class=\"close-btn\">&times;</button>\n        </header>\n        <ul class=\"cart-items\">\n            <li class=\"cart-item\">\n                <div class=\"cart-item-img\"></div>\n                <div class=\"cart-item-details\">\n                    <div class=\"cart-item-title\">无线降噪耳机</div>\n                    <div style=\"font-weight:bold; color:var(--primary);\">¥299</div>\n                    <div class=\"cart-qty-control\">\n                        <button class=\"qty-btn\">-</button>\n                        <span>1</span>\n                        <button class=\"qty-btn\">+</button>\n                    </div>\n                </div>\n            </li>\n            <li class=\"cart-item\">\n                <div class=\"cart-item-img\"></div>\n                <div class=\"cart-item-details\">\n                    <div class=\"cart-item-title\">Type-C 数据线</div>\n                    <div style=\"font-weight:bold; color:var(--primary);\">¥29</div>\n                    <div class=\"cart-qty-control\">\n                        <button class=\"qty-btn\">-</button>\n                        <span>2</span>\n                        <button class=\"qty-btn\">+</button>\n                    </div>\n                </div>\n            </li>\n        </ul>\n        <footer class=\"drawer-footer\">\n            <div class=\"total-row\">\n                <span>总计</span>\n                <span style=\"color: var(--primary);\">¥357.00</span>\n            </div>\n            <button class=\"checkout-btn\">去结算</button>\n        </footer>\n    </aside>\n\n    <!-- Component: Product Detail Modal -->\n    <dialog id=\"product-detail-modal\">\n        <div class=\"card-img-placeholder\" style=\"height: 250px;\"></div>\n        <div class=\"modal-body\">\n            <span class=\"stock-status\">● 仅剩 5 件库存</span>\n            <h2 style=\"margin-bottom:10px;\">无线降噪蓝牙耳机 Pro版</h2>\n            <p style=\"color:#666; margin-bottom:20px; line-height:1.5;\">\n                采用最新降噪芯片，35dB深度降噪，支持通透模式。40小时超长续航，舒适入耳式设计。\n            </p>\n            <div style=\"display:flex; gap:10px; margin-top:20px;\">\n                <select style=\"padding:10px; border:1px solid #ddd; border-radius:4px;\">\n                    <option>1</option>\n                    <option>2</option>\n                    <option>3</option>\n                </select>\n                <button class=\"add-to-cart-btn\" style=\"background:var(--primary);\">确认添加 - ¥299</button>\n            </div>\n        </div>\n    </dialog>\n\n    <!-- Component: Toast System -->\n    <div id=\"toast-system\">\n        <div class=\"toast\">\n            <span>✅</span>\n            <p>已成功加入购物车</p>\n        </div>\n    </div>\n\n</body>\n</html>"
+    }
+  ]
+}

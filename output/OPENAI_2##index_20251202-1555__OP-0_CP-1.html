@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LYF 新疆香瓜子葵花子</title>
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #E4393C;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+}
+.header .nav-btn {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.header .title {
+    font-weight: bold;
+    font-size: 1rem;
+}
+.product-main {
+    padding: 0.5rem;
+}
+.product-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+.product-info {
+    margin-top: 0.5rem;
+}
+.product-info h1 {
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+}
+.product-info .specs {
+    font-size: 0.9rem;
+    color: #666;
+}
+.price {
+    margin: 0.5rem 0;
+}
+.price .current {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #E4393C;
+}
+.price .original {
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 0.4rem;
+}
+.price .discount {
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #E4393C;
+    padding: 0 0.3rem;
+    border-radius: 4px;
+    margin-left: 0.4rem;
+}
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+.actions button {
+    flex: 1;
+    padding: 0.6rem 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.actions .add-cart {
+    background-color: #ff9900;
+    color: #fff;
+}
+.actions .buy-now {
+    background-color: #E4393C;
+    color: #fff;
+}
+.promotion {
+    background-color: #fff2f2;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+}
+.countdown {
+    font-size: 0.9rem;
+    color: #E4393C;
+    font-weight: bold;
+}
+.stock {
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+.coupon-center {
+    margin-top: 0.5rem;
+}
+.coupon {
+    display: inline-block;
+    padding: 0.4rem 0.6rem;
+    background-color: #E4393C;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.details {
+    margin-top: 0.8rem;
+}
+.details summary {
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.details img {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+.reviews {
+    margin-top: 1rem;
+}
+.review {
+    padding: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+.review .user {
+    font-weight: bold;
+}
+.review .rating {
+    color: #ffcc00;
+}
+.review .content {
+    margin-top: 0.3rem;
+}
+.review img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-top: 0.3rem;
+    border-radius: 4px;
+}
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+.cart-header {
+    background-color: #E4393C;
+    color: #fff;
+    padding: 0.8rem;
+    font-weight: bold;
+}
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+.cart-item-info {
+    flex: 1;
+}
+.cart-item-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+.cart-footer {
+    padding: 0.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+.cart-footer .total {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.cart-footer button {
+    width: 100%;
+    padding: 0.6rem;
+    background-color: #E4393C;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.show {
+    right: 0;
+}
+@media (min-width: 414px) {
+    body {
+        font-size: 16px;
+    }
+    .actions button {
+        font-size: 1.1rem;
+    }
+}
+</style>
+</head>
+<body>
+<header class="header">
+    <div class="nav-btn" onclick="history.back()">←</div>
+    <div class="title">商品详情</div>
+    <div class="nav-btn" onclick="toggleCart()">🛒</div>
+</header>
+<section class="product-main">
+    <div class="product-image">
+        <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="新疆香瓜子葵花子">
+    </div>
+    <div class="product-info">
+        <h1>LYF 新疆香瓜子葵花子</h1>
+        <div class="specs">规格：30g × 10 包</div>
+        <div class="price">
+            <span class="current">¥16.9</span>
+            <span class="original">¥29.9</span>
+            <span class="discount">限时优惠</span>
+        </div>
+        <div class="actions">
+            <button class="add-cart" onclick="addToCart()">加入购物车</button>
+            <button class="buy-now" onclick="buyNow()">立即购买</button>
+        </div>
+    </div>
+</section>
+<section class="promotion">
+    <div class="countdown">距离结束：<span id="countdown-timer">00:00:00</span></div>
+    <div class="stock">库存：<span id="stock-count">100</span> 件</div>
+    <div class="coupon-center">
+        <span class="coupon" onclick="getCoupon()">领取 ¥3 优惠券</span>
+    </div>
+</section>
+<section class="details">
+    <details>
+        <summary>商品详情</summary>
+        <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="详情图">
+        <p>精选新疆香瓜子，饱满香脆，健康零食之选。</p>
+    </details>
+</section>
+<section class="reviews">
+    <h2>用户评价</h2>
+    <div class="review">
+        <div class="user">用户A</div>
+        <div class="rating">★★★★★</div>
+        <div class="content">很好吃😋 包装精美</div>
+        <img src="https://via.placeholder.com/60" alt="用户晒图">
+    </div>
+    <div class="review">
+        <div class="user">用户B</div>
+        <div class="rating">★★★★☆</div>
+        <div class="content">香味浓郁，值得回购👍</div>
+        <img src="https://via.placeholder.com/60" alt="用户晒图">
+    </div>
+</section>
+<aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">购物车</div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer">
+        <div class="total">总价：¥<span id="cart-total">0</span></div>
+        <button onclick="checkout()">去结算</button>
+    </div>
+</aside>
+<script>
+let countdownTarget = new Date();
+countdownTarget.setHours(countdownTarget.getHours() + 2);
+function updateCountdown(){
+    let now = new Date();
+    let diff = countdownTarget - now;
+    if(diff <= 0){
+        document.getElementById("countdown-timer").textContent = "已结束";
+        return;
+    }
+    let h = Math.floor(diff / (1000*60*60));
+    let m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    let s = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById("countdown-timer").textContent = 
+        String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+setInterval(updateCountdown,1000);
+let stock = 100;
+function decrementStock(){
+    if(stock>0){
+        stock--;
+    }
+    document.getElementById("stock-count").textContent = stock;
+}
+function getCoupon(){
+    localStorage.setItem("coupon",3);
+    alert("已领取优惠券 ¥3，可用于结算减免");
+}
+let cart = JSON.parse(localStorage.getItem("cart")||"[]");
+function renderCart(){
+    let cartItemsEl = document.getElementById("cart-items");
+    cartItemsEl.innerHTML = "";
+    let total = 0;
+    cart.forEach((item,index)=>{
+        total += item.price * item.qty;
+        let div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `<img src="${item.image}" alt="">
+                         <div class="cart-item-info">
+                           ${item.name}<br>¥${item.price} × ${item.qty}
+                         </div>
+                         <div class="cart-item-actions">
+                           <button onclick="increaseQty(${index})">+</button>
+                           <button onclick="decreaseQty(${index})">-</button>
+                           <button onclick="removeItem(${index})">删除</button>
+                         </div>`;
+        cartItemsEl.appendChild(div);
+    });
+    let coupon = parseFloat(localStorage.getItem("coupon")||0);
+    total = total - coupon;
+    if(total<0) total=0;
+    document.getElementById("cart-total").textContent = total.toFixed(2);
+}
+function addToCart(){
+    let product = {name:"新疆香瓜子葵花子",price:16.9,image:"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp",qty:1};
+    let existing = cart.find(item=>item.name===product.name);
+    if(existing){
+        existing.qty++;
+    }else{
+        cart.push(product);
+    }
+    localStorage.setItem("cart",JSON.stringify(cart));
+    decrementStock();
+    renderCart();
+    toggleCart(true);
+}
+function toggleCart(forceShow=false){
+    let sidebar = document.getElementById("cart-sidebar");
+    if(forceShow){
+        sidebar.classList.add("show");
+    }else{
+        sidebar.classList.toggle("show");
+    }
+    renderCart();
+}
+function increaseQty(index){
+    cart[index].qty++;
+    localStorage.setItem("cart",JSON.stringify(cart));
+    renderCart();
+}
+function decreaseQty(index){
+    if(cart[index].qty>1){
+        cart[index].qty--;
+    }else{
+        removeItem(index);
+    }
+    localStorage.setItem("cart",JSON.stringify(cart));
+    renderCart();
+}
+function removeItem(index){
+    cart.splice(index,1);
+    localStorage.setItem("cart",JSON.stringify(cart));
+    renderCart();
+}
+function buyNow(){
+    alert("跳转到结算页面");
+}
+function checkout(){
+    alert("结算总价为 ¥"+document.getElementById("cart-total").textContent);
+}
+renderCart();
+</script>
+</body>
+</html>

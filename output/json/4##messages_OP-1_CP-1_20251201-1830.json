@@ -1,0 +1,313 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的单文件（Single HTML File）一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n主页图片链接： “https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n#Functional Requirements (功能需求)\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n页面支持商品分类展示与在线购买流程（渠道）。您还可以加入促销元素，如限时倒计时、库存提醒、热销标签和优惠卷（促销），进一步提升购物体验与趣味性。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "提炼客户需求中针对春节大促的核心卖点（春节红视觉、促销紧迫感、LYF 香瓜子葵花子组合装）",
+              "拆解商业目标为网页任务清单（提升点击率→突出主视觉、提升加购率→优化购买入口、提升转化率→库存提醒与倒计时）",
+              "分配需求至 PM、Architect、Engineer 并设定明确交付期限与质量标准"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "撰写完整 PRD 文档（详细描述产品信息、价格优惠、购买渠道、促销机制与交互要求）",
+              "定义购买路径（浏览产品→选择数量→加入购物车→结算）并在 PRD 中标注各步骤的必要元素与文案要求",
+              "在 PRD 中列出所有必须的 4P 营销要素与相应的版块结构及数据展示需求"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "规划页面整体结构（首屏：产品图与价格，次屏：规格介绍与卖点，页尾：购买流程与促销信息）",
+              "设计可复用组件（价格展示组件、库存提醒模块、倒计时模块、购物车按钮与数量选择器）并输出组件接口说明",
+              "制定页面行为逻辑（localStorage 保存购物车数据、库存动态更新、倒计时结束后促销自动结束）并形成开发指南"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "基于 Architect 提供的结构与接口说明，编写单文件 HTML/CSS/JavaScript，完成响应式春节零食销售页面",
+              "实现购物车功能（数量选择、加入购物车、管理购物车内容，数据持久化至 localStorage）",
+              "实现促销动态效果（库存提醒、限时倒计时、优惠标签显示）并确保在移动端和桌面端均有良好表现",
+              "进行功能与性能测试，修复异常，交付符合上线标准的网页文件"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF 春节香瓜子葵花子促销页，突出喜庆氛围与紧迫感，强化限时优惠与库存提醒以驱动快速购买。",
+        "goals": [
+          "提升点击率，通过春节红首屏视觉和促销标签吸引用户注意",
+          "提高加购率，简化数量选择和加入购物车操作流程",
+          "提升转化率，通过限时倒计时和库存提醒制造购买紧迫感",
+          "强化品牌记忆，通过统一春节主题色与 LYF 品牌元素提升认知度",
+          "辅助客单价提升，通过优惠券与组合装推荐引导加量购买"
+        ],
+        "target_users": [
+          "春节送礼用户 + 需求快速挑选喜庆包装、有优惠的年货零食",
+          "家庭囤货用户 + 需求在节前一次性购买高性价比零食组合装"
+        ],
+        "page_sections": [
+          {
+            "id": "hero",
+            "purpose": "展示产品主图与节庆主题，立即吸引注意力并传达促销信息",
+            "kpi": "CTR"
+          },
+          {
+            "id": "product-specs",
+            "purpose": "详细介绍产品规格、包装数量与卖点文案，帮助用户快速了解并建立购买信心",
+            "kpi": "转化率"
+          },
+          {
+            "id": "price-box",
+            "purpose": "展示现价、原价及优惠幅度，突出价格优势",
+            "kpi": "加购率"
+          },
+          {
+            "id": "promotion-tag",
+            "purpose": "显示促销标签如“限时特惠”“热销爆款”，营造购买紧迫感与流行感",
+            "kpi": "CTR"
+          },
+          {
+            "id": "countdown-timer",
+            "purpose": "实时显示促销剩余时间，刺激即时购买",
+            "kpi": "转化率"
+          },
+          {
+            "id": "stock-alert",
+            "purpose": "显示库存数量或稀缺提醒，提高用户立即下单的意愿",
+            "kpi": "转化率"
+          },
+          {
+            "id": "quantity-selector",
+            "purpose": "允许用户选择购买数量，提升交互便利性",
+            "kpi": "加购率"
+          },
+          {
+            "id": "add-to-cart",
+            "purpose": "一键加入购物车并持久化保存至 localStorage，确保购物路径简洁",
+            "kpi": "加购率"
+          },
+          {
+            "id": "cart-management",
+            "purpose": "查看与修改购物车内容，支持删除或调整数量，减少流失",
+            "kpi": "转化率"
+          },
+          {
+            "id": "category-nav",
+            "purpose": "提供商品分类入口，支持用户浏览更多年货零食，拓展购买范围",
+            "kpi": "CTR"
+          },
+          {
+            "id": "coupon-banner",
+            "purpose": "展示可领取的优惠券信息，增加下单吸引力",
+            "kpi": "转化率"
+          },
+          {
+            "id": "footer-purchase-flow",
+            "purpose": "明确购买流程和结算入口，让用户一步步完成支付",
+            "kpi": "转化率"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#E4393C",
+          "#FFD700",
+          "#F4F4F5",
+          "primary",
+          "secondary"
+        ],
+        "components": [
+          {
+            "id": "hero-section",
+            "html": "header",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "LYF 春节香瓜子葵花子促销标题"
+              },
+              {
+                "tag": "img",
+                "content_hint": "产品主图与春节喜庆背景"
+              }
+            ]
+          },
+          {
+            "id": "promotion-tag",
+            "html": "div",
+            "children": [
+              {
+                "tag": "span",
+                "content_hint": "促销标签，如限时特惠、热销爆款"
+              }
+            ]
+          },
+          {
+            "id": "product-specs",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "产品规格标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "规格详情（30g 小包装/10包组合装）与卖点文案"
+              }
+            ]
+          },
+          {
+            "id": "price-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "现价 ¥16.9"
+              },
+              {
+                "tag": "p",
+                "content_hint": "原价 ¥29.9 与优惠幅度"
+              }
+            ]
+          },
+          {
+            "id": "countdown-timer",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "倒计时显示促销剩余时间"
+              }
+            ]
+          },
+          {
+            "id": "stock-alert",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "库存提醒或数量稀缺提示"
+              }
+            ]
+          },
+          {
+            "id": "quantity-selector",
+            "html": "div",
+            "children": [
+              {
+                "tag": "label",
+                "content_hint": "数量选择标签"
+              },
+              {
+                "tag": "input",
+                "content_hint": "数量选择输入框"
+              }
+            ]
+          },
+          {
+            "id": "add-to-cart",
+            "html": "button",
+            "children": [
+              {
+                "tag": "span",
+                "content_hint": "加入购物车按钮文本"
+              }
+            ]
+          },
+          {
+            "id": "cart-management",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "购物车标题"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "购物车商品列表"
+              },
+              {
+                "tag": "button",
+                "content_hint": "结算按钮"
+              }
+            ]
+          },
+          {
+            "id": "category-nav",
+            "html": "nav",
+            "children": [
+              {
+                "tag": "ul",
+                "content_hint": "商品分类导航列表"
+              }
+            ]
+          },
+          {
+            "id": "coupon-banner",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "优惠券信息与领取提示"
+              }
+            ]
+          },
+          {
+            "id": "footer-purchase-flow",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "购买流程说明"
+              },
+              {
+                "tag": "button",
+                "content_hint": "直接购买结算入口"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF 春节香瓜子葵花子促销页</title>\n<style>\n    body {\n        margin: 0;\n        font-family: \"微软雅黑\", sans-serif;\n        background-color: #F4F4F5;\n        color: #333;\n    }\n    header {\n        background-color: #E4393C;\n        color: #fff;\n        text-align: center;\n        padding: 1rem;\n    }\n    header img {\n        max-width: 100%;\n        height: auto;\n        border-radius: 8px;\n        margin-top: 0.5rem;\n    }\n    .promotion-tag {\n        background-color: #FFD700;\n        color: #E4393C;\n        font-weight: bold;\n        padding: 0.5rem 1rem;\n        text-align: center;\n    }\n    section, div, aside, nav, footer {\n        padding: 1rem;\n        background-color: #fff;\n        margin-bottom: 0.5rem;\n    }\n    .price-box p {\n        margin: 0.25rem 0;\n    }\n    .price-current {\n        font-size: 1.5rem;\n        color: #E4393C;\n    }\n    .price-old {\n        text-decoration: line-through;\n        color: #999;\n        margin-left: 0.5rem;\n    }\n    .countdown-timer, .stock-alert {\n        font-weight: bold;\n        color: #E4393C;\n    }\n    .quantity-selector {\n        display: flex;\n        align-items: center;\n        gap: 0.5rem;\n    }\n    .quantity-selector input {\n        width: 50px;\n        padding: 0.25rem;\n        text-align: center;\n    }\n    .btn {\n        background-color: #E4393C;\n        color: #fff;\n        border: none;\n        padding: 0.5rem 1rem;\n        cursor: pointer;\n        border-radius: 4px;\n    }\n    .btn:hover {\n        opacity: 0.9;\n    }\n    aside {\n        background-color: #fff;\n    }\n    aside ul {\n        list-style: none;\n        padding: 0;\n    }\n    aside li {\n        border-bottom: 1px solid #eee;\n        padding: 0.5rem 0;\n        display: flex;\n        justify-content: space-between;\n    }\n    nav ul {\n        list-style: none;\n        display: flex;\n        gap: 1rem;\n        padding: 0;\n        justify-content: center;\n    }\n    nav a {\n        color: #E4393C;\n        text-decoration: none;\n    }\n    .coupon-banner {\n        background-color: #FFD700;\n        text-align: center;\n        color: #E4393C;\n        font-weight: bold;\n    }\n    footer {\n        background-color: #E4393C;\n        color: #fff;\n        text-align: center;\n        padding: 1rem;\n    }\n    @media (min-width: 768px) {\n        body {\n            max-width: 600px;\n            margin: 0 auto;\n        }\n    }\n</style>\n</head>\n<body>\n    <header id=\"hero-section\">\n        <h1>LYF 春节香瓜子葵花子年货大促</h1>\n        <img src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" alt=\"LYF 香瓜子葵花子组合装\">\n    </header>\n\n    <div id=\"promotion-tag\" class=\"promotion-tag\">\n        <span>限时特惠 · 热销爆款</span>\n    </div>\n\n    <section id=\"product-specs\">\n        <h2>产品规格</h2>\n        <p>30g 小包装 / 10包组合装，颗颗饱满香脆，独立小包装方便分享，春节必备零食。</p>\n    </section>\n\n    <section id=\"price-box\" class=\"price-box\">\n        <p class=\"price-current\">¥16.9 <span class=\"price-old\">¥29.9</span></p>\n        <p>立省 ¥13，机会难得</p>\n    </section>\n\n    <div id=\"countdown-timer\" class=\"countdown-timer\">\n        <p>促销剩余时间：<span id=\"timer\">00:00:00</span></p>\n    </div>\n\n    <div id=\"stock-alert\" class=\"stock-alert\">\n        <p>库存仅剩 <span id=\"stock\">50</span> 件，赶快下单！</p>\n    </div>\n\n    <div id=\"quantity-selector\" class=\"quantity-selector\">\n        <label for=\"quantity\">数量</label>\n        <input type=\"number\" id=\"quantity\" min=\"1\" value=\"1\">\n    </div>\n\n    <button id=\"add-to-cart\" class=\"btn\"><span>加入购物车</span></button>\n\n    <aside id=\"cart-management\">\n        <h3>购物车</h3>\n        <ul id=\"cart-items\"></ul>\n        <button id=\"checkout\" class=\"btn\">去结算</button>\n    </aside>\n\n    <nav id=\"category-nav\">\n        <ul>\n            <li><a href=\"#\">坚果类</a></li>\n            <li><a href=\"#\">糖果类</a></li>\n            <li><a href=\"#\">干果类</a></li>\n        </ul>\n    </nav>\n\n    <div id=\"coupon-banner\" class=\"coupon-banner\">\n        <p>领取满50减5元优惠券，春节加购更优惠！</p>\n    </div>\n\n    <footer id=\"footer-purchase-flow\">\n        <p>购买流程：选择商品数量 → 加入购物车 → 结算 → 支付 → 等待收货</p>\n        <button class=\"btn\">立即购买</button>\n    </footer>\n\n<script>\n    // 倒计时逻辑\n    let countdownSeconds = 3600; // 1小时限时\n    const timerEl = document.getElementById('timer');\n    function updateTimer() {\n        if(countdownSeconds <= 0) return;\n        const hrs = String(Math.floor(countdownSeconds / 3600)).padStart(2, '0');\n        const mins = String(Math.floor((countdownSeconds % 3600) / 60)).padStart(2, '0');\n        const secs = String(countdownSeconds % 60).padStart(2, '0');\n        timerEl.textContent = `${hrs}:${mins}:${secs}`;\n        countdownSeconds--;\n    }\n    setInterval(updateTimer, 1000);\n    updateTimer();\n\n    // 库存动态减少模拟\n    let stock = 50;\n    const stockEl = document.getElementById('stock');\n\n    // 购物车功能\n    let cart = JSON.parse(localStorage.getItem('cart')) || [];\n    const cartItemsEl = document.getElementById('cart-items');\n\n    function renderCart() {\n        cartItemsEl.innerHTML = '';\n        cart.forEach((item, index) => {\n            const li = document.createElement('li');\n            li.innerHTML = `${item.name} × ${item.quantity} \n                <span style=\"color:#E4393C;cursor:pointer;\" onclick=\"removeItem(${index})\">删除</span>`;\n            cartItemsEl.appendChild(li);\n        });\n        localStorage.setItem('cart', JSON.stringify(cart));\n    }\n\n    document.getElementById('add-to-cart').addEventListener('click', () => {\n        const quantity = parseInt(document.getElementById('quantity').value);\n        cart.push({ name: 'LYF 香瓜子葵花子', quantity: quantity });\n        stock = Math.max(0, stock - quantity);\n        stockEl.textContent = stock;\n        renderCart();\n    });\n\n    function removeItem(index) {\n        cart.splice(index, 1);\n        renderCart();\n    }\n\n    document.getElementById('checkout').addEventListener('click', () => {\n        alert('结算流程待开发示例 —— 您的购物车会保留在浏览器中。');\n    });\n\n    renderCart();\n</script>\n</body>\n</html>"
+    }
+  ]
+}

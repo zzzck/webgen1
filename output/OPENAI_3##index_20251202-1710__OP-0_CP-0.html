@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 新疆香瓜子葵花子</title>
+<style>
+    body {
+        font-family: "Microsoft YaHei", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fffaf0;
+        color: #333;
+    }
+    .status-bar {
+        background-color: #E4393C;
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 14px;
+        text-align: right;
+    }
+    .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #E4393C;
+        padding: 10px;
+        color: #fff;
+    }
+    .nav-left, .nav-right {
+        display: flex;
+        align-items: center;
+    }
+    .nav-bar button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    .container {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+    .product-section {
+        display: flex;
+        flex-wrap: wrap;
+        background: #fff;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .product-image {
+        flex: 1 1 50%;
+        text-align: center;
+        background-color: #fff5f5;
+    }
+    .product-image img {
+        max-width: 100%;
+        height: auto;
+    }
+    .product-info {
+        flex: 1 1 50%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .product-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .product-spec {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+    .product-price {
+        margin: 15px 0;
+    }
+    .current-price {
+        font-size: 24px;
+        color: #E4393C;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    .original-price {
+        text-decoration: line-through;
+        color: #999;
+        font-size: 14px;
+    }
+    .discount-tag {
+        background-color: #ffcc00;
+        color: #E4393C;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-left: 5px;
+    }
+    .promotion-info {
+        margin: 10px 0;
+        color: #E4393C;
+        font-size: 16px;
+    }
+    .timer {
+        font-weight: bold;
+    }
+    .stock-status {
+        font-size: 14px;
+        color: #666;
+        margin-top: 5px;
+    }
+    .coupon-section {
+        background-color: #fff5ee;
+        padding: 10px;
+        margin: 15px 0;
+        border-radius: 4px;
+    }
+    .coupon {
+        display: inline-block;
+        background-color: #E4393C;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+    .quantity-control button {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+    }
+    .quantity-control input {
+        width: 50px;
+        text-align: center;
+        border: 1px solid #ccc;
+        margin: 0 5px;
+    }
+    .action-buttons {
+        margin-top: 15px;
+    }
+    .action-buttons button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+    .buy-now {
+        background-color: #E4393C;
+        color: #fff;
+    }
+    .add-cart {
+        background-color: #ffcc00;
+        color: #E4393C;
+    }
+    .cart-sidebar {
+        position: fixed;
+        right: -300px;
+        top: 0;
+        height: 100%;
+        width: 300px;
+        background-color: #fff;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+        transition: right 0.3s;
+        overflow-y: auto;
+        z-index: 99;
+    }
+    .cart-header {
+        padding: 10px;
+        background-color: #E4393C;
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    .cart-item img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    .cart-item-details {
+        flex: 1;
+    }
+    .cart-footer {
+        padding: 10px;
+        background-color: #fff5f5;
+    }
+    .cart-total {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .checkout-btn {
+        padding: 10px;
+        width: 100%;
+        border: none;
+        background-color: #E4393C;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .review-section, .details-section {
+        background-color: #fff;
+        border-radius: 6px;
+        padding: 15px;
+        margin-top: 15px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .review-section h3, .details-section h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #E4393C;
+    }
+    .review {
+        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+    }
+    .review:last-child {
+        border-bottom: none;
+    }
+    .review span {
+        display: block;
+        margin-top: 5px;
+        color: #666;
+        font-size: 14px;
+    }
+    .details-content {
+        display: none;
+        margin-top: 10px;
+    }
+    .toggle-details {
+        background-color: #ffcc00;
+        color: #E4393C;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    @media screen and (max-width: 768px) {
+        .product-section {
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="status-bar">春节特惠进行中</div>
+<div class="nav-bar">
+    <div class="nav-left">
+        <button onclick="history.back()">← 返回</button>
+        <span>LYF旗舰店</span>
+    </div>
+    <div class="nav-right">
+        <button onclick="toggleCart()">🛒</button>
+    </div>
+</div>
+<div class="container">
+    <section class="product-section">
+        <div class="product-image">
+            <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="新疆香瓜子葵花子">
+        </div>
+        <div class="product-info">
+            <div class="product-title">LYF 新疆香瓜子葵花子</div>
+            <div class="product-spec">规格：30g × 10 包</div>
+            <div class="product-price">
+                <span class="current-price">¥16.9</span>
+                <span class="original-price">¥29.9</span>
+                <span class="discount-tag">限时优惠</span>
+            </div>
+            <div class="promotion-info">⏳ 剩余 <span class="timer" id="countdown">00:00:00</span></div>
+            <div class="stock-status">库存：<span id="stock">100</span> 件</div>
+            <div class="coupon-section">
+                <span class="coupon" onclick="getCoupon(3)">￥3 优惠券</span>
+                <span class="coupon" onclick="getCoupon(5)">￥5 优惠券</span>
+            </div>
+            <div class="quantity-control">
+                <button onclick="changeQty(-1)">-</button>
+                <input type="text" id="quantity" value="1">
+                <button onclick="changeQty(1)">+</button>
+            </div>
+            <div class="action-buttons">
+                <button class="add-cart" onclick="addToCart()">加入购物车</button>
+                <button class="buy-now" onclick="buyNow()">立即购买</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="review-section">
+        <h3>商品评价 ⭐⭐⭐⭐⭐</h3>
+        <div class="review">
+            <strong>用户A：</strong>味道很香，吃起来很脆，春节送亲戚很合适😊
+            <span>配图：<img src="https://via.placeholder.com/50" alt=""></span>
+        </div>
+        <div class="review">
+            <strong>用户B：</strong>分量足，包装喜庆🎉
+        </div>
+    </section>
+
+    <section class="details-section">
+        <h3>商品详情</h3>
+        <button class="toggle-details" onclick="toggleDetails()">展开详情</button>
+        <div class="details-content" id="details-content">
+            <p>精选新疆葵花子，颗粒饱满，口感香脆，丰富的营养价值，节庆佳品。</p>
+            <p>采用先进工艺烘焙，保留原香，适合全家分享。</p>
+        </div>
+    </section>
+</div>
+
+<div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+        <span>购物车</span>
+        <button onclick="toggleCart()">✖</button>
+    </div>
+    <div id="cart-items">
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">合计：¥<span id="cart-total">0.00</span></div>
+        <button class="checkout-btn" onclick="checkout()">结算</button>
+    </div>
+</div>
+
+<script>
+let stock = 100;
+let countdownTime = 3600; // 1小时
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let couponValue = 0;
+
+function changeQty(delta) {
+    let qty = parseInt(document.getElementById('quantity').value);
+    qty += delta;
+    if (qty < 1) qty = 1;
+    document.getElementById('quantity').value = qty;
+}
+
+function updateCountdown() {
+    if (countdownTime > 0) {
+        countdownTime--;
+        let h = String(Math.floor(countdownTime / 3600)).padStart(2, '0');
+        let m = String(Math.floor((countdownTime % 3600) / 60)).padStart(2, '0');
+        let s = String(countdownTime % 60).padStart(2, '0');
+        document.getElementById('countdown').textContent = `${h}:${m}:${s}`;
+    }
+}
+setInterval(updateCountdown, 1000);
+
+function getCoupon(value) {
+    couponValue = value;
+    alert(`领取成功，结算时可减免 ¥${value}`);
+}
+
+function addToCart() {
+    let qty = parseInt(document.getElementById('quantity').value);
+    if (stock < qty) {
+        alert('库存不足');
+        return;
+    }
+    stock -= qty;
+    document.getElementById('stock').textContent = stock;
+    let item = {
+        name: 'LYF 新疆香瓜子葵花子',
+        price: 16.9,
+        qty: qty,
+        img: 'https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp'
+    };
+    let existing = cart.find(c => c.name === item.name);
+    if (existing) {
+        existing.qty += qty;
+    } else {
+        cart.push(item);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
+}
+
+function updateCartUI() {
+    let cartItemsDiv = document.getElementById('cart-items');
+    cartItemsDiv.innerHTML = '';
+    let total = 0;
+    cart.forEach((item, index) => {
+        let itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+            <img src="${item.img}" alt="">
+            <div class="cart-item-details">
+                <div>${item.name}</div>
+                <div>¥${item.price} × ${item.qty}</div>
+            </div>
+            <button onclick="removeItem(${index})">🗑</button>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+        total += item.price * item.qty;
+    });
+    total -= couponValue;
+    if (total < 0) total = 0;
+    document.getElementById('cart-total').textContent = total.toFixed(2);
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
+}
+
+function toggleCart() {
+    let sidebar = document.getElementById('cart-sidebar');
+    if (sidebar.style.right === '0px') {
+        sidebar.style.right = '-300px';
+    } else {
+        sidebar.style.right = '0px';
+        updateCartUI();
+    }
+}
+
+function buyNow() {
+    addToCart();
+    toggleCart();
+}
+
+function checkout() {
+    alert(`结算成功，实际支付：¥${document.getElementById('cart-total').textContent}`);
+    cart = [];
+    localStorage.removeItem('cart');
+    updateCartUI();
+}
+
+function toggleDetails() {
+    let details = document.getElementById('details-content');
+    if (details.style.display === 'block') {
+        details.style.display = 'none';
+    } else {
+        details.style.display = 'block';
+    }
+}
+
+// 创新功能：节日红包随机抽奖
+function holidayLuckyDraw() {
+    let prizes = ['¥2 红包', '¥5 红包', '¥10 红包', '谢谢参与'];
+    let prize = prizes[Math.floor(Math.random() * prizes.length)];
+    alert(`恭喜获得：${prize}`);
+}
+setTimeout(holidayLuckyDraw, 5000); // 页面加载5秒后弹出抽奖
+</script>
+</body>
+</html>

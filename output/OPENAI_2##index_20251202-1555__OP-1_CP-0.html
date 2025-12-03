@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春节香瓜子葵花子促销页</title>
+    <style>
+        :root {
+            --primary-color: #D32F2F;
+            --accent-color: #FFC107;
+            --background-light: #F4F4F5;
+            --background-white: #FFFFFF;
+            --text-color: #333333;
+        }
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        section, div, aside {
+            background-color: var(--background-white);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        h1, h2, h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        p {
+            margin: 0.5rem 0;
+        }
+        .hero {
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--background-white);
+        }
+        .hero h1 {
+            font-size: 2rem;
+        }
+        .price-box {
+            text-align: center;
+        }
+        .price-box h2 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+        .promo-banner {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            text-align: center;
+        }
+        .buy-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .buy-actions button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .buy-actions .add-to-cart {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+        }
+        .buy-actions .buy-now {
+            background-color: var(--primary-color);
+            color: var(--background-white);
+        }
+        .coupon-center {
+            border: 2px dashed var(--accent-color);
+            text-align: center;
+        }
+        .stock-alert {
+            background-color: #fff3e0;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        .reviews, .product-details, .recommendations, .share-rewards {
+            background-color: var(--background-white);
+        }
+        .cart-sidebar {
+            background-color: var(--background-white);
+            position: sticky;
+            top: 1rem;
+        }
+        @media (max-width: 600px) {
+            .buy-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <section id="hero" class="hero">
+            <h1>春节香瓜子葵花子促销盛宴</h1>
+            <p>精选优质香瓜子与葵花子，传递家乡的味道与温暖，让团圆更美味。</p>
+        </section>
+
+        <section id="price-box" class="price-box">
+            <h2>现价 ¥29.9 <del>¥39.9</del></h2>
+            <p>限时7折，叠加优惠券低至 ¥24.9</p>
+        </section>
+
+        <div id="promo-banner" class="promo-banner">
+            <p>距离活动结束：02天 14时 32分</p>
+            <p>#春节必备 #团圆零食</p>
+        </div>
+
+        <section id="buy-actions" class="buy-actions">
+            <div class="quantity-selector">数量：<input type="number" min="1" value="1"></div>
+            <button class="add-to-cart">加入购物车</button>
+            <button class="buy-now">立即购买</button>
+        </section>
+
+        <section id="coupon-center" class="coupon-center">
+            <h3>优惠券中心</h3>
+            <p>领取满50减10元优惠券，结算自动抵扣</p>
+        </section>
+
+        <div id="stock-alert" class="stock-alert">
+            <p>仅剩 128 件库存</p>
+            <p>库存紧张，请尽快下单</p>
+        </div>
+
+        <section id="reviews" class="reviews">
+            <h3>用户评分</h3>
+            <p>4.8分好评率，精选用户评论配图展示</p>
+        </section>
+
+        <section id="product-details" class="product-details">
+            <h3>产品规格</h3>
+            <p>原味香瓜子500g，葵花子500g，颗颗饱满酥香，适合全家共享</p>
+        </section>
+
+        <section id="recommendations" class="recommendations">
+            <h3>猜你喜欢</h3>
+            <p>碧根果、杏仁等坚果零食推荐</p>
+        </section>
+
+        <section id="share-rewards" class="share-rewards">
+            <h3>分享返红包</h3>
+            <p>分享活动链接给好友，成功下单返5元红包</p>
+        </section>
+
+        <aside id="cart-sidebar" class="cart-sidebar">
+            <h3>购物车</h3>
+            <p>您的购物车商品列表，可编辑数量与删除</p>
+        </aside>
+    </main>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYF新疆香瓜子春节特惠</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: #F4F4F5;
+            color: #333;
+        }
+        header {
+            background-color: #E4393C;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        header p {
+            margin: .5rem 0 0;
+            font-size: .9rem;
+        }
+        .main-image {
+            width: 100%;
+            display: block;
+        }
+        section, aside {
+            padding: 1rem;
+            background-color: #fff;
+            margin-bottom: .5rem;
+        }
+        h2, h3 {
+            margin-top: 0;
+            color: #E4393C;
+        }
+        .price-box .original-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-left: .5rem;
+        }
+        .price-box .discount {
+            background-color: #FFD700;
+            color: #E4393C;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            margin-left: .5rem;
+        }
+        .buy-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-control button {
+            width: 2rem;
+            height: 2rem;
+            background-color: #E4393C;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2rem;
+        }
+        .quantity-control span {
+            width: 2rem;
+            text-align: center;
+        }
+        .action-buttons button {
+            background-color: #FFD700;
+            color: #E4393C;
+            border: none;
+            padding: .5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: .5rem;
+        }
+        .promo-banner .countdown,
+        .promo-banner p {
+            margin: 0.4rem 0;
+        }
+        .coupon-list {
+            display: flex;
+            gap: .5rem;
+        }
+        .coupon {
+            background-color: #E4393C;
+            color: #fff;
+            padding: 0.5rem;
+            border-radius: 4px;
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+        .sales-ticker {
+            background-color: #FFD700;
+            color: #E4393C;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .sales-ticker p {
+            animation: ticker 10s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .details-content {
+            display: none;
+            margin-top: 0.5rem;
+        }
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        .review {
+            padding: .5rem;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background-color: #fafafa;
+        }
+        .recommendations-list {
+            display: flex;
+            gap: .5rem;
+        }
+        .recommend-card {
+            flex: 1;
+            padding: .5rem;
+            background-color: #fafafa;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .recommend-card img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+        .innovative-feature {
+            text-align: center;
+        }
+        .cart-sidebar {
+            position: fixed;
+            right: -100%;
+            top: 0;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            transition: right 0.3s;
+            padding: 1rem;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .cart-sidebar.active {
+            right: 0;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: .5rem 0;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #E4393C;
+            color: #fff;
+        }
+        @media (max-width: 600px) {
+            .buy-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .recommendations-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="hero-section">
+        <h1>LYF 新疆香瓜子春节特惠</h1>
+        <p>来自新疆的醇香瓜子，春节团圆好伴侣</p>
+        <img class="main-image" src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="新疆香瓜子葵花子">
+    </header>
+
+    <section id="price-box" class="price-box">
+        <h2>¥16.9 <span class="original-price">¥29.9</span> <span class="discount">限时 5.6 折</span></h2>
+        <p>春节特惠，领券更优惠，数量有限速抢！</p>
+    </section>
+
+    <section id="buy-actions" class="buy-actions">
+        <div class="quantity-control">
+            <button id="decrease">-</button>
+            <span id="quantity">1</span>
+            <button id="increase">+</button>
+        </div>
+        <div class="action-buttons">
+            <button id="add-to-cart">加入购物车</button>
+            <button id="buy-now">立即购买</button>
+        </div>
+    </section>
+
+    <aside id="promo-banner" class="promo-banner">
+        <div class="countdown">活动倒计时：<span id="countdown"></span></div>
+        <p id="stock">库存剩余：<span id="stock-num">50</span> 件 <strong style="color:#E4393C;">热销中</strong></p>
+    </aside>
+
+    <section id="coupon-center">
+        <h3>领券中心</h3>
+        <div class="coupon-list">
+            <div class="coupon" data-value="2">满10减2</div>
+            <div class="coupon" data-value="5">满20减5</div>
+        </div>
+    </section>
+
+    <aside id="sales-ticker" class="sales-ticker">
+        <p>今日已售 3200+ 件，新疆香瓜子香爆全场！</p>
+    </aside>
+
+    <section id="product-details">
+        <h3>商品详情</h3>
+        <p><button id="toggle-details">展开详情</button></p>
+        <div class="details-content" id="details-content">
+            规格：30g × 10 包<br>
+            产地：新疆<br>
+            特点：颗粒饱满、香脆可口，精选优质葵花子<br>
+            储存方法：密封、阴凉干燥处<br>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <h3>商品评价</h3>
+        <div class="reviews-list">
+            <div class="review">⭐⭐⭐⭐⭐ 味道很赞，春节必备！ 😋 <img src="https://via.placeholder.com/50" alt="晒图"></div>
+            <div class="review">⭐⭐⭐⭐ 脆香可口，包装喜庆 🎉</div>
+        </div>
+    </section>
+
+    <section id="recommendations">
+        <h3>相似推荐</h3>
+        <div class="recommendations-list">
+            <div class="recommend-card">
+                <img src="https://via.placeholder.com/100" alt="推荐1">
+                <p>瓜子礼盒</p>
+            </div>
+            <div class="recommend-card">
+                <img src="https://via.placeholder.com/100" alt="推荐2">
+                <p>什锦坚果</p>
+            </div>
+            <div class="recommend-card">
+                <img src="https://via.placeholder.com/100" alt="推荐3">
+                <p>红枣礼袋</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="innovative-feature" class="innovative-feature">
+        <h3>福袋抽奖</h3>
+        <div>
+            <button id="lottery-btn">抽福袋</button>
+            <p id="lottery-result"></p>
+        </div>
+    </section>
+
+    <aside id="cart-sidebar" class="cart-sidebar">
+        <h3>购物车</h3>
+        <div id="cart-items"></div>
+        <p>总价：¥<span id="cart-total">0.00</span></p>
+        <button id="checkout-btn">结算</button>
+    </aside>
+
+    <footer id="footer-bar">
+        <p>©2024 LYF零食商城 | 客服电话：400-123-4567</p>
+    </footer>
+
+    <script>
+        let quantity = 1;
+        let stock = 50;
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        let couponValue = 0;
+
+        const quantityElem = document.getElementById('quantity');
+        document.getElementById('increase').onclick = () => {
+            if(quantity < stock){
+                quantity++;
+                quantityElem.textContent = quantity;
+            }
+        };
+        document.getElementById('decrease').onclick = () => {
+            if(quantity > 1){
+                quantity--;
+                quantityElem.textContent = quantity;
+            }
+        };
+
+        function updateCartSidebar(){
+            const cartItemsElem = document.getElementById('cart-items');
+            cartItemsElem.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `${item.name} ×${item.qty} <span>¥${(item.price * item.qty).toFixed(2)}</span>
+                <button data-index="${index}" class="delete-btn">删除</button>`;
+                cartItemsElem.appendChild(div);
+                total += item.price * item.qty;
+            });
+            total -= couponValue;
+            if(total < 0) total = 0;
+            document.getElementById('cart-total').textContent = total.toFixed(2);
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        document.getElementById('add-to-cart').onclick = () => {
+            cart.push({name: '新疆香瓜子葵花子', qty: quantity, price: 16.9});
+            stock -= quantity;
+            document.getElementById('stock-num').textContent = stock;
+            updateCartSidebar();
+            document.getElementById('cart-sidebar').classList.add('active');
+        };
+
+        document.getElementById('buy-now').onclick = () => {
+            alert('前往结算页面');
+        };
+
+        document.getElementById('cart-items').onclick = (e) => {
+            if(e.target.classList.contains('delete-btn')){
+                const idx = e.target.getAttribute('data-index');
+                cart.splice(idx,1);
+                updateCartSidebar();
+            }
+        };
+
+        document.getElementById('checkout-btn').onclick = () => {
+            alert('结算成功，感谢购买！');
+            cart = [];
+            updateCartSidebar();
+            document.getElementById('cart-sidebar').classList.remove('active');
+        };
+
+        document.querySelectorAll('.coupon').forEach(c => {
+            c.onclick = () => {
+                couponValue = parseFloat(c.dataset.value);
+                alert(`优惠券已领取，可减免¥${couponValue}`);
+                updateCartSidebar();
+            };
+        });
+
+        const countdownElem = document.getElementById('countdown');
+        let countdownTime = 3600;
+        function updateCountdown(){
+            let hrs = Math.floor(countdownTime/3600);
+            let mins = Math.floor((countdownTime%3600)/60);
+            let secs = countdownTime%60;
+            countdownElem.textContent = `${hrs}小时${mins}分${secs}秒`;
+            if(countdownTime > 0) countdownTime--;
+        }
+        setInterval(updateCountdown,1000);
+        updateCountdown();
+
+        document.getElementById('toggle-details').onclick = () => {
+            const details = document.getElementById('details-content');
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        };
+
+        document.getElementById('lottery-btn').onclick = () => {
+            const prizes = ['¥2 优惠券', '¥5 优惠券', '免运费券', '再接再厉'];
+            const result = prizes[Math.floor(Math.random() * prizes.length)];
+            document.getElementById('lottery-result').textContent = `恭喜获得：${result}`;
+        };
+
+        updateCartSidebar();
+    </script>
+</body>
+</html>

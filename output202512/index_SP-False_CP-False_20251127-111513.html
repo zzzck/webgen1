@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新疆葵花籽 · 春节团圆</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #fff8f0;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #d32f2f, #ff7043);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        header h1 {
+            font-size: 2.2em;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            margin: 20px auto;
+            max-width: 1000px;
+            border-radius: 8px;
+        }
+        .product img {
+            max-width: 300px;
+            border-radius: 8px;
+            margin: 10px;
+        }
+        .product-info {
+            flex: 1;
+            min-width: 280px;
+            margin: 10px;
+        }
+        .product-info h2 {
+            font-size: 1.8em;
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+        .product-info p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 1.5em;
+            color: #ff5722;
+            font-weight: bold;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #ff5722;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #e64a19;
+        }
+        .theme-section {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #fff1e6;
+        }
+        .theme-section h3 {
+            font-size: 1.6em;
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+        .theme-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .icon-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            width: 150px;
+        }
+        .icon-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        .icon-card p {
+            font-size: 1em;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #d32f2f;
+            color: white;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>春节团圆 · 嗑瓜子</h1>
+    <p>新疆葵花籽 500g 小包装，为团圆时刻增添年味</p>
+</header>
+
+<section class="product">
+    <img src="https://via.placeholder.com/300x300.png?text=%E6%96%B0%E7%96%86%E8%91%B5%E8%8A%B1%E7%B1%BD" alt="新疆葵花籽">
+    <div class="product-info">
+        <h2>新疆葵花籽 500g</h2>
+        <p>精选阳光充足的新疆优质葵花籽，粒大饱满，香脆可口。独立小包装，方便分享，春节与家人朋友围坐畅聊，嗑瓜子品年味，幸福满溢。</p>
+        <div class="price">￥19.9</div>
+        <a href="#" class="cta-button">立即购买</a>
+    </div>
+</section>
+
+<section class="theme-section">
+    <h3>团圆年味四元素</h3>
+    <div class="theme-icons">
+        <div class="icon-card">
+            <img src="https://via.placeholder.com/60x60.png?text=%E6%98%A5%E8%8A%82" alt="春节">
+            <p>春节喜庆</p>
+        </div>
+        <div class="icon-card">
+            <img src="https://via.placeholder.com/60x60.png?text=%E5%9B%A2%E5%9C%86" alt="团圆">
+            <p>家人团聚</p>
+        </div>
+        <div class="icon-card">
+            <img src="https://via.placeholder.com/60x60.png?text=%E7%93%BA%E7%93%9C%E5%AD%90" alt="嗑瓜子">
+            <p>嗑瓜子闲聊</p>
+        </div>
+        <div class="icon-card">
+            <img src="https://via.placeholder.com/60x60.png?text=%E5%B9%B4%E5%91%B3" alt="年味">
+            <p>浓浓年味</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2024 新疆葵花籽宣传页 | 团圆、美味、分享
+</footer>
+
+<script>
+    document.querySelector('.cta-button').addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('感谢您的关注！购买功能即将上线~');
+    });
+</script>
+
+</body>
+</html>

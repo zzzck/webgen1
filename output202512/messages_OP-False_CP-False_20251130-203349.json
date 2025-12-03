@@ -1,0 +1,69 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n\n# Functional Requirements (功能需求)\n1.  实现合理的布局结构：尽量包含搜索栏目、导航栏、产品介绍、交互、详情信息等\n    可插入如下图片作为产品展示图，在价格、购买信息的左侧，可手动翻动：\n    图1“https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n    图2“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n    图3“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n    卖点文案：突出“颗粒饱满”、“独立包装不脏手”、“买多少送多少”、“五香味”\n额外功能：\n1.营销倒计时系统 (Complex Logic)：在价格旁显示“春节限时抢购倒计时”。\n2. 优惠券与价格计算 界面中间需展示两张优惠券：\nA券：满 10 减 2 元\nB券：满 20 减 5 元\n是否可实现点击优惠券，自动减少相应价格\n\n3.添加购买规格：包含10包、20包、30包，价格可以买的越多越优惠。\n4. 评论区功能设计：展示评论内容、具有筛选功能、具有评论功能（这个功能可以自由发挥）。\n5. 模态框购物车 (UI Interaction)\n点击底部的“立即购买”按钮，不跳转，而是从底部弹出一个半透明遮罩层 + 确认面板。\n面板内显示：已选商品信息、最终计算后的价格。\n包含“确认支付”按钮，点击后 alert 输出最终订单信息对象。\n6.随机优化添加几个功能\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "Engineer",
+          "PM"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理需求：春节零食电商销售网页（单文件 HTML，含 CSS/JS）",
+              "明确交付物：完整 HTML 文件，包含 4P 营销要素（产品、价格、渠道、促销）",
+              "任务拆解：包含产品图轮播、规格介绍、价格显示与对比、促销标签、购买入口及购物流程",
+              "包含营销倒计时系统",
+              "优惠券点击减价功能",
+              "多规格购买价格逻辑（10包/20包/30包）",
+              "评论区（展示、筛选、评论功能）",
+              "模态购物车交互（包含最终价格计算、确认支付弹窗）",
+              "随机优化添加几个附加功能（增强用户体验）",
+              "分配任务至 Engineer 完成前端实现"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "创建单一 HTML 文件，嵌入 CSS 和 JavaScript，符合移动端春节红色主题设计规范",
+              "实现顶部搜索栏及导航栏",
+              "实现产品图片轮播（提供的 3 张产品图）",
+              "撰写并展示产品规格与卖点文案",
+              "实现价格模块（现价、原价、优惠信息）",
+              "添加春节限时抢购倒计时功能",
+              "实现优惠券模块（满减逻辑，可点击自动计算价格）",
+              "实现购买规格选择（10包、20包、30包）并根据规格调整价格",
+              "设计并实现评论区（展示评论、筛选评论、提交评论）",
+              "实现底部“立即购买”按钮触发的模态购物车交互（展示已选商品信息、计算最终价格、确认支付）",
+              "实现确认支付按钮触发 alert 输出订单信息对象",
+              "添加若干附加优化功能（如返回顶部按钮、浮动客服入口等）"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "无任务（当前需求已明确，直接进入开发阶段，无需额外项目管理工作）"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF 春节零食大促 - 香瓜子葵花子</title>\n<style>\nbody { margin:0; font-family: Arial, sans-serif; background-color:#fff; color:#333; }\nheader { background-color:#E4393C; color:#fff; padding:10px; text-align:center; }\nheader h1 { margin:0; font-size:20px; }\n.search-bar { display:flex; margin-top:5px; }\n.search-bar input { flex:1; padding:5px; border:none; border-radius:4px; }\n.search-bar button { padding:5px 10px; border:none; background:#fff; color:#E4393C; font-weight:bold; border-radius:4px; margin-left:5px; }\n\nnav { background-color:#f8f8f8; display:flex; justify-content:space-around; padding:10px 0; border-bottom:1px solid #eee; }\nnav a { color:#333; text-decoration:none; font-size:14px; }\n\nmain { padding:10px; }\n.product-gallery { display:flex; align-items:center; position:relative; }\n.product-gallery img { width:100%; max-height:250px; object-fit:cover; border:1px solid #ddd; }\n.gallery-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.5); color:white; border:none; padding:5px; cursor:pointer; }\n.gallery-btn.left { left:5px; }\n.gallery-btn.right { right:5px; }\n\n.product-info { margin-top:15px; }\n.product-info h2 { margin:0; font-size:18px; color:#E4393C; }\n.sell-points { margin-top:10px; }\n.sell-points span { display:inline-block; background:#ffe; border:1px solid #E4393C; color:#E4393C; padding:3px 5px; border-radius:4px; margin:2px; font-size:12px; }\n\n.price-section { margin-top:15px; background:#fff8f0; padding:10px; border-radius:5px; border:1px solid #E4393C;}\n.price-now { font-size:20px; color:#E4393C; font-weight:bold; }\n.price-old { text-decoration:line-through; color:#999; margin-left:10px; }\n.countdown { margin-top:5px; font-size:14px; color:#E4393C;}\n\n.coupons { margin-top:10px; display:flex; gap:10px; }\n.coupon { flex:1; background:#E4393C; color:#fff; padding:10px; border-radius:5px; text-align:center; cursor:pointer; }\n.coupon:active { background:#c52722; }\n\n.specs { margin-top:10px; }\n.specs label { display:block; margin-bottom:5px; font-weight:bold; }\n.specs select { width:100%; padding:5px; border:1px solid #ccc; border-radius:4px; }\n\n.buy-section { margin-top:20px; position:fixed; bottom:0; left:0; right:0; background-color:#E4393C; padding:10px; text-align:center; }\n.buy-section button { background:#fff; color:#E4393C; border:none; padding:10px 20px; font-size:16px; font-weight:bold; border-radius:5px; cursor:pointer; }\n\n.modal { display:none; position:fixed; bottom:0; left:0; right:0; top:0; background:rgba(0,0,0,0.5); }\n.modal-content { position:absolute; bottom:0; left:0; right:0; background:#fff; padding:20px; border-radius:10px 10px 0 0; }\n.modal-content h3 { margin-top:0; }\n.modal-content button { margin-top:10px; background:#E4393C; color:#fff; border:none; padding:10px; width:100%; font-size:16px; border-radius:5px; }\n\n.comments { margin-top:30px; }\n.comments h3 { margin-bottom:10px; }\n.comment-filter { margin-bottom:10px; }\n.comment-filter select { padding:5px; }\n.comment-list { border-top:1px solid #ddd; }\n.comment { border-bottom:1px solid #eee; padding:5px 0; }\n.comment .author { font-weight:bold; }\n.comment-form { margin-top:10px; display:flex; gap:5px; }\n.comment-form input { flex:1; padding:5px; }\n.comment-form button { padding:5px 10px; background:#E4393C; color:#fff; border:none; border-radius:4px; cursor:pointer; }\n\n</style>\n</head>\n<body>\n<header>\n  <h1>LYF 春节零食大促</h1>\n  <div class=\"search-bar\">\n    <input type=\"text\" placeholder=\"搜索商品...\">\n    <button>搜索</button>\n  </div>\n</header>\n\n<nav>\n  <a href=\"#\">首页</a>\n  <a href=\"#\">年货专区</a>\n  <a href=\"#\">优惠券</a>\n  <a href=\"#\">个人中心</a>\n</nav>\n\n<main>\n  <div class=\"product-gallery\">\n    <button class=\"gallery-btn left\">&#9664;</button>\n    <img id=\"gallery-img\" src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" alt=\"产品图\">\n    <button class=\"gallery-btn right\">&#9654;</button>\n  </div>\n  <div class=\"product-info\">\n    <h2>LYF 香瓜子葵花子 30g×10包</h2>\n    <div class=\"sell-points\">\n      <span>颗粒饱满</span>\n      <span>独立包装不脏手</span>\n      <span>买多少送多少</span>\n      <span>五香味</span>\n    </div>\n  </div>\n  <div class=\"price-section\">\n    <span class=\"price-now\" id=\"price-now\">¥16.9</span>\n    <span class=\"price-old\">¥29.9</span>\n    <div class=\"countdown\">春节限时抢购倒计时：<span id=\"countdown\"></span></div>\n    <div class=\"coupons\">\n      <div class=\"coupon\" data-discount=\"2\" data-threshold=\"10\">满10减2元</div>\n      <div class=\"coupon\" data-discount=\"5\" data-threshold=\"20\">满20减5元</div>\n    </div>\n  </div>\n  <div class=\"specs\">\n    <label for=\"spec-select\">购买规格：</label>\n    <select id=\"spec-select\">\n      <option value=\"10\" data-price=\"16.9\">10包 ¥16.9</option>\n      <option value=\"20\" data-price=\"30\">20包 ¥30</option>\n      <option value=\"30\" data-price=\"42\">30包 ¥42</option>\n    </select>\n  </div>\n  <div class=\"comments\">\n    <h3>商品评价</h3>\n    <div class=\"comment-filter\">\n      <select id=\"filter-select\">\n        <option value=\"all\">全部</option>\n        <option value=\"positive\">好评</option>\n        <option value=\"neutral\">中评</option>\n        <option value=\"negative\">差评</option>\n      </select>\n    </div>\n    <div class=\"comment-list\" id=\"comment-list\">\n      <div class=\"comment\" data-type=\"positive\"><span class=\"author\">用户A:</span> 很好吃，包装精致！</div>\n      <div class=\"comment\" data-type=\"neutral\"><span class=\"author\">用户B:</span> 还可以，偏咸。</div>\n      <div class=\"comment\" data-type=\"negative\"><span class=\"author\">用户C:</span> 颗粒有点小。</div>\n    </div>\n    <div class=\"comment-form\">\n      <input id=\"comment-input\" type=\"text\" placeholder=\"发表你的评论...\">\n      <button id=\"comment-submit\">提交</button>\n    </div>\n  </div>\n</main>\n\n<div class=\"buy-section\">\n  <button id=\"buy-btn\">立即购买</button>\n</div>\n\n<div class=\"modal\" id=\"modal\">\n  <div class=\"modal-content\">\n    <h3>确认订单信息</h3>\n    <div id=\"order-info\"></div>\n    <button id=\"confirm-pay\">确认支付</button>\n  </div>\n</div>\n\n<script>\nlet galleryImages = [\n  \"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\",\n  \"https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b\",\n  \"https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg\"\n];\nlet currentIndex = 0;\ndocument.querySelector('.gallery-btn.left').onclick = () => {\n  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;\n  document.getElementById('gallery-img').src = galleryImages[currentIndex];\n};\ndocument.querySelector('.gallery-btn.right').onclick = () => {\n  currentIndex = (currentIndex + 1) % galleryImages.length;\n  document.getElementById('gallery-img').src = galleryImages[currentIndex];\n};\n\n// Countdown\nfunction updateCountdown() {\n  let endDate = new Date();\n  endDate.setHours(endDate.getHours() + 48);\n  function tick() {\n    let now = new Date();\n    let diff = endDate - now;\n    if(diff <= 0) {\n      document.getElementById('countdown').innerText = \"活动已结束\";\n      clearInterval(timer);\n      return;\n    }\n    let hours = Math.floor(diff/(1000*60*60));\n    let minutes = Math.floor((diff%(1000*60*60))/(1000*60));\n    let seconds = Math.floor((diff%(1000*60))/1000);\n    document.getElementById('countdown').innerText = `${hours}小时${minutes}分${seconds}秒`;\n  }\n  tick();\n  let timer = setInterval(tick,1000);\n}\nupdateCountdown();\n\n// Coupons\nlet basePrice = 16.9;\nlet discount = 0;\ndocument.querySelectorAll('.coupon').forEach(c => {\n  c.addEventListener('click', () => {\n    let threshold = parseFloat(c.dataset.threshold);\n    let dis = parseFloat(c.dataset.discount);\n    let specPrice = parseFloat(document.getElementById('spec-select').selectedOptions[0].dataset.price);\n    if(specPrice >= threshold) {\n      discount = dis;\n      let finalPrice = (specPrice - discount).toFixed(2);\n      document.getElementById('price-now').innerText = '¥' + finalPrice;\n    } else {\n      alert(`金额未达到满${threshold}元条件`);\n    }\n  });\n});\n\n// Specs change\ndocument.getElementById('spec-select').addEventListener('change', function(){\n  let price = parseFloat(this.selectedOptions[0].dataset.price);\n  discount = 0;\n  document.getElementById('price-now').innerText = '¥' + price;\n});\n\n// Comments filter\ndocument.getElementById('filter-select').addEventListener('change', function(){\n  let val = this.value;\n  document.querySelectorAll('#comment-list .comment').forEach(c=>{\n    if(val === 'all' || c.dataset.type === val){\n      c.style.display = 'block';\n    } else {\n      c.style.display = 'none';\n    }\n  });\n});\n\n// Add comment\ndocument.getElementById('comment-submit').addEventListener('click', function(){\n  let text = document.getElementById('comment-input').value.trim();\n  if(text){\n    let div = document.createElement('div');\n    div.className = 'comment';\n    div.dataset.type = 'positive';\n    div.innerHTML = `<span class=\"author\">用户X:</span> ${text}`;\n    document.getElementById('comment-list').appendChild(div);\n    document.getElementById('comment-input').value = '';\n  }\n});\n\n// Modal buy\ndocument.getElementById('buy-btn').onclick = function(){\n  let specText = document.getElementById('spec-select').selectedOptions[0].text;\n  let finalPrice = document.getElementById('price-now').innerText;\n  document.getElementById('order-info').innerHTML = `已选规格：${specText}<br>最终价格：${finalPrice} `;\n  document.getElementById('modal').style.display = 'block';\n};\ndocument.getElementById('modal').onclick = function(e){\n  if(e.target === this){\n    this.style.display = 'none';\n  }\n};\ndocument.getElementById('confirm-pay').onclick = function(){\n  let specValue = document.getElementById('spec-select').value;\n  let finalPrice = document.getElementById('price-now').innerText;\n  let order = { product: '香瓜子葵花子', spec: specValue+'包', price: finalPrice };\n  alert(JSON.stringify(order));\n};\n</script>\n</body>\n</html>"
+    }
+  ]
+}

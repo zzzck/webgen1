@@ -1,0 +1,287 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n为网站创建一个响应式且视觉效果吸引人的电商销售页面小部件，界面风格模仿京东。商品为新疆香瓜子（产品），需展示包装规格、品质卖点和口味信息。\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n页面支持商品分类展示与在线购买流程（渠道）。您还可以加入促销元素，如限时倒计时、库存提醒、热销标签和优惠卷（促销），进一步提升购物体验与趣味性。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求",
+              "规划交付物与协作流程"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "撰写 PRD 文档",
+              "明确新疆香瓜子商品属性（规格/卖点/口味）",
+              "定义购物车、促销（倒计时/优惠券）及在线购买流程的功能逻辑",
+              "确认仿京东的 UI 视觉规范"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "设计页面信息架构与 DOM 结构",
+              "规划 CSS 组件化方案",
+              "设计 LocalStorage 数据存储结构（购物车/状态）与 JavaScript 交互逻辑"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "基于设计开发 HTML 结构",
+              "实现响应式 CSS 布局与京东风格视觉效果",
+              "编写 JavaScript 实现购物车管理、促销倒计时及数据持久化功能"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "仿京东风格的响应式新疆香瓜子电商销售单页应用，集成商品展示、促销活动及购物车管理功能",
+        "goals": [
+          "打造具有京东视觉风格的高品质商品展示页，突出新疆香瓜子的产地优势与卖点",
+          "实现流畅的购物车交互逻辑（添加、删除、数量调整、持久化存储）",
+          "利用倒计时、库存预警和优惠券等促销元素提升用户购买紧迫感与转化率",
+          "确保页面在不同设备上的响应式适配，提供统一的优质体验",
+          "利用 LocalStorage 实现数据本地保存，保证用户刷新页面后购物车状态不丢失"
+        ],
+        "target_users": [
+          "零食爱好者：关注瓜子产地、口味及颗粒饱满度，希望快速了解产品细节的用户",
+          "价格敏感型消费者：容易被限时特惠、优惠券及多买多送活动吸引的用户",
+          "囤货型买家：习惯一次性购买多包或不同规格产品，需要便捷购物车管理工具的用户"
+        ],
+        "page_sections": [
+          {
+            "id": "sticky-header",
+            "purpose": "顶部导航栏，包含品牌Logo、搜索框模拟及购物车状态入口"
+          },
+          {
+            "id": "promo-banner",
+            "purpose": "营销活动展示区，集成限时促销倒计时、热销标签及活动Banner"
+          },
+          {
+            "id": "product-gallery",
+            "purpose": "商品主图展示区域，支持图片切换以查看包装和瓜子实物细节"
+          },
+          {
+            "id": "info-panel",
+            "purpose": "核心信息展示，包含商品标题、价格显示、优惠标签及库存紧张提示"
+          },
+          {
+            "id": "coupon-zone",
+            "purpose": "优惠券领取模块，点击可领取并模拟抵扣效果"
+          },
+          {
+            "id": "sku-selector",
+            "purpose": "属性选择区域，允许用户切换不同口味（如原味、五香）及包装规格"
+          },
+          {
+            "id": "action-bar",
+            "purpose": "购买操作区域，包含数量增减器、加入购物车按钮和立即购买按钮"
+          },
+          {
+            "id": "cart-drawer",
+            "purpose": "购物车管理面板，展示已选商品列表、支持删除与数量调整、计算总价"
+          },
+          {
+            "id": "detail-content",
+            "purpose": "商品详情长图文区，深入介绍新疆产地、品质卖点及营养成分"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "responsive-product-page (sticky-header + split-view + overlay-drawer)",
+        "colors": [
+          "#E1251B",
+          "#FFFFFF",
+          "#F2F2F2",
+          "#333333",
+          "#FF9600"
+        ],
+        "components": [
+          {
+            "id": "jd-header",
+            "html": "header",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "品牌Logo与返回按钮"
+              },
+              {
+                "tag": "input",
+                "content_hint": "模拟搜索框：新疆香瓜子"
+              },
+              {
+                "tag": "div",
+                "content_hint": "购物车图标入口与徽标（Badge）"
+              }
+            ]
+          },
+          {
+            "id": "main-content",
+            "html": "main",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "首屏布局容器（桌面端双栏，移动端单栏）"
+              }
+            ]
+          },
+          {
+            "id": "product-gallery",
+            "html": "section",
+            "children": [
+              {
+                "tag": "img",
+                "content_hint": "商品主图（新疆香瓜子高清包装图）"
+              },
+              {
+                "tag": "div",
+                "content_hint": "缩略图列表（细节图、产地实拍图）"
+              }
+            ]
+          },
+          {
+            "id": "product-info-panel",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "促销活动栏：限时倒计时、热销TOP1标签"
+              },
+              {
+                "tag": "h1",
+                "content_hint": "商品标题：新疆原产大颗粒香瓜子 500g/袋"
+              },
+              {
+                "tag": "p",
+                "content_hint": "副标题/卖点：颗粒饱满、人工手选、多味可选"
+              }
+            ]
+          },
+          {
+            "id": "price-coupon-box",
+            "html": "div",
+            "children": [
+              {
+                "tag": "span",
+                "content_hint": "京东红大号价格显示 (¥)"
+              },
+              {
+                "tag": "span",
+                "content_hint": "原价划线与折扣标签"
+              },
+              {
+                "tag": "div",
+                "content_hint": "优惠券领取区（满减券、新客券）"
+              },
+              {
+                "tag": "p",
+                "content_hint": "库存紧张提示文案"
+              }
+            ]
+          },
+          {
+            "id": "sku-selector",
+            "html": "div",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "口味选择：原味、五香、焦糖"
+              },
+              {
+                "tag": "div",
+                "content_hint": "规格按钮组：500g袋装、1kg量贩装"
+              }
+            ]
+          },
+          {
+            "id": "action-bar",
+            "html": "div",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "数量增减步进器 (- 1 +)"
+              },
+              {
+                "tag": "button",
+                "content_hint": "加入购物车（次要按钮）"
+              },
+              {
+                "tag": "button",
+                "content_hint": "立即购买（主要高亮按钮）"
+              }
+            ]
+          },
+          {
+            "id": "product-detail-tabs",
+            "html": "section",
+            "children": [
+              {
+                "tag": "nav",
+                "content_hint": "选项卡：商品介绍 | 规格参数 | 售后保障"
+              },
+              {
+                "tag": "div",
+                "content_hint": "长图文详情：产地风貌、营养成分表、质检报告"
+              }
+            ]
+          },
+          {
+            "id": "cart-drawer",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "header",
+                "content_hint": "购物车标题与关闭按钮"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "已选商品列表（缩略图、标题、数量控制、删除）"
+              },
+              {
+                "tag": "footer",
+                "content_hint": "合计金额与去结算按钮"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "这是一个单文件解决方案，整合了 HTML、CSS 和 JavaScript。它完全模拟了京东（JD）的移动端/桌面端响应式风格，包含了商品详情、SKU切换、促销倒计时、优惠券领取以及基于 LocalStorage 的完整购物车功能。\n\n### 核心功能亮点：\n1.  **仿京东 UI**：使用经典的京东红（#E1251B）配色，布局紧凑，字体层级清晰。\n2.  **响应式设计**：在桌面端为双栏布局，移动端自动切换为单栏流式布局+底部固定操作栏。\n3.  **SKU 交互**：切换口味/规格时，价格和库存状态会自动更新。\n4.  **促销元素**：包含倒计时、限时抢购进度条、优惠券领取交互。\n5.  **购物车逻辑**：数据持久化保存至浏览器 LocalStorage，支持加减数量、删除商品、自动计算总价。\n\n您可以将以下代码保存为 `.html` 文件并在浏览器中直接打开。\n\n```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>新疆原产大颗粒香瓜子 - 京东自营</title>\n    <style>\n        /* --- 全局变量与重置 --- */\n        :root {\n            --jd-red: #e1251b;\n            --jd-dark-red: #c81623;\n            --text-primary: #333;\n            --text-secondary: #999;\n            --bg-color: #f2f2f2;\n            --border-color: #eee;\n            --orange: #ff9600;\n        }\n        \n        * { box-sizing: border-box; margin: 0; padding: 0; outline: none; -webkit-tap-highlight-color: transparent; }\n        body { font-family: -apple-system, BlinkMacSystemFont, \"PingFang SC\", \"Helvetica Neue\", Arial, sans-serif; background-color: var(--bg-color); color: var(--text-primary); padding-top: 50px; padding-bottom: 60px; }\n        ul { list-style: none; }\n        a { text-decoration: none; color: inherit; }\n        button { border: none; cursor: pointer; font-family: inherit; }\n\n        /* --- 顶部导航 (Sticky Header) --- */\n        .jd-header { position: fixed; top: 0; left: 0; width: 100%; height: 50px; background: #fff; z-index: 100; display: flex; align-items: center; padding: 0 15px; box-shadow: 0 1px 5px rgba(0,0,0,0.05); }\n        .logo { color: var(--jd-red); font-weight: 900; font-size: 20px; margin-right: 15px; }\n        .search-bar { flex: 1; background: #f7f7f7; border-radius: 20px; height: 30px; display: flex; align-items: center; padding: 0 15px; color: #999; font-size: 12px; }\n        .header-cart-btn { margin-left: 15px; position: relative; font-size: 24px; cursor: pointer; }\n        .cart-badge { position: absolute; top: -5px; right: -8px; background: var(--jd-red); color: #fff; font-size: 10px; border-radius: 10px; padding: 1px 5px; border: 1px solid #fff; }\n\n        /* --- 主容器 --- */\n        .container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; padding: 20px 10px; }\n        \n        /* --- 左侧：图片展示 --- */\n        .product-gallery { flex: 1; min-width: 300px; background: #fff; padding: 20px; border-radius: 8px; }\n        .main-img-box { width: 100%; padding-bottom: 100%; position: relative; overflow: hidden; border-radius: 4px; border: 1px solid #f0f0f0; }\n        .main-img-box img { position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }\n        .main-img-box:hover img { transform: scale(1.05); }\n        .thumb-list { display: flex; gap: 10px; margin-top: 15px; overflow-x: auto; }\n        .thumb-item { width: 60px; height: 60px; border: 2px solid transparent; cursor: pointer; border-radius: 4px; }\n        .thumb-item.active { border-color: var(--jd-red); }\n        .thumb-item img { width: 100%; height: 100%; object-fit: cover; }\n\n        /* --- 右侧：商品信息 --- */\n        .product-info { flex: 1.2; min-width: 300px; background: #fff; padding: 20px; border-radius: 8px; }\n        \n        /* 标题区 */\n        .title-section h1 { font-size: 20px; line-height: 1.4; font-weight: 700; margin-bottom: 8px; }\n        .title-section .subtitle { color: var(--jd-red); font-size: 14px; margin-bottom: 15px; }\n        .tags { display: flex; gap: 5px; margin-bottom: 10px; }\n        .tag { font-size: 10px; padding: 2px 6px; border-radius: 2px; }\n        .tag-hot { background: var(--jd-red); color: #fff; }\n        .tag-promo { border: 1px solid var(--jd-red); color: var(--jd-red); }\n\n        /* 价格与倒计时区 */\n        .price-promo-box { background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNlMTI1MWIiLz48L3N2Zz4='); background-size: cover; color: #fff; padding: 10px 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }\n        .price-container { display: flex; align-items: baseline; }\n        .currency { font-size: 16px; font-weight: bold; }\n        .big-price { font-size: 30px; font-weight: bold; margin-right: 10px; }\n        .old-price { text-decoration: line-through; font-size: 12px; opacity: 0.8; }\n        .countdown-box { text-align: right; }\n        .countdown-text { font-size: 12px; margin-bottom: 2px; }\n        .timer span { background: #fff; color: var(--jd-red); padding: 1px 3px; border-radius: 2px; font-weight: bold; font-size: 12px; }\n\n        /* 优惠券 */\n        .coupon-section { margin-bottom: 20px; padding: 10px; background: #fff4f4; border-radius: 4px; display: flex; align-items: center; gap: 10px; }\n        .coupon-label { color: var(--text-secondary); font-size: 12px; }\n        .coupon-ticket { position: relative; background: var(--jd-red); color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 2px; cursor: pointer; }\n        .coupon-ticket::before, .coupon-ticket::after { content: ''; position: absolute; top: 50%; width: 6px; height: 6px; background: #fff4f4; border-radius: 50%; transform: translateY(-50%); }\n        .coupon-ticket::before { left: -3px; }\n        .coupon-ticket::after { right: -3px; }\n\n        /* SKU 选择 */\n        .sku-group { margin-bottom: 15px; }\n        .sku-title { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }\n        .sku-options { display: flex; flex-wrap: wrap; gap: 10px; }\n        .sku-btn { padding: 6px 15px; border: 1px solid #ddd; background: #fff; color: #333; border-radius: 4px; font-size: 13px; transition: all 0.2s; }\n        .sku-btn:hover { border-color: var(--jd-red); color: var(--jd-red); }\n        .sku-btn.selected { border-color: var(--jd-red); color: var(--jd-red); background: #fff4f4; border-width: 1px; position: relative; }\n        .sku-btn.selected::after { content: '✓'; position: absolute; bottom: 0; right: 0; font-size: 10px; background: var(--jd-red); color: #fff; padding: 0 2px; border-top-left-radius: 4px; }\n\n        /* 数量与操作 */\n        .action-area { display: flex; align-items: center; gap: 20px; margin-top: 25px; }\n        .qty-box { display: flex; border: 1px solid #ddd; border-radius: 4px; }\n        .qty-btn { width: 30px; height: 30px; background: #f7f7f7; font-size: 16px; color: #333; display: flex; align-items: center; justify-content: center; }\n        .qty-input { width: 40px; text-align: center; border: none; border-left: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 14px; }\n        \n        .stock-tip { font-size: 12px; color: var(--orange); margin-left: 10px; }\n\n        .desktop-btns { display: flex; gap: 10px; flex: 1; }\n        .btn { flex: 1; height: 40px; border-radius: 20px; font-weight: bold; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }\n        .btn:active { opacity: 0.8; }\n        .btn-cart { background: linear-gradient(to right, #ffba0d, #ff9302); color: #fff; }\n        .btn-buy { background: linear-gradient(to right, #f02b2b, #e1251b); color: #fff; }\n\n        /* --- 详情 Tab --- */\n        .detail-tabs { max-width: 1200px; margin: 20px auto; background: #fff; border-radius: 8px; min-height: 400px; }\n        .tab-header { display: flex; border-bottom: 1px solid #eee; }\n        .tab-item { padding: 15px 25px; cursor: pointer; font-size: 14px; border-bottom: 2px solid transparent; }\n        .tab-item.active { color: var(--jd-red); border-bottom-color: var(--jd-red); font-weight: bold; }\n        .tab-content { padding: 20px; font-size: 14px; line-height: 1.6; color: #666; }\n        .tab-content img { max-width: 100%; display: block; margin: 10px 0; }\n\n        /* --- 购物车抽屉 (Drawer) --- */\n        .cart-drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; opacity: 0; transition: opacity 0.3s; }\n        .cart-drawer-overlay.open { display: block; opacity: 1; }\n        \n        .cart-drawer { position: fixed; top: 0; right: -400px; width: 350px; max-width: 90%; height: 100%; background: #fff; z-index: 1000; transition: right 0.3s ease; display: flex; flex-direction: column; box-shadow: -2px 0 10px rgba(0,0,0,0.1); }\n        .cart-drawer.open { right: 0; }\n        \n        .cart-header { padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #f7f7f7; }\n        .cart-header h3 { font-size: 16px; }\n        .close-cart { cursor: pointer; font-size: 20px; color: #999; }\n        \n        .cart-list { flex: 1; overflow-y: auto; padding: 15px; }\n        .cart-item { display: flex; gap: 10px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }\n        .cart-item-img { width: 60px; height: 60px; border-radius: 4px; background: #f0f0f0; object-fit: cover; }\n        .cart-item-info { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }\n        .cart-item-title { font-size: 12px; line-height: 1.3; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}\n        .cart-item-sku { font-size: 12px; color: #999; }\n        .cart-item-bottom { display: flex; justify-content: space-between; align-items: center; }\n        .cart-item-price { color: var(--jd-red); font-weight: bold; font-size: 14px; }\n        .cart-qty-ctrl { display: flex; border: 1px solid #eee; border-radius: 2px; }\n        .cart-qty-ctrl button { width: 20px; height: 20px; background: #fff; font-size: 12px; }\n        .cart-qty-ctrl span { width: 25px; text-align: center; font-size: 12px; line-height: 20px; }\n        .delete-item { font-size: 12px; color: #999; cursor: pointer; text-decoration: underline; margin-left: 5px; }\n        \n        .cart-footer { padding: 15px; border-top: 1px solid #eee; background: #fff; }\n        .cart-total { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; }\n        .cart-total-price { color: var(--jd-red); font-size: 18px; }\n        .checkout-btn { width: 100%; background: var(--jd-red); color: #fff; height: 40px; border-radius: 20px; font-size: 16px; }\n\n        /* --- 移动端底部操作栏 --- */\n        .mobile-action-bar { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background: #fff; border-top: 1px solid #eee; z-index: 90; padding: 0 10px; align-items: center; }\n        .mobile-icon { width: 50px; text-align: center; font-size: 10px; color: #666; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; }\n        .mobile-icon i { font-size: 18px; margin-bottom: 2px; }\n        .mobile-btns { flex: 1; display: flex; gap: 5px; margin-left: 10px; }\n        .mobile-btn { flex: 1; height: 36px; border-radius: 18px; font-size: 14px; color: #fff; display: flex; align-items: center; justify-content: center; }\n\n        /* --- 提示 Toast --- */\n        .toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.7); color: #fff; padding: 10px 20px; border-radius: 5px; font-size: 14px; z-index: 2000; display: none; animation: fadeIn 0.3s; }\n\n        /* --- 响应式调整 --- */\n        @media (max-width: 768px) {\n            body { padding-top: 44px; }\n            .jd-header { height: 44px; }\n            .container { flex-direction: column; padding: 0; gap: 0; }\n            .product-gallery, .product-info { border-radius: 0; }\n            .product-gallery { padding: 0; }\n            .thumb-list { display: none; } /* 移动端简化 */\n            .main-img-box { border: none; border-bottom: 1px solid #eee; }\n            .desktop-btns { display: none; } /* 隐藏桌面按钮 */\n            .mobile-action-bar { display: flex; }\n            .cart-drawer { width: 80%; }\n            .detail-tabs { margin: 10px 0; border-radius: 0; }\n        }\n\n        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }\n    </style>\n</head>\n<body>\n\n    <!-- 顶部导航 -->\n    <header class=\"jd-header\">\n        <div class=\"logo\">JD</div>\n        <div class=\"search-bar\">🔍 新疆香瓜子</div>\n        <div class=\"header-cart-btn\" onclick=\"cart.toggle()\">\n            🛒\n            <span class=\"cart-badge\" id=\"cartBadge\">0</span>\n        </div>\n    </header>\n\n    <!-- 主内容区 -->\n    <main class=\"container\">\n        \n        <!-- 左侧图片 -->\n        <section class=\"product-gallery\">\n            <div class=\"main-img-box\">\n                <!-- 使用占位图，实际开发替换为产品图 -->\n                <img id=\"mainImage\" src=\"https://via.placeholder.com/800x800/FF9600/FFFFFF?text=Xinjiang+Melon+Seeds\" alt=\"新疆香瓜子\">\n            </div>\n            <div class=\"thumb-list\" id=\"thumbList\">\n                <div class=\"thumb-item active\" onclick=\"product.switchImage(this, 'https://via.placeholder.com/800x800/FF9600/FFFFFF?text=Xinjiang+Melon+Seeds')\">\n                    <img src=\"https://via.placeholder.com/100x100/FF9600/FFFFFF?text=Main\" alt=\"主图\">\n                </div>\n                <div class=\"thumb-item\" onclick=\"product.switchImage(this, 'https://via.placeholder.com/800x800/E1251B/FFFFFF?text=Details')\">\n                    <img src=\"https://via.placeholder.com/100x100/E1251B/FFFFFF?text=Detail\" alt=\"细节\">\n                </div>\n                <div class=\"thumb-item\" onclick=\"product.switchImage(this, 'https://via.placeholder.com/800x800/333333/FFFFFF?text=Package')\">\n                    <img src=\"https://via.placeholder.com/100x100/333333/FFFFFF?text=Pack\" alt=\"包装\">\n                </div>\n            </div>\n        </section>\n\n        <!-- 右侧信息 -->\n        <section class=\"product-info\">\n            <!-- 促销横幅 -->\n            <div class=\"price-promo-box\">\n                <div class=\"price-container\">\n                    <span class=\"currency\">¥</span>\n                    <span class=\"big-price\" id=\"displayPrice\">19.90</span>\n                    <span class=\"old-price\" id=\"oldPrice\">¥29.90</span>\n                </div>\n                <div class=\"countdown-box\">\n                    <div class=\"countdown-text\">距结束还剩</div>\n                    <div class=\"timer\" id=\"countdown\">\n                        <span>12</span> : <span>30</span> : <span>45</span>\n                    </div>\n                </div>\n            </div>\n\n            <!-- 标题 -->\n            <div class=\"title-section\">\n                <div class=\"tags\">\n                    <span class=\"tag tag-hot\">热销TOP1</span>\n                    <span class=\"tag tag-promo\">京东自营</span>\n                </div>\n                <h1>新疆原产大颗粒香瓜子 500g/袋 颗粒饱满 人工手选</h1>\n                <p class=\"subtitle\">【限时特惠】源自新疆日照充足产区，皮薄仁大，坏籽率低，多种口味可选！满99减20！</p>\n            </div>\n\n            <!-- 优惠券 -->\n            <div class=\"coupon-section\">\n                <span class=\"coupon-label\">优惠</span>\n                <div class=\"coupon-ticket\" onclick=\"product.collectCoupon(this)\">满99减20</div>\n                <div class=\"coupon-ticket\" onclick=\"product.collectCoupon(this)\">新客立减5元</div>\n            </div>\n\n            <!-- SKU 选择 -->\n            <div class=\"sku-group\">\n                <div class=\"sku-title\">口味</div>\n                <div class=\"sku-options\" id=\"flavorOptions\">\n                    <button class=\"sku-btn selected\" onclick=\"product.selectSku('flavor', '原味', this)\">原味</button>\n                    <button class=\"sku-btn\" onclick=\"product.selectSku('flavor', '五香', this)\">五香</button>\n                    <button class=\"sku-btn\" onclick=\"product.selectSku('flavor', '焦糖', this)\">焦糖</button>\n                </div>\n            </div>\n            <div class=\"sku-group\">\n                <div class=\"sku-title\">包装</div>\n                <div class=\"sku-options\" id=\"weightOptions\">\n                    <button class=\"sku-btn selected\" onclick=\"product.selectSku('weight', '500g', this)\">500g袋装</button>\n                    <button class=\"sku-btn\" onclick=\"product.selectSku('weight', '1kg', this)\">1kg量贩装</button>\n                </div>\n            </div>\n\n            <!-- 数量与购买 -->\n            <div class=\"action-area\">\n                <div class=\"qty-box\">\n                    <button class=\"qty-btn\" onclick=\"product.changeQty(-1)\">-</button>\n                    <input type=\"text\" class=\"qty-input\" id=\"qtyInput\" value=\"1\" readonly>\n                    <button class=\"qty-btn\" onclick=\"product.changeQty(1)\">+</button>\n                </div>\n                <span class=\"stock-tip\">仅剩 <span id=\"stockCount\">158</span> 件</span>\n                \n                <!-- 桌面端按钮 -->\n                <div class=\"desktop-btns\">\n                    <button class=\"btn btn-cart\" onclick=\"cart.addItem()\">加入购物车</button>\n                    <button class=\"btn btn-buy\" onclick=\"product.buyNow()\">立即购买</button>\n                </div>\n            </div>\n        </section>\n    </main>\n\n    <!-- 详情选项卡 -->\n    <section class=\"detail-tabs\">\n        <div class=\"tab-header\">\n            <div class=\"tab-item active\" onclick=\"product.switchTab(0)\">商品介绍</div>\n            <div class=\"tab-item\" onclick=\"product.switchTab(1)\">规格参数</div>\n            <div class=\"tab-item\" onclick=\"product.switchTab(2)\">售后保障</div>\n        </div>\n        <div class=\"tab-content\" id=\"tabContent\">\n            <h3>源自新疆，自然馈赠</h3>\n            <p>我们的香瓜子产自新疆北纬42度黄金产区，日照时间长，昼夜温差大，利于瓜子积累营养，颗粒更加饱满。</p>\n            <img src=\"https://via.placeholder.com/800x400/f7f7f7/999999?text=Xinjiang+Origin+Photo\" alt=\"产地图片\">\n            <h3>三道筛选，品质保证</h3>\n            <p>经过风选、比重筛选、色选三道工序，剔除空壳、瘪籽，确保每一颗都值得嗑。</p>\n        </div>\n    </section>\n\n    <!-- 移动端底部栏 -->\n    <div class=\"mobile-action-bar\">\n        <div class=\"mobile-icon\">\n            <i>🏬</i>\n            <span>店铺</span>\n        </div>\n        <div class=\"mobile-icon\" onclick=\"cart.toggle()\">\n            <i style=\"position:relative\">🛒<span class=\"cart-badge\" style=\"top:-5px; right:-5px\" id=\"mobileCartBadge\">0</span></i>\n            <span>购物车</span>\n        </div>\n        <div class=\"mobile-btns\">\n            <div class=\"mobile-btn btn-cart\" style=\"background:#ffba0d\" onclick=\"cart.addItem()\">加入购物车</div>\n            <div class=\"mobile-btn btn-buy\" style=\"background:#e1251b\" onclick=\"product.buyNow()\">立即购买</div>\n        </div>\n    </div>\n\n    <!-- 购物车侧边抽屉 -->\n    <div class=\"cart-drawer-overlay\" id=\"cartOverlay\" onclick=\"cart.toggle()\"></div>\n    <aside class=\"cart-drawer\" id=\"cartDrawer\">\n        <div class=\"cart-header\">\n            <h3>购物车</h3>\n            <span class=\"close-cart\" onclick=\"cart.toggle()\">✕</span>\n        </div>\n        <div class=\"cart-list\" id=\"cartList\">\n            <!-- 动态生成购物车项目 -->\n        </div>\n        <div class=\"cart-footer\">\n            <div class=\"cart-total\">\n                <span>合计：</span>\n                <span class=\"cart-total-price\" id=\"cartTotal\">¥0.00</span>\n            </div>\n            <button class=\"checkout-btn\" onclick=\"alert('跳转至结算页...')\">去结算</button>\n        </div>\n    </aside>\n\n    <!-- 提示框 -->\n    <div class=\"toast\" id=\"toast\">已加入购物车</div>\n\n    <script>\n        /**\n         * 模拟产品数据逻辑\n         */\n        const productData = {\n            basePrice: 19.9, // 500g base price\n            variants: {\n                \"原味\": 1.0,\n                \"五香\": 1.1, // 贵10%\n                \"焦糖\": 1.1\n            },\n            weights: {\n                \"500g\": 1.0,\n                \"1kg\": 1.8 // 买1kg更划算\n            }\n        };\n\n        // 当前状态\n        const state = {\n            flavor: \"原味\",\n            weight: \"500g\",\n            qty: 1,\n            currentPrice: 19.9,\n            stock: 158\n        };\n\n        // 商品管理对象\n        const product = {\n            init: function() {\n                this.updatePrice();\n                this.startCountdown();\n                this.renderStock();\n            },\n\n            // 切换图片\n            switchImage: function(el, src) {\n                document.getElementById('mainImage').src = src;\n                document.querySelectorAll('.thumb-item').forEach(item => item.classList.remove('active'));\n                el.classList.add('active');\n            },\n\n            // 选择 SKU\n            selectSku: function(type, value, el) {\n                state[type] = value;\n                \n                // 更新 UI 选中状态\n                let containerId = type === 'flavor' ? 'flavorOptions' : 'weightOptions';\n                document.getElementById(containerId).querySelectorAll('.sku-btn').forEach(btn => btn.classList.remove('selected'));\n                el.classList.add('selected');\n\n                this.updatePrice();\n            },\n\n            // 计算并更新价格\n            updatePrice: function() {\n                const flavorMod = productData.variants[state.flavor];\n                const weightMod = productData.weights[state.weight];\n                \n                // 计算价格并保留2位小数\n                let price = (productData.basePrice * flavorMod * weightMod).toFixed(2);\n                \n                // 如果是1kg，价格取整好看点\n                if(state.weight === '1kg') price = (Math.ceil(price * 10) / 10).toFixed(2);\n\n                state.currentPrice = price;\n                \n                // 更新DOM\n                document.getElementById('displayPrice').innerText = price;\n                document.getElementById('oldPrice').innerText = '¥' + (price * 1.3).toFixed(2); // 模拟划线价\n            },\n\n            // 数量增减\n            changeQty: function(delta) {\n                let newQty = state.qty + delta;\n                if (newQty < 1) newQty = 1;\n                if (newQty > 10) {\n                    showToast('限购10件哦');\n                    newQty = 10;\n                }\n                state.qty = newQty;\n                document.getElementById('qtyInput').value = newQty;\n            },\n\n            // 倒计时逻辑\n            startCountdown: function() {\n                // 设置一个倒计时终点（例如明天）\n                const endTime = new Date().getTime() + 12 * 60 * 60 * 1000; \n                \n                setInterval(() => {\n                    const now = new Date().getTime();\n                    const distance = endTime - now;\n\n                    if (distance < 0) return;\n\n                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));\n                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));\n                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);\n\n                    const dom = document.getElementById('countdown');\n                    dom.innerHTML = `<span>${hours.toString().padStart(2, '0')}</span> : <span>${minutes.toString().padStart(2, '0')}</span> : <span>${seconds.toString().padStart(2, '0')}</span>`;\n                }, 1000);\n            },\n\n            renderStock: function() {\n                // 简单模拟库存减少\n                setInterval(() => {\n                    if(Math.random() > 0.7 && state.stock > 10) {\n                        state.stock--;\n                        document.getElementById('stockCount').innerText = state.stock;\n                    }\n                }, 5000);\n            },\n\n            collectCoupon: function(el) {\n                if (el.innerText === '已领取') return;\n                el.innerText = '已领取';\n                el.style.background = '#ccc';\n                showToast('优惠券领取成功！');\n            },\n\n            switchTab: function(index) {\n                const contents = [\n                    `<h3>源自新疆，自然馈赠</h3><p>我们的香瓜子产自新疆北纬42度黄金产区...</p><img src=\"https://via.placeholder.com/800x400/f7f7f7/999999?text=Details\" style=\"width:100%\">`,\n                    `<h3>产品参数</h3><p>品牌：京东严选<br>产地：新疆<br>净含量：500g/1kg<br>保质期：180天<br>储存方法：阴凉干燥处</p>`,\n                    `<h3>售后保障</h3><p>本产品支持7天无理由退货（拆封后除外）。<br>如有质量问题，请联系客服极速处理。</p>`\n                ];\n                \n                document.querySelectorAll('.tab-item').forEach((t, i) => {\n                    if(i === index) t.classList.add('active');\n                    else t.classList.remove('active');\n                });\n                document.getElementById('tabContent').innerHTML = contents[index];\n            },\n\n            buyNow: function() {\n                cart.addItem();\n                cart.toggle(true); // 打开购物车\n            }\n        };\n\n        // 购物车管理对象\n        const cart = {\n            items: [],\n            storageKey: 'jd_fake_cart',\n\n            init: function() {\n                const stored = localStorage.getItem(this.storageKey);\n                if (stored) {\n                    this.items = JSON.parse(stored);\n                }\n                this.updateBadge();\n            },\n\n            save: function() {\n                localStorage.setItem(this.storageKey, JSON.stringify(this.items));\n                this.updateBadge();\n                this.render();\n            },\n\n            addItem: function() {\n                // 生成唯一ID\n                const skuId = `${state.flavor}-${state.weight}`;\n                const existingItem = this.items.find(item => item.id === skuId);\n\n                if (existingItem) {\n                    existingItem.qty += state.qty;\n                } else {\n                    this.items.push({\n                        id: skuId,\n                        title: \"新疆原产大颗粒香瓜子\",\n                        sku: `${state.flavor} / ${state.weight}`,\n                        price: parseFloat(state.currentPrice),\n                        qty: state.qty,\n                        img: \"https://via.placeholder.com/100x100/FF9600/FFFFFF?text=Seeds\"\n                    });\n                }\n\n                this.save();\n                showToast('商品已加入购物车');\n                \n                // 简单的抛物线动画效果模拟（无需复杂库）\n                // 此处仅更新徽标\n            },\n\n            updateItemQty: function(id, delta) {\n                const item = this.items.find(i => i.id === id);\n                if(!item) return;\n                \n                item.qty += delta;\n                if (item.qty < 1) item.qty = 1;\n                this.save();\n            },\n\n            removeItem: function(id) {\n                this.items = this.items.filter(i => i.id !== id);\n                this.save();\n            },\n\n            toggle: function(forceOpen = false) {\n                const drawer = document.getElementById('cartDrawer');\n                const overlay = document.getElementById('cartOverlay');\n                const isOpen = drawer.classList.contains('open');\n\n                if (isOpen && !forceOpen) {\n                    drawer.classList.remove('open');\n                    overlay.classList.remove('open');\n                } else {\n                    this.render(); // 打开前重新渲染\n                    drawer.classList.add('open');\n                    overlay.classList.add('open');\n                }\n            },\n\n            updateBadge: function() {\n                const totalCount = this.items.reduce((acc, item) => acc + item.qty, 0);\n                document.getElementById('cartBadge').innerText = totalCount;\n                document.getElementById('mobileCartBadge').innerText = totalCount;\n            },\n\n            render: function() {\n                const list = document.getElementById('cartList');\n                list.innerHTML = '';\n                let totalMoney = 0;\n\n                if (this.items.length === 0) {\n                    list.innerHTML = '<div style=\"text-align:center; padding:50px 0; color:#999\">购物车空空如也</div>';\n                } else {\n                    this.items.forEach(item => {\n                        totalMoney += item.price * item.qty;\n                        const div = document.createElement('div');\n                        div.className = 'cart-item';\n                        div.innerHTML = `\n                            <img src=\"${item.img}\" class=\"cart-item-img\">\n                            <div class=\"cart-item-info\">\n                                <div>\n                                    <div class=\"cart-item-title\">${item.title}</div>\n                                    <div class=\"cart-item-sku\">${item.sku}</div>\n                                </div>\n                                <div class=\"cart-item-bottom\">\n                                    <div class=\"cart-item-price\">¥${item.price}</div>\n                                    <div style=\"display:flex; align-items:center\">\n                                        <div class=\"cart-qty-ctrl\">\n                                            <button onclick=\"cart.updateItemQty('${item.id}', -1)\">-</button>\n                                            <span>${item.qty}</span>\n                                            <button onclick=\"cart.updateItemQty('${item.id}', 1)\">+</button>\n                                        </div>\n                                        <span class=\"delete-item\" onclick=\"cart.removeItem('${item.id}')\">删除</span>\n                                    </div>\n                                </div>\n                            </div>\n                        `;\n                        list.appendChild(div);\n                    });\n                }\n                document.getElementById('cartTotal').innerText = '¥' + totalMoney.toFixed(2);\n            }\n        };\n\n        // Toast 提示工具\n        function showToast(msg) {\n            const toast = document.getElementById('toast');\n            toast.innerText = msg;\n            toast.style.display = 'block';\n            setTimeout(() => {\n                toast.style.display = 'none';\n            }, 2000);\n        }\n\n        // 初始化\n        document.addEventListener('DOMContentLoaded', () => {\n            product.init();\n            cart.init();\n        });\n\n    </script>\n</body>\n</html>\n```"
+    }
+  ]
+}

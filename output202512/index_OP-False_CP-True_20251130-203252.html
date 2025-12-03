@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 春节香瓜子葵花子年货大促</title>
+<style>
+    body{margin:0;font-family:"Microsoft YaHei",sans-serif;background:#fff;color:#333;}
+    header{background:#E4393C;padding:10px;color:#fff;display:flex;align-items:center;}
+    header input[type="text"]{flex:1;padding:8px;border:none;border-radius:4px;}
+    header button{background:#fff;color:#E4393C;border:none;padding:8px 12px;margin-left:8px;border-radius:4px;}
+    nav{display:flex;background:#f8f8f8;padding:8px;justify-content:space-around;border-bottom:1px solid #ddd;}
+    nav a{text-decoration:none;color:#333;font-size:14px;}
+    .container{padding:10px;}
+    .product{display:flex;flex-wrap:wrap;}
+    .images{flex:1;min-width:250px;}
+    .images img{width:100%;border-radius:8px;}
+    .thumbs{display:flex;justify-content:center;margin-top:8px;}
+    .thumbs img{width:60px;height:60px;object-fit:cover;margin:0 4px;cursor:pointer;border:2px solid transparent;border-radius:4px;}
+    .thumbs img.active{border-color:#E4393C;}
+    .info{flex:1;min-width:250px;padding-left:10px;}
+    .info h1{font-size:20px;margin:0;}
+    .price{color:#E4393C;font-size:24px;margin:8px 0;}
+    .old-price{text-decoration:line-through;color:#999;margin-left:8px;}
+    .countdown{color:#fff;background:#E4393C;padding:4px 8px;border-radius:4px;display:inline-block;}
+    .selling-points{margin:10px 0;}
+    .selling-points span{display:inline-block;background:#fff4e5;color:#E4393C;border:1px solid #E4393C;padding:4px 8px;margin:4px;border-radius:4px;font-size:12px;}
+    .coupons{margin:10px 0;}
+    .coupon{background:#E4393C;color:#fff;padding:6px 10px;border-radius:4px;margin-right:8px;cursor:pointer;display:inline-block;}
+    .specs{margin:10px 0;}
+    .spec{display:inline-block;padding:6px 12px;border:1px solid #ddd;border-radius:4px;margin-right:8px;cursor:pointer;}
+    .spec.active{border-color:#E4393C;color:#E4393C;}
+    .buy-btn{position:fixed;bottom:0;left:0;right:0;background:#E4393C;color:#fff;padding:15px;text-align:center;font-size:18px;cursor:pointer;}
+    /* Modal */
+    .modal{position:fixed;top:0;left:0;width:100%;height:100%;display:none;background:rgba(0,0,0,0.5);}
+    .modal-content{position:absolute;bottom:0;left:0;width:100%;background:#fff;border-top-left-radius:12px;border-top-right-radius:12px;padding:20px;}
+    .modal-content h2{margin-top:0;}
+    .close{position:absolute;top:10px;right:20px;cursor:pointer;color:#999;}
+    .confirm-btn{background:#E4393C;color:#fff;border:none;padding:10px;width:100%;border-radius:4px;font-size:16px;}
+    /* 评论区 */
+    .comments{margin-top:20px;}
+    .comments h3{margin:0 0 10px;}
+    .filter{margin-bottom:8px;}
+    .filter button{padding:4px 8px;margin-right:5px;}
+    .comment{border-bottom:1px solid #eee;padding:8px 0;}
+    .add-comment{margin-top:10px;}
+    .add-comment textarea{width:100%;height:60px;}
+    .add-comment button{margin-top:5px;padding:8px 12px;background:#E4393C;color:#fff;border:none;border-radius:4px;}
+</style>
+</head>
+<body>
+
+<header>
+    <input type="text" placeholder="搜索年货零食...">
+    <button>搜索</button>
+</header>
+
+<nav>
+    <a href="#">首页</a>
+    <a href="#">分类</a>
+    <a href="#">促销</a>
+    <a href="#">我的</a>
+</nav>
+
+<div class="container">
+    <div class="product">
+        <div class="images">
+            <img id="mainImg" src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="香瓜子葵花子">
+            <div class="thumbs">
+                <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" class="active">
+                <img src="https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b">
+                <img src="https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg">
+            </div>
+        </div>
+        <div class="info">
+            <h1>LYF 香瓜子葵花子 30g*10包组合装</h1>
+            <div>
+                <span class="price" id="currentPrice">¥16.9</span>
+                <span class="old-price">¥29.9</span>
+            </div>
+            <div class="countdown" id="countdown">春节限时抢购倒计时：00:00:00</div>
+            <div class="selling-points">
+                <span>颗粒饱满</span>
+                <span>独立包装不脏手</span>
+                <span>买多少送多少</span>
+                <span>五香味</span>
+            </div>
+            <div class="coupons">
+                <div class="coupon" data-discount="2" data-min="10">满10减2元</div>
+                <div class="coupon" data-discount="5" data-min="20">满20减5元</div>
+            </div>
+            <div class="specs">
+                <div class="spec active" data-qty="10" data-price="16.9">10包</div>
+                <div class="spec" data-qty="20" data-price="30">20包</div>
+                <div class="spec" data-qty="30" data-price="42">30包</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 评论区 -->
+    <div class="comments">
+        <h3>用户评论</h3>
+        <div class="filter">
+            <button data-filter="all">全部</button>
+            <button data-filter="good">好评</button>
+            <button data-filter="bad">差评</button>
+        </div>
+        <div id="commentList">
+            <div class="comment" data-type="good">好评：瓜子很香，包装方便！</div>
+            <div class="comment" data-type="bad">差评：味道偏淡。</div>
+            <div class="comment" data-type="good">好评：送的袋子很喜庆！</div>
+        </div>
+        <div class="add-comment">
+            <textarea id="newComment" placeholder="发表你的评论..."></textarea>
+            <button id="submitComment">发表评论</button>
+        </div>
+    </div>
+</div>
+
+<div class="buy-btn" id="buyBtn">立即购买</div>
+
+<!-- 模态购物车 -->
+<div class="modal" id="cartModal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">×</span>
+        <h2>确认订单</h2>
+        <p id="orderInfo"></p>
+        <button class="confirm-btn" id="confirmPay">确认支付</button>
+    </div>
+</div>
+
+<script>
+    // 图片切换
+    document.querySelectorAll('.thumbs img').forEach(img=>{
+        img.addEventListener('click',()=>{
+            document.querySelectorAll('.thumbs img').forEach(i=>i.classList.remove('active'));
+            img.classList.add('active');
+            document.getElementById('mainImg').src=img.src;
+        });
+    });
+
+    // 倒计时
+    function startCountdown(duration){
+        let timer=duration;
+        setInterval(()=>{
+            let hours=Math.floor(timer/3600);
+            let minutes=Math.floor((timer%3600)/60);
+            let seconds=timer%60;
+            document.getElementById('countdown').textContent=`春节限时抢购倒计时：${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+            if(timer>0) timer--; 
+        },1000);
+    }
+    startCountdown(3*3600); // 倒计时3小时
+
+    let selectedPrice=16.9;
+    let selectedQty=10;
+    let discount=0;
+
+    // 优惠券
+    document.querySelectorAll('.coupon').forEach(cp=>{
+        cp.addEventListener('click',()=>{
+            let min=Number(cp.dataset.min);
+            let dis=Number(cp.dataset.discount);
+            if(selectedPrice>=min){
+                discount=dis;
+                alert('已使用优惠券：'+cp.textContent);
+                updatePrice();
+            }else{
+                alert('金额未满足使用条件');
+            }
+        });
+    });
+
+    // 规格选择
+    document.querySelectorAll('.spec').forEach(sp=>{
+        sp.addEventListener('click',()=>{
+            document.querySelectorAll('.spec').forEach(s=>s.classList.remove('active'));
+            sp.classList.add('active');
+            selectedQty=Number(sp.dataset.qty);
+            selectedPrice=Number(sp.dataset.price);
+            discount=0;
+            updatePrice();
+        });
+    });
+
+    function updatePrice(){
+        document.getElementById('currentPrice').textContent='¥'+(selectedPrice-discount).toFixed(2);
+    }
+
+    // 评论筛选
+    document.querySelectorAll('.filter button').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            let filter=btn.dataset.filter;
+            document.querySelectorAll('#commentList .comment').forEach(c=>{
+                if(filter==='all' || c.dataset.type===filter){
+                    c.style.display='block';
+                }else{
+                    c.style.display='none';
+                }
+            });
+        });
+    });
+
+    // 添加评论
+    document.getElementById('submitComment').addEventListener('click',()=>{
+        let text=document.getElementById('newComment').value.trim();
+        if(text){
+            let div=document.createElement('div');
+            div.className='comment';
+            div.dataset.type='good';
+            div.textContent=text;
+            document.getElementById('commentList').appendChild(div);
+            document.getElementById('newComment').value='';
+        }
+    });
+
+    // 购买模态框
+    document.getElementById('buyBtn').addEventListener('click',()=>{
+        let order={product:'LYF 香瓜子葵花子',qty:selectedQty,price:(selectedPrice-discount).toFixed(2)};
+        document.getElementById('orderInfo').textContent=`商品：${order.product} | 数量：${order.qty}包 | 价格：¥${order.price}`;
+        document.getElementById('cartModal').style.display='block';
+    });
+    document.getElementById('closeModal').addEventListener('click',()=>{
+        document.getElementById('cartModal').style.display='none';
+    });
+    document.getElementById('confirmPay').addEventListener('click',()=>{
+        let order={product:'LYF 香瓜子葵花子',qty:selectedQty,price:(selectedPrice-discount).toFixed(2)};
+        alert('订单信息：'+JSON.stringify(order));
+        document.getElementById('cartModal').style.display='none';
+    });
+</script>
+</body>
+</html>

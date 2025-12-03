@@ -1,0 +1,310 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n\n# Functional Requirements (功能需求)\n1.  实现合理的布局结构：尽量包含搜索栏目、导航栏、产品介绍、交互、详情信息等\n    可插入如下图片作为产品展示图，在价格、购买信息的左侧，可手动翻动：\n    图1“https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n    图2“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n    图3“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n    卖点文案：突出“颗粒饱满”、“独立包装不脏手”、“买多少送多少”、“五香味”\n额外功能：\n1.营销倒计时系统 (Complex Logic)：在价格旁显示“春节限时抢购倒计时”。\n2. 优惠券与价格计算 界面中间需展示两张优惠券：\nA券：满 10 减 2 元\nB券：满 20 减 5 元\n是否可实现点击优惠券，自动减少相应价格\n\n3.添加购买规格：包含10包、20包、30包，价格可以买的越多越优惠。\n4. 评论区筛选器：展示评论列表。\n5. 模态框购物车 (UI Interaction)\n点击底部的“立即购买”按钮，不跳转，而是从底部弹出一个半透明遮罩层 + 确认面板（Slide-up Modal）。\n面板内显示：已选商品信息、最终计算后的价格。\n包含“确认支付”按钮，点击后 alert 输出最终订单信息对象。\n6.随机优化功能\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求：春节零食电商单文件网页，包含HTML、CSS、JavaScript",
+              "识别交付物：产品介绍、价格显示、购买渠道、促销信息，实现交互逻辑",
+              "任务拆解并分配到PM、Architect、Engineer"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "整理详细PRD：列出页面模块（搜索栏、导航栏、产品图轮播、规格与价格、优惠券、促销标签、倒计时、评论筛选器、购物车模态框）",
+              "定义交互逻辑（优惠券点击价格计算、规格选择动态价格、倒计时实现方式、购买按钮弹窗流程）",
+              "记录颜色和风格要求（春节红主色调及移动端电商风格参考）"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "设计页面信息架构：布局结构与各区域内容组织",
+              "定义组件方案：产品轮播组件、倒计时组件、优惠券组件、规格选择组件、评论筛选组件、购物车模态组件",
+              "确定资源引用方式（图片URL及脚本内置）",
+              "制定单文件实现方案（HTML结构、内联CSS、内联JS）"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据规格实现单文件HTML页面，包含内联CSS和JavaScript",
+              "实现UI布局与样式，应用春节红主色调",
+              "实现产品图片轮播、倒计时系统、优惠券点击计算逻辑、规格选择价格策略",
+              "实现评论筛选器交互",
+              "实现购物车模态框与最终订单信息alert功能",
+              "进行随机优化功能实现"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF 春节香瓜子葵花子移动端电商单页——融合 4P 营销要素的促销网页",
+        "goals": [
+          "展示春节香瓜子葵花子产品的核心卖点与节日氛围",
+          "实现限时促销和优惠券交互功能，提升转化率",
+          "提供多规格选择和动态价格计算，提高客单价",
+          "支持评论区筛选，提高用户信任与购买意愿",
+          "集成模态购物车和支付确认交互，优化购买流程",
+          "在移动端呈现类似京东/天猫的布局风格，提升用户熟悉度",
+          "通过倒计时与库存提示制造紧迫感，推动用户下单"
+        ],
+        "target_users": [
+          "春节采购年货的家庭主妇——需要物美价廉、包装方便、节日氛围浓的零食",
+          "需要快速下单的上班族——希望在移动端快速浏览商品信息并完成购买",
+          "喜欢囤货的零食爱好者——寻求多规格优惠组合，追求性价比",
+          "注重口碑的用户——希望查看真实评论来判断品质"
+        ],
+        "page_sections": [
+          {
+            "id": "search-bar",
+            "purpose": "提供搜索入口，方便用户查找其他春节零食或相关产品"
+          },
+          {
+            "id": "nav-bar",
+            "purpose": "提供分类导航入口，提升页面可浏览性和渠道引导"
+          },
+          {
+            "id": "product-gallery",
+            "purpose": "展示产品外观图与核心卖点，支持手动切换多张图片"
+          },
+          {
+            "id": "price-info",
+            "purpose": "显示现价、原价和促销标签，制造价格优势与紧迫感"
+          },
+          {
+            "id": "countdown-timer",
+            "purpose": "春节限时抢购倒计时，强化促销时效性"
+          },
+          {
+            "id": "coupon-section",
+            "purpose": "展示优惠券，可点击应用到价格计算中，增加购买动力"
+          },
+          {
+            "id": "spec-selector",
+            "purpose": "用户可选择不同购买规格（10包/20包/30包），价格动态变化"
+          },
+          {
+            "id": "comment-filter",
+            "purpose": "提供评论筛选功能展示不同类型评价"
+          },
+          {
+            "id": "buy-button",
+            "purpose": "触发模态购物车面板，显示已选商品和最终价格"
+          },
+          {
+            "id": "modal-cart",
+            "purpose": "底部滑出购物车确认面板，含支付确认按钮与订单信息"
+          },
+          {
+            "id": "promotion-stock-tip",
+            "purpose": "随机生成库存或限购提示，制造稀缺感"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#D32F2F",
+          "#FFD700",
+          "#F4F4F5",
+          "#FFFFFF",
+          "#333333"
+        ],
+        "components": [
+          {
+            "id": "search-bar",
+            "html": "header",
+            "children": [
+              {
+                "tag": "input",
+                "content_hint": "搜索输入框，提示用户搜索春节零食或相关产品"
+              },
+              {
+                "tag": "button",
+                "content_hint": "搜索按钮"
+              }
+            ]
+          },
+          {
+            "id": "nav-bar",
+            "html": "nav",
+            "children": [
+              {
+                "tag": "ul",
+                "content_hint": "分类导航列表"
+              },
+              {
+                "tag": "li",
+                "content_hint": "各分类入口按钮"
+              }
+            ]
+          },
+          {
+            "id": "product-gallery",
+            "html": "section",
+            "children": [
+              {
+                "tag": "img",
+                "content_hint": "产品外观图"
+              },
+              {
+                "tag": "p",
+                "content_hint": "核心卖点描述"
+              }
+            ]
+          },
+          {
+            "id": "price-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "span",
+                "content_hint": "现价显示"
+              },
+              {
+                "tag": "span",
+                "content_hint": "原价显示"
+              },
+              {
+                "tag": "span",
+                "content_hint": "促销标签"
+              }
+            ]
+          },
+          {
+            "id": "countdown-timer",
+            "html": "section",
+            "children": [
+              {
+                "tag": "span",
+                "content_hint": "倒计时数字"
+              },
+              {
+                "tag": "p",
+                "content_hint": "限时促销说明"
+              }
+            ]
+          },
+          {
+            "id": "coupon-section",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "优惠券卡片"
+              },
+              {
+                "tag": "button",
+                "content_hint": "领取/应用优惠券按钮"
+              }
+            ]
+          },
+          {
+            "id": "spec-selector",
+            "html": "section",
+            "children": [
+              {
+                "tag": "label",
+                "content_hint": "规格选择标签"
+              },
+              {
+                "tag": "select",
+                "content_hint": "规格下拉选项（10包/20包/30包）"
+              }
+            ]
+          },
+          {
+            "id": "comment-filter",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "筛选按钮：好评/中评/差评"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "评论列表"
+              }
+            ]
+          },
+          {
+            "id": "buy-button",
+            "html": "button",
+            "children": [
+              {
+                "tag": "span",
+                "content_hint": "购买按钮文字或图标"
+              }
+            ]
+          },
+          {
+            "id": "modal-cart",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "购物车商品列表"
+              },
+              {
+                "tag": "div",
+                "content_hint": "订单总价显示"
+              },
+              {
+                "tag": "button",
+                "content_hint": "支付确认按钮"
+              }
+            ]
+          },
+          {
+            "id": "promotion-stock-tip",
+            "html": "section",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "库存或限购提示文案"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>春节零食商城</title>\n<style>\n    body {\n        margin: 0;\n        font-family: Arial, sans-serif;\n        background-color: #F4F4F5;\n        color: #333333;\n    }\n    header {\n        background-color: #D32F2F;\n        padding: 10px;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n    }\n    header input {\n        padding: 8px;\n        border: none;\n        border-radius: 4px 0 0 4px;\n        width: 70%;\n    }\n    header button {\n        padding: 8px 12px;\n        border: none;\n        background-color: #FFD700;\n        color: #333333;\n        border-radius: 0 4px 4px 0;\n        cursor: pointer;\n    }\n    nav {\n        background-color: #FFFFFF;\n        padding: 10px;\n    }\n    nav ul {\n        list-style: none;\n        margin: 0;\n        padding: 0;\n        display: flex;\n        overflow-x: auto;\n    }\n    nav li {\n        padding: 8px 12px;\n        cursor: pointer;\n        white-space: nowrap;\n    }\n    section {\n        background-color: #FFFFFF;\n        margin: 10px;\n        padding: 10px;\n        border-radius: 4px;\n    }\n    #product-gallery img {\n        max-width: 100%;\n        border-radius: 4px;\n    }\n    #price-info span {\n        margin-right: 10px;\n        display: inline-block;\n    }\n    #price-info .current-price {\n        color: #D32F2F;\n        font-size: 1.2em;\n        font-weight: bold;\n    }\n    #price-info .original-price {\n        text-decoration: line-through;\n        color: #999;\n    }\n    #price-info .promo-tag {\n        background-color: #FFD700;\n        padding: 2px 6px;\n        border-radius: 4px;\n        font-size: 0.9em;\n    }\n    #countdown-timer {\n        text-align: center;\n        background-color: #FFEFD5;\n    }\n    #coupon-section div {\n        background-color: #FFD700;\n        padding: 10px;\n        border-radius: 4px;\n    }\n    #coupon-section button {\n        margin-top: 8px;\n        background-color: #D32F2F;\n        color: #FFFFFF;\n        border: none;\n        padding: 8px 12px;\n        cursor: pointer;\n        border-radius: 4px;\n    }\n    #spec-selector label {\n        display: block;\n        margin-bottom: 5px;\n    }\n    #spec-selector select {\n        padding: 6px;\n        width: 100%;\n    }\n    #comment-filter div {\n        display: flex;\n        justify-content: space-around;\n        margin-bottom: 10px;\n    }\n    #comment-filter ul {\n        list-style: none;\n        padding: 0;\n    }\n    #buy-button {\n        width: calc(100% - 20px);\n        margin: 10px;\n        padding: 12px;\n        background-color: #D32F2F;\n        color: #FFFFFF;\n        border: none;\n        border-radius: 4px;\n        cursor: pointer;\n        font-size: 1.1em;\n    }\n    #modal-cart {\n        position: fixed;\n        bottom: 0;\n        left: 0;\n        right: 0;\n        background-color: #FFFFFF;\n        box-shadow: 0 -2px 8px rgba(0,0,0,0.1);\n        padding: 10px;\n    }\n    #modal-cart div {\n        margin-bottom: 8px;\n    }\n    #modal-cart button {\n        width: 100%;\n        padding: 10px;\n        background-color: #D32F2F;\n        color: #FFFFFF;\n        border: none;\n        border-radius: 4px;\n        cursor: pointer;\n    }\n    #promotion-stock-tip p {\n        text-align: center;\n        font-size: 0.9em;\n        color: #D32F2F;\n    }\n</style>\n</head>\n<body>\n\n<header id=\"search-bar\">\n    <input type=\"text\" placeholder=\"搜索春节零食或相关产品\">\n    <button>搜索</button>\n</header>\n\n<nav id=\"nav-bar\">\n    <ul>\n        <li>饼干</li>\n        <li>糖果</li>\n        <li>坚果</li>\n        <li>茶类</li>\n        <li>礼包</li>\n    </ul>\n</nav>\n\n<section id=\"product-gallery\">\n    <img src=\"product.jpg\" alt=\"产品外观图\">\n    <p>精选优质材料，香酥美味，春节送礼佳品。</p>\n</section>\n\n<section id=\"price-info\">\n    <span class=\"current-price\">¥99</span>\n    <span class=\"original-price\">¥129</span>\n    <span class=\"promo-tag\">限时优惠</span>\n</section>\n\n<section id=\"countdown-timer\">\n    <span>00:12:35</span>\n    <p>限时促销进行中，赶快抢购！</p>\n</section>\n\n<section id=\"coupon-section\">\n    <div>满200减20优惠券</div>\n    <button>立即领取</button>\n</section>\n\n<section id=\"spec-selector\">\n    <label for=\"spec\">请选择规格：</label>\n    <select id=\"spec\">\n        <option>10包</option>\n        <option>20包</option>\n        <option>30包</option>\n    </select>\n</section>\n\n<section id=\"comment-filter\">\n    <div>\n        <button>好评</button>\n        <button>中评</button>\n        <button>差评</button>\n    </div>\n    <ul>\n        <li>零食很新鲜，包装精美。</li>\n        <li>味道不错，但快递有点慢。</li>\n    </ul>\n</section>\n\n<button id=\"buy-button\">\n    <span>立即购买</span>\n</button>\n\n<aside id=\"modal-cart\">\n    <div>购物车中有 2 件商品</div>\n    <div>总价：¥198</div>\n    <button>确认支付</button>\n</aside>\n\n<section id=\"promotion-stock-tip\">\n    <p>库存有限，售完即止</p>\n</section>\n\n</body>\n</html>"
+    }
+  ]
+}

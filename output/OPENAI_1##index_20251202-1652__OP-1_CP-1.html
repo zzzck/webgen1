@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYF新疆香瓜子葵花子春节促销</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #F4F4F5;
+            color: #333;
+        }
+        header {
+            background-color: #E4393C;
+            color: white;
+            padding: 10px;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .status-info {
+            font-size: 14px;
+        }
+        section {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: white;
+            margin-bottom: 10px;
+        }
+        .hero img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #E4393C;
+        }
+        .price-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .current-price {
+            font-size: 22px;
+            color: #E4393C;
+            font-weight: bold;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-left: 10px;
+        }
+        .promo-timer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #E4393C;
+        }
+        .inventory-box {
+            font-size: 16px;
+            color: black;
+        }
+        .coupon-center h2 {
+            color: #E4393C;
+            font-size: 18px;
+        }
+        .coupon-list {
+            display: flex;
+            gap: 10px;
+        }
+        .coupon {
+            background-color: gold;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .buy-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .buy-actions button {
+            flex: 1;
+            padding: 12px;
+            color: white;
+            background-color: #E4393C;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        aside.cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 15px;
+        }
+        .cart-sidebar.open {
+            right: 0;
+        }
+        .reviews h2, .product-details h2, .recommendations h2, .festival-lottery h2 {
+            color: #E4393C;
+            font-size: 18px;
+        }
+        .review-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .product-details-content {
+            display: none;
+            font-size: 14px;
+            color: #555;
+        }
+        footer {
+            background-color: #E4393C;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        footer nav a {
+            color: white;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<header id="status-bar">
+    <nav>
+        <a href="#">← 返回</a>
+        <a href="#" class="cart-link">🛒 购物车</a>
+    </nav>
+    <div class="status-info">春节特惠 · 热销进行中</div>
+</header>
+
+<section id="hero" class="hero">
+    <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="LYF新疆香瓜子葵花子">
+    <h1>LYF 新疆香瓜子葵花子 · 春节休闲零食精选</h1>
+</section>
+
+<section id="price-box" class="price-box">
+    <div>
+        <span class="current-price">¥16.9</span>
+        <span class="old-price">¥29.9</span>
+    </div>
+    <p>领券后仅 ¥15.9 限时优惠</p>
+</section>
+
+<section id="promo-timer" class="promo-timer">
+    <div>活动倒计时：<span id="countdown">00:12:35</span></div>
+    <span class="hot-sale-tag">🔥 热销</span>
+</section>
+
+<section id="inventory-box" class="inventory-box">
+    <p>库存剩余：<span id="stock-num">128</span> 件</p>
+    <span>抓紧抢购，售完为止！</span>
+</section>
+
+<section id="coupon-center" class="coupon-center">
+    <h2>领券中心</h2>
+    <div class="coupon-list">
+        <div class="coupon">满20减5</div>
+        <div class="coupon">满50减15</div>
+    </div>
+</section>
+
+<section id="buy-actions" class="buy-actions">
+    <div class="quantity-control">
+        <button>-</button>
+        <span>1</span>
+        <button>+</button>
+    </div>
+    <button>加入购物车</button>
+    <button>立即购买</button>
+</section>
+
+<aside id="cart-sidebar" class="cart-sidebar">
+    <ul class="cart-items">
+        <li>商品示例 × 1 <button>删除</button></li>
+    </ul>
+    <div class="cart-total">总价：¥16.9 <button>结算</button></div>
+</aside>
+
+<section id="reviews" class="reviews">
+    <h2>用户评价</h2>
+    <div class="review-item">⭐⭐⭐⭐⭐ 味道很香，包装精美，春节送礼很合适 🎁</div>
+    <div class="review-item">⭐⭐⭐⭐ 颗粒饱满，香脆可口！</div>
+</section>
+
+<section id="product-details" class="product-details">
+    <h2>商品详情</h2>
+    <div class="product-details-content">
+        产地：新疆 · 新鲜葵花子选材 · 精选烘焙 · 每包30g，共10包，适合春节家庭分享。
+    </div>
+</section>
+
+<section id="recommendations" class="recommendations">
+    <h2>猜你喜欢</h2>
+    <ul>
+        <li>红枣礼盒</li>
+        <li>坚果大礼包</li>
+        <li>牛轧糖</li>
+    </ul>
+</section>
+
+<section id="festival-lottery" class="festival-lottery">
+    <h2>福袋抽奖</h2>
+    <button>参与抽奖</button>
+</section>
+
+<footer id="footer">
+    <p>© 2024 LYF 零食旗舰店 · 新春快乐</p>
+    <nav>
+        <a href="#">首页</a>
+        <a href="#">分类</a>
+        <a href="#">客服</a>
+    </nav>
+</footer>
+</body>
+</html>

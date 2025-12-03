@@ -1,0 +1,296 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**电商产品详情页。\n\n# Product Context\n我们需要为一款春节热销零食电商销售网页。\n\n品牌为 LYF 的新疆葵花籽（30g 小包装），售价为 10 包 16.9 元，网页销售场景。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n# Functional Requirements (功能需求)\n1.  实现合理的布局结构：尽量包含搜索栏目、导航栏、产品介绍、交互、详情信息等\n    可插入如下图片作为产品预览图\n     1 张大图链接“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n    缩略图1“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n    缩略图2“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n\n额外功能：\n1.营销倒计时系统 (Complex Logic)：在价格旁显示“春节限时抢购倒计时”。\n\n2. 优惠券与价格计算 (State Management)界面中间需展示两张优惠券：\nA券：满 10 减 2 元\nB券：满 20 减 5 元\n\n4. 评论区筛选器 (DOM Manipulation)\n展示评论列表。\n\n5. 模态框购物车 (UI Interaction)\n点击底部的“立即购买”按钮，不跳转，而是从底部弹出一个半透明遮罩层 + 确认面板（Slide-up Modal）。\n面板内显示：已选商品信息、最终计算后的价格。\n包含“确认支付”按钮，点击后 alert 输出最终订单信息对象。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求",
+              "识别交付成果：单文件 HTML 电商产品详情页，包含 HTML/CSS/JS",
+              "划分任务并分配给 PM、Architect、Engineer"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "整理客户需求为结构化 PRD，包括功能需求、4P 营销要素、页面模块、图片资源、交互逻辑"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "根据 PRD 设计页面的信息架构",
+              "定义布局结构：搜索栏、导航栏、产品展示区、价格与优惠券区、促销倒计时、评论区、购买入口与购物车模态框",
+              "制定组件分解方案和数据结构（优惠券、倒计时、评论过滤、购物车数据）"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据架构方案与 PRD，实现包含 HTML、CSS、JavaScript 的单文件电商产品详情页",
+              "实现倒计时促销逻辑",
+              "实现优惠券价格计算逻辑",
+              "实现评论区筛选器 DOM 操作",
+              "实现底部 '立即购买' 按钮的模态购物车交互与最终订单信息 alert 输出"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF 新疆葵花籽春节热销电商产品详情页",
+        "goals": [
+          "提升春节期间葵花籽产品在线销量20%",
+          "提高用户停留时间和转化率，通过优化详情页结构与交互",
+          "增强用户对品牌与产品的记忆点，形成复购意愿",
+          "利用4P营销要素提升购买动机和紧迫感",
+          "降低购物流程的跳失率，简化购买确认过程"
+        ],
+        "target_users": [
+          "节日期间有零食需求的家庭主妇：希望购买健康、分量合适、价格优惠的零食",
+          "年轻上班族：追求方便快捷的网购体验，强调性价比和促销活动"
+        ],
+        "page_sections": [
+          {
+            "id": "search-bar",
+            "purpose": "提供用户快速搜索其他商品或相关零食的入口，提升浏览效率"
+          },
+          {
+            "id": "nav-bar",
+            "purpose": "展示网站主导航，帮助用户快速跳转到首页、分类、购物车等主要页面"
+          },
+          {
+            "id": "product-gallery",
+            "purpose": "展示产品大图及缩略图，支持用户直观了解外观与包装"
+          },
+          {
+            "id": "product-info",
+            "purpose": "呈现规格、卖点文案、产地等核心产品介绍，强化购买信心"
+          },
+          {
+            "id": "pricing-section",
+            "purpose": "显示现价、原价、优惠信息，以及春节限时抢购倒计时"
+          },
+          {
+            "id": "coupon-section",
+            "purpose": "提供可选择的优惠券信息，展示满减规则并动态计算价格"
+          },
+          {
+            "id": "purchase-channel",
+            "purpose": "强调网页购买入口与购物流程，支持一键加入购物车或立即购买"
+          },
+          {
+            "id": "promotion-banner",
+            "purpose": "显示促销标签、库存或限时购买激励，制造紧迫感"
+          },
+          {
+            "id": "comment-section",
+            "purpose": "展示用户评论，并提供筛选器按关键词或标签过滤评论"
+          },
+          {
+            "id": "cart-modal",
+            "purpose": "点击立即购买时弹出遮罩层和确认面板，显示选中商品与最终价格，并可确认支付"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#D62828",
+          "#F77F00",
+          "#F4F4F5",
+          "#003049",
+          "primary"
+        ],
+        "components": [
+          {
+            "id": "search-bar",
+            "html": "header",
+            "children": [
+              {
+                "tag": "input",
+                "content_hint": "搜索输入框，用户可输入关键词寻找商品"
+              },
+              {
+                "tag": "button",
+                "content_hint": "搜索按钮，触发搜索动作"
+              }
+            ]
+          },
+          {
+            "id": "nav-bar",
+            "html": "nav",
+            "children": [
+              {
+                "tag": "ul",
+                "content_hint": "主导航列表，包含首页、分类、购物车等链接"
+              }
+            ]
+          },
+          {
+            "id": "promotion-banner",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "促销信息文案，如春节特惠"
+              },
+              {
+                "tag": "span",
+                "content_hint": "库存或倒计时动态显示，传递紧迫感"
+              }
+            ]
+          },
+          {
+            "id": "product-gallery",
+            "html": "section",
+            "children": [
+              {
+                "tag": "img",
+                "content_hint": "产品主图，展示外观与包装"
+              },
+              {
+                "tag": "div",
+                "content_hint": "缩略图列表，支持切换展示"
+              }
+            ]
+          },
+          {
+            "id": "product-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "产品标题，如品牌+品名"
+              },
+              {
+                "tag": "p",
+                "content_hint": "卖点文案或产地、规格说明"
+              }
+            ]
+          },
+          {
+            "id": "pricing-section",
+            "html": "section",
+            "children": [
+              {
+                "tag": "span",
+                "content_hint": "当前价格"
+              },
+              {
+                "tag": "span",
+                "content_hint": "原价"
+              },
+              {
+                "tag": "div",
+                "content_hint": "优惠信息与春节抢购倒计时"
+              }
+            ]
+          },
+          {
+            "id": "coupon-section",
+            "html": "section",
+            "children": [
+              {
+                "tag": "ul",
+                "content_hint": "可用优惠券列表"
+              },
+              {
+                "tag": "p",
+                "content_hint": "满减规则与实时价格计算提示"
+              }
+            ]
+          },
+          {
+            "id": "purchase-channel",
+            "html": "section",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "加入购物车按钮"
+              },
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              }
+            ]
+          },
+          {
+            "id": "comment-section",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "用户评论标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "评论筛选器组件"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "用户评论列表"
+              }
+            ]
+          },
+          {
+            "id": "cart-modal",
+            "html": "div",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "购物确认标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "选中商品详情"
+              },
+              {
+                "tag": "span",
+                "content_hint": "最终价格展示"
+              },
+              {
+                "tag": "button",
+                "content_hint": "确认支付按钮"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>商品详情页</title>\n    <style>\n        :root {\n            --color-red: #D62828;\n            --color-orange: #F77F00;\n            --color-light: #F4F4F5;\n            --color-dark: #003049;\n            --color-primary: #F77F00;\n        }\n        body {\n            margin: 0;\n            font-family: Arial, sans-serif;\n            background-color: var(--color-light);\n            color: var(--color-dark);\n        }\n        header {\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            padding: 1rem;\n            background-color: var(--color-primary);\n        }\n        header input {\n            padding: 0.5rem;\n            font-size: 1rem;\n            width: 70%;\n            border: none;\n            border-radius: 4px 0 0 4px;\n        }\n        header button {\n            padding: 0.6rem 1rem;\n            border: none;\n            background-color: var(--color-dark);\n            color: white;\n            border-radius: 0 4px 4px 0;\n            cursor: pointer;\n        }\n        nav {\n            background-color: var(--color-red);\n            padding: 0.5rem;\n        }\n        nav ul {\n            list-style: none;\n            display: flex;\n            justify-content: space-around;\n            margin: 0;\n            padding: 0;\n        }\n        nav ul li a {\n            color: white;\n            text-decoration: none;\n            font-weight: bold;\n        }\n        section {\n            padding: 1rem;\n        }\n        #promotion-banner {\n            background-color: var(--color-orange);\n            color: white;\n            text-align: center;\n            padding: 1rem;\n        }\n        #promotion-banner span {\n            display: block;\n            font-weight: bold;\n            margin-top: 0.5rem;\n        }\n        #product-gallery img {\n            max-width: 100%;\n            border-radius: 8px;\n        }\n        #product-gallery div {\n            display: flex;\n            gap: 0.5rem;\n            margin-top: 0.5rem;\n        }\n        #product-gallery div img {\n            width: 50px;\n            height: 50px;\n            object-fit: cover;\n            border-radius: 4px;\n            cursor: pointer;\n        }\n        #product-info h1 {\n            margin: 0;\n            color: var(--color-dark);\n        }\n        #pricing-section {\n            display: flex;\n            align-items: baseline;\n            gap: 1rem;\n        }\n        #pricing-section span:first-child {\n            font-size: 1.5rem;\n            color: var(--color-red);\n        }\n        #pricing-section span:last-child {\n            text-decoration: line-through;\n            color: gray;\n        }\n        #pricing-section div {\n            margin-left: auto;\n            color: var(--color-orange);\n        }\n        #coupon-section ul {\n            list-style: none;\n            padding: 0;\n            margin: 0;\n        }\n        #coupon-section ul li {\n            background-color: var(--color-light);\n            padding: 0.5rem;\n            margin-bottom: 0.5rem;\n            border: 1px solid var(--color-orange);\n            border-radius: 4px;\n        }\n        #purchase-channel {\n            display: flex;\n            gap: 1rem;\n        }\n        #purchase-channel button {\n            flex: 1;\n            padding: 1rem;\n            font-size: 1rem;\n            border: none;\n            cursor: pointer;\n            border-radius: 4px;\n        }\n        #purchase-channel button:first-child {\n            background-color: var(--color-orange);\n            color: white;\n        }\n        #purchase-channel button:last-child {\n            background-color: var(--color-red);\n            color: white;\n        }\n        #comment-section h2 {\n            margin-top: 0;\n        }\n        #comment-section div {\n            margin-bottom: 1rem;\n        }\n        #comment-section ul {\n            list-style: none;\n            padding: 0;\n        }\n        #comment-section ul li {\n            background-color: white;\n            padding: 1rem;\n            margin-bottom: 1rem;\n            border-radius: 4px;\n            border: 1px solid #ddd;\n        }\n        #cart-modal {\n            display: none;\n            position: fixed;\n            top: 50%;\n            left: 50%;\n            transform: translate(-50%, -50%);\n            background-color: white;\n            padding: 2rem;\n            border-radius: 8px;\n            box-shadow: 0 0 10px rgba(0,0,0,0.3);\n            z-index: 1000;\n            width: 300px;\n        }\n        #cart-modal button {\n            width: 100%;\n            padding: 1rem;\n            background-color: var(--color-red);\n            color: white;\n            border: none;\n            cursor: pointer;\n            border-radius: 4px;\n            margin-top: 1rem;\n        }\n    </style>\n</head>\n<body>\n    <header id=\"search-bar\">\n        <input type=\"text\" placeholder=\"搜索商品...\">\n        <button>搜索</button>\n    </header>\n    <nav id=\"nav-bar\">\n        <ul>\n            <li><a href=\"#\">首页</a></li>\n            <li><a href=\"#\">分类</a></li>\n            <li><a href=\"#\">购物车</a></li>\n        </ul>\n    </nav>\n    <section id=\"promotion-banner\">\n        <div>春节特惠限时抢购</div>\n        <span>剩余时间：02:15:30</span>\n    </section>\n    <section id=\"product-gallery\">\n        <img src=\"product-main.jpg\" alt=\"产品主图\">\n        <div>\n            <img src=\"thumb1.jpg\" alt=\"缩略图1\">\n            <img src=\"thumb2.jpg\" alt=\"缩略图2\">\n            <img src=\"thumb3.jpg\" alt=\"缩略图3\">\n        </div>\n    </section>\n    <section id=\"product-info\">\n        <h1>品牌名称 产品名称</h1>\n        <p>产地：中国 规格：500g 精选优质原料</p>\n    </section>\n    <section id=\"pricing-section\">\n        <span>¥99</span>\n        <span>¥199</span>\n        <div>春节抢购倒计时：02:15:30</div>\n    </section>\n    <section id=\"coupon-section\">\n        <ul>\n            <li>满100减20</li>\n            <li>满200减50</li>\n        </ul>\n        <p>优惠券使用后，结算价格自动更新</p>\n    </section>\n    <section id=\"purchase-channel\">\n        <button>加入购物车</button>\n        <button>立即购买</button>\n    </section>\n    <section id=\"comment-section\">\n        <h2>用户评论</h2>\n        <div>\n            <label>筛选：</label>\n            <select>\n                <option>全部</option>\n                <option>好评</option>\n                <option>差评</option>\n            </select>\n        </div>\n        <ul>\n            <li>用户A：非常满意！</li>\n            <li>用户B：质量不错，发货快。</li>\n        </ul>\n    </section>\n    <div id=\"cart-modal\">\n        <h2>购物确认</h2>\n        <p>品牌名称 产品名称 500g</p>\n        <span>最终价格：¥99</span>\n        <button>确认支付</button>\n    </div>\n</body>\n</html>"
+    }
+  ]
+}

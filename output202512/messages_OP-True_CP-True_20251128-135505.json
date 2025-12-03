@@ -1,0 +1,299 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n为以下产品生成一个完整的电商购物网页,使用html+css+js实现（模仿网址：https://item.jd.com/100168004567.html）：\n产品信息\n品牌为 LYF 的新疆葵花籽（30g 小包装），售价为 10 包 16.9 元，网页销售场景。\n\n\n网页要求:\n\n1.4P 营销要素: 网页必须包含以下四个营销要素：\n产品：展示产品外观图、详细规格介绍、核心卖点文案。\n价格：现价、对比价格、促销信息（例如折扣、限时特惠）。\n渠道：明确的购买入口和购物流程，确保用户易于购买。\n促销：显示促销标签（如“限时抢购”），并展示库存数量或限时购买激励。\n\n2.首页展示:\n高质量的产品图片及简要描述。\n突出展示品牌和产品的独特性。\n明显显示价格及购买按钮，价格旁需显示原价和现价。\n产品卖点简介或广告语，吸引用户注意。\n\n3.购买模块:\n用户能够选择购买数量（包括数量加减按钮，或输入框）。\n显示单件价格及总价。\n提供“加入购物车”或“立即购买”按钮。\n用户选择数量后，动态更新总价，并显示预计的配送时间。\n\n4.推荐模块:\n根据用户浏览行为，自动推荐相关或相似产品（例如根据购买过的产品或浏览过的产品推荐）。\n推荐产品展示简单图片、名称、价格、购买链接。\n\n5.互动模块:\n提供评论区功能，允许用户查看其他买家的评分与评论。\n用户可选择给产品评分，评论内容需可过滤（如按照星级或时间排序）。\n鼠标悬停时显示商品的热销评论或买家心得。\n\n6.移动端适配:\n确保网页在手机、平板等设备上的兼容性，保证各个页面元素能流畅自适应屏幕大小。\n响应式设计，产品图片、价格、购买按钮及其他模块在小屏幕设备上的表现应清晰可见。\n\n7.设计风格:\n现代简洁风格，符合春节氛围，突出温馨、团聚感。\n色调温暖（如橙色、红色）并搭配柔和背景色，营造家庭聚会和节日气氛。\n设计元素要突出产品的传统文化特性与创新结合。\n\n8.配色方案:\n主色调使用暖色（如橙色、红色），背景色可以选择较浅的米色、奶白色或灰色。\n按钮、价格、促销标签使用对比鲜明的色彩，吸引用户注意。\n\n9.字体设计:\n使用清晰易读的无衬线字体，确保各类用户都能轻松阅读。\n标题和按钮采用加粗字体，主要内容（如价格、描述）使用较轻的字体风格。\n字体大小根据重要性调整（例如，产品名称和价格较大，描述内容适中）。\n\n10.附加功能:\n购物车模块: 显示购物车中已选产品的名称、数量、总价，并允许用户删除商品或修改数量。\n支付接口: 提供常见支付方式的接口（如支付宝、微信支付），并在结算页面上进行引导。\n配送信息: 在订单页面显示预估送达日期、配送费用以及物流公司信息。\n\n11.动画效果:\n使用简洁流畅的动画效果提升用户体验（例如，按钮悬停时改变颜色、添加到购物车时显示动态效果）。\n页面加载时应有进度条，展示网页正在加载。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求",
+              "识别网页交付物包括首页、购买模块、推荐模块、互动模块、移动端适配、设计风格、配色方案、字体设计、附加功能、动画效果",
+              "将任务拆解并分配给 PM、Architect、Engineer"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "根据客户需求撰写结构化 PRD，包含功能清单、4P 营销要素设计、模块描述、移动端适配规范、设计风格与配色方案、字体方案、动画交互说明",
+              "明确每个模块的输入输出及与其他模块的依赖关系"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "基于 PRD 设计网页信息架构",
+              "确定首页、购买模块、推荐模块、互动模块的组件划分与数据流设计",
+              "制定响应式布局方案及设计系统",
+              "定义 HTML/CSS/JS 的结构规范和代码组织方案"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据架构设计与规格实现完整 HTML/CSS/JS 页面",
+              "编写响应式样式实现移动端适配",
+              "实现购买数量动态更新、购物车与支付接口功能",
+              "实现互动模块的评论过滤与悬停显示功能",
+              "添加动画交互效果（按钮悬停、添加购物车动态、加载进度条）",
+              "确保兼容桌面与移动设备并符合设计风格与配色方案"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF 新疆葵花籽电商购物网页——暖色调春节风格的现代化购物体验",
+        "goals": [
+          "清晰呈现4P营销要素，提升产品转化率",
+          "优化购买流程，实现数量选择与总价动态更新",
+          "通过推荐模块提升关联销售与复购率",
+          "提供互动评论功能，增强用户信任与口碑传播",
+          "实现移动端响应式适配，提升跨设备使用体验",
+          "打造带有春节温馨氛围的现代简洁风格页面",
+          "支持购物车、支付接口与配送信息展示，提高订单完成率"
+        ],
+        "target_users": [
+          "追求高质量休闲零食的年轻消费者，关注产品品牌、卖点与价格优惠",
+          "注重购物便捷性与移动端体验的用户，希望快速完成下单与支付流程",
+          "节日期间购买礼品或零食的家庭用户，关注节日氛围与团聚感",
+          "重视其他用户评论与评分的理性买家，需要透明信息与互动功能"
+        ],
+        "page_sections": [
+          {
+            "id": "home-product-display",
+            "purpose": "展示高质量的LYF新疆葵花籽图片、品牌信息、简短描述与核心卖点，突出春节温馨氛围，并在第一屏显示现价、原价、促销标签及购买按钮"
+          },
+          {
+            "id": "purchase-module",
+            "purpose": "提供数量选择、单价和总价动态计算、『加入购物车』及『立即购买』按钮，并显示预计配送时间以提升购买转化"
+          },
+          {
+            "id": "recommendations",
+            "purpose": "基于用户浏览与购买行为自动推荐相关产品，展示简洁图片、名称、价格及购买入口以引导关联销售"
+          },
+          {
+            "id": "reviews",
+            "purpose": "提供评分与评论查看功能，支持按星级或时间排序并悬停显示精选热销评论，增强用户决策信心"
+          },
+          {
+            "id": "cart",
+            "purpose": "显示购物车中商品的名称、数量、总价，支持删除或修改数量，并为结算提供支付方式选择"
+          },
+          {
+            "id": "checkout",
+            "purpose": "在订单结算页面展示支付接口（支付宝、微信支付等）、配送信息（预估送达日期、运费、物流公司）并引导完成付款"
+          },
+          {
+            "id": "responsive-design",
+            "purpose": "确保页面在桌面、手机和平板上的自适应布局，保证图片、价格、购买按钮和所有功能模块在小屏设备清晰可见"
+          },
+          {
+            "id": "animations",
+            "purpose": "增加按钮悬停颜色变化、添加购物车动画、加载进度条等流畅交互效果，以提升整体用户体验"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#E94F37",
+          "#F6BDC0",
+          "#F4F4F5",
+          "#F3DE2C",
+          "#FF9F1C"
+        ],
+        "components": [
+          {
+            "id": "home-product-display",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "产品品牌与名称：LYF 新疆葵花籽（30g 小包装）"
+              },
+              {
+                "tag": "img",
+                "content_hint": "高质量产品图片，突出春节氛围"
+              },
+              {
+                "tag": "p",
+                "content_hint": "核心卖点与简短描述"
+              },
+              {
+                "tag": "div",
+                "content_hint": "现价、原价与促销标签"
+              },
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              }
+            ]
+          },
+          {
+            "id": "purchase-module",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "购买模块标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "数量选择器（加减按钮或输入框）"
+              },
+              {
+                "tag": "p",
+                "content_hint": "单件价格与动态总价"
+              },
+              {
+                "tag": "p",
+                "content_hint": "预计配送时间"
+              },
+              {
+                "tag": "button",
+                "content_hint": "加入购物车按钮"
+              },
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              }
+            ]
+          },
+          {
+            "id": "recommendations",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "推荐产品标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "推荐产品列表（图片、名称、价格、购买链接）"
+              }
+            ]
+          },
+          {
+            "id": "reviews",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "用户评论区标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "评分与排序筛选控件"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "评论列表（支持悬停显示精选评论）"
+              }
+            ]
+          },
+          {
+            "id": "cart",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "购物车标题"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "已选产品（名称、数量、单价，总价）"
+              },
+              {
+                "tag": "button",
+                "content_hint": "修改数量或删除商品按钮"
+              },
+              {
+                "tag": "button",
+                "content_hint": "去结算按钮"
+              }
+            ]
+          },
+          {
+            "id": "checkout",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "结算页面标题"
+              },
+              {
+                "tag": "div",
+                "content_hint": "支付方式选择（支付宝、微信支付）"
+              },
+              {
+                "tag": "p",
+                "content_hint": "配送信息（预估送达日期、运费、物流公司）"
+              },
+              {
+                "tag": "button",
+                "content_hint": "确认付款按钮"
+              }
+            ]
+          },
+          {
+            "id": "responsive-design",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "响应式布局说明与适配元素占位"
+              }
+            ]
+          },
+          {
+            "id": "animations",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "动画效果说明与占位"
+              },
+              {
+                "tag": "div",
+                "content_hint": "加载进度条"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF 新疆葵花籽（30g 小包装） - 电商购物</title>\n<style>\n    body {\n        font-family: \"Segoe UI\", Arial, sans-serif;\n        background-color: #F4F4F5;\n        margin: 0;\n        padding: 0;\n        color: #333;\n    }\n    header, section, aside {\n        max-width: 1200px;\n        margin: auto;\n        padding: 20px;\n    }\n    h1, h2 {\n        color: #E94F37;\n        font-weight: bold;\n    }\n    img {\n        max-width: 100%;\n        height: auto;\n        border-radius: 8px;\n    }\n    .price-box {\n        display: flex;\n        align-items: baseline;\n        gap: 10px;\n    }\n    .price-current {\n        font-size: 2em;\n        color: #FF9F1C;\n        font-weight: bold;\n    }\n    .price-original {\n        text-decoration: line-through;\n        color: #888;\n    }\n    .promo-tag {\n        background-color: #F3DE2C;\n        color: #E94F37;\n        padding: 4px 8px;\n        border-radius: 4px;\n        font-size: 0.9em;\n        font-weight: bold;\n    }\n    button {\n        background-color: #E94F37;\n        color: white;\n        border: none;\n        padding: 10px 20px;\n        font-size: 1em;\n        border-radius: 4px;\n        cursor: pointer;\n        transition: background-color 0.3s;\n    }\n    button:hover {\n        background-color: #FF9F1C;\n    }\n    .quantity-control {\n        display: flex;\n        align-items: center;\n        gap: 5px;\n    }\n    .quantity-control input {\n        width: 50px;\n        text-align: center;\n        padding: 5px;\n    }\n    .recommend-list, .review-list, .cart-list {\n        display: grid;\n        gap: 20px;\n    }\n    .recommend-item {\n        border: 1px solid #ddd;\n        padding: 10px;\n        border-radius: 6px;\n        text-align: center;\n        background-color: #fff;\n    }\n    .review-item {\n        padding: 10px;\n        border-bottom: 1px solid #ddd;\n        position: relative;\n    }\n    .review-item:hover .highlight {\n        display: block;\n    }\n    .highlight {\n        display: none;\n        position: absolute;\n        top: 100%;\n        left: 0;\n        background: #F6BDC0;\n        padding: 5px;\n        font-size: 0.9em;\n    }\n    .cart {\n        background-color: #fff;\n        border: 1px solid #ccc;\n        padding: 10px;\n        border-radius: 6px;\n    }\n    .checkout {\n        margin-top: 20px;\n    }\n    .payment-options {\n        display: flex;\n        gap: 10px;\n        margin: 10px 0;\n    }\n    .progress-bar {\n        width: 0;\n        height: 4px;\n        background-color: #FF9F1C;\n        transition: width 0.5s;\n    }\n    @media (max-width: 768px) {\n        .price-current {\n            font-size: 1.5em;\n        }\n        button {\n            width: 100%;\n        }\n    }\n</style>\n</head>\n<body>\n<div class=\"progress-bar\" id=\"progressBar\"></div>\n\n<section id=\"home-product-display\">\n    <h1>LYF 新疆葵花籽（30g 小包装）</h1>\n    <img src=\"sunflower_seed.jpg\" alt=\"LYF 新疆葵花籽\">\n    <p>精选新疆优质葵花籽，粒大饱满，香味浓郁，春节聚会必备零食。</p>\n    <div class=\"price-box\">\n        <span class=\"price-current\">¥16.9 / 10包</span>\n        <span class=\"price-original\">¥25.0</span>\n        <span class=\"promo-tag\">限时抢购</span>\n    </div>\n    <button onclick=\"buyNow()\">立即购买</button>\n</section>\n\n<section id=\"purchase-module\">\n    <h2>购买</h2>\n    <div class=\"quantity-control\">\n        <button onclick=\"changeQty(-1)\">-</button>\n        <input type=\"number\" id=\"quantity\" value=\"1\" min=\"1\">\n        <button onclick=\"changeQty(1)\">+</button>\n    </div>\n    <p>单件价格：¥16.9</p>\n    <p id=\"totalPrice\">总价：¥16.9</p>\n    <p id=\"deliveryTime\">预计配送时间：2-3天</p>\n    <button onclick=\"addToCart()\">加入购物车</button>\n    <button onclick=\"buyNow()\">立即购买</button>\n</section>\n\n<section id=\"recommendations\">\n    <h2>推荐商品</h2>\n    <div class=\"recommend-list\">\n        <div class=\"recommend-item\">\n            <img src=\"nuts.jpg\" alt=\"坚果\">\n            <p>节日坚果礼包</p>\n            <p>¥39.9</p>\n            <button>购买</button>\n        </div>\n        <div class=\"recommend-item\">\n            <img src=\"dates.jpg\" alt=\"红枣\">\n            <p>新疆红枣500g</p>\n            <p>¥29.9</p>\n            <button>购买</button>\n        </div>\n    </div>\n</section>\n\n<section id=\"reviews\">\n    <h2>用户评论</h2>\n    <div>\n        <label>排序：</label>\n        <select onchange=\"sortReviews(this.value)\">\n            <option value=\"time\">按时间</option>\n            <option value=\"star\">按星级</option>\n        </select>\n    </div>\n    <ul class=\"review-list\" id=\"reviewList\">\n        <li class=\"review-item\">\n            ★★★★★ 味道香脆，春节必备！\n            <div class=\"highlight\">我家每年都买，大家都喜欢。</div>\n        </li>\n        <li class=\"review-item\">\n            ★★★★☆ 包装精致，送人很有面子。\n            <div class=\"highlight\">朋友收到很开心。</div>\n        </li>\n    </ul>\n</section>\n\n<aside id=\"cart\" class=\"cart\">\n    <h2>购物车</h2>\n    <ul class=\"cart-list\" id=\"cartList\"></ul>\n    <button onclick=\"clearCart()\">清空购物车</button>\n    <button onclick=\"goCheckout()\">去结算</button>\n</aside>\n\n<section id=\"checkout\" class=\"checkout\">\n    <h2>订单结算</h2>\n    <div class=\"payment-options\">\n        <label><input type=\"radio\" name=\"payment\" value=\"alipay\"> 支付宝</label>\n        <label><input type=\"radio\" name=\"payment\" value=\"wechat\"> 微信支付</label>\n    </div>\n    <p>配送信息：预计2-3天送达 · 运费¥5 · 顺丰速运</p>\n    <button onclick=\"confirmPayment()\">确认付款</button>\n</section>\n\n<script>\n    window.onload = function() {\n        let bar = document.getElementById('progressBar');\n        bar.style.width = '100%';\n        setTimeout(() => bar.style.display = 'none', 800);\n    };\n    function changeQty(delta) {\n        let qtyInput = document.getElementById('quantity');\n        let qty = parseInt(qtyInput.value) + delta;\n        if (qty < 1) qty = 1;\n        qtyInput.value = qty;\n        updateTotal();\n    }\n    function updateTotal() {\n        let qty = parseInt(document.getElementById('quantity').value);\n        document.getElementById('totalPrice').textContent = '总价：¥' + (16.9 * qty).toFixed(2);\n    }\n    function addToCart() {\n        let qty = document.getElementById('quantity').value;\n        let cartList = document.getElementById('cartList');\n        let item = document.createElement('li');\n        item.textContent = `LYF 新疆葵花籽 x ${qty}包 - ¥${(16.9 * qty).toFixed(2)}`;\n        cartList.appendChild(item);\n    }\n    function clearCart() {\n        document.getElementById('cartList').innerHTML = '';\n    }\n    function goCheckout() {\n        alert('前往结算页面');\n    }\n    function buyNow() {\n        alert('立即购买流程启动');\n    }\n    function confirmPayment() {\n        alert('支付完成，感谢购买！');\n    }\n    function sortReviews(mode) {\n        alert('评论排序：' + mode);\n    }\n</script>\n</body>\n</html>"
+    }
+  ]
+}

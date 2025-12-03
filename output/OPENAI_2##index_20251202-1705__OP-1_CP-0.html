@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春节红主题电商页面</title>
+    <style>
+        :root {
+            --red: #D32F2F;
+            --gold: #FFD700;
+            --light-gray: #F4F4F5;
+            --white: #FFFFFF;
+            --dark: #333333;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header, main, aside, section, div {
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .main-content {
+            flex: 2;
+            padding: 1rem;
+            background-color: var(--white);
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 1rem;
+            background-color: var(--light-gray);
+        }
+
+        h1, h2, h3 {
+            color: var(--red);
+            margin-top: 0;
+        }
+
+        .hero-section {
+            padding: 2rem;
+            background-color: var(--red);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .price-box {
+            background-color: var(--white);
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid var(--light-gray);
+        }
+
+        .promotion-banner {
+            background-color: var(--gold);
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .coupon-center {
+            background-color: var(--white);
+            padding: 1rem;
+            margin-top: 1rem;
+            border: 1px solid var(--light-gray);
+        }
+
+        .countdown-timer, .stock-display {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--light-gray);
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .purchase-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .purchase-actions button {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .purchase-actions button:nth-child(1) {
+            background-color: var(--light-gray);
+            color: var(--dark);
+        }
+
+        .purchase-actions button:nth-child(2) {
+            background-color: var(--gold);
+            color: var(--dark);
+        }
+
+        .purchase-actions button:nth-child(3) {
+            background-color: var(--red);
+            color: var(--white);
+        }
+
+        .cart-sidebar {
+            background-color: var(--white);
+            padding: 1rem;
+            border: 1px solid var(--light-gray);
+            margin-bottom: 1rem;
+        }
+
+        .reviews-section, .product-details {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+        }
+
+        .reviews-section div {
+            margin-top: 0.5rem;
+            background-color: var(--light-gray);
+            padding: 0.5rem;
+        }
+
+        .festive-animation {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: var(--gold);
+            text-align: center;
+        }
+
+        .festive-animation div {
+            margin-top: 1rem;
+            height: 100px;
+            background-color: var(--red);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .main-content, .sidebar {
+                flex: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-section">
+        <h1>春节红主题主标题</h1>
+        <p>品牌与产品核心卖点描述</p>
+    </header>
+    <div class="container">
+        <main class="main-content">
+            <section class="price-box">
+                <h2>现价与原价显示</h2>
+                <p>折扣说明与券后价提示</p>
+            </section>
+            <section class="promotion-banner">
+                <p>限时优惠信息</p>
+                <p>热销标签与库存提醒文案</p>
+            </section>
+            <aside class="coupon-center">
+                <h3>领券入口标题</h3>
+                <p>可领取的优惠券列表与使用说明</p>
+            </aside>
+            <div class="countdown-timer">
+                <p>倒计时时间显示</p>
+                <p>促销结束提示</p>
+            </div>
+            <div class="stock-display">
+                <p>当前库存数量</p>
+                <p>稀缺提醒文案</p>
+            </div>
+            <section class="purchase-actions">
+                <button>数量增加/减少</button>
+                <button>加入购物车</button>
+                <button>立即购买</button>
+            </section>
+            <section class="reviews-section">
+                <h3>用户评分展示</h3>
+                <div>用户评论文字与图片</div>
+            </section>
+            <section class="product-details">
+                <h3>商品详情标题</h3>
+                <p>折叠展开的详细信息内容</p>
+            </section>
+            <div class="festive-animation">
+                <p>春节红包掉落互动提示</p>
+                <div>红包动效容器</div>
+            </div>
+        </main>
+        <aside class="sidebar">
+            <aside class="cart-sidebar">
+                <h3>购物车标题</h3>
+                <p>商品列表信息</p>
+                <p>结算总价与操作按钮</p>
+            </aside>
+        </aside>
+    </div>
+</body>
+</html>

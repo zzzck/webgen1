@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 春节香瓜子葵花子大促</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F4F4F5;
+    color: #333;
+}
+header {
+    background-color: #E4393C;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+}
+header img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+header .promo-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #FFD700;
+    color: #E4393C;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+section, nav, aside, footer {
+    padding: 10px;
+    background: #fff;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+h1 {
+    color: #E4393C;
+    font-size: 1.2em;
+}
+.price-block p {
+    margin: 5px 0;
+}
+.price-current {
+    font-size: 1.5em;
+    color: #E4393C;
+    font-weight: bold;
+}
+.price-old {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 10px;
+}
+input[type="number"] {
+    width: 60px;
+    padding: 3px;
+}
+button {
+    background-color: #E4393C;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.promo-label {
+    background: #E4393C;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    margin-right: 5px;
+}
+.stock-warning {
+    color: #E4393C;
+    font-weight: bold;
+}
+.countdown {
+    font-size: 1.1em;
+    color: #E4393C;
+}
+.cart-list {
+    list-style: none;
+    padding: 0;
+}
+.cart-list li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cart-actions button {
+    margin-left: 5px;
+    padding: 2px 6px;
+    font-size: 0.8em;
+}
+nav ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+}
+nav li {
+    flex: 1;
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 8px;
+    border: 1px solid #ddd;
+    margin-right: 4px;
+    border-radius: 3px;
+}
+footer {
+    text-align: center;
+    background-color: #E4393C;
+    color: #fff;
+    padding: 10px;
+}
+</style>
+</head>
+<body>
+<header id="hero-banner">
+    <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="LYF香瓜子葵花子">
+    <div class="promo-tag">春节年货大促</div>
+</header>
+
+<section id="product-info">
+    <h1>LYF 香瓜子葵花子</h1>
+    <p>规格：30g 小包装 / 10包组合装</p>
+    <p>粒粒饱满，香脆可口，精选优质原料，春节休闲零食的不二之选。</p>
+</section>
+
+<section id="price-block" class="price-block">
+    <p><span class="price-current">¥16.9</span><span class="price-old">¥29.9</span></p>
+    <p>立享超值优惠，省 ¥13</p>
+    <p>限时优惠中，请尽快下单！</p>
+</section>
+
+<section id="purchase-channel">
+    <input id="quantity" type="number" min="1" value="1">
+    <button id="add-to-cart">加入购物车</button>
+    <p>购买流程：选择数量 → 加入购物车 → 进入购物车 → 结算付款</p>
+</section>
+
+<section id="promotion-elements">
+    <span class="promo-label">热销</span>
+    <span class="promo-label">限时</span>
+    <p class="stock-warning">库存紧张，仅剩 <span id="stock">50</span> 份！</p>
+    <button id="get-coupon">领取优惠券</button>
+</section>
+
+<section id="countdown-timer">
+    <p class="countdown">活动倒计时：<span id="countdown">00:00:00</span></p>
+</section>
+
+<aside id="cart-module">
+    <h2>购物车</h2>
+    <ul class="cart-list" id="cart-list"></ul>
+</aside>
+
+<nav id="category-nav">
+    <ul>
+        <li>坚果类</li>
+        <li>糖果类</li>
+        <li>果干类</li>
+        <li>春节必备</li>
+    </ul>
+</nav>
+
+<footer id="page-footer">
+    <p>© 2024 LYF 零食 — 团圆时刻，香瓜子分享美味</p>
+</footer>
+
+<script>
+let stock = 50;
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+function renderCart() {
+    const cartList = document.getElementById('cart-list');
+    cartList.innerHTML = '';
+    cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = \`
+            <span>\${item.name} x\${item.quantity}</span>
+            <span class="cart-actions">
+                <button onclick="changeQuantity(\${index},1)">+</button>
+                <button onclick="changeQuantity(\${index},-1)">-</button>
+                <button onclick="removeItem(\${index})">删除</button>
+            </span>
+        \`;
+        cartList.appendChild(li);
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+function changeQuantity(index, delta) {
+    cart[index].quantity += delta;
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+    renderCart();
+}
+function removeItem(index) {
+    cart.splice(index, 1);
+    renderCart();
+}
+document.getElementById('add-to-cart').addEventListener('click', () => {
+    const quantity = parseInt(document.getElementById('quantity').value);
+    if (quantity > stock) {
+        alert('库存不足');
+        return;
+    }
+    let existing = cart.find(item => item.name === 'LYF 香瓜子葵花子');
+    if (existing) {
+        existing.quantity += quantity;
+    } else {
+        cart.push({ name: 'LYF 香瓜子葵花子', quantity });
+    }
+    stock -= quantity;
+    document.getElementById('stock').textContent = stock;
+    renderCart();
+});
+document.getElementById('get-coupon').addEventListener('click', () => {
+    alert('优惠券已领取，可在结算时享受额外优惠！');
+});
+function startCountdown(duration) {
+    let timer = duration, hours, minutes, seconds;
+    setInterval(() => {
+        hours = parseInt(timer / 3600, 10);
+        minutes = parseInt((timer % 3600) / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        document.getElementById('countdown').textContent = hours + ":" + minutes + ":" + seconds;
+        if (--timer < 0) {
+            document.getElementById('add-to-cart').disabled = true;
+            document.getElementById('countdown').textContent = "活动已结束";
+        }
+    }, 1000);
+}
+renderCart();
+startCountdown(2 * 60 * 60); // 两小时倒计时
+</script>
+</body>
+</html>

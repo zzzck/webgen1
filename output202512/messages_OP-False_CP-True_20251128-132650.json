@@ -1,0 +1,54 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n为以下产品生成一个完整的电商购物网页,使用html+css+js实现（模仿网址：https://item.jd.com/100168004567.html）：\n品牌为 LTF 的新疆葵花籽（30g 小包装），售价为 10 包 16.9 元，网页销售场景。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n输出功能需包括：\nF1：渲染购买功能模块（按钮、支付入口）：生成简洁、功能完整的购买模块，重点优化响应速度与兼容性，确保快速加载和流畅支付体验\nF2：设置互动功能（评分、评论）：实现简洁的评分和评论模块，优先考虑功能实现的速度与稳定性，确保用户互动流畅。\nF3：联系客服功能模块（按钮）：快速实现一个标准的联系客服按钮，具备良好的可用性，能快速与客服系统对接。\nF4：推荐或组合销售模块：生成简洁的推荐或组合销售模块，重点是快速展示相关产品，提高转化率。\n\n其他设计：\n用户登录/注册功能模块：实现基本的登录和注册功能，快速验证用户身份，提供常规的忘记密码等操作，确保页面流畅。\n用户推荐功能：生成简洁的用户推荐模块，基于简单的历史购买数据或浏览记录，快速展示推荐商品。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求，明确产品信息和网页功能要求",
+              "识别4P营销要素并纳入页面设计范围",
+              "拆分功能模块：F1购买模块，F2评分评论模块，F3联系客服按钮，F4推荐销售模块",
+              "加入额外设计模块：用户登录/注册、用户推荐功能",
+              "制定工程实现任务清单并分配给Engineer"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "使用HTML/CSS/JS实现完整电商网页结构与样式",
+              "渲染产品展示区域（外观图、规格介绍、卖点文案）",
+              "实现价格显示模块（现价、对比价格、优惠信息）",
+              "构建购买功能模块（按钮、支付入口），确保响应速度与兼容性",
+              "实现评分与评论模块，保证功能稳定性",
+              "添加联系客服按钮并接入客服系统接口",
+              "开发推荐或组合销售模块，快速展示相关产品",
+              "实现用户登录/注册功能模块，包括忘记密码功能",
+              "生成基于历史数据的用户推荐模块"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LTF 新疆葵花籽电商页面</title>\n<style>\nbody {font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; color:#333;}\nheader {background:#fff; border-bottom:1px solid #ddd; padding:10px 20px; display:flex; justify-content:space-between; align-items:center;}\nheader .logo {font-size:24px; font-weight:bold; color:#009578;}\nheader nav a {margin-left:15px; text-decoration:none; color:#333;}\n.container {max-width:1200px; margin:20px auto; padding:0 20px;}\n.product {display:flex; background:#fff; padding:20px; border-radius:4px;}\n.product img {width:400px; height:auto; border:1px solid #ddd; border-radius:4px;}\n.product-info {flex:1; margin-left:20px;}\n.product-info h1 {font-size:24px;}\n.price {color:#e53935; font-size:28px; margin-top:10px;}\n.old-price {text-decoration:line-through; color:#999; margin-left:10px;}\n.promo-tag {display:inline-block; background:#ff9800; color:#fff; padding:4px 8px; border-radius:4px; margin-top:10px;}\n.stock {margin-top:10px; color:#009578;}\n.buy-module {margin-top:20px;}\n.buy-module button {background:#e53935; color:#fff; padding:10px 20px; border:none; border-radius:4px; cursor:pointer; font-size:16px;}\n.buy-module button:hover {background:#c62828;}\n.rating-comments {background:#fff; margin-top:20px; padding:20px; border-radius:4px;}\n.rating {margin-bottom:10px;}\n.rating span {font-size:18px; cursor:pointer; color:#ccc;}\n.rating span.active {color:#ff9800;}\n.comments-list {margin-top:10px;}\n.comment {border-top:1px solid #ddd; padding:10px 0;}\n.contact {background:#fff; margin-top:20px; padding:20px; border-radius:4px; text-align:center;}\n.contact button {background:#009578; color:#fff; padding:10px 20px; border:none; border-radius:4px; cursor:pointer; font-size:16px;}\n.contact button:hover {background:#007a5e;}\n.recommendations {background:#fff; margin-top:20px; padding:20px; border-radius:4px;}\n.recommend-grid {display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:20px;}\n.rec-item {border:1px solid #ddd; padding:10px; border-radius:4px; text-align:center; background:#fafafa;}\n.rec-item img {width:100%; height:auto; border-bottom:1px solid #ddd; margin-bottom:10px;}\n.login-register {background:#fff; margin-top:20px; padding:20px; border-radius:4px;}\n.login-register input {width:100%; padding:8px; margin:5px 0;}\n.login-register button {background:#009578; color:#fff; padding:10px; border:none; border-radius:4px; cursor:pointer;}\n.login-register a {display:block; margin-top:8px; text-decoration:none; color:#009578;}\n.user-recommend {background:#fff; margin-top:20px; padding:20px; border-radius:4px;}\n</style>\n</head>\n<body>\n<header>\n<div class=\"logo\">LTF商城</div>\n<nav>\n<a href=\"#\">首页</a>\n<a href=\"#\">分类</a>\n<a href=\"#\">购物车</a>\n<a href=\"#\">我的订单</a>\n</nav>\n</header>\n<div class=\"container\">\n<section class=\"product\">\n<img src=\"https://via.placeholder.com/400x400.png?text=%E6%96%B0%E7%96%86%E8%91%B5%E8%8A%B1%E7%B1%BD\" alt=\"新疆葵花籽\">\n<div class=\"product-info\">\n<h1>LTF 新疆葵花籽（30g 小包装）10包</h1>\n<div class=\"price\">¥16.9<span class=\"old-price\">¥19.9</span></div>\n<div class=\"promo-tag\">限时优惠</div>\n<div class=\"stock\">库存充足</div>\n<p>精选新疆葵花籽，颗粒饱满，香脆可口，小包装方便携带，休闲零食最佳选择。</p>\n<div class=\"buy-module\">\n<button onclick=\"buyNow()\">立即购买</button>\n</div>\n</div>\n</section>\n\n<section class=\"rating-comments\">\n<h2>用户评分和评论</h2>\n<div class=\"rating\">\n<span onclick=\"setRating(1)\">★</span>\n<span onclick=\"setRating(2)\">★</span>\n<span onclick=\"setRating(3)\">★</span>\n<span onclick=\"setRating(4)\">★</span>\n<span onclick=\"setRating(5)\">★</span>\n</div>\n<div class=\"comments-list\" id=\"comments-list\">\n<div class=\"comment\">用户A：味道不错，下次还会买。</div>\n</div>\n<input type=\"text\" id=\"comment-input\" placeholder=\"输入评论...\">\n<button onclick=\"addComment()\">发表评论</button>\n</section>\n\n<section class=\"contact\">\n<h2>联系客服</h2>\n<button onclick=\"contactUs()\">在线客服</button>\n</section>\n\n<section class=\"recommendations\">\n<h2>推荐商品</h2>\n<div class=\"recommend-grid\">\n<div class=\"rec-item\">\n<img src=\"https://via.placeholder.com/200.png?text=%E7%B2%BE%E9%80%89%E7%A2%97%E8%B4%A7\" alt=\"推荐商品1\">\n<p>新疆巴旦木 200g</p>\n<p>¥29.9</p>\n</div>\n<div class=\"rec-item\">\n<img src=\"https://via.placeholder.com/200.png?text=%E7%B2%BE%E9%80%89%E7%A2%97%E8%B4%A7\" alt=\"推荐商品2\">\n<p>南瓜子 250g</p>\n<p>¥25.5</p>\n</div>\n</div>\n</section>\n\n<section class=\"login-register\">\n<h2>用户登录 / 注册</h2>\n<input type=\"text\" id=\"username\" placeholder=\"用户名\">\n<input type=\"password\" id=\"password\" placeholder=\"密码\">\n<button onclick=\"login()\">登录</button>\n<a href=\"#\" onclick=\"forgotPassword()\">忘记密码？</a>\n</section>\n\n<section class=\"user-recommend\">\n<h2>为您推荐</h2>\n<div class=\"recommend-grid\">\n<div class=\"rec-item\">\n<img src=\"https://via.placeholder.com/200.png?text=%E6%A0%91%E5%8F%B6%E7%B1%BD\" alt=\"用户推荐1\">\n<p>树叶瓜子 150g</p>\n<p>¥12.9</p>\n</div>\n<div class=\"rec-item\">\n<img src=\"https://via.placeholder.com/200.png?text=%E6%A0%91%E5%8F%B6%E7%B1%BD\" alt=\"用户推荐2\">\n<p>焦糖瓜子 120g</p>\n<p>¥15.9</p>\n</div>\n</div>\n</section>\n</div>\n\n<script>\nfunction buyNow() {\nalert(\"跳转到支付页面...\");\n}\nfunction setRating(stars) {\ndocument.querySelectorAll('.rating span').forEach((el, idx) => {\nel.classList.toggle('active', idx < stars);\n});\n}\nfunction addComment() {\nlet input = document.getElementById('comment-input');\nif(input.value.trim()) {\nlet div = document.createElement('div');\ndiv.className = 'comment';\ndiv.textContent = '用户：' + input.value.trim();\ndocument.getElementById('comments-list').appendChild(div);\ninput.value = '';\n}\n}\nfunction contactUs() {\nalert(\"正在连接客服...\");\n}\nfunction login() {\nlet user = document.getElementById('username').value;\nlet pass = document.getElementById('password').value;\nif(user && pass) {\nalert(\"登录成功\");\n} else {\nalert(\"请输入用户名和密码\");\n}\n}\nfunction forgotPassword() {\nalert(\"请联系客服重置密码\");\n}\n</script>\n</body>\n</html>"
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\nCreate a responsive and visually appealing TODO list widget for a website. Users should be able to add tasks, mark tasks as complete, and delete tasks. Include features such as task prioritization, due dates, and categorization. \n\nYou may also add any additional creative features to enhance usability and enjoyment, such as notifications or task exporting. \n\nUse only HTML, CSS, and JavaScript — do not use Vue, React, or any third-party libraries. Store all data using localStorage, ensuring tasks persist after page refresh. Keep the overall design simple, user-friendly, and engaging.\n\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "分析客户关于 TODO list widget 的功能需求与限制",
+              "划分交付物（PRD、信息架构、前端实现）",
+              "分配任务给 PM、Architect、Engineer 并监督进度"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "编写结构化 PRD，明确功能需求：添加任务、标记完成、删除任务、任务优先级、到期时间、分类功能",
+              "定义附加创意功能清单（如通知提醒、任务导出、交互动画等）",
+              "制定用户体验要求及简约友好设计原则",
+              "输出验收标准：功能完整性、响应式表现与数据持久化"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "基于 PRD 设计信息架构与组件结构：任务列表区、添加任务表单、过滤与分类控件区域",
+              "定义数据结构（任务对象字段、localStorage 存储格式）",
+              "制定模块化 CSS 与 JS 架构方案，以确保可维护性与响应式表现",
+              "输出规范文档供 Engineer 实现"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据 Architect 提供的方案与 PRD 实现 TODO list widget 的 HTML、CSS、JavaScript 代码",
+              "实现添加、编辑、删除、标记完成等核心逻辑",
+              "实现任务优先级、分类、到期日管理、localStorage 数据持久化",
+              "实现响应式布局与基础动画交互效果",
+              "测试功能完整性与数据持久化效果，确保兼容主流浏览器"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "A responsive and elegant TODO list widget with local persistence and enhanced user engagement features.",
+        "goals": [
+          "使用户可以轻松创建、编辑、删除任务",
+          "支持任务优先级、截止日期与分类标签的管理以提升任务组织效率",
+          "通过 localStorage 提供数据持久化，实现任务列表在刷新后仍可保留",
+          "实现响应式设计，确保在桌面与移动端均具备良好使用体验",
+          "提升用户参与度并增加趣味性（如视觉动画、提醒或导出功能）",
+          "保证纯 HTML、CSS、JavaScript 实现，轻量无依赖"
+        ],
+        "target_users": [
+          "Freelancers：需要快速记录与管理分散小任务，痛点是不同设备间任务易丢失",
+          "学生与职场人士：希望以简单界面管理多类别任务并按优先级安排时间，痛点是工具复杂或易用性差"
+        ],
+        "page_sections": [
+          {
+            "id": "header-bar",
+            "purpose": "展示应用标题与全局操作（如任务导出、清空已完成任务按钮），建立应用识别与操作入口"
+          },
+          {
+            "id": "add-task-form",
+            "purpose": "让用户输入任务名称、设定优先级、截止日期及类别标签，并提交以添加新任务"
+          },
+          {
+            "id": "task-list",
+            "purpose": "核心模块；显示所有任务项，支持标记完成、删除、编辑任务状态"
+          },
+          {
+            "id": "filter-bar",
+            "purpose": "允许用户按优先级、截止日期或分类标签筛选任务列表，提升信息查找效率"
+          },
+          {
+            "id": "notification-area",
+            "purpose": "用于显示任务提醒、系统通知或操作反馈（如任务已保存）"
+          },
+          {
+            "id": "export-panel",
+            "purpose": "允许用户将任务数据导出为 JSON 文件，以便备份或迁移"
+          },
+          {
+            "id": "settings-panel",
+            "purpose": "可选模块；用于选择主题样式或自定义显示偏好，提升个性化体验"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "two-column",
+        "colors": [
+          "#2563EB",
+          "#10B981",
+          "#F4F4F5",
+          "#F59E0B",
+          "#EF4444"
+        ],
+        "components": [
+          {
+            "id": "header-bar",
+            "html": "header",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "应用标题，如 TODO List"
+              },
+              {
+                "tag": "nav",
+                "content_hint": "全局操作按钮区，如导出、清空已完成任务"
+              }
+            ]
+          },
+          {
+            "id": "main-content",
+            "html": "main",
+            "children": [
+              {
+                "tag": "section",
+                "content_hint": "add-task-form 区域，包含输入框与任务属性设置"
+              },
+              {
+                "tag": "section",
+                "content_hint": "filter-bar 区域，用于筛选任务列表"
+              },
+              {
+                "tag": "section",
+                "content_hint": "task-list 区域，展示任务条目及操作按钮"
+              }
+            ]
+          },
+          {
+            "id": "right-panel",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "section",
+                "content_hint": "notification-area 区，用于显示提醒与反馈"
+              },
+              {
+                "tag": "section",
+                "content_hint": "export-panel 区域，包含任务导出功能按钮"
+              },
+              {
+                "tag": "section",
+                "content_hint": "settings-panel 区域，包含主题与偏好设置功能"
+              }
+            ]
+          },
+          {
+            "id": "footer-bar",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "版权或应用说明"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>TODO List Widget</title>\n<style>\n:root {\n  --blue: #2563EB;\n  --green: #10B981;\n  --gray: #F4F4F5;\n  --yellow: #F59E0B;\n  --red: #EF4444;\n}\nbody {\n  margin: 0;\n  font-family: \"Segoe UI\", \"PingFang SC\", sans-serif;\n  background-color: var(--gray);\n  color: #333;\n  display: flex;\n  flex-direction: column;\n  min-height: 100vh;\n}\nheader {\n  background-color: var(--blue);\n  color: #fff;\n  padding: 1rem 2rem;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\nheader h1 {\n  margin: 0;\n  font-size: 1.5rem;\n}\nheader nav button {\n  background: var(--green);\n  border: none;\n  color: white;\n  padding: 0.5rem 1rem;\n  border-radius: 4px;\n  cursor: pointer;\n  margin-left: 0.5rem;\n}\nmain {\n  display: flex;\n  flex: 1;\n  flex-wrap: wrap;\n  padding: 1rem;\n  box-sizing: border-box;\n}\n#main-content {\n  flex: 3;\n  min-width: 300px;\n  margin-right: 1rem;\n}\n#right-panel {\n  flex: 1;\n  min-width: 240px;\n}\n#add-task-form, #filter-bar, #task-list, #notification-area, #export-panel, #settings-panel {\n  background: white;\n  border-radius: 6px;\n  padding: 1rem;\n  margin-bottom: 1rem;\n  box-shadow: 0 1px 3px rgba(0,0,0,0.1);\n}\n#add-task-form input, #add-task-form select, #add-task-form button {\n  margin: 0.25rem 0;\n  padding: 0.5rem;\n}\n#add-task-form button {\n  background: var(--blue);\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.task-item {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0.5rem;\n  border-bottom: 1px solid #ddd;\n}\n.task-item.completed .task-title {\n  text-decoration: line-through;\n  color: #888;\n}\n.task-actions button {\n  border: none;\n  background: none;\n  cursor: pointer;\n  margin-left: 0.25rem;\n}\n.priority-high { color: var(--red); }\n.priority-medium { color: var(--yellow); }\n.priority-low { color: var(--green); }\nfooter {\n  background: #fff;\n  text-align: center;\n  padding: 1rem;\n  font-size: 0.85rem;\n  color: #666;\n  border-top: 1px solid #ddd;\n}\n@media (max-width: 768px) {\n  main {\n    flex-direction: column;\n  }\n  #main-content {\n    margin-right: 0;\n  }\n}\n</style>\n</head>\n<body>\n<header id=\"header-bar\">\n  <h1>我的待办清单</h1>\n  <nav>\n    <button id=\"exportTasks\">导出任务</button>\n    <button id=\"clearCompleted\">清空已完成</button>\n  </nav>\n</header>\n\n<main>\n  <div id=\"main-content\">\n    <section id=\"add-task-form\">\n      <h2>添加任务</h2>\n      <input type=\"text\" id=\"taskTitle\" placeholder=\"任务标题\">\n      <input type=\"date\" id=\"taskDueDate\">\n      <select id=\"taskPriority\">\n        <option value=\"low\">低优先级</option>\n        <option value=\"medium\">中优先级</option>\n        <option value=\"high\">高优先级</option>\n      </select>\n      <input type=\"text\" id=\"taskCategory\" placeholder=\"分类标签\">\n      <button id=\"addTaskBtn\">添加</button>\n    </section>\n\n    <section id=\"filter-bar\">\n      <h2>筛选任务</h2>\n      <select id=\"filterPriority\">\n        <option value=\"all\">所有优先级</option>\n        <option value=\"high\">高优先级</option>\n        <option value=\"medium\">中优先级</option>\n        <option value=\"low\">低优先级</option>\n      </select>\n      <input type=\"text\" id=\"filterCategory\" placeholder=\"按分类筛选\">\n    </section>\n\n    <section id=\"task-list\">\n      <h2>任务列表</h2>\n      <div id=\"tasksContainer\"></div>\n    </section>\n  </div>\n\n  <aside id=\"right-panel\">\n    <section id=\"notification-area\">\n      <h2>通知区域</h2>\n      <div id=\"notifications\"></div>\n    </section>\n\n    <section id=\"export-panel\">\n      <h2>任务导出</h2>\n      <button id=\"downloadTasks\">下载 JSON</button>\n    </section>\n\n    <section id=\"settings-panel\">\n      <h2>设置</h2>\n      <button id=\"toggleTheme\">切换主题</button>\n    </section>\n  </aside>\n</main>\n\n<footer id=\"footer-bar\">\n  <p>© 2024 TODO List Widget</p>\n</footer>\n\n<script>\nlet tasks = JSON.parse(localStorage.getItem('tasksData') || '[]');\nconst tasksContainer = document.getElementById('tasksContainer');\nconst notifications = document.getElementById('notifications');\n\nfunction saveTasks() {\n  localStorage.setItem('tasksData', JSON.stringify(tasks));\n}\nfunction renderTasks() {\n  tasksContainer.innerHTML = '';\n  let filterPriority = document.getElementById('filterPriority').value;\n  let filterCategory = document.getElementById('filterCategory').value.trim().toLowerCase();\n  tasks\n    .filter(t => (filterPriority === 'all' || t.priority === filterPriority))\n    .filter(t => (!filterCategory || t.category.toLowerCase().includes(filterCategory)))\n    .forEach((task, idx) => {\n      const div = document.createElement('div');\n      div.className = 'task-item' + (task.completed ? ' completed' : '');\n      let priorityClass = 'priority-' + task.priority;\n      div.innerHTML = `\n        <div>\n          <input type=\"checkbox\" ${task.completed ? 'checked' : ''} data-index=\"${idx}\">\n          <span class=\"task-title ${priorityClass}\">${task.title}</span>\n          <small>(${task.category || '未分类'}) 截止: ${task.dueDate || '无'}</small>\n        </div>\n        <div class=\"task-actions\">\n          <button data-action=\"delete\" data-index=\"${idx}\">🗑</button>\n        </div>\n      `;\n      tasksContainer.appendChild(div);\n    });\n}\nfunction notify(msg, type = 'info') {\n  const div = document.createElement('div');\n  div.textContent = msg;\n  div.style.padding = '0.5rem';\n  div.style.marginTop = '0.5rem';\n  div.style.borderRadius = '4px';\n  div.style.backgroundColor = type === 'error' ? 'var(--red)' : 'var(--green)';\n  div.style.color = '#fff';\n  notifications.appendChild(div);\n  setTimeout(() => div.remove(), 3000);\n}\ndocument.getElementById('addTaskBtn').addEventListener('click', () => {\n  const title = document.getElementById('taskTitle').value.trim();\n  const due = document.getElementById('taskDueDate').value;\n  const priority = document.getElementById('taskPriority').value;\n  const category = document.getElementById('taskCategory').value.trim();\n  if(!title) { notify('请输入任务标题', 'error'); return; }\n  tasks.push({ title, dueDate: due, priority, category, completed: false });\n  saveTasks();\n  notify('任务已添加');\n  document.getElementById('taskTitle').value = '';\n  renderTasks();\n});\ntasksContainer.addEventListener('change', e => {\n  if(e.target.type === 'checkbox') {\n    const idx = e.target.dataset.index;\n    tasks[idx].completed = e.target.checked;\n    saveTasks();\n    renderTasks();\n  }\n});\ntasksContainer.addEventListener('click', e => {\n  if(e.target.dataset.action === 'delete') {\n    const idx = e.target.dataset.index;\n    tasks.splice(idx, 1);\n    saveTasks();\n    renderTasks();\n    notify('任务已删除');\n  }\n});\ndocument.getElementById('clearCompleted').addEventListener('click', () => {\n  tasks = tasks.filter(t => !t.completed);\n  saveTasks();\n  renderTasks();\n  notify('已清除完成任务');\n});\ndocument.getElementById('filterPriority').addEventListener('change', renderTasks);\ndocument.getElementById('filterCategory').addEventListener('input', renderTasks);\ndocument.getElementById('exportTasks').addEventListener('click', () => {\n  const dataStr = \"data:text/json;charset=utf-8,\" + encodeURIComponent(JSON.stringify(tasks, null, 2));\n  const dlAnchor = document.createElement('a');\n  dlAnchor.setAttribute(\"href\", dataStr);\n  dlAnchor.setAttribute(\"download\", \"tasks.json\");\n  dlAnchor.click();\n});\ndocument.getElementById('downloadTasks').addEventListener('click', () => {\n  document.getElementById('exportTasks').click();\n});\ndocument.getElementById('toggleTheme').addEventListener('click', () => {\n  document.body.classList.toggle('dark');\n});\nrenderTasks();\n</script>\n</body>\n</html>"
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 新疆香瓜子葵花子 春节特惠</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background-color: #F4F4F5;
+        color: #333;
+    }
+    header {
+        background-color: #E4393C;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+    }
+    header img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+    section, aside {
+        background: #fff;
+        margin: 0.5rem;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+        margin: 0.5rem 0;
+    }
+    .price-current {
+        font-size: 1.5rem;
+        color: #E4393C;
+        font-weight: bold;
+    }
+    .price-original {
+        text-decoration: line-through;
+        margin-left: 0.5rem;
+        color: #aaa;
+    }
+    .discount {
+        background-color: #FFD700;
+        color: #E4393C;
+        padding: 0.2rem 0.5rem;
+        margin-left: 0.5rem;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+    .promo-banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 0.9rem;
+    }
+    .countdown {
+        font-weight: bold;
+        color: #FFD700;
+    }
+    .stock {
+        color: #E4393C;
+        font-weight: bold;
+    }
+    .coupon-btn {
+        background-color: #FFD700;
+        color: #E4393C;
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    .purchase-controls button {
+        background-color: #E4393C;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 1rem;
+        margin: 0.3rem;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+    .cart-sidebar {
+        position: fixed;
+        right: -300px;
+        top: 0;
+        height: 100%;
+        width: 300px;
+        background: #fff;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+        overflow-y: auto;
+        transition: right 0.3s ease;
+        z-index: 999;
+        padding: 1rem;
+    }
+    .cart-sidebar.open {
+        right: 0;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .sales-ticker {
+        color: #E4393C;
+        font-weight: bold;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .reviews-section ul {
+        list-style: none;
+        padding: 0;
+    }
+    .reviews-section li {
+        border-bottom: 1px solid #eee;
+        padding: 0.5rem 0;
+    }
+    .recommendations ul {
+        display: flex;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+    }
+    .recommendations li {
+        flex: 1;
+        background-color: #F4F4F5;
+        padding: 0.5rem;
+        border-radius: 4px;
+        text-align: center;
+    }
+    .innovation-luckybag button {
+        background-color: #FFD700;
+        color: #E4393C;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    footer {
+        text-align: center;
+        padding: 1rem;
+        background-color: #E4393C;
+        color: #fff;
+        margin-top: 1rem;
+    }
+</style>
+</head>
+<body>
+<header id="hero-section">
+    <h1>LYF 新疆香瓜子葵花子</h1>
+    <p>春节限定包装·香脆美味·全家共享</p>
+    <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="新疆香瓜子葵花子">
+</header>
+
+<section id="price-box">
+    <h2><span class="price-current">¥16.9</span> <span class="price-original">¥29.9</span> <span class="discount">限时5.6折</span></h2>
+    <p>领券后仅 ¥14.9，立即抢购！</p>
+</section>
+
+<section id="promo-banner" class="promo-banner">
+    <p>限时特惠倒计时：<span class="countdown" id="countdown">00:00:00</span></p>
+    <p class="stock" id="stock">库存：100</p>
+    <p>🔥 热销中！</p>
+</section>
+
+<section id="coupon-center">
+    <h3>领券中心</h3>
+    <p><button class="coupon-btn" id="coupon-btn">领取 ¥2 元优惠券</button></p>
+</section>
+
+<section id="purchase-controls" class="purchase-controls">
+    <button id="decrease-qty">-</button>
+    <span id="quantity">1</span>
+    <button id="increase-qty">+</button>
+    <button id="add-to-cart">加入购物车</button>
+    <button id="buy-now">立即购买</button>
+</section>
+
+<aside id="cart-sidebar" class="cart-sidebar">
+    <h3>购物车</h3>
+    <div id="cart-items"></div>
+    <p>总价：<span id="cart-total">¥0.00</span></p>
+    <button id="checkout">结算</button>
+</aside>
+
+<section id="sales-ticker" class="sales-ticker">
+    <p id="ticker-text">已有 3264 位用户成功购买，快来加入他们的行列！</p>
+</section>
+
+<section id="reviews-section" class="reviews-section">
+    <h3>用户评分：⭐⭐⭐⭐☆</h3>
+    <ul>
+        <li>🌟 很香，很脆，包装喜庆！<img src="https://via.placeholder.com/50" alt="review image"></li>
+        <li>👍 家人都很喜欢，春节必备零食！</li>
+        <li>😊 价格实惠，值得回购！</li>
+    </ul>
+</section>
+
+<section id="product-details">
+    <h3>商品规格</h3>
+    <p id="details-text">规格：30g × 10 包。选用新疆优质葵花籽，采用传统工艺烘烤，香气扑鼻。点击展开查看更多</p>
+    <button id="toggle-details">展开详情</button>
+</section>
+
+<section id="recommendations" class="recommendations">
+    <h3>相似推荐</h3>
+    <ul>
+        <li>四川香辣花生</li>
+        <li>休闲小核桃</li>
+        <li>蜜汁瓜子</li>
+        <li>节日坚果礼盒</li>
+    </ul>
+</section>
+
+<section id="innovation-luckybag" class="innovation-luckybag">
+    <h3>春节福袋抽奖</h3>
+    <p>参与抽奖，赢取神秘零食礼包！</p>
+    <button id="luckybag-btn">立即抽奖</button>
+    <p id="luckybag-result"></p>
+</section>
+
+<footer id="footer-section">
+    <p>© 2024 LYF 品牌 | 客服热线：400-123-4567</p>
+</footer>
+
+<script>
+    // 倒计时
+    function startCountdown(duration, display) {
+        let timer = duration, hours, minutes, seconds;
+        setInterval(function () {
+            hours = parseInt(timer / 3600, 10);
+            minutes = parseInt((timer % 3600) / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            display.textContent = hours + ":" + minutes + ":" + seconds;
+            if (--timer < 0) {
+                timer = 0;
+            }
+        }, 1000);
+    }
+    startCountdown(7200, document.getElementById('countdown')); // 2小时
+
+    // 库存减少逻辑
+    let stockCount = 100;
+    document.getElementById('buy-now').addEventListener('click', function() {
+        if(stockCount > 0){
+            stockCount--;
+            document.getElementById('stock').textContent = '库存：' + stockCount;
+            alert('购买成功！');
+        }
+    });
+
+    // 优惠券逻辑
+    let couponApplied = false;
+    document.getElementById('coupon-btn').addEventListener('click', function() {
+        couponApplied = true;
+        alert('优惠券已领取，结算自动减免！');
+    });
+
+    // 数量增减
+    let quantity = 1;
+    document.getElementById('increase-qty').addEventListener('click', function() {
+        quantity++;
+        document.getElementById('quantity').textContent = quantity;
+    });
+    document.getElementById('decrease-qty').addEventListener('click', function() {
+        if(quantity > 1) {
+            quantity--;
+            document.getElementById('quantity').textContent = quantity;
+        }
+    });
+
+    // 加入购物车
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    function updateCartSidebar(){
+        const cartItemsDiv = document.getElementById('cart-items');
+        cartItemsDiv.innerHTML = '';
+        let total = 0;
+        cart.forEach((item, index) => {
+            let div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `${item.name} x ${item.qty} <span>¥${(item.price * item.qty).toFixed(2)}</span> <button data-index="${index}">删除</button>`;
+            cartItemsDiv.appendChild(div);
+            total += item.price * item.qty;
+        });
+        if(couponApplied) total -= 2;
+        document.getElementById('cart-total').textContent = '¥' + total.toFixed(2);
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    document.getElementById('add-to-cart').addEventListener('click', function(){
+        cart.push({name: '新疆香瓜子', qty: quantity, price: 16.9});
+        updateCartSidebar();
+        document.getElementById('cart-sidebar').classList.add('open');
+    });
+    document.getElementById('cart-items').addEventListener('click', function(e){
+        if(e.target.tagName === 'BUTTON') {
+            let idx = e.target.dataset.index;
+            cart.splice(idx, 1);
+            updateCartSidebar();
+        }
+    });
+
+    // 详情展开/折叠
+    let detailsExpanded = false;
+    document.getElementById('toggle-details').addEventListener('click', function(){
+        if(!detailsExpanded){
+            document.getElementById('details-text').textContent += " 配料：葵花籽、食用盐。保存方法：阴凉干燥处。";
+            this.textContent = '收起详情';
+        } else {
+            document.getElementById('details-text').textContent = "规格：30g × 10 包。选用新疆优质葵花籽，采用传统工艺烘烤，香气扑鼻。点击展开查看更多";
+            this.textContent = '展开详情';
+        }
+        detailsExpanded = !detailsExpanded;
+    });
+
+    // 福袋抽奖
+    document.getElementById('luckybag-btn').addEventListener('click', function(){
+        const prizes = ['免单券', '¥5 优惠券', '额外一包瓜子', '谢谢参与'];
+        const prize = prizes[Math.floor(Math.random() * prizes.length)];
+        document.getElementById('luckybag-result').textContent = '您抽中了：' + prize;
+    });
+</script>
+</body>
+</html>

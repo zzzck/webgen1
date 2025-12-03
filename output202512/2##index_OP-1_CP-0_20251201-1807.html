@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春节促销 - LYF香瓜子葵花子组合装</title>
+    <style>
+        :root {
+            --primary-color: #D0021B;
+            --secondary-color: #F5A623;
+            --light-color: #F4F4F5;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--light-color);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header, section, footer, nav {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .hero-section {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+
+        .product-specs {
+            background-color: #fff;
+            margin-top: 20px;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .price-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .price-box h3 {
+            font-size: 1.8rem;
+        }
+
+        .promotion-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .promotion-tags span {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .purchase-channel {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .purchase-channel button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .purchase-channel input {
+            width: 60px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .cart-management {
+            background-color: #fff;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .category-nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category-nav li {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .coupon-area {
+            background-color: #fff5e6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .reviews {
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .price-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .purchase-channel {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .category-nav ul {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section" id="hero-section">
+        <h1>春节促销：LYF香瓜子葵花子组合装</h1>
+        <p>欢庆佳节，限时优惠，香瓜子与葵花子美味齐享！</p>
+    </section>
+
+    <section class="product-specs" id="product-specs">
+        <h2>产品规格</h2>
+        <p>精选原料、地道口味，香瓜子醇香回甘，葵花子香脆可口，满足您的节日零食需求。</p>
+    </section>
+
+    <section class="price-box" id="price-box">
+        <h3>现价：¥29.9 原价：¥39.9</h3>
+        <p>立省¥10，限时优惠进行中</p>
+    </section>
+
+    <div class="promotion-tags" id="promotion-tags">
+        <span>倒计时：02:15:23</span>
+        <span>库存紧张</span>
+        <span>热销爆款</span>
+    </div>
+
+    <section class="purchase-channel" id="purchase-channel">
+        <button>立即购买</button>
+        <input type="number" value="1" min="1">
+    </section>
+
+    <section class="cart-management" id="cart-management">
+        <h2>购物车</h2>
+        <p>查看已选商品，调整数量，轻松结算。</p>
+    </section>
+
+    <nav class="category-nav" id="category-nav">
+        <ul>
+            <li>坚果炒货</li>
+            <li>糖果巧克力</li>
+            <li>饼干糕点</li>
+            <li>饮料冲调</li>
+            <li>休闲零食</li>
+        </ul>
+    </nav>
+
+    <section class="coupon-area" id="coupon-area">
+        <h3>优惠券</h3>
+        <p>点击领取，享受更多节日专属优惠。</p>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <h3>用户好评</h3>
+        <p>众多买家晒图好评，味道赞不绝口。</p>
+    </section>
+
+    <footer id="footer">
+        <p>LYF食品官方旗舰店</p>
+        <p>售后服务：400-123-4567 | 邮箱：service@lyf.com</p>
+    </footer>
+
+</body>
+</html>

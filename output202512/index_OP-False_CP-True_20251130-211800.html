@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive TODO List</title>
+  <style>
+    :root {
+      --primary: #3a86ff;
+      --accent: #8338ec;
+      --bg-light: #f8f9fa;
+      --text-dark: #212529;
+      --success: #2ec4b6;
+      --danger: #e63946;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-light);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .todo-container {
+      background: #fff;
+      margin: 2rem;
+      padding: 1.5rem;
+      max-width: 500px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: var(--primary);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    input, select, button {
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: var(--accent);
+    }
+    .task-list {
+      list-style: none;
+      padding: 0;
+    }
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f1f1f1;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+    }
+    .task-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .task-item.completed .task-title {
+      text-decoration: line-through;
+      color: #999;
+    }
+    .priority-high {color: var(--danger);}
+    .priority-medium {color: var(--accent);}
+    .priority-low {color: var(--success);}
+    @media (max-width: 600px) {
+      .todo-container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+    }
+    .actions button {
+      margin-left: 0.25rem;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.5rem;
+    }
+    .export-btn {
+      margin-top: 1rem;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="todo-container">
+    <h1>My TODO List</h1>
+    <form id="taskForm">
+      <input type="text" id="taskTitle" placeholder="Task name" required>
+      <select id="taskPriority">
+        <option value="low">Low Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="high">High Priority</option>
+      </select>
+      <input type="date" id="taskDueDate">
+      <input type="text" id="taskCategory" placeholder="Category (e.g. Work)">
+      <button type="submit">Add Task</button>
+    </form>
+    <ul class="task-list" id="taskList"></ul>
+    <button class="export-btn" id="exportBtn">Export Tasks</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('taskForm');
+    const taskList = document.getElementById('taskList');
+    const exportBtn = document.getElementById('exportBtn');
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    function saveTasks() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    function renderTasks() {
+      taskList.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.className = 'task-item' + (task.completed ? ' completed' : '');
+        const leftDiv = document.createElement('div');
+        leftDiv.className = 'task-left';
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = task.completed;
+        checkbox.addEventListener('change', () => toggleComplete(index));
+        leftDiv.appendChild(checkbox);
+        const title = document.createElement('span');
+        title.textContent = `${task.title} [${task.category}] (${task.dueDate || 'No due date'})`;
+        title.classList.add('task-title', 'priority-' + task.priority);
+        leftDiv.appendChild(title);
+        const actions = document.createElement('div');
+        actions.className = 'actions';
+        const delBtn = document.createElement('button');
+        delBtn.textContent = '🗑️';
+        delBtn.addEventListener('click', () => deleteTask(index));
+        actions.appendChild(delBtn);
+        li.appendChild(leftDiv);
+        li.appendChild(actions);
+        taskList.appendChild(li);
+      });
+    }
+
+    function addTask(e) {
+      e.preventDefault();
+      const title = document.getElementById('taskTitle').value.trim();
+      const priority = document.getElementById('taskPriority').value;
+      const dueDate = document.getElementById('taskDueDate').value;
+      const category = document.getElementById('taskCategory').value.trim() || 'General';
+      if (!title) return;
+      const task = { title, priority, dueDate, category, completed: false };
+      tasks.push(task);
+      saveTasks();
+      renderTasks();
+      form.reset();
+    }
+
+    function toggleComplete(index) {
+      tasks[index].completed = !tasks[index].completed;
+      saveTasks();
+      renderTasks();
+    }
+
+    function deleteTask(index) {
+      if (confirm('Delete this task?')) {
+        tasks.splice(index, 1);
+        saveTasks();
+        renderTasks();
+      }
+    }
+
+    function exportTasks() {
+      const csv = ['Title,Priority,Due Date,Category,Completed'];
+      tasks.forEach(t => {
+        csv.push(`"${t.title}","${t.priority}","${t.dueDate}","${t.category}","${t.completed}"`);
+      });
+      const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'tasks_export.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    exportBtn.addEventListener('click', exportTasks);
+    form.addEventListener('submit', addTask);
+    renderTasks();
+
+    // Simple notification for due tasks
+    function checkDueTasks() {
+      const today = new Date().toISOString().split('T')[0];
+      const dueToday = tasks.filter(t => t.dueDate === today && !t.completed);
+      if (dueToday.length > 0) {
+        alert(`You have ${dueToday.length} task(s) due today!`);
+      }
+    }
+
+    window.addEventListener('load', checkDueTasks);
+  </script>
+</body>
+</html>

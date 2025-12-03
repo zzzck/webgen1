@@ -1,0 +1,316 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**电商产品详情页。该网页必须是一个完整的、可交互的原型。\n\n# Product Context\n我们需要为一款春节热销零食制作落地页，模仿京东（JD.com）的移动端/PC端响应式布局风格。\n* **品牌**：LYF\n* **商品名称**：新疆原产葵花籽（30g 独立小包装）\n* **价格策略**：10包组合装，售价 16.9 元。\n\n# Functional Requirements (功能需求)\n1.  **布局结构**：\n    * **顶部**：简单的导航栏。\n    * **左侧/顶部（视宽度而定）**：产品主图展示区。包含 1 张大图和 2 张缩略图。点击缩略图需切换大图。\n     1 张大图链接“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n    缩略图1“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n    缩略图2“data:image/jpeg;base64,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”\n    * **右侧/底部（视宽度而定）**：产品信息区。包含标题、红色价格高亮、促销标签（“春节特惠”、“包邮”）。\n    * **交互区**：数量选择器（支持 +/-，且数量不能小于 1），以及“立即购买”和“加入购物车”两个按钮。\n    * **详情区**：页面底部需包含 Tab 切换功能（“商品介绍” vs “售后保障”），点击 Tab 切换显示不同文本内容。\n\n2.  **核心逻辑 (JavaScript)**：\n    * **数量联动**：默认数量为 1。点击 +/- 按钮更新数量，并实时更新“总价”（Total Price = 16.9 * 数量）。结果保留 1 位小数。\n    * **购物车反馈**：点击“加入购物车”后，弹出轻提示（Toast Notification）：\"已成功加入购物车：LYF葵花籽 x [数量]\"，2秒后自动消失。\n    * **图片切换**：鼠标悬停或点击缩略图时，主图需平滑切换。\n\n3.  **UI/Design Requirements (设计规范)**：\n    * **配色**：主色调使用京东红（#f23030 或类似），背景色为浅灰（#f6f6f6），内容区为白色。\n    * **图片处理**：调用已经给出的图片链接，\n    * **响应式**：页面需适配手机端和 PC 端（使用 Flexbox 或 Grid 布局）。\n4.营销倒计时系统 (Complex Logic)\n在价格旁显示“春节限时抢购倒计时”。\n逻辑要求：倒计时设定为 2 小时 0 分 0 秒。必须实时跳动（每秒 -1）。\n边界状态：当倒计时归零时，按钮变为灰色“活动已结束”，且不可点击。\n\n5. 优惠券与价格计算 (State Management)\n界面中间需展示两张优惠券：\nA券：满 10 减 2 元\nB券：满 20 减 5 元\n\n6.交互逻辑：\n用户点击优惠券可“领取”（变为高亮状态，只能选一张）。\n数量选择器调整商品数量时，**总价（Total Price）**必须根据（单价 * 数量 - 优惠券金额）实时重新计算。\n如果总价不满足优惠券门槛，优惠券自动失效（取消高亮）。\n\n7. 评论区筛选器 (DOM Manipulation)\n展示评论列表。\n顶部有 Filter 按钮：“全部”、“好评”、“中评”。\n交互逻辑：点击不同按钮，下方评论列表必须根据 productData.reviews 数组进行实时过滤并重新渲染 DOM。\n\n8. 模态框购物车 (UI Interaction)\n点击底部的“立即购买”按钮，不跳转，而是从底部弹出一个半透明遮罩层 + 确认面板（Slide-up Modal）。\n面板内显示：已选商品信息、最终计算后的价格。\n包含“确认支付”按钮，点击后 alert 输出最终订单信息对象。\n\n# Technical Constraints (技术约束)\n* 所有代码（HTML, CSS, JS）必须包含在一个 HTML 文件中，CSS 放 `<style>`，JS 放 `<script>`。\n* 代码结构清晰，有注释，不依赖 React/Vue 等外部框架，使用原生 Vanilla JS。\n* CSS 需处理好按钮的 hover 状态和阴影细节，体现电商的高级感。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求，确认交付是一个包含 HTML/CSS/JS 的单文件电商产品详情页原型",
+              "划分可交付物为：PRD 文档、信息架构与组件设计、最终页面实现"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "整理客户提供的需求为结构化 PRD，包括功能需求、UI 规范、技术约束",
+              "明确所有交互逻辑（数量联动、倒计时、优惠券、评论筛选、模态框）",
+              "标注所有图片链接和促销标签规则"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "根据 PRD 设计页面信息架构，划分布局区域（导航栏、图片区、产品信息区、交互区、详情 Tab、评论区、模态框）",
+              "设计组件方案及数据结构（数量选择器、倒计时组件、优惠券组件、评论过滤组件、Toast、Modal）",
+              "规划响应式布局方案及样式组织方式"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据架构设计实现单 HTML 文件，使用 <style> 放置 CSS、<script> 放置 JS",
+              "实现布局与样式，遵守京东红与浅灰配色、Flex/Grid 响应式布局",
+              "实现所有交互逻辑：数量选择器联动总价、优惠券选择与价格计算、倒计时控制按钮状态、评论筛选渲染、缩略图切换主图、加入购物车 toast 提示、立即购买弹出模态框",
+              "确保代码结构清晰、注释完整、按钮 hover 状态与阴影效果优雅"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF新疆原产葵花籽春节特惠响应式电商详情页原型",
+        "goals": [
+          "提供符合京东风格的春节热销零食单品落地页，提升转化率",
+          "实现多终端响应式布局，保证移动端和PC端浏览体验一致",
+          "支持核心购物交互：图片切换、数量选择、优惠券应用、总价实时计算",
+          "通过倒计时促销和限时活动提升用户购买紧迫感",
+          "提供评论筛选和展示功能，增强用户信任",
+          "实现购物车添加反馈及立即购买的模态确认流程",
+          "确保页面结构清晰、交互顺畅、代码规范易维护"
+        ],
+        "target_users": [
+          "春节期间购买零食的家庭主妇或家人：需要快速选购、清晰促销信息、操作简单",
+          "年轻消费者：偏好移动端浏览、希望有互动性和倒计时活动激发购买欲"
+        ],
+        "page_sections": [
+          {
+            "id": "nav-bar",
+            "purpose": "页面顶部导航栏，用于展示品牌LOGO或简易导航，保持品牌识别并引导用户浏览"
+          },
+          {
+            "id": "product-gallery",
+            "purpose": "主图与缩略图切换展示商品外观，支持点击或悬停平滑切换主图"
+          },
+          {
+            "id": "product-info",
+            "purpose": "显示商品标题、价格（京东红高亮）、促销标签“春节特惠”“包邮”，吸引用户关注价格和优惠"
+          },
+          {
+            "id": "price-countdown",
+            "purpose": "在价格旁显示春节限时抢购倒计时，每秒递减，倒计时结束时禁用购买按钮"
+          },
+          {
+            "id": "coupon-section",
+            "purpose": "展示两张优惠券，用户可点击领取一张，优惠券状态与总价逻辑联动"
+          },
+          {
+            "id": "quantity-selector",
+            "purpose": "用户调整购买数量（≥1），实时计算总价并与优惠券联动"
+          },
+          {
+            "id": "action-buttons",
+            "purpose": "包含“立即购买”“加入购物车”按钮，调用模态框或Toast提示实现交互反馈"
+          },
+          {
+            "id": "product-tabs",
+            "purpose": "底部Tab切换“商品介绍”和“售后保障”，用户点击后切换显示不同文本内容"
+          },
+          {
+            "id": "review-filter",
+            "purpose": "包含评论筛选按钮“全部”“好评”“中评”，点击后根据内置reviews数据重新渲染列表"
+          },
+          {
+            "id": "toast-notification",
+            "purpose": "加入购物车后弹出轻提示，显示商品名称和数量，2秒自动消失"
+          },
+          {
+            "id": "purchase-modal",
+            "purpose": "立即购买时从底部滑出模态确认面板，显示选中商品信息及最终价格，确认支付后alert订单对象"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "two-column",
+        "colors": [
+          "#f23030",
+          "#f6f6f6",
+          "#ffffff",
+          "#333333",
+          "#ff9900"
+        ],
+        "components": [
+          {
+            "id": "nav-bar",
+            "html": "header",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "品牌LOGO或简易导航"
+              },
+              {
+                "tag": "nav",
+                "content_hint": "导航链接如首页/分类"
+              }
+            ]
+          },
+          {
+            "id": "product-gallery",
+            "html": "section",
+            "children": [
+              {
+                "tag": "img",
+                "content_hint": "产品主图"
+              },
+              {
+                "tag": "div",
+                "content_hint": "缩略图列表用于切换主图"
+              }
+            ]
+          },
+          {
+            "id": "product-info",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "商品标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "价格，京东红高亮"
+              },
+              {
+                "tag": "div",
+                "content_hint": "促销标签，例如“春节特惠”“包邮”"
+              }
+            ]
+          },
+          {
+            "id": "price-countdown",
+            "html": "div",
+            "children": [
+              {
+                "tag": "span",
+                "content_hint": "倒计时显示：小时:分钟:秒"
+              },
+              {
+                "tag": "p",
+                "content_hint": "活动状态提示（进行中/已结束）"
+              }
+            ]
+          },
+          {
+            "id": "coupon-section",
+            "html": "div",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "优惠券A 满10减2元"
+              },
+              {
+                "tag": "button",
+                "content_hint": "优惠券B 满20减5元"
+              }
+            ]
+          },
+          {
+            "id": "quantity-selector",
+            "html": "div",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "减少数量按钮"
+              },
+              {
+                "tag": "span",
+                "content_hint": "当前购买数量"
+              },
+              {
+                "tag": "button",
+                "content_hint": "增加数量按钮"
+              },
+              {
+                "tag": "p",
+                "content_hint": "总价动态显示"
+              }
+            ]
+          },
+          {
+            "id": "action-buttons",
+            "html": "div",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              },
+              {
+                "tag": "button",
+                "content_hint": "加入购物车按钮"
+              }
+            ]
+          },
+          {
+            "id": "product-tabs",
+            "html": "section",
+            "children": [
+              {
+                "tag": "ul",
+                "content_hint": "Tab切换按钮（商品介绍/售后保障）"
+              },
+              {
+                "tag": "div",
+                "content_hint": "Tab内容区"
+              }
+            ]
+          },
+          {
+            "id": "review-filter",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "评论筛选按钮组（全部/好评/中评）"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "评论列表动态渲染"
+              }
+            ]
+          },
+          {
+            "id": "toast-notification",
+            "html": "div",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "提示文案：已成功加入购物车：LYF葵花籽 x 数量"
+              }
+            ]
+          },
+          {
+            "id": "purchase-modal",
+            "html": "div",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "已选商品信息标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "最终计算后的价格"
+              },
+              {
+                "tag": "button",
+                "content_hint": "确认支付按钮"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF新疆原产葵花籽详情页</title>\n<style>\nbody {\n    font-family: Arial, sans-serif;\n    background-color: #f6f6f6;\n    margin: 0;\n    padding: 0;\n}\nheader {\n    background-color: #f23030;\n    color: #fff;\n    padding: 10px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\nheader h1 {\n    font-size: 18px;\n    margin: 0;\n}\nheader nav a {\n    color: #fff;\n    margin-left: 15px;\n    text-decoration: none;\n    font-size: 14px;\n}\nmain {\n    display: flex;\n    flex-wrap: wrap;\n    background-color: #fff;\n    padding: 20px;\n    margin: 10px;\n    box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n}\n.product-gallery {\n    flex: 1 1 300px;\n    text-align: center;\n}\n.product-gallery img {\n    width: 100%;\n    max-width: 400px;\n    transition: opacity 0.3s;\n}\n.thumbnails {\n    display: flex;\n    justify-content: center;\n    margin-top: 10px;\n}\n.thumbnails img {\n    width: 60px;\n    height: 60px;\n    object-fit: cover;\n    margin: 0 5px;\n    cursor: pointer;\n    border: 2px solid transparent;\n}\n.thumbnails img:hover {\n    border-color: #f23030;\n}\n.product-info {\n    flex: 1 1 300px;\n    padding: 0 20px;\n}\n.product-info h2 {\n    font-size: 20px;\n    margin: 0;\n}\n.price {\n    color: #f23030;\n    font-size: 24px;\n    margin: 10px 0;\n}\n.tags span {\n    background-color: #ff9900;\n    color: #fff;\n    padding: 3px 8px;\n    margin-right: 5px;\n    border-radius: 3px;\n    font-size: 12px;\n}\n.countdown {\n    font-size: 14px;\n    margin: 10px 0;\n    color: #f23030;\n}\n.coupon-section button {\n    padding: 8px;\n    margin-right: 5px;\n    border: 1px solid #f23030;\n    background-color: #fff;\n    cursor: pointer;\n    border-radius: 3px;\n}\n.coupon-section button.active {\n    background-color: #f23030;\n    color: #fff;\n}\n.quantity-selector {\n    margin: 10px 0;\n    display: flex;\n    align-items: center;\n}\n.quantity-selector button {\n    width: 30px;\n    height: 30px;\n}\n.quantity-selector span {\n    margin: 0 10px;\n}\n.action-buttons button {\n    padding: 10px 15px;\n    margin-right: 10px;\n    border: none;\n    border-radius: 3px;\n    cursor: pointer;\n    color: #fff;\n}\n.buy-now {\n    background-color: #f23030;\n}\n.add-cart {\n    background-color: #ff9900;\n}\n.action-buttons button:disabled {\n    background-color: grey;\n    cursor: not-allowed;\n}\n.product-tabs ul {\n    display: flex;\n    list-style: none;\n    padding: 0;\n    margin: 20px 0 0;\n    border-bottom: 1px solid #ddd;\n}\n.product-tabs li {\n    padding: 10px;\n    cursor: pointer;\n}\n.product-tabs li.active {\n    border-bottom: 2px solid #f23030;\n    color: #f23030;\n}\n.tab-content {\n    padding: 10px;\n    font-size: 14px;\n}\n.review-filter {\n    padding: 20px;\n    background-color: #fff;\n    margin: 10px;\n    box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n}\n.review-filter .filter-buttons button {\n    margin-right: 8px;\n    padding: 5px 10px;\n}\n.toast {\n    position: fixed;\n    bottom: 20px;\n    left: 50%;\n    transform: translateX(-50%);\n    background-color: rgba(0,0,0,0.75);\n    color: #fff;\n    padding: 10px 20px;\n    border-radius: 4px;\n    display: none;\n}\n.modal-overlay {\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    top: 0;\n    background: rgba(0,0,0,0.5);\n    display: none;\n}\n.modal {\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: #fff;\n    padding: 20px;\n    border-radius: 10px 10px 0 0;\n}\n@media(max-width:768px) {\n    main {\n        flex-direction: column;\n    }\n}\n</style>\n</head>\n<body>\n<header>\n    <h1>LYF零食店</h1>\n    <nav><a href=\"#\">首页</a><a href=\"#\">分类</a></nav>\n</header>\n<main>\n    <section class=\"product-gallery\">\n        <img id=\"mainImg\" src=\"https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg\" alt=\"葵花籽\">\n        <div class=\"thumbnails\">\n            <img src=\"https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b\" data-src=\"https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b\">\n            <img src=\"data:image/jpeg;base64,/9j/4AAQSk...\" data-src=\"data:image/jpeg;base64,/9j/4AAQSk...\">\n        </div>\n    </section>\n    <section class=\"product-info\">\n        <h2>新疆原产葵花籽（30g 独立小包装）</h2>\n        <p class=\"price\">￥<span id=\"unitPrice\">16.9</span></p>\n        <div class=\"tags\"><span>春节特惠</span><span>包邮</span></div>\n        <div class=\"countdown\">限时抢购倒计时: <span id=\"countdownTimer\">02:00:00</span></div>\n        <div class=\"coupon-section\">\n            <button id=\"couponA\" data-threshold=\"10\" data-discount=\"2\">满10减2元</button>\n            <button id=\"couponB\" data-threshold=\"20\" data-discount=\"5\">满20减5元</button>\n        </div>\n        <div class=\"quantity-selector\">\n            <button id=\"qtyMinus\">-</button>\n            <span id=\"qty\">1</span>\n            <button id=\"qtyPlus\">+</button>\n            <p>总价: ￥<span id=\"totalPrice\">16.9</span></p>\n        </div>\n        <div class=\"action-buttons\">\n            <button class=\"buy-now\" id=\"buyNowBtn\">立即购买</button>\n            <button class=\"add-cart\" id=\"addCartBtn\">加入购物车</button>\n        </div>\n    </section>\n</main>\n<section class=\"product-tabs\">\n    <ul>\n        <li class=\"active\" data-tab=\"desc\">商品介绍</li>\n        <li data-tab=\"service\">售后保障</li>\n    </ul>\n    <div class=\"tab-content\" id=\"tabContent\">优质新疆葵花籽，精心挑选，独立小包装，干净卫生。</div>\n</section>\n<section class=\"review-filter\">\n    <div class=\"filter-buttons\">\n        <button data-filter=\"all\">全部</button>\n        <button data-filter=\"good\">好评</button>\n        <button data-filter=\"medium\">中评</button>\n    </div>\n    <ul id=\"reviewList\"></ul>\n</section>\n<div class=\"toast\" id=\"toast\"></div>\n<div class=\"modal-overlay\" id=\"modalOverlay\">\n    <div class=\"modal\" id=\"modal\">\n        <h3>确认订单</h3>\n        <p id=\"modalInfo\"></p>\n        <button id=\"confirmPay\">确认支付</button>\n    </div>\n</div>\n<script>\nconst unitPrice = 16.9;\nlet qty = 1;\nlet selectedCoupon = null;\nlet countdown = 2 * 60 * 60;\nconst qtyElem = document.getElementById('qty');\nconst totalPriceElem = document.getElementById('totalPrice');\nconst couponA = document.getElementById('couponA');\nconst couponB = document.getElementById('couponB');\nfunction updateTotalPrice(){\n    let discount = 0;\n    if(selectedCoupon){\n        const threshold = parseFloat(selectedCoupon.dataset.threshold);\n        const d = parseFloat(selectedCoupon.dataset.discount);\n        if(qty*unitPrice >= threshold){\n            discount = d;\n        } else {\n            selectedCoupon.classList.remove('active');\n            selectedCoupon = null;\n        }\n    }\n    const total = (unitPrice * qty - discount).toFixed(1);\n    totalPriceElem.textContent = total;\n}\ndocument.getElementById('qtyMinus').addEventListener('click', ()=>{\n    if(qty>1){ qty--; qtyElem.textContent = qty; updateTotalPrice();}\n});\ndocument.getElementById('qtyPlus').addEventListener('click', ()=>{\n    qty++; qtyElem.textContent = qty; updateTotalPrice();\n});\n[couponA, couponB].forEach(c=>{\n    c.addEventListener('click', ()=>{\n        if(selectedCoupon === c){\n            c.classList.remove('active');\n            selectedCoupon = null;\n        } else {\n            couponA.classList.remove('active'); couponB.classList.remove('active');\n            c.classList.add('active');\n            selectedCoupon = c;\n        }\n        updateTotalPrice();\n    });\n});\nfunction updateCountdown(){\n    if(countdown<=0){\n        document.getElementById('countdownTimer').textContent = '00:00:00';\n        document.getElementById('buyNowBtn').disabled = true;\n        document.getElementById('addCartBtn').disabled = true;\n        return;\n    }\n    countdown--;\n    const h = String(Math.floor(countdown/3600)).padStart(2,'0');\n    const m = String(Math.floor((countdown%3600)/60)).padStart(2,'0');\n    const s = String(countdown%60).padStart(2,'0');\n    document.getElementById('countdownTimer').textContent = `${h}:${m}:${s}`;\n}\nsetInterval(updateCountdown,1000);\ndocument.querySelectorAll('.thumbnails img').forEach(img=>{\n    img.addEventListener('mouseenter',()=>{document.getElementById('mainImg').src = img.dataset.src;});\n    img.addEventListener('click',()=>{document.getElementById('mainImg').src = img.dataset.src;});\n});\ndocument.querySelectorAll('.product-tabs li').forEach(tab=>{\n    tab.addEventListener('click', ()=>{\n        document.querySelectorAll('.product-tabs li').forEach(t=>t.classList.remove('active'));\n        tab.classList.add('active');\n        if(tab.dataset.tab==='desc'){\n            document.getElementById('tabContent').textContent = '优质新疆葵花籽，精心挑选，独立小包装，干净卫生。';\n        } else {\n            document.getElementById('tabContent').textContent = '售后保障：本产品包邮，支持七天无理由退换货。';\n        }\n    });\n});\nconst productData = {\n    reviews: [\n        {type:'good', text:'味道很好，包装精美'},\n        {type:'good', text:'颗粒饱满，新鲜香脆'},\n        {type:'medium', text:'味道一般，包装不错'},\n        {type:'medium', text:'有些不新鲜'},\n    ]\n};\nfunction renderReviews(filter){\n    const list = document.getElementById('reviewList');\n    list.innerHTML = '';\n    productData.reviews.filter(r=>filter==='all'||r.type===filter).forEach(r=>{\n        const li = document.createElement('li');\n        li.textContent = r.text;\n        list.appendChild(li);\n    });\n}\ndocument.querySelectorAll('.filter-buttons button').forEach(btn=>{\n    btn.addEventListener('click',()=>{\n        renderReviews(btn.dataset.filter);\n    });\n});\nrenderReviews('all');\nfunction showToast(msg){\n    const toast = document.getElementById('toast');\n    toast.textContent = msg;\n    toast.style.display = 'block';\n    setTimeout(()=>{toast.style.display='none';},2000);\n}\ndocument.getElementById('addCartBtn').addEventListener('click',()=>{\n    showToast(`已成功加入购物车：LYF葵花籽 x ${qty}`);\n});\nconst modalOverlay = document.getElementById('modalOverlay');\ndocument.getElementById('buyNowBtn').addEventListener('click',()=>{\n    modalOverlay.style.display='block';\n    document.getElementById('modalInfo').textContent = `LYF葵花籽 x ${qty}，总价：￥${totalPriceElem.textContent}`;\n});\nmodalOverlay.addEventListener('click',e=>{\n    if(e.target===modalOverlay){\n        modalOverlay.style.display='none';\n    }\n});\ndocument.getElementById('confirmPay').addEventListener('click',()=>{\n    alert(`订单信息: 商品:LYF葵花籽, 数量:${qty}, 总价:${totalPriceElem.textContent}`);\n});\n</script>\n</body>\n</html>"
+    }
+  ]
+}

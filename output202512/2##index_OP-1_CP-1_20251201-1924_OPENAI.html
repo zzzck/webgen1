@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF香瓜子葵花子春节大促</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #F4F4F5;
+        color: #333;
+    }
+    header {
+        background-color: #E4393C;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+    }
+    header p {
+        margin: 0.5rem 0 0;
+        font-size: 1rem;
+    }
+    img.hero-img {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    section, aside, footer {
+        padding: 1rem;
+        background-color: #fff;
+        margin-bottom: 1rem;
+    }
+    .price {
+        font-size: 1.6rem;
+        color: #E4393C;
+        font-weight: bold;
+    }
+    .old-price {
+        text-decoration: line-through;
+        color: #999;
+        margin-left: 0.5rem;
+    }
+    .quantity {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .quantity input {
+        width: 60px;
+        text-align: center;
+        padding: 0.3rem;
+    }
+    button {
+        background-color: #E4393C;
+        color: #fff;
+        border: none;
+        padding: 0.7rem 1.2rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    button:hover {
+        background-color: #c52421;
+    }
+    .promotion-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+    .tag {
+        background-color: #FFD700;
+        color: #E4393C;
+        padding: 0.3rem 0.6rem;
+        border-radius: 3px;
+    }
+    .coupon-link {
+        color: #E4393C;
+        text-decoration: underline;
+    }
+    .reviews ul {
+        list-style: none;
+        padding: 0;
+    }
+    .reviews li {
+        border-bottom: 1px solid #ddd;
+        padding: 0.5rem 0;
+    }
+    .recommendations {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+    .recommendation-card {
+        background-color: #F4F4F5;
+        padding: 0.5rem;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .cart-list {
+        list-style: none;
+        padding: 0;
+    }
+    .cart-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding: 0.5rem 0;
+    }
+    footer {
+        background-color: #E4393C;
+        color: #fff;
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+    @media (max-width: 600px) {
+        header h1 {
+            font-size: 1.4rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header id="hero">
+    <h1>LYF 春节年货大促</h1>
+    <p>香瓜子葵花子 10包组合装，喜庆美味，限时优惠中！</p>
+    <img class="hero-img" src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="香瓜子葵花子">
+</header>
+
+<section id="product-specs">
+    <h2>LYF 香瓜子葵花子 30g 小包装 / 10包组合装</h2>
+    <p>精选优质葵花籽，独立小包装方便携带，即开即食；春节聚会、日常零食的美味之选。</p>
+</section>
+
+<section id="price-box">
+    <h3>促销价：<span class="price">¥16.9</span><span class="old-price">¥29.9</span></h3>
+    <p>立享 <strong>43% 优惠</strong>，限时活动进行中！</p>
+</section>
+
+<section id="purchase-channel">
+    <div class="quantity">
+        <label for="qty">数量:</label>
+        <input type="number" id="qty" min="1" value="1">
+    </div>
+    <div style="margin-top:0.5rem;">
+        <button id="buy-now">立即购买</button>
+        <button id="add-to-cart">加入购物车</button>
+    </div>
+</section>
+
+<aside id="promotion-tags">
+    <div class="promotion-tags">
+        <span class="tag" id="countdown">剩余时间: --:--:--</span>
+        <span class="tag" id="stock-info">库存紧张: 剩余 25 件</span>
+        <span class="tag">热销榜TOP5</span>
+        <a href="#" class="coupon-link" id="coupon">领取¥3优惠券</a>
+    </div>
+</aside>
+
+<section id="reviews" class="reviews">
+    <h3>用户评分：4.8 / 5</h3>
+    <ul>
+        <li>口感非常好，春节送礼也很合适！ —— 小李</li>
+        <li>物美价廉，包装喜庆精美！ —— 阿花</li>
+        <li>家里人都喜欢，回购了两次！ —— 王先生</li>
+    </ul>
+</section>
+
+<section id="recommendations">
+    <h3>相似推荐</h3>
+    <div class="recommendations">
+        <div class="recommendation-card">奶油瓜子</div>
+        <div class="recommendation-card">原味开心果</div>
+        <div class="recommendation-card">春节坚果礼盒</div>
+    </div>
+</section>
+
+<section id="wishlist">
+    <button id="add-to-wishlist">收藏商品</button>
+    <p>收藏后您可在“我的收藏”快速找到该商品。</p>
+</section>
+
+<section id="cart-management">
+    <h3>购物车</h3>
+    <ul class="cart-list" id="cart-list">
+        <!-- 动态生成 -->
+    </ul>
+</section>
+
+<footer id="footer-info">
+    <p>客服热线：400-123-4567 | 在线客服</p>
+    <p>全场包邮 | 七天无理由退货服务</p>
+</footer>
+
+<script>
+    // 初始化购物车
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartList = document.getElementById('cart-list');
+    const qtyInput = document.getElementById('qty');
+
+    function renderCart() {
+        cartList.innerHTML = '';
+        if(cart.length === 0){
+            cartList.innerHTML = '<li>购物车为空</li>';
+            return;
+        }
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `${item.name} x ${item.qty} <button data-index="${index}" class="remove-btn">删除</button>`;
+            cartList.appendChild(li);
+        });
+    }
+
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    document.getElementById('add-to-cart').addEventListener('click', () => {
+        const qty = parseInt(qtyInput.value);
+        cart.push({name: 'LYF 香瓜子葵花子', qty});
+        saveCart();
+        renderCart();
+        alert('已加入购物车');
+    });
+
+    cartList.addEventListener('click', (e) => {
+        if(e.target.classList.contains('remove-btn')){
+            const index = e.target.dataset.index;
+            cart.splice(index,1);
+            saveCart();
+            renderCart();
+        }
+    });
+
+    document.getElementById('add-to-wishlist').addEventListener('click', () => {
+        localStorage.setItem('wishlist', JSON.stringify({name:'LYF 香瓜子葵花子'}));
+        alert('已收藏此商品');
+    });
+
+    // 倒计时
+    const countdownElem = document.getElementById('countdown');
+    const endTime = new Date().getTime() + 24 * 60 * 60 * 1000;
+    function updateCountdown(){
+        const now = Date.now();
+        const diff = endTime - now;
+        if(diff <= 0){
+            countdownElem.textContent = '活动已结束';
+            return;
+        }
+        const hours = String(Math.floor(diff / 1000 / 60 / 60)).padStart(2,'0');
+        const minutes = String(Math.floor(diff / 1000 / 60 % 60)).padStart(2,'0');
+        const seconds = String(Math.floor(diff / 1000 % 60)).padStart(2,'0');
+        countdownElem.textContent = `剩余时间: ${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    renderCart();
+</script>
+
+</body>
+</html>

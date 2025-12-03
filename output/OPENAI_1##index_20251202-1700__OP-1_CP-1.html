@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF新疆香瓜子葵花子春节特惠</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+        background-color: #F4F4F5;
+        color: #333333;
+    }
+    .container {
+        max-width: 950px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    header.hero {
+        background-color: #E4393C;
+        color: #FFFFFF;
+        padding: 15px;
+        text-align: center;
+    }
+    header.hero h1 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    header.hero p {
+        margin: 5px 0 0;
+    }
+    .product-image {
+        width: 100%;
+        display: block;
+    }
+    section.price-box {
+        padding: 15px;
+        border-bottom: 1px solid #F4F4F5;
+        background-color: #fff8f0;
+    }
+    .current-price {
+        font-size: 1.5rem;
+        color: #E4393C;
+        font-weight: bold;
+    }
+    .original-price {
+        text-decoration: line-through;
+        color: #999;
+        margin-left: 10px;
+    }
+    .discount {
+        background-color: #FFD700;
+        color: #E4393C;
+        padding: 3px 6px;
+        border-radius: 4px;
+        margin-left: 5px;
+        font-size: 0.9rem;
+    }
+    section.promo-badge, section.stock-alert {
+        padding: 10px 15px;
+        background-color: #fff5f5;
+        border-bottom: 1px solid #F4F4F5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    aside.coupon-center {
+        padding: 15px;
+        background-color: #ffefea;
+    }
+    aside.coupon-center h2 {
+        margin-top: 0;
+        color: #E4393C;
+    }
+    main.product-details {
+        padding: 15px;
+    }
+    main.product-details h2 {
+        margin-top: 0;
+        color: #E4393C;
+    }
+    section.purchase-actions {
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #F4F4F5;
+    }
+    .quantity-control {
+        display: flex;
+        align-items: center;
+    }
+    .quantity-control button {
+        padding: 5px 10px;
+        border: none;
+        background-color: #FFD700;
+        cursor: pointer;
+    }
+    .quantity-control span {
+        margin: 0 10px;
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    .btn-cart {
+        background-color: #ff9900;
+        color: #fff;
+    }
+    .btn-buy {
+        background-color: #E4393C;
+        color: #fff;
+    }
+    aside.cart-sidebar {
+        position: fixed;
+        right: -350px;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        background-color: #FFFFFF;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        overflow-y: auto;
+        transition: right 0.3s ease;
+        padding: 15px;
+    }
+    aside.cart-sidebar.active {
+        right: 0;
+    }
+    aside.cart-sidebar h2 {
+        margin-top: 0;
+        color: #E4393C;
+    }
+    section.reviews {
+        padding: 15px;
+        border-top: 1px solid #F4F4F5;
+    }
+    section.reviews h2 {
+        color: #E4393C;
+    }
+    section.festive-animation {
+        padding: 15px;
+        text-align: center;
+        background-color: #fff4e6;
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { background-color: #fff4e6; }
+        50% { background-color: #ffe6e0; }
+        100% { background-color: #fff4e6; }
+    }
+    section.gift-suggestion {
+        padding: 15px;
+        background-color: #fffbe6;
+    }
+    section.gift-suggestion h2 {
+        color: #E4393C;
+        margin-top: 0;
+    }
+    footer.footer-info {
+        padding: 15px;
+        background-color: #f2f2f2;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <header class="hero">
+        <h1>LYF新疆香瓜子葵花子·春节特惠</h1>
+        <p>健康美味，欢聚春节，限时促销赶快抢！</p>
+    </header>
+    <img class="product-image" src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="LYF 新疆香瓜子葵花子">
+    <section class="price-box">
+        <p><span class="current-price">￥16.9</span><span class="original-price">￥29.9</span><span class="discount">立减43%</span></p>
+        <p>春节超值优惠，还可叠加优惠券</p>
+    </section>
+    <section class="promo-badge">
+        <p>限时抢购倒计时：<span id="countdown">00:30:00</span></p>
+        <p>🔥 热销中</p>
+    </section>
+    <section class="stock-alert">
+        <p>库存剩余：<span id="stock">120</span> 件</p>
+        <p>抓紧购买，库存紧张！</p>
+    </section>
+    <aside class="coupon-center">
+        <h2>领券中心</h2>
+        <p>领取￥5优惠券，满￥15即可使用</p>
+    </aside>
+    <main class="product-details">
+        <h2>产品规格与卖点</h2>
+        <p>规格：30g × 10 包；产自新疆，颗颗饱满，香脆可口。富含优质脂肪酸，节日期间休闲必备。</p>
+    </main>
+    <section class="purchase-actions">
+        <div class="quantity-control">
+            <button id="decrease">-</button>
+            <span id="quantity">1</span>
+            <button id="increase">+</button>
+        </div>
+        <button class="btn btn-cart">加入购物车</button>
+        <button class="btn btn-buy">立即购买</button>
+    </section>
+    <aside class="cart-sidebar" id="cart">
+        <h2>购物车</h2>
+        <p>您的购物车为空</p>
+    </aside>
+    <section class="reviews">
+        <h2>用户评价</h2>
+        <p>评分：⭐⭐⭐⭐☆</p>
+        <p>“口感醇香，春节家人都爱吃 😋”</p>
+    </section>
+    <section class="festive-animation">
+        <p>春节喜庆动画效果增强节日氛围</p>
+        <p>红火的年味，让购物更有情感共鸣</p>
+    </section>
+    <section class="gift-suggestion">
+        <h2>礼赠推荐</h2>
+        <p>推荐春节礼盒组合：香瓜子 + 干果混合包，健康美味送亲友</p>
+    </section>
+    <footer class="footer-info">
+        <p>© 2024 LYF 品牌 版权所有</p>
+        <p>关于我们 | 联系客服 | 帮助中心</p>
+    </footer>
+</div>
+</body>
+</html>

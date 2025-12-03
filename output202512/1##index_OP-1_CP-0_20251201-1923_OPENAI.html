@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春节主题电商页面</title>
+    <style>
+        :root {
+            --primary-color: #D32F2F;
+            --accent-color: #FFD54F;
+            --light-gray: #F4F4F5;
+            --white: #FFFFFF;
+            --brown: #8D6E63;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--brown);
+            line-height: 1.6;
+        }
+
+        header, section, aside {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin: 0.25rem 0;
+        }
+
+        .container {
+            max-width: 768px;
+            margin: auto;
+            padding: 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .price-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .promotion-banner {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .product-specs {
+            background-color: var(--white);
+        }
+
+        .buy-channel {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .buy-channel label {
+            flex: 1;
+        }
+
+        .buy-channel button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .cart-panel {
+            background-color: var(--light-gray);
+        }
+
+        .coupon-box button {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .wishlist button {
+            background-color: var(--white);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .buy-channel {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <section id="hero" class="hero">
+            <h1>春节特供礼盒</h1>
+            <p>喜庆氛围，传递年味佳礼，温暖你的心。</p>
+        </section>
+
+        <section id="price-box" class="price-box">
+            <h2>限时优惠：¥199 <small>原价 ¥299</small></h2>
+            <p>节省 ¥100，活动仅限春节期间！</p>
+        </section>
+
+        <section id="promotion-banner" class="promotion-banner">
+            <p>剩余 02:15:32</p>
+            <p>库存紧张，抢购从速！</p>
+        </section>
+
+        <section id="product-specs" class="product-specs">
+            <h3>包装规格</h3>
+            <p>精美礼盒装，融合传统与现代口味，送礼佳选。</p>
+        </section>
+
+        <section id="buy-channel" class="buy-channel">
+            <label for="qty">选择数量：</label>
+            <button>加入购物车</button>
+        </section>
+
+        <aside id="cart-panel" class="cart-panel">
+            <h4>我的购物车</h4>
+            <p>礼盒 x1，总价 ¥199</p>
+        </aside>
+
+        <section id="coupon-box" class="coupon-box">
+            <h4>领取优惠券</h4>
+            <button>立即领取</button>
+        </section>
+
+        <section id="reviews" class="reviews">
+            <h3>用户评价</h3>
+            <p>评分 4.8 / 5 （共 256 条评论）</p>
+        </section>
+
+        <section id="wishlist" class="wishlist">
+            <button>收藏商品</button>
+            <p>已加入收藏夹</p>
+        </section>
+
+        <section id="recommendations" class="recommendations">
+            <h3>推荐商品</h3>
+            <p>搭配坚果礼盒，年味更足，组合购买享额外优惠。</p>
+        </section>
+    </main>
+</body>
+</html>

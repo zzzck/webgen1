@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品页面</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #F4F4F5;
+        color: #333333;
+        margin: 0;
+        padding: 0;
+    }
+    main {
+        width: 90%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    section, aside {
+        background-color: #ffffff;
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+        margin-top: 0;
+    }
+    #product-info h1 {
+        color: #006400;
+    }
+    #price-promo h2 {
+        color: #FF4500;
+    }
+    #buy-module button {
+        background-color: #FFD700;
+        color: #333333;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    #buy-module button:hover {
+        background-color: #FF4500;
+        color: #fff;
+    }
+    #interaction h3 {
+        color: #006400;
+    }
+    #customer-service button {
+        background-color: #006400;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    #customer-service button:hover {
+        background-color: #FFD700;
+        color: #333333;
+    }
+    #recommendations h3, #user-login h3, #user-recommend h3 {
+        color: #333333;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    input {
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    form button {
+        background-color: #FFD700;
+        color: #333333;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    form button:hover {
+        background-color: #FF4500;
+        color: #fff;
+    }
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .product-card {
+        background-color: #F4F4F5;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        width: calc(50% - 10px);
+    }
+</style>
+</head>
+<body>
+<main>
+    <section id="product-info">
+        <h1>产品名称与核心卖点标题</h1>
+        <p>规格参数、包装数量及简要介绍</p>
+    </section>
+
+    <section id="price-promo">
+        <h2>现价与原价显示</h2>
+        <p>优惠活动说明及促销标签</p>
+    </section>
+
+    <section id="buy-module">
+        <button>立即购买</button>
+        <div>数量选择控件与支付入口</div>
+    </section>
+
+    <section id="interaction">
+        <h3>用户评分展示</h3>
+        <div>评论列表与提交表单</div>
+    </section>
+
+    <aside id="customer-service">
+        <button>联系客服</button>
+        <p>客服服务说明</p>
+    </aside>
+
+    <section id="recommendations">
+        <h3>推荐商品标题</h3>
+        <div class="product-list">
+            <div class="product-card">商品 1</div>
+            <div class="product-card">商品 2</div>
+            <div class="product-card">商品 3</div>
+            <div class="product-card">商品 4</div>
+        </div>
+    </section>
+
+    <section id="user-login">
+        <h3>登录或注册标题</h3>
+        <form>
+            <input type="text" placeholder="用户名">
+            <input type="password" placeholder="密码">
+            <button type="submit">登录</button>
+            <a href="#">忘记密码？</a>
+        </form>
+    </section>
+
+    <section id="user-recommend">
+        <h3>个性化推荐标题</h3>
+        <div>基于历史数据的商品展示</div>
+    </section>
+</main>
+</body>
+</html>

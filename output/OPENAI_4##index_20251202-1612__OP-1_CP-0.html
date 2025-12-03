@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节日促销单列页面</title>
+    <style>
+        :root {
+            --primary-color: #D32F2F;
+            --accent-color: #FFD700;
+            --bg-light: #FFF5E1;
+            --success-color: #4CAF50;
+            --gray-light: #F4F4F5;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: #333;
+            line-height: 1.6;
+        }
+        header, section, aside, footer {
+            padding: 1.5rem;
+            margin: 1rem auto;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+        #price-box {
+            background-color: var(--accent-color);
+            color: #333;
+        }
+        #promo-countdown {
+            background-color: var(--success-color);
+            color: #fff;
+        }
+        #stock-alert {
+            background-color: var(--gray-light);
+            color: var(--primary-color);
+        }
+        #coupon-center {
+            border: 2px dashed var(--accent-color);
+        }
+        #buy-box {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        #cart-sidebar {
+            background-color: var(--gray-light);
+        }
+        #festival-slot {
+            background-color: var(--accent-color);
+            color: #333;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            header, section, aside, footer {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            h1 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="nav-bar">
+        <h1>品牌名称</h1>
+        <p>返回按钮与购物车入口</p>
+    </header>
+
+    <section id="hero">
+        <h1>节日促销主题</h1>
+        <p>主图介绍与品牌故事氛围描述</p>
+    </section>
+
+    <section id="price-box">
+        <h1>促销价 ¥199</h1>
+        <p>原价 ¥299，限时优惠</p>
+    </section>
+
+    <section id="promo-countdown">
+        <h1>倒计时</h1>
+        <p>活动还剩 03:12:45 截止</p>
+    </section>
+
+    <section id="stock-alert">
+        <h1>库存提醒</h1>
+        <p>仅剩 5 件，先到先得</p>
+    </section>
+
+    <section id="coupon-center">
+        <h1>优惠券中心</h1>
+        <p>满200减50，立即领取</p>
+    </section>
+
+    <section id="buy-box">
+        <h1>立即购买</h1>
+        <p>选择数量并加入购物车</p>
+    </section>
+
+    <aside id="cart-sidebar">
+        <h1>购物车</h1>
+        <p>商品列表与编辑操作</p>
+    </aside>
+
+    <section id="reviews">
+        <h1>用户评价</h1>
+        <p>评分与评论展示</p>
+    </section>
+
+    <section id="product-details">
+        <h1>商品详情</h1>
+        <p>产品特性与规格描述</p>
+    </section>
+
+    <section id="recommendations">
+        <h1>相关推荐</h1>
+        <p>推荐商品简要介绍</p>
+    </section>
+
+    <section id="festival-slot">
+        <h1>节日互动</h1>
+        <p>福袋抽奖与分享返红包玩法</p>
+    </section>
+
+    <footer id="footer">
+        <h1>底部导航</h1>
+        <p>© 2024 品牌名称 | 客服热线 400-123-4567</p>
+    </footer>
+</body>
+</html>

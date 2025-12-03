@@ -8,6 +8,7 @@ from typing import List
 class PageSection:
     id: str
     purpose: str
+    kpi: str | None = None  # 添加这一行 todo
 
 
 @dataclass

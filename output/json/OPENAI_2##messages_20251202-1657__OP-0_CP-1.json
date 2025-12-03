@@ -1,0 +1,66 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "请基于以下要求开发一个完整的电商销售网页。  \n\n产品信息与素材  \n- 品牌：LYF  \n- 产品：新疆香瓜子葵花子  \n- 规格：30g × 10 包  \n- 价格：¥16.9（原价 ¥29.9）  \n- 主图链接：  \n  https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\n\n4P 营销要求（必须实现）\n1) 产品（外观图、规格、卖点、评论区、详情展示）\n2) 价格（现价、原价、折扣展示、券后价逻辑）\n3) 渠道（清晰的购买入口与购物流程）\n4) 促销（限时倒计时、热销标签、库存提醒、优惠券）\n\nUI 风格  \n- 对标天猫移动端视觉规范\n- 春节红主色调（#E4393C 或类似）\n- 动效与交互体现节日感、紧迫感与愉悦感\n\n设备与布局要求  \n- 页面宽度950px  \n- 顶部保留状态区和导航栏结构（如返回、购物车图标等）。  \n\n功能规范（必须实现）\nA. 购物模块  \n- 数量增减、加入购物车、立即购买  \n- localStorage 保存购物车数据  \n- 购物车侧栏展开/关闭  \n- 购物车商品编辑、删除、结算总价计算  \n\nB. 促销模块  \n- 限时倒计时（自动更新 UI）  \n- 库存动态显示（库存减少逻辑）  \n- 领券中心（用户可领券，并用于结算减免）  \n\nC. 内容展示  \n- 商品评价（评分+评论列表，含表情符号与图片示例）  \n- 商品详情折叠与展开  \n\n\n创新功能（可选项）\n- 场景推荐：根据浏览或加购行为展示“猜你喜欢”  \n- 福袋抽奖：增加用户停留时长  \n- 分享返红包功能  \n\n 输出格式:直接输出完整 HTML 文件代码 (只需要输出HTML)\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "提炼客户需求中的核心卖点（如新疆香瓜子葵花子节日礼盒、价格优势、限时促销）并明确目标受众",
+              "拆解商业目标为可执行的网页制作任务并编制任务分发清单",
+              "制定项目时间表并设定交付标准确保页面功能与视觉效果符合天猫移动端规范"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "撰写完整 PRD 文档包含产品信息、4P营销要求、UI风格、设备布局与功能规范",
+              "定义用户流程及交互逻辑（从浏览到购买，涵盖领券、加购、结算等路径）",
+              "制定测试与验收标准确保页面在950px宽度及移动端适配下正常运行"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "设计页面结构与模块划分（包括顶部状态栏与导航、商品展示区、促销区、购物功能区、详情与评价区）",
+              "规划数据交互接口与本地存储逻辑（购物车 localStorage、库存减少逻辑、倒计时等）",
+              "制定前端代码框架与组件化方案以支持高性能渲染与模块复用"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "按照页面结构规范实现 HTML/CSS/JS代码并完成节日红色调与动效设计",
+              "开发购物模块（数量增减、加入购物车、立即购买、购物车侧栏及编辑删除功能）并实现localStorage存储与总价计算",
+              "实现促销模块（限时倒计时、库存动态显示、优惠券领取及结算减免逻辑）",
+              "实现内容展示模块（商品评价列表与图片示例、详情折叠与展开）与可选功能（猜你喜欢、福袋抽奖、分享返红包）",
+              "进行多设备兼容性与性能优化测试确保页面加载与交互流畅"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF 新疆香瓜子葵花子</title>\n<style>\n    body {\n        font-family: 'Helvetica Neue', Arial, sans-serif;\n        margin: 0;\n        padding: 0;\n        background-color: #fffaf5;\n        color: #333;\n    }\n    .container {\n        max-width: 950px;\n        margin: 0 auto;\n        background-color: #fff;\n    }\n    header {\n        background-color: #E4393C;\n        color: #fff;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        padding: 10px;\n    }\n    .nav-left, .nav-right {\n        display: flex;\n        align-items: center;\n    }\n    .nav-left button, .nav-right button {\n        background: none;\n        border: none;\n        color: #fff;\n        font-size: 16px;\n        cursor: pointer;\n        margin-right: 10px;\n    }\n    .product-section {\n        padding: 15px;\n    }\n    .product-main {\n        display: flex;\n        flex-wrap: wrap;\n        gap: 20px;\n    }\n    .product-image {\n        flex: 1 1 300px;\n    }\n    .product-image img {\n        width: 100%;\n        border-radius: 8px;\n    }\n    .product-info {\n        flex: 1 1 300px;\n    }\n    .product-title {\n        font-size: 20px;\n        font-weight: bold;\n        color: #E4393C;\n    }\n    .product-spec {\n        color: #666;\n        margin: 8px 0;\n    }\n    .price {\n        display: flex;\n        align-items: baseline;\n        gap: 10px;\n    }\n    .current-price {\n        font-size: 24px;\n        color: #E4393C;\n        font-weight: bold;\n    }\n    .original-price {\n        text-decoration: line-through;\n        color: #999;\n    }\n    .discount-tag {\n        background-color: #ffcc00;\n        color: #E4393C;\n        padding: 2px 5px;\n        border-radius: 4px;\n        font-size: 12px;\n    }\n    .promo-section {\n        margin: 15px 0;\n        background-color: #fff5f5;\n        padding: 10px;\n        border-radius: 8px;\n    }\n    .promo-item {\n        margin-bottom: 10px;\n    }\n    .inventory {\n        color: #E4393C;\n        font-weight: bold;\n    }\n    .coupon-list {\n        display: flex;\n        gap: 10px;\n        flex-wrap: wrap;\n    }\n    .coupon {\n        background-color: #E4393C;\n        color: #fff;\n        padding: 5px 8px;\n        border-radius: 4px;\n        cursor: pointer;\n        font-size: 14px;\n    }\n    .action-buttons {\n        display: flex;\n        align-items: center;\n        gap: 10px;\n        margin-top: 15px;\n    }\n    .quantity-control {\n        display: flex;\n        align-items: center;\n        gap: 5px;\n    }\n    .quantity-control button {\n        width: 25px;\n        height: 25px;\n        background-color: #eee;\n        border: none;\n        cursor: pointer;\n    }\n    .quantity-control input {\n        width: 40px;\n        text-align: center;\n        border: 1px solid #ccc;\n        padding: 3px;\n    }\n    .btn {\n        padding: 10px 20px;\n        border: none;\n        border-radius: 4px;\n        cursor: pointer;\n        font-size: 14px;\n    }\n    .btn-buy {\n        background-color: #E4393C;\n        color: #fff;\n    }\n    .btn-cart {\n        background-color: #ffcc00;\n        color: #E4393C;\n    }\n    .details-section {\n        margin-top: 20px;\n    }\n    .details-toggle {\n        color: #E4393C;\n        cursor: pointer;\n        font-size: 14px;\n    }\n    .details-content {\n        display: none;\n        margin-top: 10px;\n        line-height: 1.6;\n    }\n    .reviews-section {\n        margin-top: 20px;\n    }\n    .review {\n        border-top: 1px solid #eee;\n        padding-top: 10px;\n    }\n    .review-rating {\n        color: gold;\n    }\n    .review-text {\n        margin: 5px 0;\n    }\n    .review-images {\n        display: flex;\n        gap: 5px;\n    }\n    .review-images img {\n        width: 50px;\n        height: 50px;\n        border-radius: 4px;\n    }\n    @media (max-width: 600px) {\n        .product-main {\n            flex-direction: column;\n        }\n    }\n</style>\n</head>\n<body>\n<div class=\"container\">\n    <header>\n        <div class=\"nav-left\">\n            <button>← 返回</button>\n            <span>LYF 店铺</span>\n        </div>\n        <div class=\"nav-right\">\n            <button>🛒</button>\n        </div>\n    </header>\n    <section class=\"product-section\">\n        <div class=\"product-main\">\n            <div class=\"product-image\">\n                <img src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" alt=\"新疆香瓜子葵花子\">\n            </div>\n            <div class=\"product-info\">\n                <div class=\"product-title\">新疆香瓜子葵花子</div>\n                <div class=\"product-spec\">规格：30g × 10 包</div>\n                <div class=\"price\">\n                    <span class=\"current-price\">¥16.9</span>\n                    <span class=\"original-price\">¥29.9</span>\n                    <span class=\"discount-tag\">限时优惠</span>\n                </div>\n                <div class=\"promo-section\">\n                    <div class=\"promo-item\">限时抢购倒计时：<span id=\"countdown\">00:15:32</span></div>\n                    <div class=\"promo-item\">库存剩余：<span class=\"inventory\" id=\"inventory\">128</span> 件</div>\n                    <div class=\"promo-item\">领券中心：\n                        <div class=\"coupon-list\">\n                            <div class=\"coupon\">满10减2</div>\n                            <div class=\"coupon\">满20减5</div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"action-buttons\">\n                    <div class=\"quantity-control\">\n                        <button>-</button>\n                        <input type=\"text\" value=\"1\">\n                        <button>+</button>\n                    </div>\n                    <button class=\"btn btn-cart\">加入购物车</button>\n                    <button class=\"btn btn-buy\">立即购买</button>\n                </div>\n            </div>\n        </div>\n        <div class=\"details-section\">\n            <div class=\"details-toggle\">展开商品详情 ▼</div>\n            <div class=\"details-content\">\n                新疆特产香瓜子葵花子，粒大饱满，香脆可口，精选原料，健康零食首选。\n            </div>\n        </div>\n        <div class=\"reviews-section\">\n            <h3>用户评价</h3>\n            <div class=\"review\">\n                <div class=\"review-rating\">⭐⭐⭐⭐⭐</div>\n                <div class=\"review-text\">很好吃！春节必备零食 😋</div>\n                <div class=\"review-images\">\n                    <img src=\"https://via.placeholder.com/50\" alt=\"review-img\">\n                    <img src=\"https://via.placeholder.com/50\" alt=\"review-img\">\n                </div>\n            </div>\n            <div class=\"review\">\n                <div class=\"review-rating\">⭐⭐⭐⭐</div>\n                <div class=\"review-text\">瓜子香而不腻，包装喜庆 🎉</div>\n            </div>\n        </div>\n    </section>\n</div>\n</body>\n</html>"
+    }
+  ]
+}

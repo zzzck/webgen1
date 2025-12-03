@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF新疆香瓜子葵花子 - 春节特惠</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        background-color: #f8f8f8;
+        color: #333;
+    }
+    header {
+        background-color: #E4393C;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+    .container {
+        padding: 1rem;
+        max-width: 640px;
+        margin: auto;
+        background-color: #fff;
+    }
+    .product-main {
+        text-align: center;
+    }
+    .product-image {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .product-info {
+        padding: 1rem 0;
+    }
+    .product-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: .5rem;
+    }
+    .product-spec {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: .5rem;
+    }
+    .price {
+        margin: .5rem 0;
+        font-size: 1.2rem;
+        color: #E4393C;
+    }
+    .price .original {
+        text-decoration: line-through;
+        font-size: 0.9rem;
+        color: #999;
+        margin-left: .5rem;
+    }
+    .discount {
+        background-color: #ffeb3b;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        margin-left: .5rem;
+    }
+    .timer, .stock {
+        font-size: 0.9rem;
+        color: #E4393C;
+        margin: 0.3rem 0;
+    }
+    .actions {
+        display: flex;
+        gap: .5rem;
+        margin-top: 1rem;
+    }
+    .btn {
+        flex: 1;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .btn-cart {
+        background-color: #ff9800;
+        color: #fff;
+    }
+    .btn-buy {
+        background-color: #E4393C;
+        color: #fff;
+    }
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: .5rem;
+    }
+    .quantity-control button {
+        background-color: #E4393C;
+        color: #fff;
+        border: none;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        border-radius: 50%;
+    }
+    .quantity-control input {
+        width: 50px;
+        text-align: center;
+        border: 1px solid #ccc;
+        margin: 0 5px;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+    .coupon-center {
+        margin: 1rem 0;
+        padding: 1rem;
+        background-color: #fff3e0;
+        border-radius: 8px;
+    }
+    .coupon {
+        padding: 0.5rem;
+        background-color: #E4393C;
+        color: #fff;
+        border-radius: 4px;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .broadcast {
+        background-color: #E4393C;
+        color: #fff;
+        padding: 0.5rem;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: scrollText 10s linear infinite;
+        font-size: 0.9rem;
+    }
+    @keyframes scrollText {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+    .reviews {
+        margin: 1rem 0;
+    }
+    .review {
+        border-bottom: 1px solid #eee;
+        padding: 0.5rem 0;
+    }
+    .review-score {
+        color: #E4393C;
+    }
+    .details {
+        margin-bottom: 1rem;
+    }
+    .details-toggle {
+        cursor: pointer;
+        color: #E4393C;
+    }
+    .recommendations {
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    .recommend-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .recommend-item img {
+        width: 60px;
+        height: 60px;
+        border-radius: 4px;
+        margin-right: .5rem;
+    }
+    .cart-sidebar {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+        transition: right 0.3s ease;
+        padding: 1rem;
+        overflow-y: auto;
+        z-index: 999;
+    }
+    .cart-sidebar.open {
+        right: 0;
+    }
+    .cart-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: .5rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: .5rem;
+    }
+    .cart-actions {
+        margin-top: 1rem;
+    }
+    .cart-total {
+        font-size: 1rem;
+        margin-bottom: .5rem;
+    }
+    .btn-checkout {
+        width: 100%;
+        padding: 0.8rem;
+        background-color: #E4393C;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    .ai-fav {
+        background-color: #fff0f0;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+    }
+    @media (max-width: 640px) {
+        .actions {
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+<body>
+<header>LYF春节特惠 - 新疆香瓜子葵花子</header>
+<div class="broadcast">🔥 热销：今天已售出 3500+ 件！库存有限，抓紧抢购！</div>
+<div class="container">
+    <div class="product-main">
+        <img class="product-image" src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" alt="新疆香瓜子葵花子">
+    </div>
+    <div class="product-info">
+        <div class="product-title">LYF 新疆香瓜子葵花子</div>
+        <div class="product-spec">规格：30g × 10 包</div>
+        <div class="price">¥16.9 <span class="original">¥29.9</span><span class="discount">限时 56%OFF</span></div>
+        <div class="timer">⏳ 活动结束倒计时：<span id="countdown">00:00:00</span></div>
+        <div class="stock">📦 库存剩余：<span id="stock-num">100</span> 件</div>
+        <div class="quantity-control">
+            <button id="qty-minus">-</button>
+            <input type="number" id="qty-input" value="1" min="1">
+            <button id="qty-plus">+</button>
+        </div>
+        <div class="actions">
+            <button class="btn btn-cart" id="add-to-cart">加入购物车</button>
+            <button class="btn btn-buy" id="buy-now">立即购买</button>
+            <button class="btn btn-cart" id="toggle-cart">🛒 查看购物车</button>
+        </div>
+    </div>
+    <div class="coupon-center">
+        <div class="coupon" id="get-coupon">点击领取 ¥3 优惠券</div>
+    </div>
+    <div class="reviews">
+        <div class="review">
+            <div>评分：<span class="review-score">⭐⭐⭐⭐⭐</span></div>
+            <div>好吃！特别有年味 😋</div>
+        </div>
+        <div class="review">
+            <div>评分：<span class="review-score">⭐⭐⭐⭐</span></div>
+            <div>味道香浓，过年零食必备 🍵</div>
+        </div>
+    </div>
+    <div class="details">
+        <div class="details-toggle" id="toggle-details">查看更多详情 ⬇</div>
+        <div id="details-content" style="display:none;">
+            新疆香瓜子葵花子选自优质产地，颗粒饱满，经过精心烘烤，香气浓郁，春节聚会必备零食。
+        </div>
+    </div>
+    <div class="recommendations">
+        <div><strong>相似推荐</strong></div>
+        <div class="recommend-item">
+            <img src="https://via.placeholder.com/60" alt="推荐1">
+            <div>东北红枣 500g - ¥25.9</div>
+        </div>
+        <div class="recommend-item">
+            <img src="https://via.placeholder.com/60" alt="推荐2">
+            <div>新疆葡萄干 250g - ¥18.9</div>
+        </div>
+        <div class="recommend-item">
+            <img src="https://via.placeholder.com/60" alt="推荐3">
+            <div>混合坚果 400g - ¥39.9</div>
+        </div>
+    </div>
+    <div class="ai-fav">
+        <strong>🎁 AI猜你喜欢</strong>
+        <div>根据您的购买记录，我们为您推荐「春节返乡礼包」，多装组合更优惠！</div>
+    </div>
+</div>
+<div class="cart-sidebar" id="cart-sidebar"></div>
+<script>
+    // 倒计时
+    function startCountdown(endTime) {
+        function updateTimer() {
+            var now = new Date().getTime();
+            var distance = endTime - now;
+            if (distance < 0) {
+                document.getElementById("countdown").innerText = "活动结束";
+                clearInterval(timerInterval);
+                return;
+            }
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000*60*60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000*60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerText = hours.toString().padStart(2,'0') + ":" + minutes.toString().padStart(2,'0') + ":" + seconds.toString().padStart(2,'0');
+        }
+        updateTimer();
+        var timerInterval = setInterval(updateTimer, 1000);
+    }
+    var end = new Date();
+    end.setHours(end.getHours() + 5); // 活动 5 小时后结束
+    startCountdown(end.getTime());
+
+    // 库存减少逻辑
+    function reduceStock(qty) {
+        var stockElem = document.getElementById("stock-num");
+        var stock = parseInt(stockElem.innerText, 10);
+        if (stock > 0) {
+            stock -= qty;
+            if (stock < 0) stock = 0;
+            stockElem.innerText = stock;
+        }
+    }
+
+    // 数量控制
+    var qtyInput = document.getElementById("qty-input");
+    document.getElementById("qty-minus").addEventListener("click", function(){
+        var val = parseInt(qtyInput.value, 10);
+        if (val > 1) qtyInput.value = val - 1;
+    });
+    document.getElementById("qty-plus").addEventListener("click", function(){
+        qtyInput.value = parseInt(qtyInput.value, 10) + 1;
+    });
+
+    // localStorage购物车
+    function getCart() {
+        return JSON.parse(localStorage.getItem("cart") || "[]");
+    }
+    function setCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    function renderCart() {
+        var cartSidebar = document.getElementById("cart-sidebar");
+        var cart = getCart();
+        cartSidebar.innerHTML = "<h3>购物车</h3>";
+        cart.forEach(function(item, index){
+            var div = document.createElement("div");
+            div.className = "cart-item";
+            div.innerHTML = "<div>" + item.name + " x" + item.qty + "</div><div>¥" + (item.price * item.qty).toFixed(2) + "</div><button data-index='"+index+"' class='del-item'>❌</button>";
+            cartSidebar.appendChild(div);
+        });
+        var total = cart.reduce(function(sum, item){ return sum + item.price * item.qty; }, 0);
+        var couponDiscount = localStorage.getItem("coupon") ? 3 : 0;
+        total -= couponDiscount;
+        if (total < 0) total = 0;
+        var actions = document.createElement("div");
+        actions.className = "cart-actions";
+        actions.innerHTML = "<div class='cart-total'>总计：¥" + total.toFixed(2) + (couponDiscount > 0 ? " (已减¥3)" : "") + "</div><button class='btn-checkout'>结算</button>";
+        cartSidebar.appendChild(actions);
+        document.querySelectorAll(".del-item").forEach(function(btn){
+            btn.addEventListener("click", function(){
+                var idx = parseInt(this.dataset.index, 10);
+                var cart = getCart();
+                cart.splice(idx, 1);
+                setCart(cart);
+                renderCart();
+            });
+        });
+    }
+
+    document.getElementById("add-to-cart").addEventListener("click", function(){
+        var qty = parseInt(qtyInput.value, 10);
+        var cart = getCart();
+        cart.push({name: "新疆香瓜子葵花子", qty: qty, price: 16.9});
+        setCart(cart);
+        reduceStock(qty);
+        alert("已加入购物车");
+    });
+
+    document.getElementById("buy-now").addEventListener("click", function(){
+        var qty = parseInt(qtyInput.value, 10);
+        reduceStock(qty);
+        alert("跳转到结算页面（模拟）");
+    });
+
+    document.getElementById("toggle-cart").addEventListener("click", function(){
+        var cartSidebar = document.getElementById("cart-sidebar");
+        cartSidebar.classList.toggle("open");
+        renderCart();
+    });
+
+    document.getElementById("get-coupon").addEventListener("click", function(){
+        localStorage.setItem("coupon", true);
+        alert("领取成功，结算时自动减免 ¥3");
+    });
+
+    document.getElementById("toggle-details").addEventListener("click", function(){
+        var content = document.getElementById("details-content");
+        if (content.style.display === "none") {
+            content.style.display = "block";
+            this.innerText = "收起详情 ⬆";
+        } else {
+            content.style.display = "none";
+            this.innerText = "查看更多详情 ⬇";
+        }
+    });
+</script>
+</body>
+</html>

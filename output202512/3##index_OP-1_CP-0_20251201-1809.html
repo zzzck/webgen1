@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>春节促销页面</title>
+<style>
+    :root {
+        --red: #D32F2F;
+        --gold: #FFD700;
+        --white: #FFFFFF;
+        --cream: #FDEBD0;
+        --dark: #333333;
+    }
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: var(--dark);
+        background-color: var(--cream);
+    }
+    header, nav, section, aside, footer, div {
+        box-sizing: border-box;
+    }
+    .hero-section {
+        background-color: var(--red);
+        color: var(--white);
+        text-align: center;
+        padding: 4rem 2rem;
+    }
+    .hero-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .hero-section p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    .price-box {
+        background-color: var(--white);
+        padding: 2rem;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .price-box h2 {
+        color: var(--red);
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    .product-info {
+        background-color: var(--white);
+        padding: 2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    .promo-banner {
+        background-color: var(--gold);
+        color: var(--dark);
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .purchase-flow {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .purchase-flow label {
+        font-weight: bold;
+    }
+    .purchase-flow button {
+        background-color: var(--red);
+        color: var(--white);
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .purchase-flow button:hover {
+        background-color: #b71c1c;
+    }
+    .cart-panel {
+        background-color: var(--white);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    .category-nav {
+        background-color: var(--white);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    .category-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 1rem;
+    }
+    .category-nav li {
+        background-color: var(--cream);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .coupon-section {
+        background-color: var(--white);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+        .purchase-flow {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .category-nav ul {
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+<body>
+    <section class="hero-section" id="hero-section">
+        <h1>春节钜惠，欢乐开启新年</h1>
+        <p>为您甄选优质商品，与家人一同分享春节的喜悦与美好</p>
+    </section>
+    <div class="content-wrapper">
+        <section class="price-box" id="price-box">
+            <h2>限时优惠：¥199</h2>
+            <p>原价 ¥299 · 春节专享优惠</p>
+        </section>
+        <section class="product-info" id="product-info">
+            <h3>新春礼盒组合</h3>
+            <p>包含精选糖果、坚果及茶叶，适合家庭聚会与亲友赠礼，传递温暖与心意</p>
+        </section>
+        <div class="promo-banner" id="promo-banner">
+            <h4>限时促销 · 抓紧时间</h4>
+            <p>剩余 3 天 · 库存紧张，先到先得</p>
+        </div>
+        <section class="purchase-flow" id="purchase-flow">
+            <label for="quantity">选择数量：</label>
+            <button type="button">加入购物车</button>
+        </section>
+        <aside class="cart-panel" id="cart-panel">
+            <h5>我的购物车</h5>
+            <p>当前暂无商品，请添加您心仪的商品</p>
+        </aside>
+        <nav class="category-nav" id="category-nav">
+            <ul>
+                <li>礼盒</li>
+                <li>零食</li>
+                <li>茶叶</li>
+                <li>饮品</li>
+            </ul>
+        </nav>
+        <section class="coupon-section" id="coupon-section">
+            <h4>领取优惠券</h4>
+            <p>新用户注册即可领取满200减50优惠券，限春节期间使用</p>
+        </section>
+    </div>
+</body>
+</html>

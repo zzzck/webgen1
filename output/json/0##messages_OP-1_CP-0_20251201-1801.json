@@ -1,0 +1,295 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的单文件（Single HTML File）一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n主页图片链接： “https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n#Functional Requirements (功能需求)\n用户应能够查看价格与优惠（价格），并选择数量加入购物车，也可管理购物车内容。\n页面支持商品分类展示与在线购买流程（渠道）。您还可以加入促销元素，如限时倒计时、库存提醒、热销标签和优惠卷（促销），进一步提升购物体验与趣味性。\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。\n使用 localStorage 保存购物车等数据，确保信息在刷新后保留。保持整体设计简洁、用户友好且富有吸引力。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "解析客户业务简报并提炼春节零食电商网页的核心营销卖点与目标转化指标（点击率、加购率、成交率）",
+              "将4P营销要素映射为网页功能模块及展示要求，并制定整体制作链路",
+              "分配任务至 PM、Architect、Engineer 并设定交付时间节点与质量标准"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "编写 PRD 文档，覆盖产品外观图、规格介绍、卖点文案、价格信息、购买渠道说明、促销策略与库存激励",
+              "设计用户购买路径，明确数量选择、加入购物车、购物车管理、结算的流程说明",
+              "定义首屏视觉需求（春节红主色调、促销标签布局、主图展示）及移动端交互细节"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "规划页面整体结构，按首屏卖点区、产品详情区、价格与优惠区、购买入口区、促销激励区进行信息分布",
+              "设计并定义可复用的营销组件（价格展示组件、优惠券组件、倒计时器、库存提醒组件、购买按钮组件）及其交互接口",
+              "制定购物车数据处理及 localStorage 持久化方案说明，并提供触发条件与接口文档"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "基于 Architect 提供的结构与接口文档，实现响应式单文件 HTML/CSS/JavaScript 页面，适配移动端浏览体验",
+              "编写前端逻辑实现购物车功能（数量选择、添加/删除、持久化）、库存动态提示与倒计时展示",
+              "实现促销标签、优惠券交互效果及购买按钮跳转功能，确保加载速度与交互稳定性",
+              "完成跨浏览器测试与性能优化，交付可上线运行的销售页面代码"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "春节零食专场页面，集中展示 LYF 香瓜子葵花子促销信息，通过限时优惠和紧迫感引导用户快速加购。",
+        "goals": [
+          "提升页面点击率（CTR），吸引用户了解商品详情",
+          "提高加购率，通过促销和库存提醒促进立即购买",
+          "优化转化率，引导用户完成线上下单流程",
+          "强化春节喜庆氛围，增加品牌好感度",
+          "突出价格优势，减少用户比价流失"
+        ],
+        "target_users": [
+          "节前囤年货的家庭用户 + 希望一次性购买多袋零食满足春节来客需求",
+          "价格敏感型零食爱好者 + 寻找促销优惠的机会以更低成本购买优质零食"
+        ],
+        "page_sections": [
+          {
+            "id": "hero",
+            "purpose": "春节氛围主视觉+产品大图展示，快速传递节日场景与品牌形象",
+            "kpi": "页面停留时长 / CTR"
+          },
+          {
+            "id": "product-specs",
+            "purpose": "详细介绍包装规格（30g*10包）、口味及核心卖点，增强购买决心",
+            "kpi": "加购率"
+          },
+          {
+            "id": "price-box",
+            "purpose": "突出现价、原价对比及限时优惠信息，形成价格落差刺激购买",
+            "kpi": "转化率"
+          },
+          {
+            "id": "promo-labels",
+            "purpose": "动态展示限时倒计时、库存提醒、热销标签，制造紧迫感",
+            "kpi": "加购率 / 转化率"
+          },
+          {
+            "id": "buy-channel",
+            "purpose": "提供清晰的购买入口（加入购物车按钮），简化用户操作路径",
+            "kpi": "转化率"
+          },
+          {
+            "id": "cart-panel",
+            "purpose": "购物车管理（数量选择、删除、总价计算），支持 localStorage 数据持久化",
+            "kpi": "加购率 / 复购率"
+          },
+          {
+            "id": "category-nav",
+            "purpose": "提供节日零食分类入口，延伸购买链路至其他商品",
+            "kpi": "CTR / 客单价"
+          },
+          {
+            "id": "coupon-banner",
+            "purpose": "展示可领取优惠券，增加购买金额或刺激加购",
+            "kpi": "加购率 / 客单价"
+          },
+          {
+            "id": "reviews",
+            "purpose": "显示用户好评，减少疑虑，增强信任感",
+            "kpi": "转化率"
+          },
+          {
+            "id": "footer-info",
+            "purpose": "提供品牌介绍、客服及物流信息，完善信任保障",
+            "kpi": "转化率"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "hero + content",
+        "colors": [
+          "#D7000F",
+          "#FFD700",
+          "#F4F4F5",
+          "#FFFFFF",
+          "#333333"
+        ],
+        "components": [
+          {
+            "id": "hero",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "春节氛围主标题与产品名称"
+              },
+              {
+                "tag": "p",
+                "content_hint": "节日场景描述与品牌形象文案"
+              }
+            ]
+          },
+          {
+            "id": "category-nav",
+            "html": "nav",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "节日零食分类导航标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "导航说明或分类提示"
+              }
+            ]
+          },
+          {
+            "id": "coupon-banner",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "优惠券活动标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "优惠券领取说明及使用条件"
+              }
+            ]
+          },
+          {
+            "id": "product-specs",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "产品规格标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "包装规格、口味及核心卖点描述"
+              }
+            ]
+          },
+          {
+            "id": "price-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "价格信息标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "现价与原价对比描述"
+              }
+            ]
+          },
+          {
+            "id": "promo-labels",
+            "html": "div",
+            "children": [
+              {
+                "tag": "h3",
+                "content_hint": "促销状态标签（倒计时、库存提醒）标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "紧迫感文案提示"
+              }
+            ]
+          },
+          {
+            "id": "buy-channel",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "立即购买入口标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "加入购物车按钮说明"
+              }
+            ]
+          },
+          {
+            "id": "cart-panel",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "购物车标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "数量选择、删除和总价信息描述"
+              }
+            ]
+          },
+          {
+            "id": "reviews",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "用户评价标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "好评内容或摘要"
+              }
+            ]
+          },
+          {
+            "id": "footer-info",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "品牌介绍标题"
+              },
+              {
+                "tag": "p",
+                "content_hint": "客服及物流信息描述"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>春节节日促销页面</title>\n    <style>\n        :root {\n            --color-red: #D7000F;\n            --color-gold: #FFD700;\n            --color-gray-light: #F4F4F5;\n            --color-white: #FFFFFF;\n            --color-dark: #333333;\n        }\n\n        body {\n            margin: 0;\n            font-family: 'Segoe UI', Arial, sans-serif;\n            background-color: var(--color-gray-light);\n            color: var(--color-dark);\n            line-height: 1.6;\n        }\n\n        h1, h2, h3 {\n            margin: 0.5em 0;\n        }\n\n        p {\n            margin: 0.3em 0 1em;\n        }\n\n        .container {\n            max-width: 1200px;\n            margin: 0 auto;\n            padding: 0 1rem;\n        }\n\n        /* Hero Section */\n        .hero {\n            background-color: var(--color-red);\n            color: var(--color-white);\n            text-align: center;\n            padding: 3rem 1rem;\n        }\n\n        .hero h1 {\n            font-size: 2.5rem;\n        }\n\n        .hero p {\n            font-size: 1.2rem;\n        }\n\n        /* Category Nav */\n        .category-nav {\n            background-color: var(--color-white);\n            padding: 2rem 1rem;\n            text-align: center;\n        }\n\n        .category-nav h2 {\n            color: var(--color-red);\n        }\n\n        /* Coupon Banner */\n        .coupon-banner {\n            background-color: var(--color-gold);\n            color: var(--color-dark);\n            text-align: center;\n            padding: 2rem 1rem;\n        }\n\n        /* Product Specs */\n        .product-specs {\n            background-color: var(--color-white);\n            padding: 2rem 1rem;\n        }\n\n        /* Price Box */\n        .price-box {\n            background-color: var(--color-white);\n            padding: 2rem 1rem;\n            border-top: 1px solid var(--color-gray-light);\n        }\n\n        /* Promo Labels */\n        .promo-labels {\n            background-color: var(--color-red);\n            color: var(--color-white);\n            padding: 1rem;\n            text-align: center;\n        }\n\n        /* Buy Channel */\n        .buy-channel {\n            background-color: var(--color-gold);\n            text-align: center;\n            padding: 2rem 1rem;\n        }\n\n        /* Cart Panel */\n        .cart-panel {\n            background-color: var(--color-white);\n            border: 1px solid var(--color-gray-light);\n            padding: 1.5rem;\n        }\n\n        /* Reviews */\n        .reviews {\n            background-color: var(--color-white);\n            padding: 2rem 1rem;\n        }\n\n        /* Footer Info */\n        footer.footer-info {\n            background-color: var(--color-dark);\n            color: var(--color-white);\n            padding: 2rem 1rem;\n            text-align: center;\n        }\n\n        /* Responsive */\n        @media (max-width: 768px) {\n            .hero h1 {\n                font-size: 2rem;\n            }\n\n            .hero p {\n                font-size: 1rem;\n            }\n        }\n    </style>\n</head>\n<body>\n    <section class=\"hero\">\n        <div class=\"container\">\n            <h1>欢庆春节·精致礼盒</h1>\n            <p>浓浓年味，传递温暖，呈现品牌精致与关怀</p>\n        </div>\n    </section>\n\n    <nav class=\"category-nav\">\n        <div class=\"container\">\n            <h2>节日零食分类</h2>\n            <p>挑选你的专属美味</p>\n        </div>\n    </nav>\n\n    <section class=\"coupon-banner\">\n        <div class=\"container\">\n            <h2>春节优惠券大放送</h2>\n            <p>领取专属优惠，结算时自动减免，限时限量</p>\n        </div>\n    </section>\n\n    <section class=\"product-specs\">\n        <div class=\"container\">\n            <h2>产品规格</h2>\n            <p>多种口味组合，高端包装设计，送礼自用皆宜</p>\n        </div>\n    </section>\n\n    <section class=\"price-box\">\n        <div class=\"container\">\n            <h2>价格信息</h2>\n            <p>现价¥99，原价¥199，立享五折优惠</p>\n        </div>\n    </section>\n\n    <div class=\"promo-labels\">\n        <div class=\"container\">\n            <h3>限时抢购</h3>\n            <p>剩余库存不足50件，倒计时24小时</p>\n        </div>\n    </div>\n\n    <section class=\"buy-channel\">\n        <div class=\"container\">\n            <h2>立即购买</h2>\n            <p>加入购物车，快速结算</p>\n        </div>\n    </section>\n\n    <aside class=\"cart-panel\">\n        <div class=\"container\">\n            <h2>购物车</h2>\n            <p>选择数量，随时修改或删除，实时计算总价</p>\n        </div>\n    </aside>\n\n    <section class=\"reviews\">\n        <div class=\"container\">\n            <h2>用户评价</h2>\n            <p>口碑好评如潮，用户满意度高达98%</p>\n        </div>\n    </section>\n\n    <footer class=\"footer-info\">\n        <div class=\"container\">\n            <h2>品牌介绍</h2>\n            <p>完善的客服体系与高效物流，为您的购物保驾护航</p>\n        </div>\n    </footer>\n</body>\n</html>"
+    }
+  ]
+}

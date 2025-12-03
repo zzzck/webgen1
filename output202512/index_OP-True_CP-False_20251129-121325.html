@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>春节零食商城</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #F4F4F5;
+        color: #333333;
+    }
+    header {
+        background-color: #D32F2F;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header input {
+        padding: 8px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        width: 70%;
+    }
+    header button {
+        padding: 8px 12px;
+        border: none;
+        background-color: #FFD700;
+        color: #333333;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+    nav {
+        background-color: #FFFFFF;
+        padding: 10px;
+    }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        overflow-x: auto;
+    }
+    nav li {
+        padding: 8px 12px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+    section {
+        background-color: #FFFFFF;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 4px;
+    }
+    #product-gallery img {
+        max-width: 100%;
+        border-radius: 4px;
+    }
+    #price-info span {
+        margin-right: 10px;
+        display: inline-block;
+    }
+    #price-info .current-price {
+        color: #D32F2F;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    #price-info .original-price {
+        text-decoration: line-through;
+        color: #999;
+    }
+    #price-info .promo-tag {
+        background-color: #FFD700;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.9em;
+    }
+    #countdown-timer {
+        text-align: center;
+        background-color: #FFEFD5;
+    }
+    #coupon-section div {
+        background-color: #FFD700;
+        padding: 10px;
+        border-radius: 4px;
+    }
+    #coupon-section button {
+        margin-top: 8px;
+        background-color: #D32F2F;
+        color: #FFFFFF;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    #spec-selector label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    #spec-selector select {
+        padding: 6px;
+        width: 100%;
+    }
+    #comment-filter div {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
+    #comment-filter ul {
+        list-style: none;
+        padding: 0;
+    }
+    #buy-button {
+        width: calc(100% - 20px);
+        margin: 10px;
+        padding: 12px;
+        background-color: #D32F2F;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.1em;
+    }
+    #modal-cart {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #FFFFFF;
+        box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+        padding: 10px;
+    }
+    #modal-cart div {
+        margin-bottom: 8px;
+    }
+    #modal-cart button {
+        width: 100%;
+        padding: 10px;
+        background-color: #D32F2F;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    #promotion-stock-tip p {
+        text-align: center;
+        font-size: 0.9em;
+        color: #D32F2F;
+    }
+</style>
+</head>
+<body>
+
+<header id="search-bar">
+    <input type="text" placeholder="搜索春节零食或相关产品">
+    <button>搜索</button>
+</header>
+
+<nav id="nav-bar">
+    <ul>
+        <li>饼干</li>
+        <li>糖果</li>
+        <li>坚果</li>
+        <li>茶类</li>
+        <li>礼包</li>
+    </ul>
+</nav>
+
+<section id="product-gallery">
+    <img src="product.jpg" alt="产品外观图">
+    <p>精选优质材料，香酥美味，春节送礼佳品。</p>
+</section>
+
+<section id="price-info">
+    <span class="current-price">¥99</span>
+    <span class="original-price">¥129</span>
+    <span class="promo-tag">限时优惠</span>
+</section>
+
+<section id="countdown-timer">
+    <span>00:12:35</span>
+    <p>限时促销进行中，赶快抢购！</p>
+</section>
+
+<section id="coupon-section">
+    <div>满200减20优惠券</div>
+    <button>立即领取</button>
+</section>
+
+<section id="spec-selector">
+    <label for="spec">请选择规格：</label>
+    <select id="spec">
+        <option>10包</option>
+        <option>20包</option>
+        <option>30包</option>
+    </select>
+</section>
+
+<section id="comment-filter">
+    <div>
+        <button>好评</button>
+        <button>中评</button>
+        <button>差评</button>
+    </div>
+    <ul>
+        <li>零食很新鲜，包装精美。</li>
+        <li>味道不错，但快递有点慢。</li>
+    </ul>
+</section>
+
+<button id="buy-button">
+    <span>立即购买</span>
+</button>
+
+<aside id="modal-cart">
+    <div>购物车中有 2 件商品</div>
+    <div>总价：¥198</div>
+    <button>确认支付</button>
+</aside>
+
+<section id="promotion-stock-tip">
+    <p>库存有限，售完即止</p>
+</section>
+
+</body>
+</html>

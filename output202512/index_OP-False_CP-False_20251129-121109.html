@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 春节香瓜子葵花子大促</title>
+<style>
+body {
+    margin: 0;
+    font-family: "Microsoft YaHei", sans-serif;
+    background-color: #fff;
+}
+header {
+    background-color: #E4393C;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+header input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #E4393C;
+    padding: 8px;
+    color: white;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+}
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 250px;
+}
+.carousel img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: none;
+}
+.carousel img.active {
+    display: block;
+}
+section {
+    padding: 15px;
+}
+.price {
+    color: #E4393C;
+    font-size: 1.5em;
+}
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    margin-left: 10px;
+}
+.countdown {
+    background: #E4393C;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 8px;
+}
+.coupons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.coupon {
+    background-color: #fff3f3;
+    border: 1px dashed #E4393C;
+    padding: 10px;
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+}
+.specs {
+    margin-top: 15px;
+}
+.specs button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: 1px solid #E4393C;
+    background-color: white;
+    color: #E4393C;
+    cursor: pointer;
+}
+.specs button.active {
+    background-color: #E4393C;
+    color: white;
+}
+.comments {
+    margin-top: 20px;
+}
+.comment-filter {
+    margin-bottom: 10px;
+}
+.comment {
+    border-bottom: 1px solid #eee;
+    padding: 5px 0;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #E4393C;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+}
+#cart-modal {
+    position: fixed;
+    bottom: -100%;
+    left:0;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    height: 100%;
+    transition: bottom 0.3s ease;
+}
+#cart-panel {
+    background: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+}
+#cart-panel h3 {
+    margin-top: 0;
+}
+</style>
+</head>
+<body>
+<header>
+    <input type="text" placeholder="搜索春节零食...">
+</header>
+<nav>
+    <a href="#">首页</a>
+    <a href="#">分类</a>
+    <a href="#">促销</a>
+    <a href="#">购物车</a>
+</nav>
+<div class="carousel">
+    <img src="https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp" class="active">
+    <img src="https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b">
+    <img src="https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg">
+</div>
+<section>
+    <h1>LYF 香瓜子葵花子（30g 小包装）</h1>
+    <p>颗粒饱满，独立包装不脏手，买多少送多少，五香味</p>
+    <div class="price">¥<span id="price">16.9</span>
+        <span class="old-price">¥29.9</span>
+    </div>
+    <div class="countdown">春节限时抢购倒计时：<span id="timer">00:00:00</span></div>
+    <div class="coupons">
+        <div class="coupon" data-discount="2" data-min="10">满10减2元</div>
+        <div class="coupon" data-discount="5" data-min="20">满20减5元</div>
+    </div>
+    <div class="specs">
+        <strong>购买规格：</strong>
+        <button data-spec="10" data-base="16.9" class="active">10包</button>
+        <button data-spec="20" data-base="32">20包</button>
+        <button data-spec="30" data-base="45">30包</button>
+    </div>
+</section>
+<section class="comments">
+    <div class="comment-filter">
+        <button onclick="filterComments('all')">全部</button>
+        <button onclick="filterComments('good')">好评</button>
+        <button onclick="filterComments('bad')">差评</button>
+    </div>
+    <div id="comment-list">
+        <div class="comment" data-type="good">非常好吃，颗粒饱满！</div>
+        <div class="comment" data-type="good">包装方便，不脏手</div>
+        <div class="comment" data-type="bad">有点咸</div>
+    </div>
+</section>
+<footer id="buy-btn">
+    立即购买
+</footer>
+<div id="cart-modal">
+    <div id="cart-panel">
+        <h3>确认订单</h3>
+        <p id="selected-info"></p>
+        <p>最终价格：¥<span id="final-price"></span></p>
+        <button onclick="confirmPay()">确认支付</button>
+    </div>
+</div>
+<script>
+let imgs = document.querySelectorAll('.carousel img');
+let index = 0;
+setInterval(()=>{
+    imgs[index].classList.remove('active');
+    index = (index+1) % imgs.length;
+    imgs[index].classList.add('active');
+}, 3000);
+
+let endTime = new Date();
+endTime.setHours(endTime.getHours()+5); 
+function updateTimer(){
+    let now = new Date();
+    let diff = endTime - now;
+    if(diff<=0){
+        document.getElementById('timer').textContent = '00:00:00';
+        return;
+    }
+    let h = String(Math.floor(diff/1000/60/60)).padStart(2,'0');
+    let m = String(Math.floor(diff/1000/60)%60).padStart(2,'0');
+    let s = String(Math.floor(diff/1000)%60).padStart(2,'0');
+    document.getElementById('timer').textContent = `${h}:${m}:${s}`;
+}
+setInterval(updateTimer,1000);
+
+let specButtons = document.querySelectorAll('.specs button');
+let priceElement = document.getElementById('price');
+let selectedSpec = {spec:10, price:16.9};
+specButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        specButtons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedSpec.spec = parseInt(btn.dataset.spec);
+        selectedSpec.price = parseFloat(btn.dataset.base);
+        priceElement.textContent = selectedSpec.price.toFixed(2);
+        appliedDiscount = 0;
+    });
+});
+let appliedDiscount = 0;
+document.querySelectorAll('.coupon').forEach(c=>{
+    c.addEventListener('click', ()=>{
+        let min = parseFloat(c.dataset.min);
+        if(selectedSpec.price >= min){
+            appliedDiscount = parseFloat(c.dataset.discount);
+            let newPrice = selectedSpec.price - appliedDiscount;
+            priceElement.textContent = newPrice.toFixed(2);
+        } else {
+            alert('当前规格价格不足以使用该优惠券');
+        }
+    });
+});
+function filterComments(type){
+    let comments = document.querySelectorAll('#comment-list .comment');
+    comments.forEach(c=>{
+        if(type==='all') c.style.display='block';
+        else if(c.dataset.type===type) c.style.display='block';
+        else c.style.display='none';
+    });
+}
+document.getElementById('buy-btn').addEventListener('click', ()=>{
+    document.getElementById('cart-modal').style.bottom = '0';
+    document.getElementById('selected-info').textContent = `${selectedSpec.spec}包香瓜子葵花子`;
+    document.getElementById('final-price').textContent = (selectedSpec.price - appliedDiscount).toFixed(2);
+});
+function confirmPay(){
+    let order = {
+        product: '香瓜子葵花子',
+        spec: selectedSpec.spec,
+        basePrice: selectedSpec.price,
+        discount: appliedDiscount,
+        finalPrice: (selectedSpec.price - appliedDiscount).toFixed(2)
+    };
+    alert(JSON.stringify(order));
+}
+</script>
+</body>
+</html>

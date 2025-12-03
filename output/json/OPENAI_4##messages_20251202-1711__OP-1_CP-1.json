@@ -1,0 +1,345 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "请基于以下要求开发一个完整的电商销售网页。  \n\n产品信息与素材  \n- 品牌：LYF  \n- 产品：新疆香瓜子葵花子  \n- 规格：30g × 10 包  \n- 价格：¥16.9（原价 ¥29.9）  \n- 主图链接：  \n  https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\n\n4P 营销要求（必须实现）\n1) 产品（外观图、规格、卖点、评论区、详情展示）\n2) 价格（现价、原价、折扣展示、券后价逻辑）\n3) 渠道（清晰的购买入口与购物流程）\n4) 促销（限时倒计时、热销标签、库存提醒、优惠券）\n\nUI 风格  \n- 对标天猫移动端视觉规范\n- 春节红主色调（#E4393C 或类似）\n- 动效与交互体现节日感、紧迫感与愉悦感\n\n设备与布局要求  \n- 页面宽度950px  \n- 顶部保留状态区和导航栏结构（如返回、购物车图标等）。  \n- 不需要使用占位符，来体现插入图片(如果没有图片的链接，则禁止使用图片)。\n\n功能规范（必须实现）\nA. 购物模块  \n- 数量增减、加入购物车、立即购买  \n- localStorage 保存购物车数据  \n- 购物车侧栏展开/关闭  \n- 购物车商品编辑、删除、结算总价计算  \n\nB. 促销模块  \n- 限时倒计时（自动更新 UI）  \n- 库存动态显示（库存减少逻辑）  \n- 领券中心（用户可领券，并用于结算减免）  \n\nC. 内容展示  \n- 商品评价（评分+评论列表，含表情符号与图片示例）  \n- 商品详情折叠与展开  \n\n\n创新功能（自定义添加1个以上的创新功能）\n\n\n 输出格式:直接输出完整 HTML 文件代码 (只需要输出HTML)\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "分析客户提供的新疆香瓜子葵花子产品特点与目标用户群，提炼核心卖点（如产地优势、节日包装、健康零食）",
+              "设定本项目目标 KPI（点击率、加购率、成交转化率）并将目标拆解为可执行网页制作任务",
+              "制定整体制作时间表与任务依赖关系，确保 PM、Architect、Engineer 的工作衔接顺畅",
+              "审核各阶段交付物，确保内容对齐品牌调性与商业目标"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "将客户的 4P 营销需求转化为详细 PRD 文档，明确每个模块的内容与交互目标",
+              "定义页面的购买路径与转化流程，包括加入购物车、立即购买、结算、领券使用等关键节点",
+              "设计页面的内容信息结构，涵盖主图、价格展示、库存提醒、倒计时、评价区、详情区",
+              "在 PRD 中规定春节红主色调及动效要求，突出节日氛围与促销紧迫感"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "规划销售页面的整体结构布局，包含顶部状态区与导航栏、主视觉、产品信息区、促销区、购物功能区、评价区、详情展示区",
+              "为促销模块定义可复用组件规范（如限时倒计时组件、优惠券领取组件、库存显示组件）",
+              "设计购物模块的前端交互逻辑，包括数量增减、localStorage 数据保存、购物车侧栏展开/关闭及商品操作逻辑",
+              "输出 UI 区块说明与交互接口文档，明确 Engineer 实现过程中的数据流与事件触发点"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "基于 Architect 提供的页面结构与接口说明，编写符合天猫移动端规范的 HTML/CSS/JS 代码",
+              "实现购物模块功能：数量调节、加入购物车、立即购买、购物车数据存储与管理、总价计算等",
+              "实现促销模块功能：限时倒计时自动更新 UI、库存动态变化、优惠券领取与结算抵扣逻辑",
+              "实现内容展示模块：评价列表加载与显示、详情折叠/展开，确保交互流畅",
+              "开发并集成至少一个创新功能，例如节日主题互动弹窗或分享领券功能，提升用户参与度",
+              "进行跨设备浏览器测试与性能优化，确保页面加载速度与高稳定性"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "LYF新疆香瓜子葵花子销售页面，聚焦春节促销，强化产品卖点与节日氛围，驱动用户快速加购与转化",
+        "goals": [
+          "提升春节促销期间的点击率和加购率",
+          "突出产地优势与健康零食卖点，强化品牌信任",
+          "利用限时倒计时和库存提醒制造紧迫感，提高转化率",
+          "优化购买路径，减少操作步骤提升成交率",
+          "提升用户停留时长与互动率，增加评价与分享数量"
+        ],
+        "target_users": [
+          "年轻都市女性消费者 + 寻找健康、便捷的节日零食",
+          "家庭采购者 + 春节期间大量购置亲友分享零食"
+        ],
+        "page_sections": [
+          {
+            "id": "status-bar",
+            "purpose": "保留顶部状态区与导航功能入口，保证用户快速返回与查看购物车",
+            "kpi": "CTR"
+          },
+          {
+            "id": "hero",
+            "purpose": "展示产品主图、标题与核心卖点，吸引首次访问用户的注意力",
+            "kpi": "CTR"
+          },
+          {
+            "id": "price-box",
+            "purpose": "突出促销价、原价、折扣信息，显示券后价以刺激购买",
+            "kpi": "加购率"
+          },
+          {
+            "id": "promotion-bar",
+            "purpose": "显示限时倒计时与库存提醒，传递紧迫感",
+            "kpi": "转化率"
+          },
+          {
+            "id": "coupon-center",
+            "purpose": "用户可领取优惠券，并在结算时抵扣，提升订单转化率",
+            "kpi": "加购率"
+          },
+          {
+            "id": "product-specs",
+            "purpose": "展示品牌、规格、产地及卖点，强化用户的购买理由",
+            "kpi": "转化率"
+          },
+          {
+            "id": "buy-box",
+            "purpose": "提供数量调整、加入购物车、立即购买功能按钮，引导下单",
+            "kpi": "加购率"
+          },
+          {
+            "id": "cart-sidebar",
+            "purpose": "购物车侧栏供用户管理商品（编辑、删除、结算）",
+            "kpi": "转化率"
+          },
+          {
+            "id": "reviews",
+            "purpose": "展示商品评分、评论内容与图片，增加社交证明",
+            "kpi": "转化率"
+          },
+          {
+            "id": "product-details",
+            "purpose": "提供图文详情折叠/展开查看，减少信息不足导致的流失",
+            "kpi": "转化率"
+          },
+          {
+            "id": "festival-interactive",
+            "purpose": "创新功能：春节主题互动弹窗或分享领券功能，增加节日参与氛围",
+            "kpi": "CTR"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "single-column",
+        "colors": [
+          "#E4393C",
+          "secondary",
+          "#F4F4F5",
+          "#FFD700",
+          "#333333"
+        ],
+        "components": [
+          {
+            "id": "status-bar",
+            "html": "header",
+            "children": [
+              {
+                "tag": "nav",
+                "content_hint": "返回按钮、购物车图标、用户登录入口"
+              }
+            ]
+          },
+          {
+            "id": "hero",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h1",
+                "content_hint": "产品品牌与名称"
+              },
+              {
+                "tag": "img",
+                "content_hint": "产品主图"
+              },
+              {
+                "tag": "p",
+                "content_hint": "核心卖点简述"
+              }
+            ]
+          },
+          {
+            "id": "price-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "促销价显示"
+              },
+              {
+                "tag": "p",
+                "content_hint": "原价与折扣信息"
+              },
+              {
+                "tag": "p",
+                "content_hint": "券后价提示"
+              }
+            ]
+          },
+          {
+            "id": "promotion-bar",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "限时倒计时器"
+              },
+              {
+                "tag": "div",
+                "content_hint": "库存剩余数量提示"
+              }
+            ]
+          },
+          {
+            "id": "coupon-center",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "领券标题"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "优惠券列表与领取按钮"
+              }
+            ]
+          },
+          {
+            "id": "product-specs",
+            "html": "section",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "品牌与产地信息"
+              },
+              {
+                "tag": "p",
+                "content_hint": "规格和包装说明"
+              },
+              {
+                "tag": "p",
+                "content_hint": "产品卖点详细描述"
+              }
+            ]
+          },
+          {
+            "id": "buy-box",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "数量增加减少控件"
+              },
+              {
+                "tag": "button",
+                "content_hint": "加入购物车按钮"
+              },
+              {
+                "tag": "button",
+                "content_hint": "立即购买按钮"
+              }
+            ]
+          },
+          {
+            "id": "cart-sidebar",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "ul",
+                "content_hint": "购物车商品列表"
+              },
+              {
+                "tag": "p",
+                "content_hint": "结算总价"
+              },
+              {
+                "tag": "button",
+                "content_hint": "结算按钮"
+              }
+            ]
+          },
+          {
+            "id": "reviews",
+            "html": "section",
+            "children": [
+              {
+                "tag": "h2",
+                "content_hint": "用户评分与总评"
+              },
+              {
+                "tag": "ul",
+                "content_hint": "评论列表（文字、表情、图片）"
+              }
+            ]
+          },
+          {
+            "id": "product-details",
+            "html": "section",
+            "children": [
+              {
+                "tag": "button",
+                "content_hint": "展开详情按钮"
+              },
+              {
+                "tag": "div",
+                "content_hint": "详情图文内容"
+              }
+            ]
+          },
+          {
+            "id": "festival-interactive",
+            "html": "section",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "春节主题互动弹窗入口"
+              },
+              {
+                "tag": "button",
+                "content_hint": "分享领券按钮"
+              }
+            ]
+          },
+          {
+            "id": "footer",
+            "html": "footer",
+            "children": [
+              {
+                "tag": "p",
+                "content_hint": "品牌信息与版权声明"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>LYF 新疆香瓜子葵花子 春节促销</title>\n<style>\n    body {\n        margin: 0;\n        font-family: \"Microsoft YaHei\", sans-serif;\n        color: #333333;\n        background-color: #F4F4F5;\n        max-width: 950px;\n        margin-left: auto;\n        margin-right: auto;\n    }\n    header {\n        background-color: #E4393C;\n        padding: 0.5rem;\n        color: #fff;\n    }\n    nav {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n    }\n    nav .nav-left, nav .nav-right {\n        display: flex;\n        align-items: center;\n    }\n    nav button {\n        background: none;\n        border: none;\n        color: #fff;\n        font-size: 1rem;\n        margin-right: 0.5rem;\n        cursor: pointer;\n    }\n    section {\n        background-color: #fff;\n        margin-top: 0.5rem;\n        padding: 1rem;\n    }\n    #hero img {\n        max-width: 100%;\n        border-radius: 5px;\n    }\n    #price-box {\n        color: #E4393C;\n        font-size: 1.2rem;\n    }\n    #price-box .original-price {\n        text-decoration: line-through;\n        color: #999;\n        font-size: 1rem;\n        margin-left: 0.5rem;\n    }\n    #promotion-bar {\n        display: flex;\n        justify-content: space-between;\n        color: #FFD700;\n        font-weight: bold;\n        background-color: #E4393C;\n        border-radius: 4px;\n        padding: 0.5rem;\n    }\n    #coupon-center ul {\n        list-style: none;\n        padding: 0;\n    }\n    #coupon-center li {\n        background-color: #FFD700;\n        padding: 0.5rem;\n        margin-bottom: 0.5rem;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        border-radius: 4px;\n    }\n    #coupon-center button {\n        background-color: #E4393C;\n        color: #fff;\n        border: none;\n        padding: 0.3rem 0.5rem;\n        border-radius: 3px;\n        cursor: pointer;\n    }\n    #buy-box {\n        display: flex;\n        align-items: center;\n        gap: 0.5rem;\n    }\n    .qty-control {\n        display: flex;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .qty-control button {\n        background: #FFD700;\n        border: none;\n        padding: 0.3rem;\n        cursor: pointer;\n    }\n    .qty-control input {\n        width: 40px;\n        text-align: center;\n        border: none;\n    }\n    #buy-box button {\n        flex: 1;\n        background-color: #E4393C;\n        color: #fff;\n        padding: 0.5rem;\n        border: none;\n        border-radius: 4px;\n        cursor: pointer;\n    }\n    #cart-sidebar {\n        background-color: #fff;\n        position: fixed;\n        top: 0;\n        right: -350px;\n        width: 300px;\n        height: 100%;\n        box-shadow: -2px 0 5px rgba(0,0,0,0.3);\n        transition: right 0.3s ease;\n        padding: 1rem;\n        overflow-y: auto;\n        z-index: 999;\n    }\n    #cart-sidebar.open {\n        right: 0;\n    }\n    #cart-sidebar ul {\n        list-style: none;\n        padding: 0;\n    }\n    #cart-sidebar li {\n        padding: 0.5rem 0;\n        border-bottom: 1px solid #eee;\n    }\n    #cart-sidebar p {\n        font-weight: bold;\n        margin-top: 1rem;\n    }\n    #reviews ul {\n        list-style: none;\n        padding: 0;\n    }\n    #reviews li {\n        margin-bottom: 1rem;\n        border-bottom: 1px solid #eee;\n        padding-bottom: 1rem;\n    }\n    #product-details button {\n        background-color: #E4393C;\n        color: #fff;\n        border: none;\n        padding: 0.5rem;\n        border-radius: 4px;\n        cursor: pointer;\n    }\n    #product-details .details-content {\n        display: none;\n        margin-top: 1rem;\n    }\n    #festival-interactive {\n        text-align: center;\n    }\n    #festival-interactive button {\n        background-color: #FFD700;\n        color: #E4393C;\n        border: none;\n        padding: 0.5rem 1rem;\n        border-radius: 4px;\n        cursor: pointer;\n    }\n    footer {\n        text-align: center;\n        font-size: 0.8rem;\n        color: #999;\n        padding: 1rem;\n    }\n    @media (max-width: 768px) {\n        body {\n            max-width: 100%;\n        }\n    }\n</style>\n</head>\n<body>\n<header id=\"status-bar\">\n    <nav>\n        <div class=\"nav-left\">\n            <button id=\"btn-back\">◀ 返回</button>\n        </div>\n        <div class=\"nav-right\">\n            <button id=\"btn-cart\">🛒购物车</button>\n            <button id=\"btn-login\">登录</button>\n        </div>\n    </nav>\n</header>\n\n<section id=\"hero\">\n    <h1>LYF 新疆香瓜子葵花子</h1>\n    <img src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" alt=\"LYF 新疆香瓜子葵花子\">\n    <p>原产新疆，粒大饱满，香味浓郁，春节送礼佳品，健康零食伴您团圆。</p>\n</section>\n\n<section id=\"price-box\">\n    <p>促销价：¥16.9 <span class=\"original-price\">¥29.9</span></p>\n    <p>折扣：立省43%</p>\n    <p>券后价：¥14.9</p>\n</section>\n\n<section id=\"promotion-bar\">\n    <div id=\"countdown\">限时抢购剩余：00:00:00</div>\n    <div id=\"stock\">库存剩余：100</div>\n</section>\n\n<section id=\"coupon-center\">\n    <h2>领券中心</h2>\n    <ul>\n        <li>满20减2 <button>领取</button></li>\n        <li>满50减5 <button>领取</button></li>\n    </ul>\n</section>\n\n<section id=\"product-specs\">\n    <p>品牌：LYF | 产地：新疆</p>\n    <p>规格：30g × 10 包</p>\n    <p>卖点：精选葵花子，低温烘焙，保留原香，健康无添加。</p>\n</section>\n\n<section id=\"buy-box\">\n    <div class=\"qty-control\">\n        <button>-</button>\n        <input type=\"text\" value=\"1\">\n        <button>+</button>\n    </div>\n    <button>加入购物车</button>\n    <button>立即购买</button>\n</section>\n\n<aside id=\"cart-sidebar\">\n    <ul>\n        <li>新疆香瓜子葵花子 × 1 - ¥16.9</li>\n    </ul>\n    <p>总价：¥16.9</p>\n    <button>结算</button>\n</aside>\n\n<section id=\"reviews\">\n    <h2>用户评价 ⭐⭐⭐⭐⭐</h2>\n    <ul>\n        <li>👍 非常香！春节送亲戚大家都喜欢。 <img src=\"https://via.placeholder.com/50\"></li>\n        <li>😋 粒粒饱满，吃着停不下来！</li>\n    </ul>\n</section>\n\n<section id=\"product-details\">\n    <button>展开详情</button>\n    <div class=\"details-content\">\n        <p>产地直供，新鲜采摘，精心烘焙，包装严密，保障最佳口感。</p>\n        <img src=\"https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp\" alt=\"详情图\">\n    </div>\n</section>\n\n<section id=\"festival-interactive\">\n    <div>春节大抽奖，即刻参与赢取购物红包！</div>\n    <button>分享好友领券</button>\n</section>\n\n<footer id=\"footer\">\n    <p>© 2024 LYF 品牌 | 版权所有</p>\n</footer>\n</body>\n</html>"
+    }
+  ]
+}

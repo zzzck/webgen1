@@ -1,0 +1,236 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n请创建一个包含 HTML、CSS 和 JavaScript 的**单文件（Single HTML File）**一款春节零食电商销售网页。\n网页必须包含 4P 营销要素：产品（外观图、规格介绍、卖点文案）、价格（现价、对比价格、优惠信息）、渠道（明确的网页购买入口与购物流程）、促销（促销标签、库存或限时购买激励）。\n\n# Backgroud/Context\n1.场景：春节年货大促\n2.品牌：LYF \n3.产品：香瓜子葵花子（30g 小包装/10包组合装）\n4.价格：¥16.9（原价 ¥29.9）\n5.设计风格：参考京东/天猫移动端风格，主色调为“春节红”（#E4393C 或类似），强调喜庆、热闹、紧迫感。\n\n#功能与交互要求：\n\n1.页面基础结构：顶部包含品牌 Logo、简单导航（如 首页 / 产品 / 联系我们）和购物车入口（显示当前购物车商品数量）。\n主视觉区域展示核心产品的大图、产品名称、简短卖点文案和购买按钮（立即购买 / 加入购物车）。\n支持自适应布局，在桌面端和移动端都能良好显示。\n\n2.产品展示模块：\n展示产品图片轮播（至少支持多张产品图切换）。\n图1“https://gw.alicdn.com/imgextra/i3/3195305016/O1CN01FpNUtD1mvNZJLQUHu_!!3195305016.jpg_Q75.jpg_.webp”\n图2“https://pic1.zhimg.com/v2-0a72a4246fde463055bbcd021d58d6b0_1440w.jpg?source=172ae18b”\n图3“https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-44541-i.jpg”\n\n3.显示产品名称、副标题、价格、原价（用于展示折扣）、库存状态。\n支持规格/口味/颜色等 “规格选项” 切换（如不同包装/口味），切换时价格或库存可以跟随变化（可用假数据）。\n展示产品详细信息：成分/参数列表、卖点 bullet points（如“源自新疆”“独立小包装”“适合办公零食”等，可用示例文案）。\n\n4.购买与购物车模块：\n用户可以选择购买数量（+ / - 按钮或数量输入框）。\n“加入购物车” 按钮：点击后将当前产品规格与数量加入购物车，并在页面上给出明显的成功提示（如小弹窗或角标动画）。\n购物车侧边栏或弹出层：列出已加入的商品（缩略图、名称、规格、单价、数量、小计），支持：\n修改数量\n删除商品\n显示总价\n结算按钮（点击可模拟“去结算”流程，无需真正支付）\n\n5.营销与促销元素（4P 相关）：\n价格：展示现价、原价、优惠力度（如“限时 8 折”或“满 99 减 10”，可用示例文案）。\n促销标签：例如“热销”“新品”“今日特惠”“库存紧张”等角标样式。\n渠道：清晰展示这是“在线网页销售场景”，通过“加入购物车 + 去结算”完成购买流程。\n促销激励：添加如“倒计时限时抢购”（可为假倒计时）、“库存不足提醒”（库存低于某个数时显示醒目的提示）。\n\n6.用户评价与推荐模块：\n评论区：展示若干条模拟用户评价，包括用户名、评分星级（1–5）、简短评论内容、评论时间。\n允许用户在前端提交一条新的评论（姓名、评分、评论内容），提交后动态添加到评论列表（仅前端处理）。\n推荐模块：在页面底部展示 3–4 个“你可能还喜欢”的关联产品卡片（含缩略图、名称、简短文案和价格），点击可以模拟切换主商品或仅作展示。\n\n7.您还可以添加任何其他创意功能来提高可用性和趣味性,例如：\n心愿单功能：用户可以将产品加入“心愿单”，并在专门区域查看所有心愿单商品；浏览记录：\n记录用户最近查看的产品，在页面底部展示“最近浏览”列表、\n简单通知系统：例如当用户首次加入购物车、首次加入心愿单、或购物车金额超过某个阈值时，弹出简洁友好的提示（可使用自定义样式的小弹窗或右上角通知条）。\n客服功能\n\n仅使用 HTML、CSS 和 JavaScript — 不要使用 Vue、React 或任何第三方库。使用 localStorage 存储所有数据，确保任务在页面刷新后仍能保留。保持整体设计简洁、用户友好且引人入胜。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "PM",
+          "Architect",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求，确立以'春节年货大促'为核心的单页电商开发目标",
+              "明确交付物为包含完整交互逻辑（购物车、评论、本地存储）的 Single HTML File"
+            ]
+          },
+          {
+            "role": "PM",
+            "tasks": [
+              "整理需求文档：细化 4P 营销要素（产品展示、价格策略、促销倒计时、购买流程）",
+              "定义功能逻辑：购物车（增删改查+本地存储）、评价系统（前端动态提交）、规格切换与心愿单功能"
+            ]
+          },
+          {
+            "role": "Architect",
+            "tasks": [
+              "设计单文件架构：规划 HTML 语义化结构、CSS 响应式布局策略及 JS 模块划分",
+              "定义数据模型：设计 localStorage 的 Schema（用于存储 Cart, Reviews, Wishlist, History）"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "实现 UI：根据 JD/天猫风格编写春节红主题 CSS，完成响应式布局与动画效果",
+              "实现逻辑：编写原生 JS 完成轮播图、倒计时、购物车交互、评论动态渲染及 LocalStorage 数据持久化",
+              "输出最终交付物：整合所有代码为单一 HTML 文件"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "prd": [
+    {
+      "topic": "prd",
+      "sender": "PM",
+      "content": {
+        "product": "一款基于HTML/CSS/JS单文件的LYF品牌春节年货大促响应式电商落地页，集成4P营销要素与本地存储功能。",
+        "goals": [
+          "营造高沉浸感的春节年货大促氛围，通过红金色调与紧迫感设计激发购买欲",
+          "实现完整的前端电商闭环，涵盖商品展示、规格切换、购物车管理及模拟结算",
+          "应用价格锚定（原价对比）与限时/库存促销策略，提升用户转化率",
+          "利用LocalStorage实现数据持久化，保存购物车、浏览记录及用户评论",
+          "提供流畅的移动端优先体验，确保在不同设备上的交互一致性"
+        ],
+        "target_users": [
+          "春节囤货人群：需要采购高性价比、喜庆包装零食用于家庭聚会或待客的用户",
+          "办公室零食族：偏好独立小包装、注重便利性与卫生，利用碎片时间购物的年轻用户",
+          "价格敏感型消费者：容易受到限时折扣、库存紧张提示及满减优惠吸引的冲动型买家"
+        ],
+        "page_sections": [
+          {
+            "id": "global-header",
+            "purpose": "包含品牌Logo、基础导航、心愿单入口及带有动态数量角标的购物车触发器"
+          },
+          {
+            "id": "product-visuals",
+            "purpose": "支持触摸滑动的多图轮播区域，展示产品包装、瓜子特写及场景图，吸引视觉注意"
+          },
+          {
+            "id": "marketing-info",
+            "purpose": "展示产品名称、卖点副标题、现价/原价对比、促销标签（如“热销”）及倒计时组件"
+          },
+          {
+            "id": "sku-selector",
+            "purpose": "规格选择（口味/包装）、库存状态显示及数量加减控制器，联动价格变化"
+          },
+          {
+            "id": "purchase-actions",
+            "purpose": "包含加入购物车、立即购买按钮及收藏（心愿单）功能，通常吸底或位于首屏核心区"
+          },
+          {
+            "id": "detail-specs",
+            "purpose": "详细参数列表（配料表）、核心卖点（Bullet Points）及图文介绍，建立产品信任"
+          },
+          {
+            "id": "social-proof",
+            "purpose": "用户评价列表展示（含星级、内容、时间）及前端动态发表评论的表单入口"
+          },
+          {
+            "id": "recommendations",
+            "purpose": "基于“你可能还喜欢”逻辑展示关联商品卡片，增加页面停留时间"
+          },
+          {
+            "id": "history-log",
+            "purpose": "展示用户最近浏览过的商品记录，方便快速回溯"
+          },
+          {
+            "id": "cart-drawer",
+            "purpose": "侧边滑出式购物车，支持增删改查、金额自动计算及去结算模拟流程"
+          },
+          {
+            "id": "toast-system",
+            "purpose": "全局通知反馈模块，用于展示操作成功、库存预警或营销提示信息"
+          }
+        ]
+      }
+    }
+  ],
+  "page_spec": [
+    {
+      "topic": "page_spec",
+      "sender": "Architect",
+      "content": {
+        "layout": "mobile-first single-column | sticky-bottom-actions | slide-out-cart",
+        "colors": [
+          "#D93025 (Festive Red)",
+          "#F9A825 (Prosperity Gold)",
+          "#FFFFFF",
+          "#F5F5F5 (Background)",
+          "#333333 (Text)"
+        ],
+        "components": [
+          {
+            "id": "global-header",
+            "html": "header",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "品牌Logo (LYF) 与基础导航链接"
+              },
+              {
+                "tag": "button",
+                "content_hint": "购物车图标按钮，包含 span.badge 用于显示动态数量"
+              }
+            ]
+          },
+          {
+            "id": "main-content",
+            "html": "main",
+            "children": [
+              {
+                "tag": "section",
+                "content_hint": "product-visuals: 轮播图容器，包含产品主图、细节图与场景图"
+              },
+              {
+                "tag": "section",
+                "content_hint": "marketing-info: 包含 h1 产品名、h2 卖点副标题、价格容器（现价/原价/折扣标）及倒计时组件"
+              },
+              {
+                "tag": "section",
+                "content_hint": "sku-selector: 口味/规格按钮组 (Radio inputs)，库存提示文本"
+              },
+              {
+                "tag": "section",
+                "content_hint": "detail-specs: 产品参数表格（配料、保质期）及图文详情容器"
+              },
+              {
+                "tag": "section",
+                "content_hint": "social-proof: 评价列表容器 (ul > li) 及评论输入表单 (textarea + submit)"
+              },
+              {
+                "tag": "section",
+                "content_hint": "recommendations: '猜你喜欢' 标题及关联商品卡片网格"
+              },
+              {
+                "tag": "section",
+                "content_hint": "history-log: '最近浏览' 标题及横向滚动商品缩略图列表"
+              }
+            ]
+          },
+          {
+            "id": "purchase-actions",
+            "html": "div",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "左侧操作区：收藏按钮、店铺入口"
+              },
+              {
+                "tag": "div",
+                "content_hint": "右侧按钮组：'加入购物车' (次级色) 与 '立即购买' (主色)"
+              }
+            ]
+          },
+          {
+            "id": "cart-drawer",
+            "html": "aside",
+            "children": [
+              {
+                "tag": "header",
+                "content_hint": "侧边栏头部：标题与关闭按钮"
+              },
+              {
+                "tag": "div",
+                "content_hint": "购物车商品列表容器 (ul)，支持空状态显示"
+              },
+              {
+                "tag": "footer",
+                "content_hint": "底部结算区：总价显示与 '去结算' 按钮"
+              }
+            ]
+          },
+          {
+            "id": "toast-system",
+            "html": "div",
+            "children": [
+              {
+                "tag": "div",
+                "content_hint": "隐藏的消息气泡容器，用于 JS 动态插入成功/警告提示"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>LYF - 商品详情</title>\n    <style>\n        :root {\n            --color-red: #D93025;\n            --color-gold: #F9A825;\n            --color-white: #FFFFFF;\n            --color-bg: #F5F5F5;\n            --color-text: #333333;\n            --spacing-base: 16px;\n            --spacing-sm: 8px;\n            --header-height: 60px;\n            --footer-height: 70px;\n        }\n\n        * {\n            box-sizing: border-box;\n            margin: 0;\n            padding: 0;\n            -webkit-tap-highlight-color: transparent;\n        }\n\n        body {\n            font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\n            background-color: var(--color-bg);\n            color: var(--color-text);\n            line-height: 1.5;\n            padding-top: var(--header-height);\n            padding-bottom: var(--footer-height);\n        }\n\n        /* Global Header */\n        #global-header {\n            position: fixed;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: var(--header-height);\n            background-color: var(--color-white);\n            display: flex;\n            align-items: center;\n            justify-content: space-between;\n            padding: 0 var(--spacing-base);\n            box-shadow: 0 2px 8px rgba(0,0,0,0.05);\n            z-index: 100;\n        }\n\n        .brand-logo {\n            font-weight: 900;\n            font-size: 20px;\n            color: var(--color-red);\n            text-decoration: none;\n        }\n\n        .cart-btn {\n            background: none;\n            border: none;\n            font-size: 24px;\n            position: relative;\n            cursor: pointer;\n        }\n\n        .cart-badge {\n            position: absolute;\n            top: -5px;\n            right: -8px;\n            background-color: var(--color-red);\n            color: var(--color-white);\n            font-size: 10px;\n            padding: 2px 6px;\n            border-radius: 10px;\n            font-weight: bold;\n        }\n\n        /* Main Content Sections */\n        section {\n            background-color: var(--color-white);\n            margin-bottom: var(--spacing-sm);\n            padding: var(--spacing-base);\n        }\n\n        /* Product Visuals - CSS Scroll Snap Carousel */\n        .product-visuals {\n            padding: 0;\n            display: flex;\n            overflow-x: auto;\n            scroll-snap-type: x mandatory;\n            scrollbar-width: none;\n            height: 375px;\n        }\n        .product-visuals::-webkit-scrollbar { display: none; }\n        \n        .visual-item {\n            flex: 0 0 100%;\n            scroll-snap-align: center;\n            background-color: #eee;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            font-size: 14px;\n            color: #999;\n        }\n\n        /* Marketing Info */\n        .marketing-info h1 {\n            font-size: 20px;\n            margin-bottom: var(--spacing-sm);\n        }\n        \n        .marketing-info h2 {\n            font-size: 14px;\n            color: #666;\n            font-weight: normal;\n            margin-bottom: var(--spacing-base);\n        }\n\n        .price-container {\n            display: flex;\n            align-items: baseline;\n            gap: 8px;\n            margin-bottom: var(--spacing-sm);\n        }\n\n        .current-price {\n            color: var(--color-red);\n            font-size: 24px;\n            font-weight: bold;\n        }\n\n        .original-price {\n            text-decoration: line-through;\n            color: #999;\n            font-size: 14px;\n        }\n\n        .discount-tag {\n            background-color: var(--color-red);\n            color: white;\n            font-size: 10px;\n            padding: 2px 4px;\n            border-radius: 2px;\n            vertical-align: middle;\n        }\n\n        .countdown {\n            background-color: #FFF0E6;\n            color: var(--color-red);\n            font-size: 12px;\n            padding: 8px;\n            border-radius: 4px;\n            display: inline-block;\n            width: 100%;\n            text-align: center;\n        }\n\n        /* SKU Selector */\n        .sku-title {\n            font-size: 14px;\n            margin-bottom: var(--spacing-sm);\n            font-weight: bold;\n        }\n        \n        .sku-options {\n            display: flex;\n            flex-wrap: wrap;\n            gap: 10px;\n            margin-bottom: var(--spacing-sm);\n        }\n\n        .sku-radio {\n            display: none;\n        }\n\n        .sku-label {\n            padding: 6px 16px;\n            border: 1px solid #ddd;\n            border-radius: 20px;\n            font-size: 13px;\n            cursor: pointer;\n            transition: all 0.2s;\n        }\n\n        .sku-radio:checked + .sku-label {\n            border-color: var(--color-red);\n            color: var(--color-red);\n            background-color: #FFF0E6;\n        }\n\n        .stock-tip {\n            font-size: 12px;\n            color: #999;\n        }\n\n        /* Detail Specs */\n        .spec-table {\n            width: 100%;\n            font-size: 13px;\n            border-collapse: collapse;\n            margin-bottom: var(--spacing-base);\n        }\n        \n        .spec-table td {\n            padding: 8px 0;\n            border-bottom: 1px solid #eee;\n        }\n        \n        .spec-key { color: #666; width: 80px; }\n\n        .detail-images {\n            display: flex;\n            flex-direction: column;\n            gap: 4px;\n        }\n        .detail-img-placeholder {\n            width: 100%;\n            height: 200px;\n            background-color: #eee;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: #aaa;\n        }\n\n        /* Social Proof */\n        .review-list {\n            list-style: none;\n        }\n        \n        .review-item {\n            border-bottom: 1px solid #eee;\n            padding: 12px 0;\n        }\n        \n        .review-header {\n            display: flex;\n            justify-content: space-between;\n            font-size: 12px;\n            color: #999;\n            margin-bottom: 6px;\n        }\n        \n        .review-content { font-size: 14px; }\n\n        .review-form {\n            margin-top: var(--spacing-base);\n            display: flex;\n            flex-direction: column;\n            gap: 8px;\n        }\n        \n        .review-form textarea {\n            width: 100%;\n            padding: 8px;\n            border: 1px solid #ddd;\n            border-radius: 4px;\n            resize: vertical;\n        }\n        \n        .btn-submit {\n            align-self: flex-end;\n            padding: 6px 16px;\n            background-color: var(--color-text);\n            color: white;\n            border: none;\n            border-radius: 4px;\n        }\n\n        /* Recommendations Grid */\n        .rec-grid {\n            display: grid;\n            grid-template-columns: repeat(2, 1fr);\n            gap: 10px;\n        }\n        \n        .rec-card {\n            background: #fff;\n            border: 1px solid #eee;\n            padding: 10px;\n            border-radius: 4px;\n        }\n        \n        .rec-img { height: 120px; background: #eee; margin-bottom: 8px; }\n\n        /* History Log */\n        .history-scroll {\n            display: flex;\n            overflow-x: auto;\n            gap: 10px;\n            padding-bottom: 10px;\n        }\n        \n        .history-item {\n            flex: 0 0 80px;\n            text-align: center;\n            font-size: 12px;\n        }\n        \n        .history-img { width: 80px; height: 80px; background: #eee; border-radius: 4px; margin-bottom: 4px; }\n\n        /* Sticky Bottom Actions */\n        #purchase-actions {\n            position: fixed;\n            bottom: 0;\n            left: 0;\n            width: 100%;\n            height: var(--footer-height);\n            background-color: var(--color-white);\n            display: flex;\n            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);\n            z-index: 90;\n            padding: 0 16px;\n            align-items: center;\n            justify-content: space-between;\n        }\n\n        .action-icons {\n            display: flex;\n            gap: 20px;\n            color: #666;\n            font-size: 12px;\n            text-align: center;\n        }\n        \n        .icon-btn {\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            cursor: pointer;\n        }\n\n        .action-buttons {\n            display: flex;\n            gap: 10px;\n        }\n\n        .btn {\n            padding: 10px 24px;\n            border-radius: 24px;\n            font-weight: bold;\n            border: none;\n            font-size: 14px;\n            cursor: pointer;\n        }\n\n        .btn-cart {\n            background-color: var(--color-gold);\n            color: var(--color-white);\n        }\n\n        .btn-buy {\n            background-color: var(--color-red);\n            color: var(--color-white);\n        }\n\n        /* Cart Drawer */\n        #cart-drawer {\n            position: fixed;\n            top: 0;\n            right: 0;\n            bottom: 0;\n            width: 80%;\n            max-width: 375px;\n            background-color: var(--color-white);\n            z-index: 200;\n            transform: translateX(100%);\n            transition: transform 0.3s ease;\n            box-shadow: -4px 0 15px rgba(0,0,0,0.1);\n            display: flex;\n            flex-direction: column;\n        }\n\n        /* Class to toggle via JS (simulated here) */\n        #cart-drawer.is-open {\n            transform: translateX(0);\n        }\n\n        .drawer-header {\n            padding: 16px;\n            border-bottom: 1px solid #eee;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            font-weight: bold;\n        }\n\n        .cart-items {\n            flex: 1;\n            overflow-y: auto;\n            padding: 16px;\n            list-style: none;\n        }\n\n        .cart-item {\n            display: flex;\n            gap: 10px;\n            margin-bottom: 16px;\n        }\n        \n        .cart-item-img { width: 60px; height: 60px; background: #eee; border-radius: 4px; }\n\n        .drawer-footer {\n            padding: 16px;\n            border-top: 1px solid #eee;\n            background-color: #fff;\n        }\n\n        .cart-total {\n            display: flex;\n            justify-content: space-between;\n            margin-bottom: 12px;\n            font-weight: bold;\n        }\n\n        .btn-checkout {\n            width: 100%;\n            background-color: var(--color-red);\n            color: white;\n            padding: 12px;\n            border: none;\n            border-radius: 4px;\n            font-weight: bold;\n        }\n\n        /* Toast System */\n        #toast-system {\n            position: fixed;\n            top: 50%;\n            left: 50%;\n            transform: translate(-50%, -50%);\n            z-index: 300;\n            pointer-events: none;\n        }\n\n        .toast {\n            background-color: rgba(0,0,0,0.8);\n            color: white;\n            padding: 12px 24px;\n            border-radius: 4px;\n            font-size: 14px;\n            opacity: 0;\n            transition: opacity 0.3s;\n        }\n    </style>\n</head>\n<body>\n\n    <header id=\"global-header\">\n        <div class=\"brand-logo\">LYF</div>\n        <button class=\"cart-btn\" aria-label=\"购物车\">\n            🛒\n            <span class=\"badge cart-badge\">2</span>\n        </button>\n    </header>\n\n    <main id=\"main-content\">\n        <!-- Product Visuals -->\n        <section class=\"product-visuals\">\n            <div class=\"visual-item\">产品主图 1</div>\n            <div class=\"visual-item\">产品细节 2</div>\n            <div class=\"visual-item\">使用场景 3</div>\n        </section>\n\n        <!-- Marketing Info -->\n        <section class=\"marketing-info\">\n            <h1>LYF 新年限定礼盒 - 阖家欢乐版</h1>\n            <h2>精选上等食材，传统工艺制作，送礼首选，限时特惠中</h2>\n            \n            <div class=\"price-container\">\n                <span class=\"current-price\">¥168.00</span>\n                <span class=\"original-price\">¥258.00</span>\n                <span class=\"discount-tag\">6.5折</span>\n            </div>\n            \n            <div class=\"countdown\">\n                距优惠结束仅剩：02天 14小时 35分\n            </div>\n        </section>\n\n        <!-- SKU Selector -->\n        <section class=\"sku-selector\">\n            <div class=\"sku-title\">选择口味</div>\n            <div class=\"sku-options\">\n                <input type=\"radio\" name=\"flavor\" id=\"f1\" class=\"sku-radio\" checked>\n                <label for=\"f1\" class=\"sku-label\">经典原味</label>\n                \n                <input type=\"radio\" name=\"flavor\" id=\"f2\" class=\"sku-radio\">\n                <label for=\"f2\" class=\"sku-label\">玫瑰豆沙</label>\n                \n                <input type=\"radio\" name=\"flavor\" id=\"f3\" class=\"sku-radio\">\n                <label for=\"f3\" class=\"sku-label\">海盐芝士</label>\n            </div>\n            <div class=\"stock-tip\">库存充足 (剩余 238 件)</div>\n        </section>\n\n        <!-- Detail Specs -->\n        <section class=\"detail-specs\">\n            <div class=\"sku-title\">商品参数</div>\n            <table class=\"spec-table\">\n                <tr>\n                    <td class=\"spec-key\">品牌</td>\n                    <td>LYF 良选</td>\n                </tr>\n                <tr>\n                    <td class=\"spec-key\">保质期</td>\n                    <td>60天</td>\n                </tr>\n                <tr>\n                    <td class=\"spec-key\">配料表</td>\n                    <td>小麦粉、白砂糖、植物油、鲜鸡蛋...</td>\n                </tr>\n            </table>\n            \n            <div class=\"sku-title\">图文详情</div>\n            <div class=\"detail-images\">\n                <div class=\"detail-img-placeholder\">原料产地实拍</div>\n                <div class=\"detail-img-placeholder\">制作工艺展示</div>\n                <div class=\"detail-img-placeholder\">质检报告</div>\n            </div>\n        </section>\n\n        <!-- Social Proof -->\n        <section class=\"social-proof\">\n            <div class=\"sku-title\">用户评价 (1024+)</div>\n            <ul class=\"review-list\">\n                <li class=\"review-item\">\n                    <div class=\"review-header\">\n                        <span>用户_8839</span>\n                        <span>⭐⭐⭐⭐⭐</span>\n                    </div>\n                    <div class=\"review-content\">味道很正宗，包装也很喜庆，送给长辈非常合适！</div>\n                </li>\n                <li class=\"review-item\">\n                    <div class=\"review-header\">\n                        <span>小李爱吃糖</span>\n                        <span>⭐⭐⭐⭐</span>\n                    </div>\n                    <div class=\"review-content\">物流很快，第二天就到了。</div>\n                </li>\n            </ul>\n            <form class=\"review-form\" onsubmit=\"event.preventDefault();\">\n                <textarea placeholder=\"分享您的使用体验...\" rows=\"3\"></textarea>\n                <button type=\"submit\" class=\"btn-submit\">提交评价</button>\n            </form>\n        </section>\n\n        <!-- Recommendations -->\n        <section class=\"recommendations\">\n            <div class=\"sku-title\">猜你喜欢</div>\n            <div class=\"rec-grid\">\n                <div class=\"rec-card\">\n                    <div class=\"rec-img\"></div>\n                    <div>坚果大礼包</div>\n                    <div style=\"color:var(--color-red)\">¥88.00</div>\n                </div>\n                <div class=\"rec-card\">\n                    <div class=\"rec-img\"></div>\n                    <div>水果软糖</div>\n                    <div style=\"color:var(--color-red)\">¥39.90</div>\n                </div>\n            </div>\n        </section>\n\n        <!-- History Log -->\n        <section class=\"history-log\">\n            <div class=\"sku-title\">最近浏览</div>\n            <div class=\"history-scroll\">\n                <div class=\"history-item\">\n                    <div class=\"history-img\"></div>\n                    <span>龙井茶酥</span>\n                </div>\n                <div class=\"history-item\">\n                    <div class=\"history-img\"></div>\n                    <span>蛋黄酥</span>\n                </div>\n                <div class=\"history-item\">\n                    <div class=\"history-img\"></div>\n                    <span>绿豆糕</span>\n                </div>\n                <div class=\"history-item\">\n                    <div class=\"history-img\"></div>\n                    <span>凤梨酥</span>\n                </div>\n            </div>\n        </section>\n    </main>\n\n    <!-- Sticky Bottom Actions -->\n    <div id=\"purchase-actions\">\n        <div class=\"action-icons\">\n            <div class=\"icon-btn\">\n                <span>⭐</span>\n                <span>收藏</span>\n            </div>\n            <div class=\"icon-btn\">\n                <span>🏪</span>\n                <span>店铺</span>\n            </div>\n        </div>\n        <div class=\"action-buttons\">\n            <button class=\"btn btn-cart\">加入购物车</button>\n            <button class=\"btn btn-buy\">立即购买</button>\n        </div>\n    </div>\n\n    <!-- Cart Drawer -->\n    <aside id=\"cart-drawer\">\n        <header class=\"drawer-header\">\n            <span>购物车 (2)</span>\n            <button style=\"border:none;background:none;font-size:18px;\">✕</button>\n        </header>\n        <ul class=\"cart-items\">\n            <li class=\"cart-item\">\n                <div class=\"cart-item-img\"></div>\n                <div>\n                    <div>经典原味礼盒</div>\n                    <div style=\"color:var(--color-red)\">¥168.00 x 1</div>\n                </div>\n            </li>\n            <li class=\"cart-item\">\n                <div class=\"cart-item-img\"></div>\n                <div>\n                    <div>混合口味装</div>\n                    <div style=\"color:var(--color-red)\">¥120.00 x 1</div>\n                </div>\n            </li>\n        </ul>\n        <footer class=\"drawer-footer\">\n            <div class=\"cart-total\">\n                <span>合计:</span>\n                <span style=\"color:var(--color-red)\">¥288.00</span>\n            </div>\n            <button class=\"btn-checkout\">去结算</button>\n        </footer>\n    </aside>\n\n    <!-- Toast System -->\n    <div id=\"toast-system\">\n        <div class=\"toast\">已成功加入购物车</div>\n    </div>\n\n</body>\n</html>"
+    }
+  ]
+}

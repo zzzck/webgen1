@@ -1,0 +1,46 @@
+{
+  "brief": [
+    {
+      "topic": "brief",
+      "sender": "User",
+      "content": "\n我想要设计一个宣传网页，使用html+css+js实现。以下是产品信息。其余内容包括风格、色彩等要求我均可接受，无须询问。\n\n产品：新疆葵花籽 500g，小包装；19.9 元。\n主题：春节 × 团圆 × 嗑瓜子 × 年味。\n"
+    }
+  ],
+  "tasks": [
+    {
+      "topic": "tasks",
+      "sender": "TeamLeader",
+      "content": {
+        "available_roles": [
+          "TeamLeader",
+          "Engineer"
+        ],
+        "tasks": [
+          {
+            "role": "TeamLeader",
+            "tasks": [
+              "梳理客户需求：宣传网页，技术栈为 HTML+CSS+JS",
+              "明确交付物：一个展示新疆葵花籽 500g（19.9元）的春节主题网页",
+              "划分任务：交给 Engineer 实现网页"
+            ]
+          },
+          {
+            "role": "Engineer",
+            "tasks": [
+              "根据规格使用 HTML+CSS+JS 实现成品网页",
+              "页面需呈现产品信息及春节 × 团圆 × 嗑瓜子 × 年味的主题氛围",
+              "设计并实现配套的视觉元素（颜色、版式、图片）"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "topic": "html",
+      "sender": "Engineer",
+      "content": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>新疆葵花籽 · 春节团圆</title>\n    <style>\n        body {\n            margin: 0;\n            font-family: 'Microsoft YaHei', sans-serif;\n            background-color: #fff8f0;\n            color: #333;\n        }\n        header {\n            background: linear-gradient(135deg, #d32f2f, #ff7043);\n            color: white;\n            text-align: center;\n            padding: 40px 20px;\n        }\n        header h1 {\n            font-size: 2.2em;\n            margin: 0;\n            letter-spacing: 2px;\n        }\n        header p {\n            font-size: 1.2em;\n            margin-top: 10px;\n        }\n        .product {\n            display: flex;\n            flex-wrap: wrap;\n            justify-content: center;\n            align-items: center;\n            padding: 40px 20px;\n            background-color: white;\n            box-shadow: 0 0 10px rgba(0,0,0,0.05);\n            margin: 20px auto;\n            max-width: 1000px;\n            border-radius: 8px;\n        }\n        .product img {\n            max-width: 300px;\n            border-radius: 8px;\n            margin: 10px;\n        }\n        .product-info {\n            flex: 1;\n            min-width: 280px;\n            margin: 10px;\n        }\n        .product-info h2 {\n            font-size: 1.8em;\n            color: #d32f2f;\n            margin-bottom: 10px;\n        }\n        .product-info p {\n            font-size: 1.1em;\n            line-height: 1.6;\n            margin-bottom: 20px;\n        }\n        .price {\n            font-size: 1.5em;\n            color: #ff5722;\n            font-weight: bold;\n        }\n        .cta-button {\n            display: inline-block;\n            background-color: #ff5722;\n            color: white;\n            padding: 12px 30px;\n            border-radius: 30px;\n            font-size: 1.1em;\n            text-decoration: none;\n            transition: background-color 0.3s ease;\n        }\n        .cta-button:hover {\n            background-color: #e64a19;\n        }\n        .theme-section {\n            text-align: center;\n            padding: 40px 20px;\n            background-color: #fff1e6;\n        }\n        .theme-section h3 {\n            font-size: 1.6em;\n            color: #d32f2f;\n            margin-bottom: 20px;\n        }\n        .theme-icons {\n            display: flex;\n            justify-content: center;\n            gap: 30px;\n            flex-wrap: wrap;\n        }\n        .icon-card {\n            background-color: white;\n            border-radius: 8px;\n            padding: 20px;\n            box-shadow: 0 0 10px rgba(0,0,0,0.05);\n            width: 150px;\n        }\n        .icon-card img {\n            width: 60px;\n            height: 60px;\n            margin-bottom: 10px;\n        }\n        .icon-card p {\n            font-size: 1em;\n        }\n        footer {\n            text-align: center;\n            padding: 20px;\n            background-color: #d32f2f;\n            color: white;\n            font-size: 0.9em;\n        }\n    </style>\n</head>\n<body>\n\n<header>\n    <h1>春节团圆 · 嗑瓜子</h1>\n    <p>新疆葵花籽 500g 小包装，为团圆时刻增添年味</p>\n</header>\n\n<section class=\"product\">\n    <img src=\"https://via.placeholder.com/300x300.png?text=%E6%96%B0%E7%96%86%E8%91%B5%E8%8A%B1%E7%B1%BD\" alt=\"新疆葵花籽\">\n    <div class=\"product-info\">\n        <h2>新疆葵花籽 500g</h2>\n        <p>精选阳光充足的新疆优质葵花籽，粒大饱满，香脆可口。独立小包装，方便分享，春节与家人朋友围坐畅聊，嗑瓜子品年味，幸福满溢。</p>\n        <div class=\"price\">￥19.9</div>\n        <a href=\"#\" class=\"cta-button\">立即购买</a>\n    </div>\n</section>\n\n<section class=\"theme-section\">\n    <h3>团圆年味四元素</h3>\n    <div class=\"theme-icons\">\n        <div class=\"icon-card\">\n            <img src=\"https://via.placeholder.com/60x60.png?text=%E6%98%A5%E8%8A%82\" alt=\"春节\">\n            <p>春节喜庆</p>\n        </div>\n        <div class=\"icon-card\">\n            <img src=\"https://via.placeholder.com/60x60.png?text=%E5%9B%A2%E5%9C%86\" alt=\"团圆\">\n            <p>家人团聚</p>\n        </div>\n        <div class=\"icon-card\">\n            <img src=\"https://via.placeholder.com/60x60.png?text=%E7%93%BA%E7%93%9C%E5%AD%90\" alt=\"嗑瓜子\">\n            <p>嗑瓜子闲聊</p>\n        </div>\n        <div class=\"icon-card\">\n            <img src=\"https://via.placeholder.com/60x60.png?text=%E5%B9%B4%E5%91%B3\" alt=\"年味\">\n            <p>浓浓年味</p>\n        </div>\n    </div>\n</section>\n\n<footer>\n    © 2024 新疆葵花籽宣传页 | 团圆、美味、分享\n</footer>\n\n<script>\n    document.querySelector('.cta-button').addEventListener('click', function(e) {\n        e.preventDefault();\n        alert('感谢您的关注！购买功能即将上线~');\n    });\n</script>\n\n</body>\n</html>"
+    }
+  ]
+}

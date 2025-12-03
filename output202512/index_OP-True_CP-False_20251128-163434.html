@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情页</title>
+    <style>
+        :root {
+            --color-red: #D62828;
+            --color-orange: #F77F00;
+            --color-light: #F4F4F5;
+            --color-dark: #003049;
+            --color-primary: #F77F00;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--color-primary);
+        }
+        header input {
+            padding: 0.5rem;
+            font-size: 1rem;
+            width: 70%;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        header button {
+            padding: 0.6rem 1rem;
+            border: none;
+            background-color: var(--color-dark);
+            color: white;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        nav {
+            background-color: var(--color-red);
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 1rem;
+        }
+        #promotion-banner {
+            background-color: var(--color-orange);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        #promotion-banner span {
+            display: block;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        #product-gallery img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        #product-gallery div {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        #product-gallery div img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #product-info h1 {
+            margin: 0;
+            color: var(--color-dark);
+        }
+        #pricing-section {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+        }
+        #pricing-section span:first-child {
+            font-size: 1.5rem;
+            color: var(--color-red);
+        }
+        #pricing-section span:last-child {
+            text-decoration: line-through;
+            color: gray;
+        }
+        #pricing-section div {
+            margin-left: auto;
+            color: var(--color-orange);
+        }
+        #coupon-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #coupon-section ul li {
+            background-color: var(--color-light);
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--color-orange);
+            border-radius: 4px;
+        }
+        #purchase-channel {
+            display: flex;
+            gap: 1rem;
+        }
+        #purchase-channel button {
+            flex: 1;
+            padding: 1rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #purchase-channel button:first-child {
+            background-color: var(--color-orange);
+            color: white;
+        }
+        #purchase-channel button:last-child {
+            background-color: var(--color-red);
+            color: white;
+        }
+        #comment-section h2 {
+            margin-top: 0;
+        }
+        #comment-section div {
+            margin-bottom: 1rem;
+        }
+        #comment-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        #comment-section ul li {
+            background-color: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        #cart-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            width: 300px;
+        }
+        #cart-modal button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--color-red);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header id="search-bar">
+        <input type="text" placeholder="搜索商品...">
+        <button>搜索</button>
+    </header>
+    <nav id="nav-bar">
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">分类</a></li>
+            <li><a href="#">购物车</a></li>
+        </ul>
+    </nav>
+    <section id="promotion-banner">
+        <div>春节特惠限时抢购</div>
+        <span>剩余时间：02:15:30</span>
+    </section>
+    <section id="product-gallery">
+        <img src="product-main.jpg" alt="产品主图">
+        <div>
+            <img src="thumb1.jpg" alt="缩略图1">
+            <img src="thumb2.jpg" alt="缩略图2">
+            <img src="thumb3.jpg" alt="缩略图3">
+        </div>
+    </section>
+    <section id="product-info">
+        <h1>品牌名称 产品名称</h1>
+        <p>产地：中国 规格：500g 精选优质原料</p>
+    </section>
+    <section id="pricing-section">
+        <span>¥99</span>
+        <span>¥199</span>
+        <div>春节抢购倒计时：02:15:30</div>
+    </section>
+    <section id="coupon-section">
+        <ul>
+            <li>满100减20</li>
+            <li>满200减50</li>
+        </ul>
+        <p>优惠券使用后，结算价格自动更新</p>
+    </section>
+    <section id="purchase-channel">
+        <button>加入购物车</button>
+        <button>立即购买</button>
+    </section>
+    <section id="comment-section">
+        <h2>用户评论</h2>
+        <div>
+            <label>筛选：</label>
+            <select>
+                <option>全部</option>
+                <option>好评</option>
+                <option>差评</option>
+            </select>
+        </div>
+        <ul>
+            <li>用户A：非常满意！</li>
+            <li>用户B：质量不错，发货快。</li>
+        </ul>
+    </section>
+    <div id="cart-modal">
+        <h2>购物确认</h2>
+        <p>品牌名称 产品名称 500g</p>
+        <span>最终价格：¥99</span>
+        <button>确认支付</button>
+    </div>
+</body>
+</html>

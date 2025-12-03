@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYF 新疆葵花籽 30g 小包装</title>
+<style>
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background-color: #fffaf5;
+    color: #333;
+}
+header {
+    background-color: #d9341a;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+header h1 { margin: 0; font-size: 1.8em; }
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+.product-display {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff8f0;
+    padding: 20px;
+    border-radius: 10px;
+}
+.product-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+.product-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+.product-info {
+    flex: 2;
+    padding: 20px;
+}
+.product-info h2 {
+    font-size: 1.6em;
+    color: #d9341a;
+}
+.price {
+    font-size: 1.4em;
+    color: #ff6600;
+    margin: 10px 0;
+}
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+.promo-tag {
+    display: inline-block;
+    background-color: #ff4d4d;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+.buy-section {
+    margin-top: 20px;
+}
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.quantity-control button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.quantity-control input {
+    width: 50px;
+    text-align: center;
+    font-size: 1em;
+}
+.buy-buttons {
+    display: flex;
+    gap: 10px;
+}
+.buy-buttons button {
+    background-color: #d9341a;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.buy-buttons button:hover {
+    background-color: #a42310;
+}
+.recommendations {
+    margin-top: 40px;
+}
+.recommendations h3 {
+    border-bottom: 2px solid #ff6600;
+    padding-bottom: 5px;
+}
+.recommend-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.recommend-item {
+    background-color: #fff8f0;
+    padding: 10px;
+    border-radius: 8px;
+    width: calc(25% - 20px);
+    text-align: center;
+}
+.recommend-item img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+.comments {
+    margin-top: 40px;
+}
+.comment-filter {
+    margin-bottom: 15px;
+}
+.comment-filter select {
+    padding: 5px;
+}
+.comment-list {
+    list-style: none;
+    padding: 0;
+}
+.comment-list li {
+    background-color: #fff8f0;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+.comment-list li:hover {
+    transform: scale(1.02);
+}
+.cart {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    width: 300px;
+    height: 100%;
+    box-shadow: -2px 0 5px rgba(0,0,0,.2);
+    padding: 20px;
+    overflow-y: auto;
+}
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background-color: #ff6600;
+    width: 0;
+    transition: width 0.4s ease;
+}
+@media (max-width: 768px) {
+    .product-display { flex-direction: column; }
+    .recommend-item { width: calc(50% - 20px); }
+}
+@media (max-width: 480px) {
+    .recommend-item { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<header>
+    <h1>LYF 新疆葵花籽 30g 小包装</h1>
+</header>
+<div class="container">
+    <section class="product-display">
+        <div class="product-image">
+            <img src="https://via.placeholder.com/500x500?text=LYF+%E6%96%B0%E7%96%86%E8%91%B5%E8%8A%B1%E7%B1%BD" alt="LYF 新疆葵花籽">
+        </div>
+        <div class="product-info">
+            <h2>LYF 新疆葵花籽（30g x 10包）</h2>
+            <p class="price">￥16.9 <span class="old-price">￥25.0</span></p>
+            <span class="promo-tag">限时抢购</span>
+            <p>精选新疆优质葵花籽，粒粒饱满，香脆可口，30g小包装方便携带，春节亲友聚会小食佳选。</p>
+            <div class="buy-section">
+                <div class="quantity-control">
+                    <button onclick="changeQuantity(-1)">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button onclick="changeQuantity(1)">+</button>
+                </div>
+                <p>单价: ￥16.9 / 10包</p>
+                <p>总价: ￥<span id="totalPrice">16.9</span></p>
+                <p>预计配送时间：<span id="deliveryTime">3-5 天</span></p>
+                <div class="buy-buttons">
+                    <button onclick="addToCart()">加入购物车</button>
+                    <button onclick="buyNow()">立即购买</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="recommendations">
+        <h3>猜你喜欢</h3>
+        <div class="recommend-list" id="recommendList">
+            <div class="recommend-item">
+                <img src="https://via.placeholder.com/200x200?text=%E7%B1%BDA" alt="推荐商品A">
+                <p>新疆南瓜籽</p>
+                <p>￥12.9</p>
+                <button>购买</button>
+            </div>
+            <div class="recommend-item">
+                <img src="https://via.placeholder.com/200x200?text=%E7%B1%BDB" alt="推荐商品B">
+                <p>原味瓜子</p>
+                <p>￥9.9</p>
+                <button>购买</button>
+            </div>
+            <div class="recommend-item">
+                <img src="https://via.placeholder.com/200x200?text=%E7%B1%BDC" alt="推荐商品C">
+                <p>混合坚果</p>
+                <p>￥29.9</p>
+                <button>购买</button>
+            </div>
+            <div class="recommend-item">
+                <img src="https://via.placeholder.com/200x200?text=%E7%B1%BDD" alt="推荐商品D">
+                <p>开心果</p>
+                <p>￥39.9</p>
+                <button>购买</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="comments">
+        <h3>用户评论</h3>
+        <div class="comment-filter">
+            <label for="commentSort">排序：</label>
+            <select id="commentSort" onchange="sortComments()">
+                <option value="time">按时间</option>
+                <option value="rating">按评分</option>
+            </select>
+        </div>
+        <ul class="comment-list" id="commentList">
+            <li data-rating="5">⭐⭐⭐⭐⭐ 非常香脆，家人都喜欢！</li>
+            <li data-rating="4">⭐⭐⭐⭐ 味道不错，包装精美。</li>
+            <li data-rating="3">⭐⭐⭐ 一般般，稍微有点咸。</li>
+        </ul>
+    </section>
+</div>
+
+<div class="cart" id="cart">
+    <h3>购物车</h3>
+    <ul id="cartItems"></ul>
+    <p>总价：￥<span id="cartTotal">0</span></p>
+    <button onclick="checkout()">去结算</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    let progressBar = document.getElementById('progressBar');
+    progressBar.style.width = '100%';
+    setTimeout(() => { progressBar.style.display = 'none'; }, 500);
+});
+
+function changeQuantity(change) {
+    let qty = document.getElementById('quantity');
+    qty.value = Math.max(1, parseInt(qty.value) + change);
+    updateTotal();
+}
+
+function updateTotal() {
+    let qty = parseInt(document.getElementById('quantity').value);
+    let total = (16.9 * qty).toFixed(2);
+    document.getElementById('totalPrice').innerText = total;
+}
+
+function addToCart() {
+    let qty = document.getElementById('quantity').value;
+    let cartItems = document.getElementById('cartItems');
+    let li = document.createElement('li');
+    li.textContent = `LYF 新疆葵花籽（10包） x ${qty}`;
+    cartItems.appendChild(li);
+    updateCartTotal();
+    document.getElementById('cart').style.display = 'block';
+}
+
+function updateCartTotal(){
+    let items = document.querySelectorAll('#cartItems li');
+    let total = 0;
+    items.forEach(item => {
+        let qty = parseInt(item.textContent.match(/x (\d+)/)[1]);
+        total += qty * 16.9;
+    });
+    document.getElementById('cartTotal').textContent = total.toFixed(2);
+}
+
+function buyNow(){
+    alert('跳转到结算页面...');
+}
+
+function checkout(){
+    alert('选择支付方式：支付宝 / 微信支付');
+}
+
+function sortComments(){
+    let sortValue = document.getElementById('commentSort').value;
+    let list = document.getElementById('commentList');
+    let items = Array.from(list.children);
+    if (sortValue === 'rating'){
+        items.sort((a,b)=> b.dataset.rating - a.dataset.rating);
+    } else {
+        items.reverse();
+    }
+    list.innerHTML = '';
+    items.forEach(i=>list.appendChild(i));
+}
+</script>
+</body>
+</html>

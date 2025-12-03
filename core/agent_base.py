@@ -2,8 +2,8 @@ import os
 from openai import OpenAI
 
 # 设置http和https的代理
-os.environ["HTTP_PROXY"] = "http://211.81.248.212:3128"
-os.environ["HTTPS_PROXY"] = "http://211.81.248.212:3128"
+# os.environ["HTTP_PROXY"] = "http://211.81.248.212:3128"
+# os.environ["HTTPS_PROXY"] = "http://211.81.248.212:3128"
 
 
 class AgentBase:
@@ -27,6 +27,7 @@ class AgentBase:
         messages = [
             {"role": "system", "content": [{"type": "text", "text": self.system_prompt}]}
         ]
+        print(messages)
         if context:
             messages.extend(context)
         messages.append({"role": "user", "content": [{"type": "text", "text": user_prompt}]})

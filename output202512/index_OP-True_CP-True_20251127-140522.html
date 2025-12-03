@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嗑瓜子，过好年 - 新疆葵花籽宣传页</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Microsoft Yahei", sans-serif;
+        background-color: #F4F4F5;
+        color: #333;
+    }
+    header {
+        background-color: #D32F2F;
+        color: #fff;
+        text-align: center;
+        padding: 40px 20px;
+        background-image: url('https://example.com/festive-bg.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    header h1 {
+        font-size: 2.5em;
+        margin-bottom: 0.3em;
+    }
+    header p {
+        font-size: 1.2em;
+    }
+    section {
+        padding: 40px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+        background-color: #fff;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    section h2 {
+        color: #D32F2F;
+        margin-bottom: 10px;
+    }
+    .price {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #D32F2F;
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #FBC02D;
+        color: #D32F2F;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-top: 15px;
+        transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+        background-color: #fdd835;
+    }
+    aside {
+        padding: 20px;
+        text-align: center;
+    }
+    .festive-decor {
+        background-color: #D32F2F;
+        color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+    footer {
+        background-color: #D32F2F;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+    .share-buttons button {
+        background-color: #FBC02D;
+        color: #D32F2F;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .share-buttons button:hover {
+        background-color: #fdd835;
+    }
+</style>
+</head>
+<body>
+
+<header id="hero-banner">
+    <h1>嗑瓜子，过好年</h1>
+    <p>团圆时刻，香脆分享，年味十足</p>
+</header>
+
+<section id="product-highlight">
+    <h2>新疆葵花籽 500g 小包装</h2>
+    <p>精选新疆葵花籽，500g小包装，方便储存与分享。售价仅 <span class="price">¥19.9</span>。</p>
+</section>
+
+<section id="quality-story">
+    <h2>来自新疆的天然味道</h2>
+    <p>产自日照充足、土壤肥沃的新疆地区，甄选饱满葵花籽，采用传统烘焙工艺，保留原始香味与营养。无添加，更健康。</p>
+</section>
+
+<section id="purchase-cta">
+    <h2>立即抢购</h2>
+    <p>春节限时特惠，香脆葵花籽伴您团圆喜乐。</p>
+    <a href="https://item.jd.com/7303243.html" class="cta-button">立即购买</a>
+</section>
+
+<aside id="festive-elements">
+    <div class="festive-decor">🎉 红灯笼高挂，烟花绽放，喜迎新春 🎉</div>
+</aside>
+
+<footer id="social-share">
+    <p>分享美味与喜悦</p>
+    <div class="share-buttons">
+        <button onclick="shareTo('weixin')">分享到微信</button>
+        <button onclick="shareTo('weibo')">分享到微博</button>
+    </div>
+</footer>
+
+<script>
+function shareTo(platform) {
+    if(platform === 'weixin') {
+        alert('请在微信内点击右上角分享给朋友或朋友圈');
+    } else if(platform === 'weibo') {
+        window.open('http://service.weibo.com/share/share.php?title=嗑瓜子，过好年！新疆葵花籽香脆上新啦', '_blank');
+    }
+}
+</script>
+
+</body>
+</html>
