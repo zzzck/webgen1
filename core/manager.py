@@ -3,6 +3,7 @@ from agents.pm_agent import PMAgent
 from agents.architect_agent import ArchitectAgent
 from agents.engineer_agent import EngineerAgent
 from agents.teamleader_agent import TeamLeaderAgent
+from agents.project_agent import ProjectAgent
 
 # Multi-Agent 协作管理器：负责调度、消息流转与工作流组织
 class Manager:
@@ -26,6 +27,7 @@ class Manager:
         self.team_leader = TeamLeaderAgent()  # TeamLeader：营销统筹
         self.pm = PMAgent()  # PM：结构化 PRD 输出
         self.arch = ArchitectAgent()  # Architect：营销组件架构设计
+        self.project = ProjectAgent()  # Project：任务拆解与依赖梳理
         self.eng = EngineerAgent()  # Engineer：前端开发交付页面
 
         # 构建执行工作流
@@ -51,7 +53,7 @@ class Manager:
             }
         ]
 
-        # 是否需要完整工作流程（PM + Architect）
+        # 是否需要完整工作流程（PM + Architect + Project）
         if self.sp:
             # 2️⃣ PM 步骤：客户需求 → PRD
             steps.append(
@@ -73,7 +75,18 @@ class Manager:
                 }
             )
 
-            engineer_input = "page_spec"
+            # 4️⃣ Project 步骤：PRD + 页面结构 → 任务拆解与依赖规划
+            steps.append(
+                {
+                    "input_topic": "page_spec",
+                    "output_topic": "task_plan",
+                    "agent": self.project,
+                    "description": "Break down PRD & design into task list",
+                    "fetch_topics": ["prd"],
+                }
+            )
+
+            engineer_input = "task_plan"
         else:
             # 跳过 PM & Architect 时，Engineer 直接基于 brief 来编码
             engineer_input = "brief"
@@ -85,6 +98,7 @@ class Manager:
                 "output_topic": "html",
                 "agent": self.eng,
                 "description": "Render final HTML",
+                "fetch_topics": ["page_spec"] if self.sp else [],
             }
         )
 
@@ -94,9 +108,10 @@ class Manager:
         """返回当前团队所包含的角色顺序（用于任务规划显示）。"""
         base_roles = ["TeamLeader", "Engineer"]
         if self.sp:
-            # 插入 PM 和 Architect
+            # 插入 PM、Architect、Project
             base_roles.insert(1, "PM")
             base_roles.insert(2, "Architect")
+            base_roles.insert(3, "Project")
         return base_roles
 
     def _role_responsibilities(self):
@@ -130,6 +145,16 @@ class Manager:
                     "定义可复用的营销组件（如价格组件、优惠组件、购买按钮等）",
                     "制定行为逻辑：库存提醒、倒计时、优惠触发机制",
                     "输出 UI 区块与交互接口说明供工程研发"
+                ]
+            },
+            "Project": {
+                "role": "项目策划与排期",
+                "mission": "拆解 PRD 与技术方案，输出带依赖的实施任务，保障开发起步顺序正确",
+                "actions": [
+                    "阅读 PRD 与页面架构，提炼可交付模块",
+                    "将模块转化为细化任务并标记依赖关系",
+                    "优先级排序，先完成前置模块再推进依赖功能",
+                    "为工程师提供清晰的起步指引与验收标准"
                 ]
             },
             "Engineer": {
@@ -181,7 +206,12 @@ class Manager:
             # resp = self.client.chat.completions.create(model=self.model, messages=messages)
             resp = " "
 
-            kwargs = step.get("kwargs", {})
+            kwargs = dict(step.get("kwargs", {}))
+            for topic in step.get("fetch_topics", []):
+                extra = self.bus.latest(topic)
+                if extra is not None:
+                    kwargs[topic] = extra.get("content")
+
             result = step["agent"].process(content, context=context, **kwargs)
 
             # 每个节点发布输出，供下游 Agent 使用

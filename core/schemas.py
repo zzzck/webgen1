@@ -37,3 +37,17 @@ class PageSpec:
     layout: str
     colors: List[str]
     components: List[Component]
+
+
+@dataclass
+class TaskItem:
+    id: str
+    description: str
+    depends_on: List[str] = field(default_factory=list)
+    deliverable: str | None = None
+
+
+@dataclass
+class TaskPlan:
+    summary: str
+    prioritized_tasks: List[TaskItem]
