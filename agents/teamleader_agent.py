@@ -30,6 +30,7 @@ TEAMLEADER_PROMPT = """
     "TeamLeader",
     "PM",
     "Architect",
+    "Project",
     "Engineer"
   ],
   "deliverables": [
@@ -52,7 +53,7 @@ TEAMLEADER_PROMPT = """
 - tasks：
   - 每一项都必须来自 available_roles
   - 任务需具体、可执行、结果导向（避免抽象词：如优化/支持/跟进）
-  - 建议按顺序分配：TeamLeader → PM → Architect → Engineer
+  - 建议按顺序分配：TeamLeader → PM → Architect → Project → Engineer
 
 ❌ 禁止输出以下内容：
 - HTML / CSS / JavaScript

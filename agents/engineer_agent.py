@@ -24,12 +24,24 @@ class EngineerAgent(AgentBase):
     def __init__(self):
         super().__init__("Engineer", ENGINEER_PROMPT)
 
-    def process(self, page_spec, context=None):
+    def process(self, page_spec, context=None, **kwargs):
+        page_payload = None
+        if "page_spec" in kwargs and kwargs["page_spec"] is not None:
+            ps = kwargs["page_spec"]
+            if is_dataclass(ps):
+                page_payload = asdict(ps)
+            elif isinstance(ps, dict):
+                page_payload = ps
+
         if is_dataclass(page_spec):
-            payload = asdict(page_spec)
+            plan_payload = asdict(page_spec)
         elif isinstance(page_spec, dict):
-            payload = page_spec
+            plan_payload = page_spec
         else:
-            payload = {"brief": page_spec}
+            plan_payload = {"brief": page_spec}
+
+        payload = plan_payload
+        if page_payload:
+            payload = {"task_plan": plan_payload, "page_spec": page_payload}
 
         return self.run(json.dumps(payload, ensure_ascii=False), context=context)
